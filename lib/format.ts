@@ -1,4 +1,5 @@
 import { LOCALE, TIME_ZONE } from "@/lib/site-config";
+import type { RoleFitBand } from "@/lib/scoring/synthesis";
 
 type Dateish = Date | string | number | null | undefined;
 
@@ -33,3 +34,13 @@ export function formatDateTime(
 export function formatNumber(value: number): string {
   return new Intl.NumberFormat(LOCALE).format(value);
 }
+
+// RoleFitBand is persisted verbatim in SynthesisResult.synthesisJson, so the
+// English keys must stay and translation belongs only at the render site.
+export const ROLE_FIT_LABEL: Record<RoleFitBand, string> = {
+  "Strong fit": "Très bonne adéquation",
+  "Likely fit": "Adéquation probable",
+  "Mixed fit": "Adéquation moyenne",
+  "Weak fit": "Adéquation faible",
+  "Likely mis-fit": "Inadéquation probable",
+};

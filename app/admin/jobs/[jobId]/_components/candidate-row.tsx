@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/toast";
 import { usePromptDialog } from "@/components/ui/confirm-dialog";
 import { RowOverflowMenu, type MenuItem } from "@/components/admin/row-context-menu";
 import { LOCALE, TIME_ZONE } from "@/lib/site-config";
+import { ROLE_FIT_LABEL } from "@/lib/format";
 import {
   shortlistCandidateAction,
   rejectCandidateAction,
@@ -179,7 +180,7 @@ export function CandidateRow({
       <td className="px-3 py-2">
         {c.roleFit ? (
           <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${ROLE_FIT_CLASSES[c.roleFit]}`}>
-            {c.roleFit}
+            {ROLE_FIT_LABEL[c.roleFit]}
           </span>
         ) : (
           <span className="text-xs text-slate-400">—</span>

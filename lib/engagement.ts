@@ -90,11 +90,11 @@ export function computeEngagement(input: EngagementInput): EngagementResult {
 }
 
 export const ENGAGEMENT_BAND_LABEL: Record<EngagementBand, string> = {
-  strong: "Strong",
-  engaged: "Engaged",
-  stale: "Stale",
-  abandoned: "Abandoned",
-  none: "—",
+  strong: "Actif",
+  engaged: "Engagé",
+  stale: "Inactif",
+  abandoned: "Abandonné",
+  none: "-",
 };
 
 export const ENGAGEMENT_BAND_CLASS: Record<EngagementBand, string> = {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { SynthesisResult, DimensionBand, RoleFitBand } from "@/lib/scoring/synthesis";
+import { ROLE_FIT_LABEL } from "@/lib/format";
 
 type CandidateRow = {
   id: string;
@@ -114,7 +115,7 @@ export function ComparisonGrid({ candidates }: { candidates: CandidateRow[] }) {
                 <p className="text-xs text-slate-400 truncate">{c.email}</p>
               </div>
               <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold shrink-0 ${ROLE_FIT_BG[s.roleFitRead.band] ?? "bg-slate-100 text-slate-600"}`}>
-                {s.roleFitRead.band}
+                {ROLE_FIT_LABEL[s.roleFitRead.band]}
               </span>
               <div className="flex items-center gap-1.5">
                 {DIMENSIONS.map((d) => (

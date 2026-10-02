@@ -9,6 +9,7 @@ import { useConfirm } from "@/components/ui/confirm-dialog";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { LOCALE, TIME_ZONE } from "@/lib/site-config";
+import { ROLE_FIT_LABEL } from "@/lib/format";
 import { CandidateRow, type CandidateRowData } from "./candidate-row";
 import {
   shortlistCandidateAction,
@@ -215,7 +216,7 @@ function CandidateCard({
       <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
         {c.roleFit && (
           <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${ROLE_FIT_CLASSES[c.roleFit]}`}>
-            {c.roleFit}
+            {ROLE_FIT_LABEL[c.roleFit]}
           </span>
         )}
         {c.submittedAt && (

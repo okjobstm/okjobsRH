@@ -31,7 +31,7 @@ import {
 } from "@/lib/engagement";
 import type { SynthesisResult, DimensionBand, RoleFitBand, PatternFlag } from "@/lib/scoring/synthesis";
 import { LOCALE, TIME_ZONE } from "@/lib/site-config";
-import { formatDateTime, formatNumber } from "@/lib/format";
+import { formatDateTime, formatNumber, ROLE_FIT_LABEL } from "@/lib/format";
 
 // ─── Display constants ────────────────────────────────────────────────────────
 
@@ -377,7 +377,7 @@ export default async function CandidateDetailPage({
                       <div>
                         <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">Role-fit read</p>
                         <p className={`text-2xl font-semibold tracking-tight ${ROLE_FIT_COLOR[synthesis.roleFitRead.band] ?? "text-slate-800"}`}>
-                          {synthesis.roleFitRead.band}
+                          {ROLE_FIT_LABEL[synthesis.roleFitRead.band]}
                         </p>
                       </div>
                       <div className="text-right">
