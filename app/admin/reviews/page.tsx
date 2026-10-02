@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ReviewStatus, ReviewRecommendation, CandidateStage } from "@prisma/client";
 import { formatStage, stageBadgeClass } from "@/lib/candidates";
 import { Tip } from "@/components/admin/tip";
+import { LOCALE, TIME_ZONE } from "@/lib/site-config";
 
 const RECOMMENDATION_LABEL: Record<ReviewRecommendation, string> = {
   STRONG_YES: "Strong yes",
@@ -19,7 +20,7 @@ const RECOMMENDATION_BADGE: Record<ReviewRecommendation, string> = {
   NO: "bg-rose-100 text-rose-800",
 };
 
-const fmt = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+const fmt = new Intl.DateTimeFormat(LOCALE, { dateStyle: "medium", timeZone: TIME_ZONE });
 
 export default async function ReviewsPage() {
   const session = await requireAuth();

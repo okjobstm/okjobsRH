@@ -6,6 +6,7 @@ import {
 } from "@/actions/reviews";
 import { Button } from "@/components/ui/button";
 import { summarizeConsensus } from "@/lib/reviews";
+import { LOCALE, TIME_ZONE } from "@/lib/site-config";
 
 type ReviewRow = {
   id: string;
@@ -52,7 +53,7 @@ const STATUS_LABEL: Record<ReviewStatus, string> = {
   WITHDRAWN: "Withdrawn",
 };
 
-const fmt = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+const fmt = new Intl.DateTimeFormat(LOCALE, { dateStyle: "medium", timeZone: TIME_ZONE });
 
 export function ReviewerPanel({
   candidateId,

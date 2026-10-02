@@ -8,6 +8,8 @@ import { CopyUrlButton } from "@/components/admin/copy-url-button";
 import { InviteRowMenu } from "./invite-row";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { LOCALE, TIME_ZONE } from "@/lib/site-config";
+import { formatDate } from "@/lib/format";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -97,7 +99,7 @@ function PendingInvitesPanel({ jobId, invites }: { jobId: string; invites: Invit
                 <p className="truncate text-xs text-slate-500">{invite.candidateEmail}</p>
               </div>
               <span className="hidden text-xs text-slate-400 sm:inline">
-                Expires {new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(invite.expiresAt)}
+                Expire le {new Intl.DateTimeFormat(LOCALE, { month: "short", day: "numeric", timeZone: TIME_ZONE }).format(invite.expiresAt)}
               </span>
               {staleness.isStale && (
                 <span
@@ -227,10 +229,10 @@ function ActiveBulkLink({ jobId, link }: { jobId: string; link: BulkInviteLinkRo
         )}
       </div>
       <p className="text-xs text-slate-500">
-        {link.registrations} registration{link.registrations === 1 ? "" : "s"}
-        {link.lastOpenedAt ? ` · last opened ${formatRelative(link.lastOpenedAt)}` : ""}
-        {" · expires "}
-        {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(link.expiresAt)}
+        {link.registrations} inscription{link.registrations === 1 ? "" : "s"}
+        {link.lastOpenedAt ? ` · dernière ouverture ${formatRelative(link.lastOpenedAt)}` : ""}
+        {" · expire le "}
+        {formatDate(link.expiresAt)}
       </p>
     </div>
   );
@@ -253,8 +255,8 @@ function OlderBulkLink({ jobId, link }: { jobId: string; link: BulkInviteLinkRow
         </span>
       </div>
       <p className="mt-1 text-[11px] text-slate-400">
-        {link.registrations} reg{link.registrations === 1 ? "" : "s"} · expires{" "}
-        {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(link.expiresAt)}
+        {link.registrations} inscription{link.registrations === 1 ? "" : "s"} · expire le{" "}
+        {formatDate(link.expiresAt)}
       </p>
       <div className="mt-1.5 flex items-center gap-1.5">
         <CopyUrlButton url={url} />
@@ -338,9 +340,9 @@ function formatRelative(date: Date): string {
   // eslint-disable-next-line react-hooks/purity -- Server Component
   const diffMs = Date.now() - date.getTime();
   const hours = Math.floor(diffMs / 3_600_000);
-  if (hours < 1) return "just now";
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 1) return "à l'instant";
+  if (hours < 24) return `il y a ${hours} h`;
   const days = Math.floor(hours / 24);
-  if (days < 7) return `${days}d ago`;
-  return new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(date);
+  if (days < 7) return `il y a ${days} j`;
+  return formatDate(date);
 }

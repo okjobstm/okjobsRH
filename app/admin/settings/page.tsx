@@ -4,6 +4,7 @@ import { updatePromptTemplateAction } from "@/actions/settings";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { formatDateTime } from "@/lib/format";
 
 const TEMPLATE_META: Record<string, { title: string; description: string }> = {
   star_scoring: {
@@ -46,11 +47,8 @@ export default async function SettingsPage() {
                 {meta.description}
                 {template && (
                   <span className="block mt-1 text-xs text-slate-400">
-                    Version {template.version} · last updated{" "}
-                    {new Intl.DateTimeFormat("en", {
-                      dateStyle: "medium",
-                      timeStyle: "short",
-                    }).format(template.updatedAt)}
+                    Version {template.version} · dernière modification{" "}
+                    {formatDateTime(template.updatedAt)}
                     {template.updatedBy ? ` by ${template.updatedBy}` : ""}
                   </span>
                 )}

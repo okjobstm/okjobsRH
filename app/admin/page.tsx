@@ -15,6 +15,7 @@ import {
   ENGAGEMENT_BAND_LABEL,
 } from "@/lib/engagement";
 import { shortlistCandidateAction, rejectCandidateAction } from "@/actions/candidates";
+import { LOCALE } from "@/lib/site-config";
 import Link from "next/link";
 
 type DashboardTab = "all" | "open" | "draft" | "archived";
@@ -372,7 +373,7 @@ function CandidateRow({
         )}
         {candidate.lastActiveAt && (
           <span className="text-xs text-slate-400 hidden lg:block">
-            {new Intl.RelativeTimeFormat("en", { numeric: "auto" }).format(
+            {new Intl.RelativeTimeFormat(LOCALE, { numeric: "auto" }).format(
               Math.round(
                 (candidate.lastActiveAt.getTime() - now) / (1000 * 60 * 60 * 24)
               ),

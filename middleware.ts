@@ -41,7 +41,7 @@ function getClientIp(request: NextRequest): string {
 
 function rateLimitResponse(retryAfter: number): NextResponse {
   return new NextResponse(
-    JSON.stringify({ error: "Too many requests. Please slow down." }),
+    JSON.stringify({ error: "Trop de requêtes. Veuillez ralentir." }),
     {
       status: 429,
       headers: {

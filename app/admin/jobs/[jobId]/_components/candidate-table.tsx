@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/toast";
 import { useConfirm } from "@/components/ui/confirm-dialog";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { LOCALE, TIME_ZONE } from "@/lib/site-config";
 import { CandidateRow, type CandidateRowData } from "./candidate-row";
 import {
   shortlistCandidateAction,
@@ -219,7 +220,7 @@ function CandidateCard({
         )}
         {c.submittedAt && (
           <span className="text-[11px] text-slate-400">
-            {new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(c.submittedAt)}
+            {new Intl.DateTimeFormat(LOCALE, { month: "short", day: "numeric", timeZone: TIME_ZONE }).format(c.submittedAt)}
           </span>
         )}
       </div>

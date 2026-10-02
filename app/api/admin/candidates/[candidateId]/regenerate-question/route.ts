@@ -19,7 +19,7 @@ export async function POST(
   try {
     await requireAuth();
   } catch {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
   const { candidateId } = await params;
@@ -27,7 +27,7 @@ export async function POST(
   const { targetId, surface } = body;
 
   if (!targetId || !surface) {
-    return NextResponse.json({ error: "Missing targetId or surface" }, { status: 400 });
+    return NextResponse.json({ error: "targetId ou surface manquant" }, { status: 400 });
   }
 
   const candidate = await prisma.candidate.findUnique({
@@ -39,7 +39,7 @@ export async function POST(
   });
 
   if (!candidate?.submission) {
-    return NextResponse.json({ error: "No submission" }, { status: 404 });
+    return NextResponse.json({ error: "Aucune candidature" }, { status: 404 });
   }
 
   const psychoItems = await prisma.psychometricItem.findMany({
@@ -51,7 +51,7 @@ export async function POST(
   const sub = candidate.submission;
   const synthesis = sub.synthesisJson as SynthesisResult | null;
   if (!synthesis) {
-    return NextResponse.json({ error: "No synthesis found" }, { status: 404 });
+    return NextResponse.json({ error: "Aucune synthèse trouvée" }, { status: 404 });
   }
 
   const psychoAnswers = (sub.psychoAnswers ?? {}) as Record<string, string | string[]>;
@@ -86,7 +86,7 @@ export async function POST(
 
   if (surface === "flag") {
     const flag = synthesis.flags.find((f: PatternFlag) => f.id === targetId);
-    if (!flag) return NextResponse.json({ error: "Flag not found" }, { status: 404 });
+    if (!flag) return NextResponse.json({ error: "Signalement introuvable" }, { status: 404 });
 
     const relevantResponses: Array<{ sectionLabel: string; excerpt: string; rubricFeatures?: string }> = [];
     for (const ci of flag.contributingItems) {
@@ -130,7 +130,7 @@ export async function POST(
     });
   } else {
     const dimResult = synthesis.dimensions[targetId];
-    if (!dimResult) return NextResponse.json({ error: "Dimension not found" }, { status: 404 });
+    if (!dimResult) return NextResponse.json({ error: "Dimension introuvable" }, { status: 404 });
 
     const { band } = dimResult;
     const whyItMatters =
@@ -154,7 +154,7 @@ export async function POST(
   }
 
   if (!question) {
-    return NextResponse.json({ error: "Could not generate a valid question after retries" }, { status: 422 });
+    return NextResponse.json({ error: "Impossible de générer une question valide après plusieurs tentatives" }, { status: 422 });
   }
 
   // Update synthesisJson in place

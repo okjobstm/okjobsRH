@@ -30,6 +30,8 @@ import {
   ENGAGEMENT_BAND_LABEL,
 } from "@/lib/engagement";
 import type { SynthesisResult, DimensionBand, RoleFitBand, PatternFlag } from "@/lib/scoring/synthesis";
+import { LOCALE, TIME_ZONE } from "@/lib/site-config";
+import { formatDateTime, formatNumber } from "@/lib/format";
 
 // ─── Display constants ────────────────────────────────────────────────────────
 
@@ -164,8 +166,8 @@ export default async function CandidateDetailPage({
   const synthesis = sub?.synthesisJson as SynthesisResult | null;
   const hasSynthesis = !!synthesis?.roleFitRead;
 
-  const fmt = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
-  const fmtLong = new Intl.DateTimeFormat("en", { dateStyle: "medium", timeStyle: "short" });
+  const fmt = new Intl.DateTimeFormat(LOCALE, { dateStyle: "medium", timeZone: TIME_ZONE });
+  const fmtLong = new Intl.DateTimeFormat(LOCALE, { dateStyle: "medium", timeStyle: "short", timeZone: TIME_ZONE });
 
   // ── Tier 3 aggregate computations ─────────────────────────────────────────
   const starFeatureAggregates = (() => {
@@ -1007,7 +1009,7 @@ export default async function CandidateDetailPage({
                         </a>
                         {sub.cvText && (
                           <span className="text-xs text-slate-400">
-                            {sub.cvText.length.toLocaleString()} chars extracted
+                            {formatNumber(sub.cvText.length)} caractères extraits
                             {sub.cvExtractedAt && ` · ${fmt.format(sub.cvExtractedAt)}`}
                           </span>
                         )}
@@ -1078,7 +1080,7 @@ export default async function CandidateDetailPage({
                         <div className="flex items-center gap-2 text-[10px] text-slate-400">
                           {score.modelUsed && <span>model: {score.modelUsed}</span>}
                           {score.rubricVersion && <span>rubric: {score.rubricVersion}</span>}
-                          {score.scoredAt && <span>{new Date(score.scoredAt).toLocaleString()}</span>}
+                          {score.scoredAt && <span>{formatDateTime(score.scoredAt)}</span>}
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mb-2">
@@ -1114,7 +1116,7 @@ export default async function CandidateDetailPage({
 
                 {synthesis?.computedAt && (
                   <p className="text-xs text-slate-400">
-                    Synthesis computed: {new Date(synthesis.computedAt).toLocaleString()}
+                    Synthèse calculée le {formatDateTime(synthesis.computedAt)}
                   </p>
                 )}
               </div>

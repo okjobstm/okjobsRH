@@ -4,6 +4,7 @@ import { requireAuth } from "@/lib/auth";
 import PDFDocument from "pdfkit";
 import type { SynthesisResult, DimensionBand, RoleFitBand } from "@/lib/scoring/synthesis";
 import { APP_NAME, ORG_NAME } from "@/lib/site-config";
+import { formatDate } from "@/lib/format";
 
 // ─── Display constants ────────────────────────────────────────────────────────
 
@@ -117,7 +118,7 @@ export async function GET(
   try {
     await requireAuth();
   } catch {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
   const { candidateId } = await params;
@@ -133,7 +134,7 @@ export async function GET(
   });
 
   if (!candidate) {
-    return NextResponse.json({ error: "Candidate not found" }, { status: 404 });
+    return NextResponse.json({ error: "Candidat introuvable" }, { status: 404 });
   }
 
   const [standardQuestions, psychoItems] = await Promise.all([
@@ -210,9 +211,7 @@ export async function GET(
     .moveDown(0.15);
 
   const stage = candidate.stage.replace(/_/g, " ");
-  const submitted = sub?.submittedAt
-    ? new Intl.DateTimeFormat("en-GB", { dateStyle: "medium" }).format(sub.submittedAt)
-    : "—";
+  const submitted = sub?.submittedAt ? formatDate(sub.submittedAt) : "—";
   doc
     .fontSize(9)
     .fillColor("#94a3b8")

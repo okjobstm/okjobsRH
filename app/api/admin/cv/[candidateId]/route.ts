@@ -13,7 +13,7 @@ export async function GET(
   try {
     await requireAuth();
   } catch {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
   const { candidateId } = await params;
@@ -24,18 +24,18 @@ export async function GET(
   });
 
   if (!submission?.cvPath) {
-    return NextResponse.json({ error: "No CV found" }, { status: 404 });
+    return NextResponse.json({ error: "Aucun CV trouvé" }, { status: 404 });
   }
 
   const absolutePath = path.join(UPLOADS_DIR, submission.cvPath);
   if (!absolutePath.startsWith(path.resolve(UPLOADS_DIR))) {
-    return NextResponse.json({ error: "Invalid path" }, { status: 400 });
+    return NextResponse.json({ error: "Chemin invalide" }, { status: 400 });
   }
 
   try {
     await fs.access(absolutePath, fs.constants.R_OK);
   } catch {
-    return NextResponse.json({ error: "File not found" }, { status: 404 });
+    return NextResponse.json({ error: "Fichier introuvable" }, { status: 404 });
   }
 
   const ext = path.extname(absolutePath).toLowerCase();

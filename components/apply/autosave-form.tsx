@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { formatDateTime } from "@/lib/format";
 
 type SaveFn = (answers: Record<string, string>) => Promise<void>;
 
@@ -39,12 +40,12 @@ export function useAutosave(
 
 export function SavedIndicator({ savedAt, saving }: { savedAt: Date | null; saving: boolean }) {
   if (saving) {
-    return <span className="text-xs text-slate-400">Saving...</span>;
+    return <span className="text-xs text-slate-400">Enregistrement...</span>;
   }
   if (!savedAt) return null;
   return (
     <span className="text-xs text-slate-400">
-      Saved {savedAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+      Enregistré à {formatDateTime(savedAt, { hour: "2-digit", minute: "2-digit" })}
     </span>
   );
 }

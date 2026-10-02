@@ -19,7 +19,7 @@ export async function POST(
   try {
     await requireAuth();
   } catch {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
   const { candidateId } = await params;
@@ -37,7 +37,7 @@ export async function POST(
   });
 
   if (!candidate?.submission) {
-    return NextResponse.json({ error: "No submission found" }, { status: 404 });
+    return NextResponse.json({ error: "Aucune candidature trouvée" }, { status: 404 });
   }
 
   const psychoItems = await prisma.psychometricItem.findMany({

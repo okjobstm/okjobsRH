@@ -8,7 +8,7 @@ const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", axe
 
 export const metadata: Metadata = {
   title: APP_NAME,
-  description: `${ORG_NAME} recruitment platform`,
+  description: `Plateforme de recrutement ${ORG_NAME}`,
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${fraunces.variable}`}>
       <body>{children}</body>
     </html>
   );

@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const field = (form.get("field") as string | null) ?? "cv";
 
     if (!file || !candidateId) {
-      return NextResponse.json({ error: "Missing file or candidateId" }, { status: 400 });
+      return NextResponse.json({ error: "Fichier ou candidateId manquant" }, { status: 400 });
     }
 
     // Validate candidate exists
@@ -32,23 +32,23 @@ export async function POST(req: NextRequest) {
       select: { id: true },
     });
     if (!candidate) {
-      return NextResponse.json({ error: "Invalid candidate" }, { status: 403 });
+      return NextResponse.json({ error: "Candidat invalide" }, { status: 403 });
     }
 
     // Validate file size
     if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json({ error: "File exceeds 10 MB limit" }, { status: 400 });
+      return NextResponse.json({ error: "Le fichier dépasse la limite de 10 Mo" }, { status: 400 });
     }
 
     // Validate file extension
     const ext = path.extname(file.name).toLowerCase();
     if (!ALLOWED_EXTENSIONS.has(ext)) {
-      return NextResponse.json({ error: "File type not allowed. Please upload a PDF or Word document." }, { status: 400 });
+      return NextResponse.json({ error: "Type de fichier non autorisé. Veuillez téléverser un document PDF ou Word." }, { status: 400 });
     }
 
     // Validate MIME type
     if (file.type && !ALLOWED_MIME_TYPES.has(file.type)) {
-      return NextResponse.json({ error: "File type not allowed." }, { status: 400 });
+      return NextResponse.json({ error: "Type de fichier non autorisé." }, { status: 400 });
     }
 
     // Write to disk
@@ -91,6 +91,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ path: storedPath });
   } catch (err) {
     logger.error({ err }, "file upload error");
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    return NextResponse.json({ error: "Échec du téléversement" }, { status: 500 });
   }
 }

@@ -5,6 +5,7 @@ import { useTransition } from "react";
 import { useToast } from "@/components/ui/toast";
 import { usePromptDialog } from "@/components/ui/confirm-dialog";
 import { RowOverflowMenu, type MenuItem } from "@/components/admin/row-context-menu";
+import { LOCALE, TIME_ZONE } from "@/lib/site-config";
 import {
   shortlistCandidateAction,
   rejectCandidateAction,
@@ -172,7 +173,7 @@ export function CandidateRow({
       </td>
       <td className="px-3 py-2 text-sm text-slate-600">
         {c.submittedAt
-          ? new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(c.submittedAt)
+          ? new Intl.DateTimeFormat(LOCALE, { month: "short", day: "numeric", timeZone: TIME_ZONE }).format(c.submittedAt)
           : "—"}
       </td>
       <td className="px-3 py-2">

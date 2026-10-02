@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { formatDateTime } from "@/lib/format";
 
 const FILTER_GROUPS: Record<string, { label: string; actions: string[] }> = {
   all: { label: "All", actions: [] },
@@ -136,10 +137,7 @@ export default async function JobAuditPage({
                     <p className="truncate text-xs text-slate-500">{log.actorEmail}</p>
                   </div>
                   <p className="shrink-0 text-xs text-slate-400">
-                    {new Intl.DateTimeFormat("en", {
-                      dateStyle: "medium",
-                      timeStyle: "short",
-                    }).format(log.createdAt)}
+                    {formatDateTime(log.createdAt)}
                   </p>
                 </li>
               ))}

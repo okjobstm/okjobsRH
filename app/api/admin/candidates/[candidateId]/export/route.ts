@@ -47,7 +47,7 @@ export async function GET(
   });
 
   if (!candidate) {
-    return NextResponse.json({ error: "Candidate not found" }, { status: 404 });
+    return NextResponse.json({ error: "Candidat introuvable" }, { status: 404 });
   }
 
   const exportPayload = {

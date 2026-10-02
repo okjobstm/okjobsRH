@@ -9,13 +9,13 @@ export async function POST(request: Request) {
   const clientId = process.env.GOOGLE_CLIENT_ID;
   if (!clientId) {
     logger.error("GOOGLE_CLIENT_ID not configured");
-    return NextResponse.json({ error: "Google sign-in not configured." }, { status: 500 });
+    return NextResponse.json({ error: "Connexion Google non configurée." }, { status: 500 });
   }
 
   const body = await request.json().catch(() => null);
   const credential = body?.credential as string | undefined;
   if (!credential) {
-    return NextResponse.json({ error: "Missing credential." }, { status: 400 });
+    return NextResponse.json({ error: "Identifiant manquant." }, { status: 400 });
   }
 
   const oauth = new OAuth2Client(clientId);
@@ -25,11 +25,11 @@ export async function POST(request: Request) {
     payload = ticket.getPayload();
   } catch (err) {
     logger.warn({ err }, "Google ID token verification failed");
-    return NextResponse.json({ error: "Invalid Google credential." }, { status: 401 });
+    return NextResponse.json({ error: "Identifiant Google invalide." }, { status: 401 });
   }
 
   if (!payload?.email || !payload.email_verified) {
-    return NextResponse.json({ error: "Email not verified by Google." }, { status: 401 });
+    return NextResponse.json({ error: "Adresse e-mail non vérifiée par Google." }, { status: 401 });
   }
 
   const emailLower = payload.email.toLowerCase();

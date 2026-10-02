@@ -43,7 +43,7 @@ export async function GET(
     },
   });
   if (!job) {
-    return NextResponse.json({ error: "Job not found" }, { status: 404 });
+    return NextResponse.json({ error: "Poste introuvable" }, { status: 404 });
   }
 
   const standardQuestions = await prisma.standardQuestion.findMany({
@@ -64,7 +64,7 @@ export async function GET(
   });
 
   if (candidates.length === 0) {
-    return NextResponse.json({ error: "No candidates to export" }, { status: 404 });
+    return NextResponse.json({ error: "Aucun candidat à exporter" }, { status: 404 });
   }
 
   // Build rows

@@ -55,13 +55,13 @@ export function GoogleSigninButton({ clientId }: { clientId: string }) {
           });
           if (!res.ok) {
             const data = await res.json().catch(() => ({}));
-            setError(data?.error ?? "Sign in failed.");
+            setError(data?.error ?? "Échec de la connexion.");
             return;
           }
           router.push("/admin");
           router.refresh();
         } catch {
-          setError("Network error. Try again.");
+          setError("Erreur réseau. Réessayez.");
         }
       },
     });

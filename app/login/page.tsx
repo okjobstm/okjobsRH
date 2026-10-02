@@ -18,7 +18,7 @@ export default function LoginPage() {
 
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-center text-sm font-medium text-slate-900 mb-1">
-            Sign in to access the recruitment dashboard
+            Connectez-vous pour accéder au tableau de bord de recrutement
           </p>
           <p className="text-center text-xs text-slate-500 mb-5">
             Connexion réservée aux administrateurs autorisés
@@ -28,13 +28,13 @@ export default function LoginPage() {
             <GoogleSigninButton clientId={googleClientId} />
           ) : (
             <p className="text-center text-xs text-red-600">
-              Google sign-in is not configured. Contact an administrator.
+              La connexion Google n&rsquo;est pas configurée. Contactez un administrateur.
             </p>
           )}
         </div>
 
         <p className="mt-6 text-center text-xs text-slate-400">
-          {ORG_NAME} internal tool
+          Outil interne {ORG_NAME}
         </p>
       </div>
     </div>
