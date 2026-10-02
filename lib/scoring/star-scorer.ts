@@ -1,8 +1,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 import crypto from "crypto";
 import { prisma } from "@/lib/prisma";
+import logger from "@/lib/logger";
 import { RUBRICS } from "./rubrics";
 import { assignBand } from "./band-rules";
+import { normalizeFeatureValue } from "./feature-values";
 
 /**
  * LLM-based STAR item scorer. The flow is:
@@ -175,6 +177,33 @@ export async function scoreOpenEndedItem(
   const template = await prisma.promptTemplate.findUnique({ where: { key: "star_scoring" } });
   const promptBody = template?.body ?? "";
 
+  // Constrained decoding is the primary guard against a feature value that does
+  // not exist in `allowedValues`: the model can only emit one of the ASCII
+  // tokens. `normalizeFeatureValue` remains as the net underneath it.
+  const featureProperties: Record<string, unknown> = {};
+  for (const f of rubric.features) {
+    featureProperties[f.name] = {
+      type: "object",
+      properties: {
+        value: { type: "string", enum: [...f.allowedValues, "insufficient"] },
+        justification: { type: "string" },
+        supporting_excerpt: { type: "string" },
+      },
+      required: ["value", "justification", "supporting_excerpt"],
+    };
+  }
+  const outputSchema = {
+    type: "object",
+    properties: {
+      features: {
+        type: "object",
+        properties: featureProperties,
+        required: rubric.features.map((f) => f.name),
+      },
+    },
+    required: ["features"],
+  };
+
   const rubricFeaturesText = rubric.features
     .map(
       (f) =>
@@ -193,6 +222,9 @@ export async function scoreOpenEndedItem(
       model: MODEL_ID,
       max_tokens: ANTHROPIC_MAX_TOKENS,
       messages: [{ role: "user", content: prompt }],
+      output_config: {
+        format: { type: "json_schema", schema: outputSchema },
+      },
     });
 
     rawResponse = message.content[0]?.type === "text" ? message.content[0].text : "";
@@ -209,12 +241,25 @@ export async function scoreOpenEndedItem(
     for (const f of rubric.features) {
       const result = parsed.features[f.name];
       if (!result) continue;
-      const val = String(result.value ?? "").toLowerCase().trim();
-      if (!f.allowedValues.includes(val) && val !== "insufficient") {
-        throw new Error(`Invalid value "${val}" for feature ${f.name}`);
+      const received = String(result.value ?? "");
+      const normalized = normalizeFeatureValue(received, f.allowedValues);
+      if (!normalized) {
+        throw new Error(`Invalid value "${received.toLowerCase().trim()}" for feature ${f.name}`);
+      }
+      if (normalized.aliased || normalized.folded) {
+        logger.warn(
+          {
+            itemId,
+            feature: f.name,
+            received,
+            resolved: normalized.value,
+            viaAlias: normalized.aliased,
+          },
+          "feature value normalised to its ASCII token"
+        );
       }
       features[f.name] = {
-        value: val,
+        value: normalized.value,
         justification: String(result.justification ?? ""),
         supporting_excerpt: String(result.supporting_excerpt ?? ""),
       };

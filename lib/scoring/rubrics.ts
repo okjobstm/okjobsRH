@@ -32,47 +32,47 @@ export const RUBRICS: Record<string, ItemRubric> = {
       {
         name: "specificity",
         allowedValues: ["high", "medium", "low"],
-        extractionPrompt: `Rate the specificity of this response on a 3-point scale.
-HIGH: names a specific project/task, timeframe, people, and/or concrete artifacts or metrics.
-MEDIUM: includes some concrete details but remains partially abstract.
-LOW: largely abstract or generic, without specific anchors.
-Return exactly one word: high, medium, or low.`,
+        extractionPrompt: `Évaluez la spécificité de cette réponse sur une échelle à 3 points.
+HIGH : nomme un projet ou une tâche précise, une période, des personnes et/ou des livrables ou des métriques concrets.
+MEDIUM : contient quelques détails concrets mais reste en partie abstraite.
+LOW : reste largement abstraite ou générique, sans repère précis.
+Retourne exactement un mot parmi : high, medium, low.`,
       },
       {
         name: "first_person_agency",
         allowedValues: ["high", "medium", "low"],
-        extractionPrompt: `Evaluate how much first-person agency this response conveys.
-HIGH: candidate clearly describes specific actions they personally took.
-MEDIUM: some personal actions, mixed with team-level description.
-LOW: primarily describes what the team or organization did; candidate's specific role unclear.
-Return exactly one word: high, medium, or low.`,
+        extractionPrompt: `Évaluez à quel point cette réponse exprime une action portée par la première personne.
+HIGH : le candidat décrit clairement des actions précises qu’il a lui-même menées.
+MEDIUM : quelques actions personnelles, mêlées à une description au niveau de l’équipe.
+LOW : décrit principalement ce que l’équipe ou l’organisation a fait ; le rôle précis du candidat reste flou.
+Retourne exactement un mot parmi : high, medium, low.`,
       },
       {
         name: "problem_ownership",
         allowedValues: ["owned", "shared", "passive"],
-        extractionPrompt: `When things went off-track, did the candidate drive the resolution?
-OWNED: candidate actively drove the resolution.
-SHARED: candidate participated in a team resolution.
-PASSIVE: problem was addressed by others or circumstances; candidate describes being affected by the resolution rather than causing it.
-Return exactly one word: owned, shared, or passive.`,
+        extractionPrompt: `Lorsque la situation a dévié, le candidat a-t-il porté la résolution ?
+OWNED : le candidat a activement porté la résolution.
+SHARED : le candidat a participé à une résolution collective.
+PASSIVE : le problème a été traité par d’autres ou par les circonstances ; le candidat décrit avoir subi la résolution plutôt que l’avoir provoquée.
+Retourne exactement un mot parmi : owned, shared, passive.`,
       },
       {
         name: "outcome_clarity",
         allowedValues: ["concrete", "vague", "missing"],
-        extractionPrompt: `Is there a clear, specific outcome described?
-CONCRETE: specific result with detail (what shipped, what changed, what the measurable effect was).
-VAGUE: outcome referenced but without specifics.
-MISSING: no clear outcome described.
-Return exactly one word: concrete, vague, or missing.`,
+        extractionPrompt: `Un résultat clair et précis est-il décrit ?
+CONCRETE : résultat précis et détaillé (ce qui a été livré, ce qui a changé, quel effet mesurable a été obtenu).
+VAGUE : résultat évoqué sans aucune précision.
+MISSING : aucun résultat clair n’est décrit.
+Retourne exactement un mot parmi : concrete, vague, missing.`,
       },
       {
         name: "attribution_pattern",
         allowedValues: ["internal", "mixed", "external"],
-        extractionPrompt: `How does the candidate attribute the cause of the problem?
-INTERNAL: attributes significant contributing factors to own decisions or actions.
-MIXED: balanced attribution between self and external factors.
-EXTERNAL: attributes cause primarily to others or circumstances.
-Return exactly one word: internal, mixed, or external.`,
+        extractionPrompt: `Comment le candidat attribue-t-il la cause du problème ?
+INTERNAL : il attribue des facteurs contributifs importants à ses propres décisions ou à ses propres actions.
+MIXED : attribution équilibrée entre lui-même et des facteurs externes.
+EXTERNAL : il attribue la cause principalement à autrui ou aux circonstances.
+Retourne exactement un mot parmi : internal, mixed, external.`,
       },
     ],
   },
@@ -84,47 +84,47 @@ Return exactly one word: internal, mixed, or external.`,
       {
         name: "mistake_genuineness",
         allowedValues: ["genuine", "minor_or_reshaped", "avoided"],
-        extractionPrompt: `Evaluate whether the response describes a genuine, substantive mistake.
-GENUINE: a real, non-trivial error with clear negative consequences for others, owned by the candidate.
-MINOR_OR_RESHAPED: a small mistake, or an event reframed as a mistake that doesn't really read as one (e.g., "I worked too hard").
-AVOIDED: the response does not describe an actual mistake; redirects to a neutral or positive story.
-Return exactly one word: genuine, minor_or_reshaped, or avoided.`,
+        extractionPrompt: `Évaluez si la réponse décrit une erreur authentique et substantielle.
+GENUINE : une erreur réelle et non triviale, avec des conséquences négatives claires pour autrui, et reconnue par le candidat.
+MINOR_OR_RESHAPED : une petite erreur, ou un événement reformulé en erreur sans que cela en soit vraiment une (par exemple « j’ai trop travaillé »).
+AVOIDED : la réponse ne décrit aucune erreur réelle ; elle se replie sur un récit neutre ou positif.
+Retourne exactement un mot parmi : genuine, minor_or_reshaped, avoided.`,
       },
       {
         name: "ownership",
         allowedValues: ["owned", "partial", "externalized"],
-        extractionPrompt: `How does the candidate attribute responsibility for the mistake?
-OWNED: explicit, first-person ownership of the error without significant externalization.
-PARTIAL: mixed ownership with meaningful externalization of blame.
-EXTERNALIZED: primary blame placed on others, circumstances, or systems.
-Return exactly one word: owned, partial, or externalized.`,
+        extractionPrompt: `Comment le candidat attribue-t-il la responsabilité de l’erreur ?
+OWNED : reconnaissance explicite à la première personne, sans externalisation significative.
+PARTIAL : responsabilité partagée, avec une externalisation significative de la faute.
+EXTERNALIZED : la faute principale est placée sur autrui, sur les circonstances ou sur les systèmes.
+Retourne exactement un mot parmi : owned, partial, externalized.`,
       },
       {
         name: "disclosure_behavior",
         allowedValues: ["proactive", "reactive", "concealed_or_unclear"],
-        extractionPrompt: `Did the candidate proactively disclose the mistake to affected parties?
-PROACTIVE: candidate raised the issue before it was discovered by others.
-REACTIVE: candidate acknowledged when asked or when it surfaced.
-CONCEALED_OR_UNCLEAR: candidate did not disclose, or disclosure behavior is unclear from the response.
-Return exactly one word: proactive, reactive, or concealed_or_unclear.`,
+        extractionPrompt: `Le candidat a-t-il signalé de lui-même l’erreur aux personnes concernées ?
+PROACTIVE : le candidat a soulevé la question avant qu’elle ne soit découverte par d’autres.
+REACTIVE : le candidat l’a reconnue lorsqu’on l’a interpelé ou lorsque le problème a été mis au jour.
+CONCEALED_OR_UNCLEAR : le candidat n’a rien signalé, ou son comportement de signalement reste indéterminé d’après la réponse.
+Retourne exactement un mot parmi : proactive, reactive, concealed_or_unclear.`,
       },
       {
         name: "correction_action",
         allowedValues: ["substantive", "nominal", "absent"],
-        extractionPrompt: `What did the candidate do to address the mistake?
-SUBSTANTIVE: specific actions to fix, mitigate harm, or prevent recurrence.
-NOMINAL: acknowledgment or apology without meaningful corrective action described.
-ABSENT: no correction described.
-Return exactly one word: substantive, nominal, or absent.`,
+        extractionPrompt: `Qu’a fait le candidat pour corriger l’erreur ?
+SUBSTANTIVE : des actions précises pour corriger, limiter le préjudice ou éviter la récidive.
+NOMINAL : reconnaissance ou excuses, sans action corrective significative décrite.
+ABSENT : aucune correction n’est décrite.
+Retourne exactement un mot parmi : substantive, nominal, absent.`,
       },
       {
         name: "reflection_quality",
         allowedValues: ["genuine", "generic", "absent"],
-        extractionPrompt: `Does the candidate describe genuine learning or updated behavior?
-GENUINE: specific shift in approach, belief, or behavior tied to the mistake.
-GENERIC: generic lesson ("I learned to communicate more") without specific behavioral shift.
-ABSENT: no reflection on what was learned.
-Return exactly one word: genuine, generic, or absent.`,
+        extractionPrompt: `Le candidat décrit-il un apprentissage authentique ou un comportement révisé ?
+GENUINE : un changement précis de méthode, de conviction ou de comportement, lié à l’erreur.
+GENERIC : une leçon générique (« j’ai appris à mieux communiquer ») sans changement de comportement identifiable.
+ABSENT : aucune réflexion sur ce qui a été appris.
+Retourne exactement un mot parmi : genuine, generic, absent.`,
       },
     ],
   },
@@ -136,38 +136,38 @@ Return exactly one word: genuine, generic, or absent.`,
       {
         name: "specificity_of_original_view",
         allowedValues: ["high", "medium", "low"],
-        extractionPrompt: `Rate how specifically the original view is described.
-HIGH: original belief is described with specifics (what the candidate thought and why).
-MEDIUM: belief referenced but abstract.
-LOW: original belief not meaningfully described.
-Return exactly one word: high, medium, or low.`,
+        extractionPrompt: `Évaluez le degré de précision de la description de la conviction initiale.
+HIGH : la conviction initiale est décrite précisément (ce que le candidat pensait et pourquoi).
+MEDIUM : la conviction est évoquée mais de manière abstraite.
+LOW : la conviction initiale n’est pas décrite de manière significative.
+Retourne exactement un mot parmi : high, medium, low.`,
       },
       {
         name: "specificity_of_counterargument",
         allowedValues: ["high", "medium", "low"],
-        extractionPrompt: `Rate how specifically the counterargument is described.
-HIGH: what the other person said is described with specifics.
-MEDIUM: referenced abstractly.
-LOW: not meaningfully described.
-Return exactly one word: high, medium, or low.`,
+        extractionPrompt: `Évaluez le degré de précision de la description de la contre-argumentation.
+HIGH : ce que l’autre personne a dit est décrit précisément.
+MEDIUM : évoquée de manière abstraite.
+LOW : pas décrite de manière significative.
+Retourne exactement un mot parmi : high, medium, low.`,
       },
       {
         name: "nature_of_shift",
         allowedValues: ["substantive", "tactical", "performative"],
-        extractionPrompt: `Evaluate the nature of the candidate's mind change.
-SUBSTANTIVE: genuine change in belief or model, not just behavior.
-TACTICAL: change in approach but not underlying belief.
-PERFORMATIVE: response describes having "learned something" without evidence of real update.
-Return exactly one word: substantive, tactical, or performative.`,
+        extractionPrompt: `Évaluez la nature de l’évolution des convictions du candidat.
+SUBSTANTIVE : un changement authentique de conviction ou de modèle mental, et pas seulement de comportement.
+TACTICAL : un changement de méthode, sans évolution de la conviction sous-jacente.
+PERFORMATIVE : la réponse décrit avoir « appris quelque chose », sans aucun indice de mise à jour réelle.
+Retourne exactement un mot parmi : substantive, tactical, performative.`,
       },
       {
         name: "interpersonal_handling",
         allowedValues: ["constructive", "neutral", "defensive_initial"],
-        extractionPrompt: `How did the candidate handle the interpersonal aspect of the pushback?
-CONSTRUCTIVE: candidate describes engaging with the pushback without defensiveness.
-NEUTRAL: handling not clearly described.
-DEFENSIVE_INITIAL: candidate describes initial defensiveness followed by update (this is normal and honest; should not be penalized).
-Return exactly one word: constructive, neutral, or defensive_initial.`,
+        extractionPrompt: `Comment le candidat a-t-il géré l’aspect relationnel de la contradiction ?
+CONSTRUCTIVE : le candidat décrit un échange ouvert sur la contradiction, sans défensive.
+NEUTRAL : la gestion n’est pas clairement décrite.
+DEFENSIVE_INITIAL : le candidat décrit une défensive initiale suivie d’une mise à jour (ce qui est normal et honnête ; cela ne doit pas être pénalisé).
+Retourne exactement un mot parmi : constructive, neutral, defensive_initial.`,
       },
     ],
   },
@@ -179,46 +179,46 @@ Return exactly one word: constructive, neutral, or defensive_initial.`,
       {
         name: "feedback_delivered",
         allowedValues: ["delivered", "softened", "avoided"],
-        extractionPrompt: `Was the difficult feedback actually delivered?
-DELIVERED: candidate clearly delivered the difficult message.
-SOFTENED: candidate describes delivering a diluted version of the message.
-AVOIDED: candidate ultimately did not deliver the feedback.
-Return exactly one word: delivered, softened, or avoided.`,
+        extractionPrompt: `Le retour difficile a-t-il réellement été transmis ?
+DELIVERED : le candidat a clairement transmis le message difficile.
+SOFTENED : le candidat décrit une version édulcorée du message.
+AVOIDED : le candidat n’a finalement pas transmis le retour.
+Retourne exactement un mot parmi : delivered, softened, avoided.`,
       },
       {
         name: "preparation",
         allowedValues: ["deliberate", "minimal", "unclear"],
-        extractionPrompt: `How prepared was the candidate?
-DELIBERATE: candidate describes specific preparation (thinking through framing, picking time/place).
-MINIMAL: feedback given without described preparation.
-UNCLEAR: preparation not described.
-Return exactly one word: deliberate, minimal, or unclear.`,
+        extractionPrompt: `À quel point le candidat était-il préparé ?
+DELIBERATE : le candidat décrit une préparation précise (réflexion sur la façon de cadrer le message, choix du moment et du lieu).
+MINIMAL : retour donné sans aucune préparation décrite.
+UNCLEAR : préparation non décrite.
+Retourne exactement un mot parmi : deliberate, minimal, unclear.`,
       },
       {
         name: "directness",
         allowedValues: ["direct", "hedged", "unclear"],
-        extractionPrompt: `Was the language described direct?
-DIRECT: candidate describes specific, direct language used.
-HEDGED: describes indirect or heavily hedged language.
-UNCLEAR: directness of language not described.
-Return exactly one word: direct, hedged, or unclear.`,
+        extractionPrompt: `Le langage a-t-il été décrit comme direct ?
+DIRECT : le candidat décrit un langage précis et direct.
+HEDGED : décrit un langage indirect ou fortement atténué.
+UNCLEAR : le degré de directeté du langage n’est pas décrit.
+Retourne exactement un mot parmi : direct, hedged, unclear.`,
       },
       {
         name: "follow_through",
         allowedValues: ["tracked", "absent"],
-        extractionPrompt: `Did the candidate track or follow up on the feedback's impact?
-TRACKED: candidate describes tracking or following up on the feedback's impact.
-ABSENT: no follow-through described.
-Return exactly one word: tracked, absent.`,
+        extractionPrompt: `Le candidat a-t-il assuré le suivi de l’impact du retour ?
+TRACKED : le candidat décrit avoir assuré le suivi de l’impact du retour.
+ABSENT : aucun suivi n’est décrit.
+Retourne exactement un mot parmi : tracked, absent.`,
       },
       {
         name: "tone_about_other_person",
         allowedValues: ["respectful", "dismissive", "defensive_about_self"],
-        extractionPrompt: `How does the candidate describe the recipient of the feedback?
-RESPECTFUL: candidate describes the recipient without denigration.
-DISMISSIVE: candidate describes the recipient in dismissive or contemptuous terms.
-DEFENSIVE_ABOUT_SELF: candidate's framing is primarily defensive about their own reputation.
-Return exactly one word: respectful, dismissive, or defensive_about_self.`,
+        extractionPrompt: `Comment le candidat décrit-il le destinataire du retour ?
+RESPECTFUL : le candidat décrit le destinataire sans le dénigrer.
+DISMISSIVE : le candidat décrit le destinataire sur un ton dédaignant ou méprisant.
+DEFENSIVE_ABOUT_SELF : le cadrage du candidat est surtout défensif au sujet de sa propre réputation.
+Retourne exactement un mot parmi : respectful, dismissive, defensive_about_self.`,
       },
     ],
   },
@@ -230,47 +230,47 @@ Return exactly one word: respectful, dismissive, or defensive_about_self.`,
       {
         name: "specificity_of_work",
         allowedValues: ["high", "medium", "low"],
-        extractionPrompt: `Rate the specificity of the work described.
-HIGH: specific project, specific tools named, concrete outputs described.
-MEDIUM: some specifics but mixed with abstraction.
-LOW: generic description of "using AI" without real project detail.
-Return exactly one word: high, medium, or low.`,
+        extractionPrompt: `Évaluez la spécificité du travail décrit.
+HIGH : un projet précis, des outils nommés, des livrables concrets décrits.
+MEDIUM : quelques éléments précis, mêlés à de l’abstraction.
+LOW : description générique de « l’usage de l’IA » sans aucun détail de projet réel.
+Retourne exactement un mot parmi : high, medium, low.`,
       },
       {
         name: "depth_of_ai_workflow",
         allowedValues: ["sophisticated", "basic", "surface"],
-        extractionPrompt: `Evaluate the depth of AI workflow described.
-SOPHISTICATED: describes iteration, prompt structuring, chaining tools, building a workflow or pipeline, or integrating AI into a broader process.
-BASIC: describes straightforward AI use (ask → receive → use) without iteration or structure.
-SURFACE: describes AI use as one-off queries without workflow thinking.
-Return exactly one word: sophisticated, basic, or surface.`,
+        extractionPrompt: `Évaluez la profondeur du workflow d’IA décrit.
+SOPHISTICATED : décrit des itérations, la structuration des prompts, l’enchaînement d’outils, la construction d’un workflow ou d’une chaîne de traitement, ou l’intégration de l’IA à un processus plus large.
+BASIC : décrit un usage direct de l’IA (demander → recevoir → utiliser) sans itération ni structure.
+SURFACE : décrit un usage de l’IA sous forme de requêtes ponctuelles, sans réflexion sur le workflow.
+Retourne exactement un mot parmi : sophisticated, basic, surface.`,
       },
       {
         name: "limits_awareness",
         allowedValues: ["explicit", "implicit", "absent"],
-        extractionPrompt: `Does the candidate describe AI limitations they encountered?
-EXPLICIT: candidate describes specific AI failure modes they encountered and how they handled them.
-IMPLICIT: candidate shows awareness of AI limits without specific failure examples.
-ABSENT: candidate describes AI as uniformly useful with no acknowledgment of limits.
-Return exactly one word: explicit, implicit, or absent.`,
+        extractionPrompt: `Le candidat décrit-il les limites de l’IA qu’il a rencontrées ?
+EXPLICIT : le candidat décrit des modes de défaillance précis de l’IA qu’il a rencontrés, ainsi que la façon dont il les a gérés.
+IMPLICIT : le candidat montre qu’il a conscience des limites de l’IA, sans exemple précis de défaillance.
+ABSENT : le candidat présente l’IA comme uniformément utile, sans aucune reconnaissance de ses limites.
+Retourne exactement un mot parmi : explicit, implicit, absent.`,
       },
       {
         name: "outcome_specificity",
         allowedValues: ["concrete", "vague", "missing"],
-        extractionPrompt: `Is a specific outcome described?
-CONCRETE: specific output or result described.
-VAGUE: outcome referenced without specifics.
-MISSING: no outcome described.
-Return exactly one word: concrete, vague, or missing.`,
+        extractionPrompt: `Un résultat précis est-il décrit ?
+CONCRETE : un livrable ou un résultat précis est décrit.
+VAGUE : le résultat est évoqué sans aucune précision.
+MISSING : aucun résultat n’est décrit.
+Retourne exactement un mot parmi : concrete, vague, missing.`,
       },
       {
         name: "ownership_and_agency",
         allowedValues: ["high", "medium", "low"],
-        extractionPrompt: `Evaluate the candidate's agency in directing the AI work.
-HIGH: candidate clearly drove the work; AI was a tool they directed.
-MEDIUM: candidate participated with AI; mixed ownership.
-LOW: candidate describes AI as having done the work, with their role unclear.
-Return exactly one word: high, medium, or low.`,
+        extractionPrompt: `Évaluez le degré d’autonomie du candidat dans la conduite du travail avec l’IA.
+HIGH : le candidat a clairement piloté le travail ; l’IA était un outil qu’il pilotait.
+MEDIUM : le candidat a travaillé avec l’IA ; responsabilité partagée.
+LOW : le candidat décrit l’IA comme ayant fait le travail, son rôle restant flou.
+Retourne exactement un mot parmi : high, medium, low.`,
       },
     ],
   },

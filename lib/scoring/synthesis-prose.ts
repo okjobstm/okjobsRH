@@ -15,6 +15,8 @@ import {
   PatternFlag,
   ItemScoreData,
   FollowUpQuestions,
+  CEO_TITLE_RE,
+  MARKETING_ENGINEER_TITLE_RE,
 } from "./synthesis";
 
 const MODEL_ID = "claude-sonnet-4-6";
@@ -32,28 +34,28 @@ function getClient(): Anthropic {
 // ─── Band display strings ─────────────────────────────────────────────────────
 
 const BAND_DISPLAY: Record<DimensionBand, string> = {
-  unusually_strong: "unusually strong positive signal",
-  strong_positive: "strong positive signal",
-  moderate_positive: "moderate positive signal",
-  mixed: "mixed signal",
-  limited_signal: "limited signal",
-  insufficient_signal: "insufficient signal",
-  concern: "concern",
+  unusually_strong: "signal positif exceptionnellement fort",
+  strong_positive: "signal positif fort",
+  moderate_positive: "signal positif modéré",
+  mixed: "signal contrasté",
+  limited_signal: "signal limité",
+  insufficient_signal: "signal insuffisant",
+  concern: "point de vigilance",
 };
 
 const CONFIDENCE_DISPLAY: Record<string, string> = {
-  rich_signal: "rich — three or more converging sources",
-  moderate_signal: "moderate — two sources or partial convergence",
-  limited_signal: "limited — one source or weak corroboration",
+  rich_signal: "riche : trois sources ou plus qui convergent",
+  moderate_signal: "modéré : deux sources ou convergence partielle",
+  limited_signal: "limité : une source ou corroboration faible",
 };
 
 const DIMENSION_DISPLAY: Record<string, string> = {
-  conscientiousness: "Conscientiousness — reliability, self-discipline, and goal-directed follow-through",
-  honesty_humility: "Honesty-Humility — sincerity, fairness, modesty, and low exploitativeness",
-  composure: "Composure — observable behavioural response and recovery under stress or setback",
-  learning: "Learning Orientation — openness to disconfirming information and evidence of self-directed updating",
-  interpersonal: "Interpersonal Style — patterns in disagreement, feedback, collaboration, and direction-giving",
-  motivation: "Motivational Drivers — what the candidate most wants from their work environment",
+  conscientiousness: "Conscienciosité : fiabilité, autodiscipline et suivi des objectifs",
+  honesty_humility: "Honnêteté et humilité : sincérité, équité, modestie et faible propension à exploiter autrui",
+  composure: "Aplomb (composure) : réaction comportementale observable et capacité à se rétablir face au stress ou aux revers",
+  learning: "Orientation vers l’apprentissage : ouverture aux informations qui contredisent les convictions et traces d’une mise à jour par le candidat lui-même",
+  interpersonal: "Posture relationnelle : gestion du désaccord, du feedback, de la collaboration et de la manière de donner le cap",
+  motivation: "Leviers de motivation : ce que le candidat recherche avant tout dans son environnement de travail",
 };
 
 // ─── LLM call helper ─────────────────────────────────────────────────────────
@@ -63,11 +65,11 @@ async function callLLM(prompt: string, maxWords: number): Promise<string> {
     const message = await getClient().messages.create({
       model: MODEL_ID,
       max_tokens: MAX_TOKENS,
-      system: `You write precise, evidence-based summaries for hiring managers.
-Plain prose only. No bullet points, no headings, no preamble.
-No clinical or psychological jargon. No "demonstrates," "showcases," or "exhibits."
-No "high in X" or "low in X" framing. No generic HR phrases.
-Maximum ${maxWords} words. Return only the requested text.`,
+      system: `Vous rédigez en français des synthèses précises et fondées sur des éléments factuels, à destination de responsables de recrutement.
+Prose uniquement. Pas de listes à puces, pas de titres, pas de préambule.
+Pas de vocabulaire clinique ou psychologique. N’écrivez pas "démontre", "met en valeur" ou "fait preuve de".
+Pas de formulation du type "élevé en X" ou "faible en X". Pas de formules RH génériques.
+${maxWords} mots maximum. Ne renvoyez que le texte demandé.`,
       messages: [{ role: "user", content: prompt }],
     });
     const text = message.content[0]?.type === "text" ? message.content[0].text.trim() : "";
@@ -94,19 +96,19 @@ export async function generateDimensionProse(
     .map((e) => `- ${e.sectionLabel}: "${e.responseExcerpt}"${e.rubricFeatures ? ` [${e.rubricFeatures}]` : ""}`)
     .join("\n");
 
-  const prompt = `Write a 2-3 sentence summary of this candidate's signal on ${DIMENSION_DISPLAY[dimension] ?? dimension}.
+  const prompt = `Rédigez un résumé de 2 à 3 phrases sur les signaux de ce candidat concernant ${DIMENSION_DISPLAY[dimension] ?? dimension}.
 
-BAND: ${BAND_DISPLAY[result.band] ?? result.band}
-CONFIDENCE: ${CONFIDENCE_DISPLAY[result.confidence] ?? result.confidence}
-${result.conflictNote ? `CONFLICT NOTE: ${result.conflictNote}` : ""}
+BANDE : ${BAND_DISPLAY[result.band] ?? result.band}
+CONFIANCE : ${CONFIDENCE_DISPLAY[result.confidence] ?? result.confidence}
+${result.conflictNote ? `NOTE DE CONFLIT : ${result.conflictNote}` : ""}
 
-EVIDENCE:
-${evidenceText || "No specific evidence excerpts available."}
+ÉLÉMENTS DE PREUVE :
+${evidenceText || "Aucun extrait de preuve disponible."}
 
-Reference evidence by section label (e.g., "In the recent-work item…"), never by internal ID (not "C-S1").
-Cite specific phrases from the candidate's response in quotation marks when available.
-If the band is mixed or insufficient, explain what's missing or what conflicts.
-2-3 sentences. No bullet points. No preamble.`;
+Référez-vous aux preuves par leur libellé de section (par exemple "dans l’item sur une réalisation récente..."), jamais par identifiant interne (pas "C-S1").
+Reprenez entre guillemets les formulations exactes de la réponse du candidat lorsqu’elles sont disponibles.
+Si la bande est contrastée ou insuffisante, expliquez ce qui manque ou ce qui se contredit.
+2 à 3 phrases. Pas de listes à puces. Pas de préambule.`;
 
   return callLLM(prompt, 80);
 }
@@ -123,24 +125,24 @@ export async function generateRoleFitRationale(
     .join("\n");
   const flagLines = flags.length > 0
     ? flags.map((f) => `- [${f.severity.toUpperCase()}] ${f.label}`).join("\n")
-    : "None";
+    : "Aucun";
 
-  const prompt = `Write 1-2 sentences interpreting what this candidate's signals mean for this specific role.
+  const prompt = `Rédigez 1 à 2 phrases d’interprétation expliquant ce que les signaux de ce candidat signifient pour ce poste précis.
 
-ROLE: ${roleTitle}
-ROLE-FIT READ: ${roleFitRead.band}
+POSTE : ${roleTitle}
+LECTURE D’ADÉQUATION AU POSTE : ${roleFitRead.band}
 
-PRIORITY DIMENSION SIGNALS:
+SIGNAUX SUR LES DIMENSIONS PRIORITAIRES :
 ${dimLines}
 
-PATTERN FLAGS:
+SIGNAUX D’ALERTE :
 ${flagLines}
 
-This is the INTERPRETIVE sentence — explain what the pattern means for fit in this role.
-Do NOT describe the candidate as a person. Do NOT recommend hire or no-hire.
-Do NOT list the dimensions or flags by name — synthesise them into a single interpretive read.
-If positive, name what makes this candidate well-suited. If negative, name what specific concern drives the read.
-1-2 sentences only. No preamble.`;
+C’est la phrase INTERPRÉTATIVE : expliquez ce que ce schéma signifie pour l’adéquation à ce poste.
+Ne décrivez PAS le candidat en tant que personne. Ne recommandez NI le recrutement NI le refus.
+Ne listez PAS les dimensions ni les signaux d’alerte par leur nom : synthétisez-les en une seule lecture interprétative.
+Si le signal est positif, nommez ce qui rend ce candidat adapté. S’il est négatif, nommez la préoccupation précise qui porte la lecture.
+1 à 2 phrases seulement. Pas de préambule.`;
 
   return callLLM(prompt, 60);
 }
@@ -160,23 +162,23 @@ export async function generateConfidenceRationale(
     .join(", ");
 
   const failedNote = failedItemCount > 0
-    ? `\nNOTE: ${failedItemCount} of the behavioural item(s) could not be scored automatically — mention this as a gap in coverage.`
+    ? `\nREMARQUE : ${failedItemCount} item(s) comportemental/aux n’ont pas pu être noté(s) automatiquement : signalez ce point comme une lacune de couverture.`
     : "";
 
-  const prompt = `Write exactly 1 sentence answering: "How much signal do we have, and how consistent is it?"
+  const prompt = `Rédigez exactement 1 phrase répondant à la question : "De combien de signaux disposons-nous, et sont-ils convergents ?"
 
-OVERALL CONFIDENCE: ${overallConfidenceDescription}
-BEHAVIOURAL ITEMS SCORED: ${scoredItemCount}${failedItemCount > 0 ? ` (${failedItemCount} item(s) not scored)` : ""}
-DIMENSION CONFIDENCE LEVELS: ${contributingDims || "none"}${failedNote}
+CONFIANCE GLOBALE : ${overallConfidenceDescription}
+ITEMS COMPORTEMENTAUX NOTÉS : ${scoredItemCount}${failedItemCount > 0 ? ` (${failedItemCount} item(s) non noté(s))` : ""}
+NIVEAUX DE CONFIANCE PAR DIMENSION : ${contributingDims || "aucun"}${failedNote}
 
-This sentence is purely factual — it describes evidence quantity and consistency, NOT what the evidence means about the candidate.
-Mention how many behavioural items scored and whether dimension signals are converging or mixed.
-Examples of the right register:
-  "Rich signal — four behavioural items scored with converging evidence; dimension signals align with forced-choice tallies."
-  "Rich signal — four behavioural items scored, with multiple items converging on a concerning pattern around transparency and ownership."
-  "Moderate signal — two behavioural items scored with partial convergence; one dimension has insufficient data."
-Do NOT describe the candidate. Do NOT interpret what signals mean.
-One sentence only. No preamble.`;
+Cette phrase est strictement factuelle : elle décrit la quantité et la convergence des éléments de preuve, PAS ce que ces éléments disent du candidat.
+Indiquez combien d’items comportementaux ont été notés et si les signaux par dimension convergent ou sont contrastés.
+Exemples du registre attendu :
+  "Signal riche : quatre items comportementaux notés avec des preuves convergentes ; les signaux par dimension sont alignés sur les décomptes à choix forcé."
+  "Signal riche : quatre items comportementaux notés, dont plusieurs convergent vers un schéma préoccupant autour de la transparence et de la responsabilité."
+  "Signal modéré : deux items comportementaux notés avec convergence partielle ; une dimension manque de données."
+Ne décrivez PAS le candidat. N’interprétez PAS ce que les signaux signifient.
+Une seule phrase. Pas de préambule.`;
 
   return callLLM(prompt, 50);
 }
@@ -192,15 +194,15 @@ export async function generateStrength(
     .map((e) => `- ${e.sectionLabel}: "${e.responseExcerpt}"`)
     .join("\n");
 
-  const prompt = `Write exactly one sentence describing a candidate strength on ${DIMENSION_DISPLAY[dimension] ?? dimension}.
+  const prompt = `Rédigez exactement une phrase décrivant une force du candidat sur ${DIMENSION_DISPLAY[dimension] ?? dimension}.
 
-BAND: ${BAND_DISPLAY[band] ?? band}
-KEY EVIDENCE:
-${evidenceText || "Forced-choice data shows strong preference."}
+BANDE : ${BAND_DISPLAY[band] ?? band}
+PRINCIPAUX ÉLÉMENTS DE PREUVE :
+${evidenceText || "Les données à choix forcé montrent une préférence nette."}
 
-Reference the item by section label. Use a specific phrase from the response if available.
-Do NOT say the candidate is "high in X". Describe what they said or did.
-One sentence only. No preamble.`;
+Référez-vous à l’item par son libellé de section. Reprenez une formulation précise de la réponse si elle est disponible.
+Ne dites PAS que le candidat est "élevé en X". Décrivez ce qu’il a dit ou fait.
+Une seule phrase. Pas de préambule.`;
 
   return callLLM(prompt, 35);
 }
@@ -211,14 +213,14 @@ export async function generateOpenQuestion(
   dimension: string,
   whyInsufficient: string
 ): Promise<string> {
-  const prompt = `Write one open question for a hiring manager about a dimension with insufficient signal.
+  const prompt = `Rédigez une question ouverte pour un responsable de recrutement, sur une dimension dont le signal est insuffisant.
 
-DIMENSION: ${DIMENSION_DISPLAY[dimension] ?? dimension}
-WHY INSUFFICIENT: ${whyInsufficient}
+DIMENSION : ${DIMENSION_DISPLAY[dimension] ?? dimension}
+POURQUOI LE SIGNAL EST INSUFFISANT : ${whyInsufficient}
 
-Phrase it as an open question to raise in interview.
-Be specific about what additional evidence would be useful.
-One sentence only. No preamble.`;
+Formulez-la comme une question ouverte à poser en entretien.
+Soyez précis sur la nature des éléments de preuve complémentaires qui seraient utiles.
+Une seule phrase. Pas de préambule.`;
 
   return callLLM(prompt, 40);
 }
@@ -226,27 +228,27 @@ One sentence only. No preamble.`;
 // ─── Follow-up question generation ───────────────────────────────────────────
 
 const BANNED_STEMS = [
-  "tell me about a time",
-  "walk me through your",
-  "describe your approach to",
-  "how would you handle",
+  "racontez-moi une fois",
+  "retracez avec moi votre",
+  "décrivez votre méthode pour",
+  "comment géreriez-vous",
 ];
 
 const FLAG_EXAMPLES: Record<string, string> = {
   SELF_REPORT_DIVERGENCE_COMMITMENT:
-    `Example probe: "You indicated that you sometimes leave tasks unfinished when you lose interest — but in the recent-work item you described driving a project through to completion despite setbacks. Can you walk me through a recent task you didn't finish, and what happened?"`,
+    `Exemple de relance : "Vous avez indiqué qu’il vous arrive parfois de laisser des tâches inachevées quand l’intérêt retombe, mais sur l’item portant sur une réalisation récente vous décrivez un projet mené jusqu’à son terme malgré les obstacles. Pouvez-vous me raconter une tâche récente que vous n’avez pas terminée, et ce qu’il s’est passé ?"`,
   INTEGRITY_PATTERN_CONCERN:
-    `Example probe: "In the analysis scenario you said you'd share the work and fix the flaw quietly afterward. Can you tell me about a real situation where you realised a piece of your work was flawed after it had been shared — what did you do?"`,
+    `Exemple de relance : "Dans le scénario d’analyse, vous avez indiqué que vous partageriez le travail puis corrigeriez le défaut discrètement ensuite. Pouvez-vous me raconter une situation réelle où vous avez réalisé qu’une partie de votre travail comportait un défaut après sa diffusion, et ce que vous avez fait ?"`,
   EXTERNAL_ATTRIBUTION_PATTERN:
-    `Example probe: "In the project-off-track question you mentioned your team's execution being the main issue. What was your own contribution to how that situation developed — including any decisions you'd make differently now?"`,
+    `Exemple de relance : "Sur la question du projet qui dérape, vous avez avancé que l’exécution par votre équipe constituait le problème principal. Quelle a été votre propre contribution à la façon dont la situation s’est développée, y compris les décisions que vous prendriez différemment aujourd’hui ?"`,
   ROLE_MISALIGNED_MOTIVATION_CEO:
-    `Example probe: "You ranked mission last out of four motivators in the tradeoff question. This organisation is mission-driven in its core. What actually draws you to the role here, and how do you think about the mission dimension of the work?"`,
+    `Exemple de relance : "Vous avez classé la mission en dernier parmi quatre motivations dans la question sur les arbitrages. Cette organisation est portée par sa mission. Qu’est-ce qui vous attire concrètement dans ce poste, et comment voyez-vous la dimension mission du travail ?"`,
   SPECIFICITY_DEFICIT:
-    `Example probe: "Across several of your written answers, the situations were described at a fairly high level. Pick the project or mistake you described and walk me through it again with more specifics — dates, names, exact numbers, what you said word-for-word."`,
+    `Exemple de relance : "Dans plusieurs de vos réponses écrites, les situations sont décrites de façon assez générale. Reprenez le projet ou l’erreur que vous avez décrit et redétailléez-la davantage : dates, noms, chiffres exacts, ce que vous avez dit mot pour mot."`,
   ROLE_FIT_MISMATCH_MARKETING_ENG:
-    `Example probe: "Your answers emphasised relationship-based and traditional marketing over AI and automation. This role is explicitly engineer-first. What draws you to a role structured this way rather than a traditional marketing role?"`,
+    `Exemple de relance : "Vos réponses ont mis en avant une approche du marketing fondée sur la relation et traditionnelle, plutôt que sur l’IA et l’automatisation. Ce poste est explicitement centré sur l’ingénierie. Qu’est-ce qui vous attire dans un poste structuré de cette façon plutôt que dans un poste de marketing traditionnel ?"`,
   ROLE_DIRECTION_MISMATCH_TRADITIONAL_MARKETER_ME:
-    `Example probe: "You mentioned preferring authentic human connection over technology-heavy methods. This role is built around AI and automation. What draws you to an AI-first role given that preference?"`,
+    `Exemple de relance : "Vous avez indiqué privilégier une connexion humaine authentique plutôt que des méthodes très technologiques. Ce poste repose sur l’IA et l’automatisation. Qu’est-ce qui vous attire dans un poste centré sur l’IA, compte tenu de cette préférence ?"`,
 };
 
 function buildCandidateTokens(texts: string[]): Set<string> {
@@ -259,9 +261,14 @@ function buildCandidateTokens(texts: string[]): Set<string> {
   return tokens;
 }
 
+// A 60-word English ceiling rejects questions that are genuinely concise in
+// French, which runs 15 to 20 percent longer for the same content. One shared
+// constant keeps the validator and both prompts in agreement.
+const MAX_QUESTION_WORDS = 75;
+
 function validateQuestion(question: string, candidateTokens: Set<string>): { ok: boolean; reason?: string } {
   const wordCount = question.trim().split(/\s+/).length;
-  if (wordCount > 60) return { ok: false, reason: "too_long" };
+  if (wordCount > MAX_QUESTION_WORDS) return { ok: false, reason: "too_long" };
 
   const questionMarks = (question.match(/\?/g) ?? []).length;
   if (questionMarks > 1) return { ok: false, reason: "multi_part" };
@@ -295,32 +302,32 @@ export async function generateOneFollowUp(ctx: FollowUpContext, avoidAnchors?: s
     .join("\n");
 
   const example = ctx.surface === "flag" ? (FLAG_EXAMPLES[ctx.targetId] ?? "") : "";
-  const exampleBlock = example ? `\nIN-CONTEXT EXAMPLE (for calibration only — do NOT copy):\n${example}\n` : "";
+  const exampleBlock = example ? `\nEXEMPLE EN CONTEXTE (pour le calibrage uniquement, ne pas copier) :\n${example}\n` : "";
   const avoidBlock = avoidAnchors && avoidAnchors.length > 0
-    ? `\nCRITICAL — do NOT reference or paraphrase any of these phrases (already used in another question):\n${avoidAnchors.map((a) => `- "${a}"`).join("\n")}\nAnchor on a different piece of evidence instead.\n`
+    ? `\nIMPORTANT : ne référencez ni ne reformulez aucune des phrases suivantes (déjà utilisées dans une autre question) :\n${avoidAnchors.map((a) => `- "${a}"`).join("\n")}\nAppuyez-vous plutôt sur un autre élément de preuve.\n`
     : "";
 
-  const prompt = `You are helping a hiring manager prepare for an interview. Generate one follow-up question that probes something specific the candidate said or did in their written assessment.
+  const prompt = `Vous aidez un responsable de recrutement à préparer un entretien. Rédigez une question de relance qui creuse un élément précis que le candidat a dit ou fait dans son évaluation écrite.
 
-CONTEXT:
-- Role: ${ctx.roleTitle}
-- This question addresses: ${ctx.label}
-- Why it matters: ${ctx.whyItMatters}
+CONTEXTE :
+- Poste : ${ctx.roleTitle}
+- Cette question porte sur : ${ctx.label}
+- Enjeu : ${ctx.whyItMatters}
 
-CANDIDATE RESPONSES RELEVANT TO THIS QUESTION:
-${responsesText || "No specific excerpts available — use the flag description to probe."}
+RÉPONSES DU CANDIDAT PERTINENTES POUR CETTE QUESTION :
+${responsesText || "Aucun extrait disponible : appuyez-vous sur la description du signal d’alerte pour relancer."}
 ${exampleBlock}${avoidBlock}
-RULES:
-- Return exactly one question, plain text, no quotation marks.
-- Reference something specific the candidate said, either by paraphrasing or quoting a short phrase.
-- Do NOT generate generic prompts like "tell me about a time you showed resilience" or "walk me through your leadership style."
-- Probe, don't confirm. If the response was vague, ask for the specific detail that was missing. If there was an inconsistency, ask about it directly but constructively.
-- One probe only — no multi-part questions.
-- No psychological jargon.
-- Should sound like something a thoughtful hiring manager would actually say verbatim in an interview.
-- Maximum 60 words.
+RÈGLES :
+- Renvoyez exactement une question, en texte brut, sans guillemets.
+- Référencez un élément précis dit par le candidat, en le reformulant ou en citant une courte formulation.
+- Ne générez PAS de relances génériques du type "racontez-moi une fois où vous avez fait preuve de résilience" ou "retracez avec moi votre style de leadership".
+- Creusez, ne confirmez pas. Si la réponse était vague, demandez le détail précis qui manquait. En cas d’incohérence, abordez-la directement mais de manière constructive.
+- Une seule relance : pas de question à plusieurs volets.
+- Pas de vocabulaire psychologique.
+- La question doit pouvoir être posée telle quelle par un responsable de recrutement attentif.
+- ${MAX_QUESTION_WORDS} mots maximum.
 
-Return one question only. No preamble, no numbering.`;
+Renvoyez une seule question. Pas de préambule, pas de numérotation.`;
 
   for (let attempt = 0; attempt < 3; attempt++) {
     const raw = await callLLM(prompt, 70);
@@ -366,17 +373,17 @@ async function generateGapProbe(
     .map((e) => `- ${e.sectionLabel}: "${e.responseExcerpt}"`)
     .join("\n");
 
-  const prompt = `Generate one interview probe to gather missing evidence on a dimension with ${BAND_DISPLAY[result.band] ?? result.band} signal.
+  const prompt = `Rédigez une question d’entretien pour recueillir des éléments de preuve manquants sur une dimension dont le dernier relevé de signal est "${BAND_DISPLAY[result.band] ?? result.band}".
 
-ROLE: ${roleTitle}
-DIMENSION: ${DIMENSION_DISPLAY[dimension] ?? dimension}
-AVAILABLE EVIDENCE:
-${evidenceText || "No specific evidence available."}
+POSTE : ${roleTitle}
+DIMENSION : ${DIMENSION_DISPLAY[dimension] ?? dimension}
+ÉLÉMENTS DE PREUVE DISPONIBLES :
+${evidenceText || "Aucun élément de preuve spécifique disponible."}
 
-This question is a VERIFICATION PROBE, not a challenge. The interviewer is filling a gap in the data.
-Frame it as an invitation to share an experience that didn't come through in the written assessment.
-Be specific about what kind of situation or example would be useful.
-Maximum 60 words. One question only. No preamble.`;
+Cette question est une VÉRIFICATION, pas une mise en défaut. Elle sert à combler un manque dans les données.
+Formulez-la comme une invitation à partager une expérience qui n’est pas ressortie de l’évaluation écrite.
+Soyez précis sur le type de situation ou d’exemple qui serait utile.
+${MAX_QUESTION_WORDS} mots maximum. Une seule question. Pas de préambule.`;
 
   for (let attempt = 0; attempt < 3; attempt++) {
     const raw = await callLLM(prompt, 70);
@@ -408,9 +415,9 @@ export async function generateAllFollowUpQuestions(
 ): Promise<FollowUpQuestions> {
   const { flags, dimensions } = synthesis;
 
-  const priorityDims = /ceo|chief executive/i.test(jobTitle)
+  const priorityDims = CEO_TITLE_RE.test(jobTitle)
     ? ["honesty_humility", "conscientiousness", "composure"]
-    : /marketing engineer/i.test(jobTitle)
+    : MARKETING_ENGINEER_TITLE_RE.test(jobTitle)
     ? ["learning", "conscientiousness", "honesty_humility"]
     : ["conscientiousness", "honesty_humility", "composure", "learning"];
 
@@ -502,12 +509,12 @@ export async function generateAllFollowUpQuestions(
 
       const whyItMatters =
         band === "concern"
-          ? `Multiple signals converge on a concern here — probe to understand the pattern.`
+          ? `Plusieurs signaux convergent sur un point de vigilance : relancez pour comprendre le schéma.`
           : band === "mixed"
-          ? `Evidence is mixed — behavioural and forced-choice signals point in different directions.`
+          ? `Les éléments de preuve sont contrastés : les signaux comportementaux et à choix forcé pointent dans des directions différentes.`
           : band === "moderate_positive"
-          ? `Positive signal but with limited depth — probe to confirm the pattern holds.`
-          : `Limited signal — not enough evidence to read this dimension confidently.`;
+          ? `Signal positif mais de profondeur limitée : relancez pour confirmer la régularité du schéma.`
+          : `Signal limité : pas assez d’éléments de preuve pour lire cette dimension avec confiance.`;
 
       const ctx: FollowUpContext = {
         surface: "dimension",
@@ -701,7 +708,7 @@ function buildDimensionEvidence(
   if (fcTally > 0) {
     evidence.push({
       sectionLabel: "Forced-choice pairs",
-      responseExcerpt: `Candidate favoured this dimension in ${fcTally} of ${fcMax} applicable pairs.`,
+      responseExcerpt: `Le candidat a privilégié cette dimension dans ${fcTally} paires sur ${fcMax} paires concernées.`,
     });
   }
 
@@ -710,7 +717,7 @@ function buildDimensionEvidence(
     const ccItemId = dimension === "conscientiousness" ? "C-CC1" : "C-CC2";
     evidence.push({
       sectionLabel: `Consistency check (${ccItemId})`,
-      responseExcerpt: `Self-rated ${ccValue}/5 on the check statement.`,
+      responseExcerpt: `Note auto-évaluée : ${ccValue}/5 sur l’affirmation de contrôle.`,
     });
   }
 
@@ -729,9 +736,9 @@ export async function generateAllProse(
   const { dimensions, flags, roleFitRead, overallConfidence, overallConfidenceDescription } = synthesis;
 
   // Identify priority dimensions for this role
-  const priorityDims = /ceo|chief executive/i.test(jobTitle)
+  const priorityDims = CEO_TITLE_RE.test(jobTitle)
     ? PRIORITY_DIMS_CEO
-    : /marketing engineer/i.test(jobTitle)
+    : MARKETING_ENGINEER_TITLE_RE.test(jobTitle)
     ? PRIORITY_DIMS_ME
     : PRIORITY_DIMS_CEO;
 
@@ -765,7 +772,7 @@ export async function generateAllProse(
   const failedStarCount = itemScores.filter((s) => s.status === "scoring_failed" && s.itemId.startsWith("C-S")).length;
   const confidenceRationale = await generateConfidenceRationale(
     overallConfidence,
-    overallConfidenceDescription ?? "Moderate signal",
+    overallConfidenceDescription ?? "Signal modéré",
     scoredStarCount,
     failedStarCount,
     dimensions
@@ -801,8 +808,8 @@ export async function generateAllProse(
       const result = dimensions[dim];
       const whyInsufficient =
         result?.band === "insufficient_signal"
-          ? "No behavioural evidence scored and insufficient forced-choice signal."
-          : "Limited evidence — only one source contributed.";
+          ? "Aucun élément comportemental noté et signal à choix forcé insuffisant."
+          : "Éléments de preuve limités : une seule source a contribué.";
       const q = await generateOpenQuestion(dim, whyInsufficient);
       if (q) openQuestions.push(q);
     })

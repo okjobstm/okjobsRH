@@ -2,28 +2,36 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAuth } from "@/lib/auth";
 import PDFDocument from "pdfkit";
-import type { SynthesisResult, DimensionBand, RoleFitBand } from "@/lib/scoring/synthesis";
+import type { SynthesisResult, DimensionBand, RoleFitBand, PatternFlag } from "@/lib/scoring/synthesis";
+import { MOTIVATOR_LABELS } from "@/lib/scoring/synthesis";
 import { APP_NAME, ORG_NAME } from "@/lib/site-config";
-import { formatDate } from "@/lib/format";
+import { formatDate, ROLE_FIT_LABEL } from "@/lib/format";
+import { formatStage } from "@/lib/candidates";
 
 // ─── Display constants ────────────────────────────────────────────────────────
 
 const DIMENSION_LABELS: Record<string, string> = {
-  conscientiousness: "Conscientiousness",
-  honesty_humility: "Honesty & Humility",
-  composure: "Composure",
-  learning: "Learning Orientation",
-  interpersonal: "Interpersonal",
+  conscientiousness: "Rigueur professionnelle",
+  honesty_humility: "Honnêteté et humilité",
+  composure: "Sang-froid",
+  learning: "Orientation apprentissage",
+  interpersonal: "Style relationnel",
 };
 
 const BAND_LABELS: Record<DimensionBand, string> = {
-  unusually_strong: "Unusually Strong",
-  strong_positive: "Strong Positive",
-  moderate_positive: "Moderate Positive",
-  mixed: "Mixed",
-  limited_signal: "Limited Signal",
-  insufficient_signal: "Insufficient Signal",
-  concern: "Concern",
+  unusually_strong: "Signal exceptionnel",
+  strong_positive: "Signal fort",
+  moderate_positive: "Signal modéré",
+  mixed: "Signal contrasté",
+  limited_signal: "Signal limité",
+  insufficient_signal: "Signal insuffisant",
+  concern: "Point de vigilance",
+};
+
+const SEVERITY_LABELS: Record<PatternFlag["severity"], string> = {
+  high: "Élevé",
+  medium: "Moyen",
+  operational: "Opérationnel",
 };
 
 const ROLE_FIT_COLOR: Record<RoleFitBand, [number, number, number]> = {
@@ -42,6 +50,20 @@ type PsychoScores = {
 } | null;
 
 // ─── PDF helpers ──────────────────────────────────────────────────────────────
+
+// Standard PDFKit fonts (Helvetica) are WinAnsi/CP1252: anything outside it
+// renders blank or as mojibake, and our copy carries U+2019 and U+00A0.
+const CP1252_FOLD: Record<string, string> = {
+  "‘": "'",
+  "’": "'",
+  " ": " ",
+  "…": "...",
+  "‑": "-",
+};
+
+function pdfSafe(text: string): string {
+  return text.replace(/[‘’ …‑]/g, (c) => CP1252_FOLD[c]);
+}
 
 function bufferPdf(doc: PDFKit.PDFDocument): Promise<Buffer> {
   return new Promise((resolve, reject) => {
@@ -154,10 +176,20 @@ export async function GET(
     size: "A4",
     bufferPages: true,
     info: {
-      Title: `Candidate Report — ${candidate.name}`,
+      Title: `Rapport candidat - ${candidate.name}`,
       Author: APP_NAME,
     },
   });
+
+  // Single funnel: every doc.text() call, present and future, gets folded.
+  const rawText = doc.text.bind(doc) as (
+    text: string,
+    x?: number,
+    y?: number,
+    options?: PDFKit.Mixins.TextOptions
+  ) => typeof doc;
+  doc.text = ((text: string, x?: number, y?: number, options?: PDFKit.Mixins.TextOptions) =>
+    rawText(pdfSafe(text), x, y, options)) as typeof doc.text;
 
   const pdfDone = bufferPdf(doc);
 
@@ -170,11 +202,11 @@ export async function GET(
     .fontSize(19)
     .font("Helvetica-Bold")
     .fillColor("#ffffff")
-    .text("Candidate Report", 52, 22)
+    .text("Rapport candidat", 52, 22)
     .fontSize(10)
     .font("Helvetica")
     .fillColor("#94a3b8")
-    .text(`${ORG_NAME} — Internal & Confidential`, 52, 47);
+    .text(`${ORG_NAME} - Interne et confidentiel`, 52, 47);
 
   // Role-fit band badge (top-right if synthesis exists)
   if (synthesis?.roleFitRead?.band) {
@@ -188,12 +220,12 @@ export async function GET(
       .fontSize(8)
       .font("Helvetica-Bold")
       .fillColor("#ffffff")
-      .text("ROLE-FIT READ", badgeX + 10, 28, { width: 110, align: "center" });
+      .text("ADÉQUATION AU POSTE", badgeX + 10, 28, { width: 110, align: "center" });
     doc
       .fontSize(11)
       .font("Helvetica-Bold")
       .fillColor("#ffffff")
-      .text(band, badgeX + 10, 42, { width: 110, align: "center" });
+      .text(ROLE_FIT_LABEL[band], badgeX + 10, 42, { width: 110, align: "center" });
   }
 
   doc.y = 100;
@@ -210,18 +242,18 @@ export async function GET(
     .text(`${candidate.email} · ${candidate.job.title}`)
     .moveDown(0.15);
 
-  const stage = candidate.stage.replace(/_/g, " ");
+  const stage = formatStage(candidate.stage);
   const submitted = sub?.submittedAt ? formatDate(sub.submittedAt) : "—";
   doc
     .fontSize(9)
     .fillColor("#94a3b8")
-    .text(`Stage: ${stage}   ·   Submitted: ${submitted}`)
+    .text(`Étape : ${stage}   ·   Soumise le : ${submitted}`)
     .moveDown(0.6);
 
   // ══════════════════════════════════════════════════════════════════════
   // SECTION 1 — ASSESSMENT SUMMARY
   // ══════════════════════════════════════════════════════════════════════
-  sectionHeader(doc, "Assessment Summary");
+  sectionHeader(doc, "Synthèse de l’évaluation");
 
   if (synthesis?.roleFitRead) {
     // Role-fit read + confidence
@@ -231,12 +263,12 @@ export async function GET(
       .fontSize(8)
       .font("Helvetica-Bold")
       .fillColor("#64748b")
-      .text("ROLE-FIT READ");
+      .text("ADÉQUATION AU POSTE");
     doc
       .fontSize(15)
       .font("Helvetica-Bold")
       .fillColor(`rgb(${r},${g},${b})`)
-      .text(band)
+      .text(ROLE_FIT_LABEL[band])
       .moveDown(0.15);
 
     if (synthesis.overallConfidenceDescription || synthesis.overallConfidence) {
@@ -244,7 +276,7 @@ export async function GET(
         .fontSize(9)
         .font("Helvetica")
         .fillColor("#64748b")
-        .text(`Confidence: ${synthesis.overallConfidenceDescription ?? synthesis.overallConfidence}`)
+        .text(`Confiance : ${synthesis.overallConfidenceDescription ?? synthesis.overallConfidence}`)
         .moveDown(0.3);
     }
 
@@ -265,7 +297,7 @@ export async function GET(
       .fontSize(8.5)
       .font("Helvetica")
       .fillColor("#94a3b8")
-      .text("This is a structured summary of observed signal against the hiring frame. It is not a hire or no-hire recommendation — an interview is required.")
+      .text("Ceci est une synthèse structurée des signaux observés au regard du référentiel de recrutement. Ce n’est pas une recommandation d’embauche ni de refus : un entretien est nécessaire.")
       .moveDown(0.4);
 
     // Strengths
@@ -274,7 +306,7 @@ export async function GET(
         .fontSize(10)
         .font("Helvetica-Bold")
         .fillColor("#0f172a")
-        .text("Strengths")
+        .text("Points forts")
         .moveDown(0.2);
       for (const s of synthesis.prose.strengths) {
         bulletItem(doc, s);
@@ -288,7 +320,7 @@ export async function GET(
         .fontSize(10)
         .font("Helvetica-Bold")
         .fillColor("#0f172a")
-        .text("Pattern Flags")
+        .text("Motifs et points de vigilance")
         .moveDown(0.2);
       for (const flag of synthesis.flags) {
         const color = flag.severity === "high" ? "#991b1b" : flag.severity === "medium" ? "#92400e" : "#475569";
@@ -296,7 +328,7 @@ export async function GET(
           .fontSize(9.5)
           .font("Helvetica-Bold")
           .fillColor(color)
-          .text(`${flag.label} (${flag.severity})`, { continued: false })
+          .text(`${flag.label} (${SEVERITY_LABELS[flag.severity]})`, { continued: false })
           .font("Helvetica")
           .fillColor("#334155")
           .fontSize(9)
@@ -311,12 +343,12 @@ export async function GET(
     const hasFlags = synthesis.flags.length > 0;
 
     if (topQ.length > 0 || openQ.length > 0) {
-      sectionHeader(doc, "Interview Focus — Top Questions");
+      sectionHeader(doc, "Points d’entretien prioritaires");
       let qNum = 1;
 
       if (topQ.length > 0) {
         if (hasFlags) {
-          doc.fontSize(9).font("Helvetica-Bold").fillColor("#64748b").text("From pattern flags:").moveDown(0.2);
+          doc.fontSize(9).font("Helvetica-Bold").fillColor("#64748b").text("D’après les points de vigilance :").moveDown(0.2);
         }
         for (const q of topQ) {
           doc
@@ -333,7 +365,7 @@ export async function GET(
 
       if (openQ.length > 0) {
         if (topQ.length > 0) doc.moveDown(0.2);
-        doc.fontSize(9).font("Helvetica-Bold").fillColor("#64748b").text("From signal gaps:").moveDown(0.2);
+        doc.fontSize(9).font("Helvetica-Bold").fillColor("#64748b").text("D’après les lacunes de signal :").moveDown(0.2);
         for (const q of openQ) {
           doc
             .fontSize(9.5)
@@ -349,35 +381,35 @@ export async function GET(
     }
 
     // Dimension estimates with contributing evidence
-    sectionHeader(doc, "Dimension Estimates");
+    sectionHeader(doc, "Estimations par dimension");
     const dimensionOrder = ["conscientiousness", "honesty_humility", "composure", "learning", "interpersonal"];
     for (const dim of dimensionOrder) {
       const result = synthesis.dimensions[dim];
       if (!result) continue;
       const summary = synthesis.prose?.dimensionSummaries?.[dim];
       dimRow(doc, DIMENSION_LABELS[dim] ?? dim, result.band, summary);
-      // Contributing evidence — always shown; "none" if no scored sources
+      // Evidence sources — always listed; "aucun" when nothing was scored
       const evItems = result.contributingItems ?? [];
       const evText = evItems.length > 0
         ? evItems
             .map((ci) =>
               typeof ci === "string"
                 ? ci
-                    .replace(/motivation_(\w+)/g, (_, m) => `Motivation: ${m.charAt(0).toUpperCase() + m.slice(1)}`)
-                    .replace(/FC \(honesty_humility tally:/, "FC (Honesty & Humility tally:")
-                    .replace(/FC \(conscientiousness tally:/, "FC (Conscientiousness tally:")
-                    .replace(/FC \(composure tally:/, "FC (Composure tally:")
-                    .replace(/FC \(learning tally:/, "FC (Learning Orientation tally:")
-                    .replace(/FC \(interpersonal tally:/, "FC (Interpersonal tally:")
+                    .replace(/motivation_(\w+)/g, (_, m) => `Motivation : ${MOTIVATOR_LABELS[m] ?? m}`)
+                    .replace(/FC \(honesty_humility tally:/, "FC (Honnêteté et humilité, décompte :")
+                    .replace(/FC \(conscientiousness tally:/, "FC (Rigueur professionnelle, décompte :")
+                    .replace(/FC \(composure tally:/, "FC (Sang-froid, décompte :")
+                    .replace(/FC \(learning tally:/, "FC (Orientation apprentissage, décompte :")
+                    .replace(/FC \(interpersonal tally:/, "FC (Style relationnel, décompte :")
                 : String(ci)
             )
             .join(", ")
-        : "none";
+        : "aucun";
       doc
         .fontSize(8)
         .font("Helvetica")
         .fillColor("#94a3b8")
-        .text(`Contributing evidence: ${evText}`, { indent: 10, lineGap: 1 })
+        .text(`Éléments contributeurs : ${evText}`, { indent: 10, lineGap: 1 })
         .moveDown(0.3);
     }
   } else {
@@ -385,18 +417,18 @@ export async function GET(
       .fontSize(10)
       .font("Helvetica")
       .fillColor("#94a3b8")
-      .text("Assessment analysis has not been run for this candidate yet. Open the admin candidate page and click Re-analyse.")
+      .text("L’analyse n’a pas encore été réalisée pour ce candidat. Ouvrez sa fiche dans l’administration, puis cliquez sur « Réanalyser ».")
       .moveDown(0.5);
   }
 
   // ══════════════════════════════════════════════════════════════════════
   // SECTION 2 — FULL RESPONSES
   // ══════════════════════════════════════════════════════════════════════
-  sectionHeader(doc, "Full Responses");
+  sectionHeader(doc, "Réponses complètes");
 
   // Role-specific questions
   if (candidate.job.roleQuestions.length > 0) {
-    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Role-Specific Questions").moveDown(0.3);
+    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Questions liées au poste").moveDown(0.3);
     for (const q of candidate.job.roleQuestions) {
       const answer = roleAnswers[q.id] ?? "";
       doc
@@ -407,14 +439,14 @@ export async function GET(
         .moveDown(0.15)
         .font("Helvetica")
         .fillColor("#0f172a")
-        .text(answer || "(No answer provided)", { lineGap: 3 })
+        .text(answer || "(Aucune réponse fournie)", { lineGap: 3 })
         .moveDown(0.5);
     }
   }
 
   // Standard questions
   if (standardQuestions.length > 0) {
-    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Standard Questions").moveDown(0.3);
+    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Questions standard").moveDown(0.3);
     for (const q of standardQuestions) {
       const answer = standardAnswers[q.id] ?? "";
       doc
@@ -425,7 +457,7 @@ export async function GET(
         .moveDown(0.15)
         .font("Helvetica")
         .fillColor("#0f172a")
-        .text(answer || "(No answer provided)", { lineGap: 3 })
+        .text(answer || "(Aucune réponse fournie)", { lineGap: 3 })
         .moveDown(0.5);
     }
   }
@@ -433,16 +465,16 @@ export async function GET(
   // STAR behavioural items
   const starItems = psychoItems.filter((i) => i.itemType === "star_behavioral");
   if (starItems.length > 0) {
-    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("STAR Behavioural Responses").moveDown(0.3);
+    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Réponses comportementales STAR").moveDown(0.3);
     for (const item of starItems) {
       const answer = psychoAnswers[item.id] as string | undefined;
       const scoredRow = sub?.itemScores?.find((s) => s.itemId === item.itemId);
       const rawBand = scoredRow?.bandEstimate ?? null;
       const status = scoredRow?.status ?? null;
       const bandLabel = rawBand && status === "scored"
-        ? ` — ${BAND_LABELS[rawBand as DimensionBand] ?? rawBand}`
-        : status === "scoring_failed" ? " — Not scored"
-        : status === "insufficient" ? " — Too short to score"
+        ? ` – ${BAND_LABELS[rawBand as DimensionBand] ?? rawBand}`
+        : status === "scoring_failed" ? " – Non évalué"
+        : status === "insufficient" ? " – Trop court pour être évalué"
         : "";
 
       doc
@@ -453,49 +485,49 @@ export async function GET(
         .moveDown(0.15)
         .font("Helvetica")
         .fillColor("#0f172a")
-        .text(answer ?? "(No response)", { lineGap: 3 })
+        .text(answer ?? "(Aucune réponse)", { lineGap: 3 })
         .moveDown(0.5);
     }
   }
 
   // Psychometric summary (FC tallies, T1 ranking, CC values)
   if (scores?.fcTallies && Object.keys(scores.fcTallies).length > 0) {
-    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Forced-Choice Tallies").moveDown(0.2);
+    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Décompte des choix forcés").moveDown(0.2);
     const sorted = Object.entries(scores.fcTallies).sort((a, b) => b[1] - a[1]);
     for (const [dim, count] of sorted) {
-      const dimLabel = DIMENSION_LABELS[dim] ?? dim.replace(/motivation_(\w+)/, (_, m) => `Motivation: ${m.charAt(0).toUpperCase() + m.slice(1)}`);
+      const dimLabel = DIMENSION_LABELS[dim] ?? dim.replace(/motivation_(\w+)/, (_, m) => `Motivation : ${MOTIVATOR_LABELS[m] ?? m}`);
       doc
         .fontSize(9.5)
         .font("Helvetica")
         .fillColor("#0f172a")
-        .text(`${dimLabel}: ${count}`)
+        .text(`${dimLabel} : ${count}`)
         .moveDown(0.1);
     }
     doc.moveDown(0.4);
   }
 
   if (scores?.t1Ranking && scores.t1Ranking.length > 0) {
-    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Motivational Ranking (C-T1)").moveDown(0.2);
+    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Classement des motivations (C-T1)").moveDown(0.2);
     scores.t1Ranking.forEach((id, i) => {
       doc
         .fontSize(9.5)
         .font("Helvetica")
         .fillColor("#0f172a")
-        .text(`${i + 1}. ${id.replace(/_/g, " ")}`)
+        .text(`${i + 1}. ${MOTIVATOR_LABELS[id] ?? id}`)
         .moveDown(0.1);
     });
     doc.moveDown(0.4);
   }
 
   if (scores?.ccValues && Object.keys(scores.ccValues).length > 0) {
-    const likertLabels = ["", "Strongly Disagree", "Disagree", "Neither", "Agree", "Strongly Agree"];
-    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Consistency Checks").moveDown(0.2);
+    const likertLabels = ["", "Pas du tout d’accord", "Pas d’accord", "Ni l’un ni l’autre", "D’accord", "Tout à fait d’accord"];
+    doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Contrôles de cohérence").moveDown(0.2);
     for (const [itemId, val] of Object.entries(scores.ccValues)) {
       doc
         .fontSize(9.5)
         .font("Helvetica")
         .fillColor("#0f172a")
-        .text(`${itemId}: ${likertLabels[val] ?? String(val)} (${val}/5)`)
+        .text(`${itemId} : ${likertLabels[val] ?? String(val)} (${val}/5)`)
         .moveDown(0.15);
     }
     doc.moveDown(0.3);
@@ -506,7 +538,7 @@ export async function GET(
   if (reflectionItem) {
     const reflAnswer = psychoAnswers[reflectionItem.id] as string | undefined;
     if (reflAnswer) {
-      doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Reflection (C-R1)").moveDown(0.2);
+      doc.fontSize(10).font("Helvetica-Bold").fillColor("#0f172a").text("Réflexion (C-R1)").moveDown(0.2);
       doc.fontSize(9.5).font("Helvetica").fillColor("#0f172a").text(reflAnswer, { lineGap: 3 }).moveDown(0.4);
     }
   }
@@ -525,7 +557,7 @@ export async function GET(
       .fillColor("#94a3b8")
       .font("Helvetica")
       .text(
-        `${APP_NAME} — Confidential — ${candidate.name} — Page ${i + 1} of ${range.count}`,
+        `${APP_NAME} · Confidentiel · ${candidate.name} · Page ${i + 1}/${range.count}`,
         52,
         doc.page.height - 32,
         { align: "center", width: doc.page.width - 104 }

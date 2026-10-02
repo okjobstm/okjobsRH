@@ -22,6 +22,15 @@ export type DimensionBand =
 
 export type ConfidenceLevel = "rich_signal" | "moderate_signal" | "limited_signal";
 
+// Job titles are typed by hand in the admin form, in whatever language the
+// recruiter writes them in, so role detection matches both spellings. Accented
+// and unaccented French are both accepted because recruiters paste from anywhere.
+export const CEO_TITLE_RE =
+  /\b(ceo|pdg|d[qg]|chief executive|directeur général|directrice générale|directeur general|directrice generale)\b/i;
+
+export const MARKETING_ENGINEER_TITLE_RE =
+  /\b(marketing engineer|ingénieur marketing|ingenieur marketing)\b/i;
+
 export type RoleFitBand =
   | "Strong fit"
   | "Likely fit"
@@ -226,7 +235,7 @@ function aggregateDimension(
     if (fcLevel === "strong") {
       band = "moderate_positive";
       confidence = "moderate_signal";
-      conflictNote = "Forced-choice preference is strong; behavioural response was mixed — divergence worth probing.";
+      conflictNote = "La préférence en choix forcé est forte, la réponse comportementale est mitigée : divergence à explorer.";
     } else if (fcLevel === "moderate") {
       band = "moderate_positive";
       confidence = "limited_signal";
@@ -259,18 +268,18 @@ function aggregateDimension(
   // T2 contribution: a strongly negative T2 choice can nudge a strong band down one step
   if (t2Contribution !== undefined && t2Contribution < 0 && (band === "strong_positive" || band === "unusually_strong")) {
     band = "moderate_positive";
-    conflictNote = (conflictNote ?? "") + " Scenario response cut against positive evidence.";
+    conflictNote = (conflictNote ?? "") + " La réponse au scénario va à l’encontre des éléments positifs.";
   }
 
   // CC annotations (note added; band change only via rubric overrides below)
   if (dimension === "conscientiousness" && ccValue !== undefined && ccValue >= 4) {
-    conflictNote = `Self-report of leaving tasks unfinished (C-CC1 = ${ccValue}/5) — see patterns panel for consistency analysis.`;
+    conflictNote = `Déclaration de tâches laissées inachevées (C-CC1 = ${ccValue}/5) : voir le panneau des motifs pour l’analyse de cohérence.`;
   }
   if (dimension === "honesty_humility" && ccValue !== undefined && ccValue >= 4) {
     if (STAR_BAND_RANK[band] >= 3) {
-      conflictNote = `C-CC2 = ${ccValue}/5 alongside positive signals — designed honest-acknowledgment signal. Cross-reference with patterns panel.`;
+      conflictNote = `C-CC2 = ${ccValue}/5 associé à des signaux positifs : signal prévu pour recueillir un aveu honnête de contradiction. À recouper avec le panneau des motifs.`;
     } else {
-      conflictNote = `Self-report of overstating work completeness (C-CC2 = ${ccValue}/5) converges with other signals — see patterns panel.`;
+      conflictNote = `La déclaration d’un travail surestimé (C-CC2 = ${ccValue}/5) converge avec d’autres signaux : voir le panneau des motifs.`;
     }
   }
 
@@ -289,8 +298,8 @@ function aggregateDimension(
         band = "concern";
         confidence = "rich_signal";
         conflictNote =
-          "All contributing signals converge negatively: the mistake was reframed or avoided in the behavioural response, " +
-          "the scenario chose non-transparent disclosure, and the consistency check indicates a pattern of overstating completeness.";
+          "Tous les signaux contributeurs convergent dans le même sens négatif : l’erreur a été reformulée ou évitée dans la réponse comportementale, " +
+          "le scénario a retenu une divulgation non transparente et le contrôle de cohérence indique un schéma récurrent de travail surestimé.";
       }
     }
 
@@ -307,9 +316,9 @@ function aggregateDimension(
       ) {
         band = "mixed";
         conflictNote =
-          `Forced-choice pattern is positive (FC: ${fcTally}/${fcMax}), but the behavioural item showed external attribution ` +
-          `and shared/externalised ownership, and C-CC1=${ccValue}/5 suggests the pattern may not hold under pressure. ` +
-          `Signals conflict — FC and STAR rubric point in opposite directions.`;
+          `Le schéma en choix forcé est positif (FC : ${fcTally}/${fcMax}), mais l’item comportemental a montré une attribution externe ` +
+          `et une responsabilité partagée ou externalisée, et C-CC1=${ccValue}/5 suggère que ce schéma ne tiendrait pas sous pression. ` +
+          `Les signaux se contredisent : le choix forcé et la grille STAR pointent en sens opposés.`;
       }
     }
 
@@ -320,7 +329,7 @@ function aggregateDimension(
         band = "limited_signal";
         confidence = "limited_signal";
         conflictNote =
-          "The stated belief-update was identified as performative rather than genuine — the surface band is likely an artefact of framing.";
+          "La mise à jour de croyance déclarée a été qualifiée de performative plutôt que sincère : la bande affichée est probablement un artefact de cadrage.";
       }
     }
   }
@@ -406,7 +415,7 @@ export function computeDimensionBands(
       );
 
       if (secondaryScores.length > 0) {
-        contributing.push(...secondaryScores.map((s) => `${s!.itemId} (secondary)`));
+        contributing.push(...secondaryScores.map((s) => `${s!.itemId} (secondaire)`));
       }
 
       // If no primary STAR for composure, synthesise from secondaries
@@ -471,15 +480,15 @@ export function detectPatterns(
         id: "SELF_REPORT_DIVERGENCE_COMMITMENT",
         ruleName: "SELF_REPORT_DIVERGENCE_COMMITMENT",
         severity: "high",
-        label: "Self-report diverges on commitment and follow-through",
+        label: "La déclaration diverge sur l’engagement et la tenue dans l’exécution",
         description:
-          `Candidate agrees they "sometimes leave tasks unfinished when they lose interest" (C-CC1 = ${cc1}/5), ` +
-          `but their forced-choice responses${s1Positive || s1Ownership === "owned" ? " and behavioural evidence" : ""} suggest the opposite. ` +
-          `Worth probing with a specific example of a project they did not complete.`,
+          `Le candidat reconnaît « laisser parfois des tâches inachevées lorsqu’il perd intérêt » (C-CC1 = ${cc1}/5), ` +
+          `mais ses réponses en choix forcé${s1Positive || s1Ownership === "owned" ? " et les éléments comportementaux" : ""} suggèrent l’inverse. ` +
+          `À creuser avec un exemple précis d’un projet qu’il n’a pas mené à terme.`,
         contributingItems: [
-          { itemId: "C-CC1", sectionLabel: "Consistency check — commitment", excerpt: `Rated ${cc1}/5` },
+          { itemId: "C-CC1", sectionLabel: "Contrôle de cohérence : engagement", excerpt: `Auto-évaluation : ${cc1}/5` },
           ...(s1Positive || s1Ownership === "owned"
-            ? [{ itemId: "C-S1", sectionLabel: "Part 1 — A recent piece of work", excerpt: `Ownership: ${s1Ownership ?? s1Band}` }]
+            ? [{ itemId: "C-S1", sectionLabel: "Partie 1 : une réalisation récente", excerpt: `Responsabilité : ${s1Ownership ?? s1Band}` }]
             : []),
         ],
       });
@@ -505,20 +514,20 @@ export function detectPatterns(
         id: "INTEGRITY_PATTERN_CONCERN",
         ruleName: "INTEGRITY_PATTERN_CONCERN",
         severity: "high",
-        label: "Converging pattern on transparency and ownership",
+        label: "Schéma convergent sur la transparence et la responsabilité",
         description:
-          `Multiple items point in the same direction: self-report of overstating work completeness (C-CC2 = ${cc2}/5), ` +
-          `non-transparent scenario response (C-T2, option ${t2Choice ?? "?"}), and ` +
+          `Plusieurs items vont dans le même sens : déclaration d’un travail surestimé (C-CC2 = ${cc2}/5), ` +
+          `réponse non transparente au scénario (C-T2, option ${t2Choice ?? "?"}) et ` +
           (s2Ownership === "externalized"
-            ? "externalised attribution of the mistake in the behavioural response."
+            ? "attribution externalisée de l’erreur dans la réponse comportementale."
             : s2Genuineness === "minor_or_reshaped" || s2Genuineness === "avoided"
-            ? "reframing or avoidance of the mistake in the behavioural response."
-            : "unclear disclosure behaviour in the behavioural response.") +
-          " This is a serious warning pattern for any role requiring honest reporting. Probe explicitly in interview.",
+            ? "reformulation ou évitement de l’erreur dans la réponse comportementale."
+            : "comportement de divulgation flou dans la réponse comportementale.") +
+          " Il s’agit d’un schéma d’alerte majeur pour tout poste exigeant une restitution honnête. À creuser explicitement en entretien.",
         contributingItems: [
-          { itemId: "C-CC2", sectionLabel: "Consistency check — transparency", excerpt: `Rated ${cc2}/5` },
-          { itemId: "C-T2", sectionLabel: "Integrity scenario", excerpt: `Chose option ${t2Choice ?? "?"}` },
-          { itemId: "C-S2", sectionLabel: "Part 3 — A mistake you made", excerpt: `Ownership: ${s2Ownership ?? "?"}, Disclosure: ${s2Disclosure ?? "?"}` },
+          { itemId: "C-CC2", sectionLabel: "Contrôle de cohérence : transparence", excerpt: `Auto-évaluation : ${cc2}/5` },
+          { itemId: "C-T2", sectionLabel: "Scénario d’intégrité", excerpt: `Option retenue : ${t2Choice ?? "?"}` },
+          { itemId: "C-S2", sectionLabel: "Partie 3 : une erreur commise", excerpt: `Responsabilité : ${s2Ownership ?? "?"}, divulgation : ${s2Disclosure ?? "?"}` },
         ],
       });
     }
@@ -536,22 +545,22 @@ export function detectPatterns(
     if (s1Attribution === "external") {
       externalItems.push({
         itemId: "C-S1",
-        sectionLabel: "Part 1 — A recent piece of work",
-        excerpt: "External attribution identified in rubric scoring.",
+        sectionLabel: "Partie 1 : une réalisation récente",
+        excerpt: "Attribution externe relevée dans l’évaluation par grille.",
       });
     }
     if (s2Ownership === "externalized") {
       externalItems.push({
         itemId: "C-S2",
-        sectionLabel: "Part 3 — A mistake you made",
-        excerpt: "Ownership externalised in rubric scoring.",
+        sectionLabel: "Partie 3 : une erreur commise",
+        excerpt: "Responsabilité externalisée dans l’évaluation par grille.",
       });
     }
     if (s4Tone === "dismissive") {
       externalItems.push({
         itemId: "C-S4",
-        sectionLabel: "Part 8 — Hard feedback",
-        excerpt: "Dismissive tone toward other person in rubric scoring.",
+        sectionLabel: "Partie 8 : un retour difficile",
+        excerpt: "Ton dévalorisant envers l’autre personne dans l’évaluation par grille.",
       });
     }
 
@@ -563,8 +572,8 @@ export function detectPatterns(
     if (s1External && s2Reshaped && (cc2 !== undefined && cc2 >= 4) && !alreadyHasS2 && externalItems.length < 2) {
       externalItems.push({
         itemId: "C-S2",
-        sectionLabel: "Part 3 — A mistake you made",
-        excerpt: "Mistake reframed or minimised — consistent with the externalising pattern from Part 1.",
+        sectionLabel: "Partie 3 : une erreur commise",
+        excerpt: "Erreur reformulée ou minimisée : cohérent avec le schéma d’externalisation observé en partie 1.",
       });
     }
 
@@ -573,11 +582,11 @@ export function detectPatterns(
         id: "EXTERNAL_ATTRIBUTION_PATTERN",
         ruleName: "EXTERNAL_ATTRIBUTION_PATTERN",
         severity: "high",
-        label: "Consistent external attribution across behavioural items",
+        label: "Attribution externe constante sur les items comportementaux",
         description:
-          `In ${externalItems.length} of the behavioural items, the candidate attributed problems primarily to others ` +
-          `or circumstances rather than acknowledging their own contributing decisions. ` +
-          `Review the specific responses and consider whether this pattern would hold in the role.`,
+          `Sur ${externalItems.length} items comportementaux, le candidat attribue les problèmes principalement aux autres ` +
+          `ou aux circonstances plutôt qu’à ses propres décisions. ` +
+          `À examiner de près et à confronter au contexte du poste : ce schéma y serait-il tenable ?`,
         contributingItems: externalItems,
       });
     }
@@ -591,9 +600,9 @@ export function detectPatterns(
     const s1Spec = getStarFeature(itemScores, "C-S1", "specificity");
     const s1Agency = getStarFeature(itemScores, "C-S1", "first_person_agency");
     if (s1Spec === "low") {
-      lowSpecItems.push({ itemId: "C-S1", sectionLabel: "Part 1 — A recent piece of work", reason: "specificity=low" });
+      lowSpecItems.push({ itemId: "C-S1", sectionLabel: "Partie 1 : une réalisation récente", reason: "specificity=low" });
     } else if (s1Agency === "low") {
-      lowSpecItems.push({ itemId: "C-S1", sectionLabel: "Part 1 — A recent piece of work", reason: "first_person_agency=low" });
+      lowSpecItems.push({ itemId: "C-S1", sectionLabel: "Partie 1 : une réalisation récente", reason: "first_person_agency=low" });
     }
 
     // C-S2: check for specificity proxies — externalized/partial ownership or generic reflection
@@ -602,13 +611,13 @@ export function detectPatterns(
     const s2Reflection = getStarFeature(itemScores, "C-S2", "reflection_quality");
     if (s2OwnershipSpec === "externalized" || s2OwnershipSpec === "partial" || s2Reflection === "generic") {
       const s2Reason = s2Reflection === "generic" ? "reflection_quality=generic" : `ownership=${s2OwnershipSpec}`;
-      lowSpecItems.push({ itemId: "C-S2", sectionLabel: "Part 3 — A mistake you made", reason: s2Reason });
+      lowSpecItems.push({ itemId: "C-S2", sectionLabel: "Partie 3 : une erreur commise", reason: s2Reason });
     }
 
     // C-S3: check specificity_of_original_view == "low"
     const s3SpecView = getStarFeature(itemScores, "C-S3", "specificity_of_original_view");
     if (s3SpecView === "low") {
-      lowSpecItems.push({ itemId: "C-S3", sectionLabel: "Part 5 — Changing your mind", reason: "specificity_of_original_view=low" });
+      lowSpecItems.push({ itemId: "C-S3", sectionLabel: "Partie 5 : un changement d’avis", reason: "specificity_of_original_view=low" });
     }
 
     if (lowSpecItems.length >= 2) {
@@ -616,16 +625,16 @@ export function detectPatterns(
         id: "SPECIFICITY_DEFICIT",
         ruleName: "SPECIFICITY_DEFICIT",
         severity: "medium",
-        label: "Behavioural responses consistently lack specificity",
+        label: "Les réponses comportementales manquent systématiquement de précision",
         description:
-          `Across ${lowSpecItems.length} behavioural items, the candidate gave abstract or generic descriptions ` +
-          `rather than concrete, specific accounts. ` +
-          `Could indicate weak self-reflection, low agency in the situations described, or a preparation issue. ` +
-          `Probe with targeted "tell me exactly what you did next" questions.`,
+          `Sur ${lowSpecItems.length} items comportementaux, le candidat a donné des descriptions abstraites ou génériques ` +
+          `plutôt que des récits concrets et précis. ` +
+          `Cela peut traduire une introspection faible, une faible prise d’impact dans les situations décrites ou un défaut de préparation. ` +
+          `À relancer avec des questions ciblées du type « dites-moi exactement ce que vous avez fait ensuite ».`,
         contributingItems: lowSpecItems.map((e) => ({
           itemId: e.itemId,
           sectionLabel: e.sectionLabel,
-          excerpt: `Rubric signal: ${e.reason}`,
+          excerpt: `Signal de grille : ${e.reason}`,
         })),
       });
     }
@@ -636,7 +645,7 @@ export function detectPatterns(
 
   // ── Flag 5: ROLE_MISALIGNED_MOTIVATION_CEO ────────────────────────────────
   {
-    const isCEORole = /ceo|chief executive/i.test(jobTitle);
+    const isCEORole = CEO_TITLE_RE.test(jobTitle);
     if (isCEORole && t1Ranking.length >= 3) {
       const missionPos = t1Ranking.indexOf("mission");
       if (missionPos >= 2) {
@@ -645,13 +654,13 @@ export function detectPatterns(
           id: "ROLE_MISALIGNED_MOTIVATION_CEO",
           ruleName: "ROLE_MISALIGNED_MOTIVATION_CEO",
           severity: "medium",
-          label: "Mission ranked low for a mission-driven leadership role",
+          label: "Mission classée bas pour un rôle de direction porté par la mission",
           description:
-            `Candidate ranked mission ${missionPos + 1} of 4 in the motivation trade-off. ` +
-            `For a CEO role at a mission-driven organisation, this is worth probing — not disqualifying, but ` +
-            `the interview should test whether genuine motivation aligns with the role.`,
+            `Le candidat a classé la mission ${missionPos + 1} sur 4 dans l’arbitrage de motivation. ` +
+            `Pour un rôle de direction (CEO) dans une organisation portée par sa mission, ce point mérite d’être creusé : ` +
+            `ce n’est pas éliminatoire, mais l’entretien doit vérifier que la motivation réelle s’aligne sur le poste.`,
           contributingItems: [
-            { itemId: "C-T1", sectionLabel: "Motivation trade-off ranking", excerpt: `T1: ${t1Ranking.join(" > ")}` },
+            { itemId: "C-T1", sectionLabel: "Classement des arbitrages de motivation", excerpt: `T1: ${t1Ranking.join(" > ")}` },
           ],
         });
       }
@@ -663,7 +672,7 @@ export function detectPatterns(
     const isHighAmbiguityRole = HIGH_AMBIGUITY_ROLES.some((r) =>
       jobTitle.toLowerCase().includes(r.toLowerCase())
     );
-    const isCEO = /ceo|chief executive/i.test(jobTitle);
+    const isCEO = CEO_TITLE_RE.test(jobTitle);
 
     // For CEO: suppress stability flag when mission-last already fired
     if (isHighAmbiguityRole && !(isCEO && missionFired) && t1Ranking.length >= 2) {
@@ -673,13 +682,13 @@ export function detectPatterns(
           id: "ROLE_MISALIGNED_MOTIVATION_STABILITY",
           ruleName: "ROLE_MISALIGNED_MOTIVATION_STABILITY",
           severity: "medium",
-          label: "Stability ranked high for a high-ambiguity role",
+          label: "Stabilité classée haut pour un rôle à forte ambiguïté",
           description:
-            `Candidate ranked stability as a top-${stabilityPos + 1} motivator. ` +
-            `This role involves high ambiguity and self-direction. ` +
-            `Worth testing whether the candidate has had successful experience in less structured environments.`,
+            `Le candidat classe la stabilité parmi ses ${stabilityPos + 1} premiers moteurs de motivation. ` +
+            `Ce poste implique une forte ambiguïté et une grande autonomie. ` +
+            `À vérifier en entretien : le candidat a-t-il connu des réussites dans des environnements moins structurés ?`,
           contributingItems: [
-            { itemId: "C-T1", sectionLabel: "Motivation trade-off ranking", excerpt: `T1: ${t1Ranking.join(" > ")}` },
+            { itemId: "C-T1", sectionLabel: "Classement des arbitrages de motivation", excerpt: `T1: ${t1Ranking.join(" > ")}` },
           ],
         });
       }
@@ -688,7 +697,7 @@ export function detectPatterns(
 
   // ── Flag 7: ROLE_FIT_MISMATCH_MARKETING_ENG ──────────────────────────────
   {
-    const isMarketingEng = /marketing engineer/i.test(jobTitle);
+    const isMarketingEng = MARKETING_ENGINEER_TITLE_RE.test(jobTitle);
     if (isMarketingEng) {
       const allRoleText = Object.values(roleAnswers).join(" ").toLowerCase();
       const noAISignals =
@@ -722,13 +731,13 @@ export function detectPatterns(
           id: "ROLE_FIT_MISMATCH_MARKETING_ENG",
           ruleName: "ROLE_FIT_MISMATCH_MARKETING_ENG",
           severity: "high",
-          label: "Candidate profile does not match the engineer-mindset frame of this role",
+          label: "Le profil du candidat ne correspond pas à la posture d’ingénieur attendue sur ce poste",
           description:
-            `The Marketing Engineer role requires AI fluency and a builder instinct. ` +
-            `The candidate's responses indicate a traditional marketing orientation without the technical or AI-first frame. ` +
-            `This is a role-fit mismatch, not necessarily a weakness.`,
+            `Le poste de Marketing Engineer exige une aisance avec l’IA et un instinct de construction. ` +
+            `Les réponses du candidat montrent une orientation marketing traditionnelle, sans le cadre technique ni la priorité donnée à l’IA. ` +
+            `Il s’agit d’un décalage avec le poste, pas nécessairement d’une faiblesse.`,
           contributingItems: [
-            { itemId: "ROLE_Q", sectionLabel: "Role-specific questions", excerpt: "No AI or automation evidence found in role answers." },
+            { itemId: "ROLE_Q", sectionLabel: "Questions propres au poste", excerpt: "Aucun élément lié à l’IA ou à l’automatisation dans les réponses." },
           ],
         });
       }
@@ -737,7 +746,7 @@ export function detectPatterns(
 
   // ── Flag 8: TECHNICAL_WITHOUT_DOMAIN_MARKETING_ENG ────────────────────────
   {
-    const isMarketingEng = /marketing engineer/i.test(jobTitle);
+    const isMarketingEng = MARKETING_ENGINEER_TITLE_RE.test(jobTitle);
     const alreadyHasMismatch = flags.some((f) => f.id === "ROLE_FIT_MISMATCH_MARKETING_ENG");
     if (isMarketingEng && !alreadyHasMismatch) {
       const allRoleText = Object.values(roleAnswers).join(" ").toLowerCase();
@@ -773,13 +782,13 @@ export function detectPatterns(
           id: "TECHNICAL_WITHOUT_DOMAIN_MARKETING_ENG",
           ruleName: "TECHNICAL_WITHOUT_DOMAIN_MARKETING_ENG",
           severity: "high",
-          label: "Technical strength without marketing or creative instinct",
+          label: "Force technique sans instinct marketing ni créatif",
           description:
-            `Candidate demonstrates technical ability but answers to role-specific questions focus on infrastructure, ` +
-            `measurement, and tools rather than audience, message, or creative direction. ` +
-            `Strong profile for an engineering role, likely mismatch for Marketing Engineer.`,
+            `Le candidat démontre une capacité technique, mais ses réponses aux questions propres au poste portent sur l’infrastructure, ` +
+            `la mesure et les outils plutôt que sur l’audience, le message ou la direction créative. ` +
+            `Profil solide pour un poste d’ingénierie, décalage probable pour le poste de Marketing Engineer.`,
           contributingItems: [
-            { itemId: "ROLE_Q", sectionLabel: "Role-specific questions", excerpt: "Technical framing without audience or creative reasoning." },
+            { itemId: "ROLE_Q", sectionLabel: "Questions propres au poste", excerpt: "Cadrage technique sans raisonnement sur l’audience ou le créatif." },
           ],
         });
       }
@@ -788,7 +797,7 @@ export function detectPatterns(
 
   // ── Flag 9: ROLE_DIRECTION_MISMATCH_TRADITIONAL_MARKETER_ME ──────────────
   {
-    const isMarketingEngNew = /marketing engineer/i.test(jobTitle);
+    const isMarketingEngNew = MARKETING_ENGINEER_TITLE_RE.test(jobTitle);
     const alreadyHasDirectionFlag = flags.some((f) =>
       f.id === "ROLE_FIT_MISMATCH_MARKETING_ENG" || f.id === "TECHNICAL_WITHOUT_DOMAIN_MARKETING_ENG"
     );
@@ -834,16 +843,16 @@ export function detectPatterns(
           id: "ROLE_DIRECTION_MISMATCH_TRADITIONAL_MARKETER_ME",
           ruleName: "ROLE_DIRECTION_MISMATCH_TRADITIONAL_MARKETER_ME",
           severity: "high",
-          label: "Role-direction mismatch: traditional marketing frame without AI or automation instinct",
+          label: "Décalage de direction : cadre marketing traditionnel, sans instinct IA ni automatisation",
           description:
-            `The candidate's responses reflect a traditional marketing orientation — focused on authentic connection ` +
-            `and human-first approaches — with an explicit preference against technology-heavy methods. ` +
-            `The Marketing Engineer role requires an AI-first, builder mindset. This is a role-direction mismatch, not a competence issue.`,
+            `Les réponses du candidat reflètent une orientation marketing traditionnelle : priorité à une relation authentique ` +
+            `et à l’humain, avec une préférence assumée pour les méthodes peu technologiques. ` +
+            `Le poste de Marketing Engineer suppose une priorité donnée à l’IA et une posture de construction. Il s’agit d’un décalage de direction, pas d’un manque de compétence.`,
           contributingItems: [
             {
               itemId: "ROLE_Q",
-              sectionLabel: "Role-specific questions",
-              excerpt: "Explicit preference for non-technical approach; no evidence of built tooling or AI use.",
+              sectionLabel: "Questions propres au poste",
+              excerpt: "Préférence explicite pour une approche non technique : aucun outil construit ni usage de l’IA détecté.",
             },
           ],
         });
@@ -873,9 +882,9 @@ export function computeRoleFitRead(
 ): RoleFitRead {
   let priorityDimensions: string[];
 
-  if (/ceo|chief executive/i.test(jobTitle)) {
+  if (CEO_TITLE_RE.test(jobTitle)) {
     priorityDimensions = ["honesty_humility", "composure", "conscientiousness"];
-  } else if (/marketing engineer/i.test(jobTitle)) {
+  } else if (MARKETING_ENGINEER_TITLE_RE.test(jobTitle)) {
     priorityDimensions = ["learning", "conscientiousness"];
   } else {
     priorityDimensions = ["conscientiousness", "honesty_humility", "composure", "learning"];
@@ -911,12 +920,12 @@ export function computeRoleFitRead(
 // ─── FC rank-order prose ─────────────────────────────────────────────────────
 
 const DIMENSION_LABELS: Record<string, string> = {
-  conscientiousness: "Conscientiousness",
-  honesty_humility: "Honesty-Humility",
-  composure: "Composure",
-  learning: "Learning Orientation",
-  interpersonal: "Interpersonal Style",
-  motivation: "Motivational Drivers",
+  conscientiousness: "Rigueur professionnelle",
+  honesty_humility: "Honnêteté et humilité",
+  composure: "Sang-froid",
+  learning: "Orientation apprentissage",
+  interpersonal: "Style relationnel",
+  motivation: "Motivation",
 };
 
 export function computeFCRankOrderProse(fcTallies: Record<string, number>): string {
@@ -925,7 +934,7 @@ export function computeFCRankOrderProse(fcTallies: Record<string, number>): stri
     .map((d) => ({ dim: d, tally: fcTallies[d] ?? 0, max: FC_MAX[d] ?? 0 }))
     .sort((a, b) => b.tally - a.tally || b.max - a.max);
 
-  if (ranked.every((r) => r.tally === 0)) return "No forced-choice data available.";
+  if (ranked.every((r) => r.tally === 0)) return "Aucune donnée de choix forcé disponible.";
 
   const strongest = ranked.filter((r) => r.tally > 0).slice(0, 2);
   const secondary = ranked.slice(2, 3);
@@ -933,13 +942,13 @@ export function computeFCRankOrderProse(fcTallies: Record<string, number>): stri
 
   const parts: string[] = [];
   if (strongest.length > 0) {
-    parts.push(`Strongest preference toward ${strongest.map((r) => DIMENSION_LABELS[r.dim]).join(" and ")}`);
+    parts.push(`Préférence la plus forte pour ${strongest.map((r) => DIMENSION_LABELS[r.dim]).join(" et ")}`);
   }
   if (secondary.length > 0 && secondary[0].tally > 0) {
-    parts.push(`with ${DIMENSION_LABELS[secondary[0].dim]} as a secondary signal`);
+    parts.push(`Avec ${DIMENSION_LABELS[secondary[0].dim]} en signal secondaire`);
   }
   if (weaker.length > 0) {
-    parts.push(`Lower or no signal on ${weaker.map((r) => DIMENSION_LABELS[r.dim]).join(", ")}`);
+    parts.push(`Signal faible ou absent sur ${weaker.map((r) => DIMENSION_LABELS[r.dim]).join(", ")}`);
   }
 
   return parts.join(". ") + ".";
@@ -947,11 +956,14 @@ export function computeFCRankOrderProse(fcTallies: Record<string, number>): stri
 
 // ─── Motivation profile ───────────────────────────────────────────────────────
 
-const MOTIVATOR_LABELS: Record<string, string> = {
-  autonomy: "Autonomy",
+// Exported because the PDF report renders the same motivation ranking and a
+// second copy of this map is how the two drift apart.
+export const MOTIVATOR_LABELS: Record<string, string> = {
+  autonomy: "Autonomie",
   mission: "Mission",
-  scope: "Scope",
-  stability: "Stability",
+  scope: "Périmètre",
+  stability: "Stabilité",
+  recognition: "Reconnaissance",
 };
 
 export function computeMotivationProfile(
@@ -968,15 +980,15 @@ export function computeMotivationProfile(
     "unknown";
 
   let roleAlignmentNote: string | null = null;
-  const isCEO = /ceo|chief executive/i.test(jobTitle);
-  const isME = /marketing engineer/i.test(jobTitle);
+  const isCEO = CEO_TITLE_RE.test(jobTitle);
+  const isME = MARKETING_ENGINEER_TITLE_RE.test(jobTitle);
   const missionPos = t1Ranking.indexOf("mission");
   const stabilityPos = t1Ranking.indexOf("stability");
 
   if (isCEO && missionPos >= 2) {
-    roleAlignmentNote = `For a mission-driven leadership role, mission ranking ${missionPos + 1} of 4 is worth probing in interview.`;
+    roleAlignmentNote = `Pour un rôle de direction porté par la mission, un classement de la mission à la position ${missionPos + 1} sur 4 mérite d’être approfondi en entretien.`;
   } else if (isME && stabilityPos <= 1) {
-    roleAlignmentNote = `For a high-ambiguity, self-directed role, stability ranking ${stabilityPos + 1} of 4 is worth testing in interview.`;
+    roleAlignmentNote = `Pour un rôle à forte ambiguïté et très autonome, un classement de la stabilité à la position ${stabilityPos + 1} sur 4 mérite d’être vérifié en entretien.`;
   }
 
   return {
@@ -1069,16 +1081,16 @@ export function computeOverallConfidence(
 
   if (richWithPositiveConvergence || richWithStrictPositive) {
     level = "rich_signal";
-    description = "Rich signal — strong positive convergence";
+    description = "Signal riche : convergence fortement positive";
   } else if (richWithNegativeConvergence) {
     level = "rich_signal";
-    description = "Rich signal — converging concerning pattern";
+    description = "Signal riche : schéma préoccupant convergent";
   } else if (richCount >= 1 || moderateCount >= 1) {
     level = "moderate_signal";
-    description = "Moderate signal — partial convergence";
+    description = "Signal modéré : convergence partielle";
   } else {
     level = "limited_signal";
-    description = "Limited signal — one or two sources";
+    description = "Signal limité : une ou deux sources";
   }
 
   return { level, description };
