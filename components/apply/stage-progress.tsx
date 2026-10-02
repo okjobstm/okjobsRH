@@ -1,10 +1,10 @@
 const STAGE_LABELS = [
-  "Welcome",
-  "Background",
-  "Role questions",
-  "Standard questions",
-  "Assessment",
-  "Review",
+  "Bienvenue",
+  "Parcours",
+  "Questions sur le poste",
+  "Questions générales",
+  "Évaluation",
+  "Récapitulatif",
 ];
 
 export function StageProgress({ currentStage }: { currentStage: number }) {

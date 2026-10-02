@@ -9,7 +9,7 @@ export default function ApplyLayout({ children }: { children: ReactNode }) {
         <div className="flex items-center gap-2">
           <span className="text-lg font-bold tracking-tight text-slate-900">{APP_NAME}</span>
           <span className="text-slate-300">|</span>
-          <span className="text-sm text-slate-500">Application</span>
+          <span className="text-sm text-slate-500">Candidature</span>
         </div>
       </header>
 
@@ -23,9 +23,9 @@ export default function ApplyLayout({ children }: { children: ReactNode }) {
       <footer className="py-6 text-center text-xs text-slate-400 space-x-3">
         <span>{ORG_NAME}</span>
         <span>·</span>
-        <a href="/privacy" className="hover:text-slate-600 transition-colors">Privacy</a>
+        <a href="/privacy" className="hover:text-slate-600 transition-colors">Confidentialité</a>
         <span>·</span>
-        <a href="/terms" className="hover:text-slate-600 transition-colors">Terms</a>
+        <a href="/terms" className="hover:text-slate-600 transition-colors">Conditions</a>
       </footer>
     </div>
   );

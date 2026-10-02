@@ -37,7 +37,7 @@ export function WordCountTextarea({
         }`}
       />
       <p className={`text-xs text-right ${over ? "text-red-500" : "text-slate-400"}`}>
-        {wordCount} / {wordLimit} words
+        {wordCount} / {wordLimit} mots
       </p>
     </div>
   );

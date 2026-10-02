@@ -22,15 +22,15 @@ export function Stage6({
       <input type="hidden" name="token" value={token} />
 
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold text-slate-900">Review and submit</h1>
+        <h1 className="text-2xl font-semibold text-slate-900">Vérifier et envoyer</h1>
         <p className="text-slate-500 text-sm">
-          You are almost done. Take a moment to add any final thoughts, then submit.
+          Vous avez presque terminé. Prenez un instant pour ajouter vos dernières réflexions, puis envoyez votre candidature.
         </p>
       </div>
 
       {/* Completion checklist */}
       <div className="rounded-lg border border-slate-200 p-4 space-y-2">
-        <p className="text-sm font-medium text-slate-900 mb-3">Application summary</p>
+        <p className="text-sm font-medium text-slate-900 mb-3">Récapitulatif de la candidature</p>
         {stageStatuses.map((s, i) => (
           <div key={i} className="flex items-center gap-2 text-sm">
             {s.complete ? (
@@ -50,22 +50,22 @@ export function Stage6({
       {/* Final reflection */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-slate-900">
-          Anything else you want to share? <span className="text-slate-400 font-normal">(optional)</span>
+          Autre chose à nous dire <span className="text-slate-400 font-normal">(facultatif)</span>
         </label>
         <WordCountTextarea
           name="finalReflection"
           defaultValue={initialReflection ?? ""}
           wordLimit={400}
-          placeholder="Anything that did not fit elsewhere, or context that would help us understand your application."
+          placeholder="Tout ce qui n’a pas trouvé sa place ailleurs, ou tout contexte qui nous aiderait à comprendre votre candidature."
           rows={5}
         />
       </div>
 
       {/* Submit confirmation */}
       <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 space-y-3">
-        <p className="text-sm font-medium text-amber-900">Ready to submit?</p>
+        <p className="text-sm font-medium text-amber-900">Tout est prêt pour l’envoi</p>
         <p className="text-sm text-amber-800">
-          Once submitted, you will not be able to make changes to your application.
+          Une fois envoyée, vous ne pourrez plus modifier votre candidature.
         </p>
         <label className="flex items-start gap-2 cursor-pointer">
           <input
@@ -75,7 +75,7 @@ export function Stage6({
             className="mt-0.5 h-4 w-4 rounded border-amber-300 accent-slate-900"
           />
           <span className="text-sm text-amber-900">
-            I am ready to submit my application.
+            Je confirme que je souhaite envoyer ma candidature.
           </span>
         </label>
       </div>
@@ -86,7 +86,7 @@ export function Stage6({
           disabled={!confirmed}
           className="bg-slate-900 text-white text-sm font-medium px-6 py-2.5 rounded-lg hover:bg-slate-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          Submit application
+          Envoyer ma candidature
         </button>
       </div>
     </form>

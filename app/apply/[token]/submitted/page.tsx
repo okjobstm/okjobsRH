@@ -11,18 +11,19 @@ export default function SubmittedPage() {
         </div>
 
         <div className="space-y-3">
-          <h1 className="text-2xl font-semibold text-slate-900">Application submitted</h1>
+          <h1 className="text-2xl font-semibold text-slate-900">Candidature envoyée</h1>
           <p className="text-slate-500">
-            Thank you for completing your application to {ORG_NAME}. We will review your submission carefully and be in touch with next steps.
+            Merci d’avoir terminé votre candidature auprès de {ORG_NAME}. Nous examinerons
+            attentivement votre dossier et vous contacterons pour vous présenter la suite.
           </p>
         </div>
 
         <div className="rounded-lg border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500 text-left space-y-2">
-          <p>What happens next:</p>
+          <p>La suite :</p>
           <ul className="space-y-1 list-disc list-inside">
-            <li>Our team will review your application</li>
-            <li>We aim to respond within two weeks</li>
-            <li>You may be invited to an interview</li>
+            <li>Notre équipe examinera votre candidature</li>
+            <li>Nous nous efforçons de vous répondre sous deux semaines</li>
+            <li>Vous pourrez être invité à un entretien</li>
           </ul>
         </div>
 

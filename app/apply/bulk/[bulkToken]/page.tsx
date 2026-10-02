@@ -36,7 +36,7 @@ export default async function BulkApplyPage({
       <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
         <div className="space-y-1">
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Apply to
+            Candidature à
           </p>
           <h1 className="text-2xl font-semibold text-slate-900">{link.job.title}</h1>
           {link.job.department && (
@@ -45,8 +45,9 @@ export default async function BulkApplyPage({
         </div>
 
         <p className="mt-6 text-sm text-slate-600 leading-relaxed">
-          Enter your name and email to start your application. We will save your progress
-          and you can return to your application using the link sent to your email.
+          Saisissez votre nom et votre adresse e-mail pour commencer votre candidature. Nous
+          enregistrerons votre progression et vous pourrez reprendre votre candidature à l’aide
+          du lien envoyé à votre adresse e-mail.
         </p>
 
         {error && message && (
@@ -59,7 +60,7 @@ export default async function BulkApplyPage({
           <input type="hidden" name="bulkToken" value={bulkToken} />
 
           <div className="space-y-2">
-            <Label htmlFor="candidateName">Full name</Label>
+            <Label htmlFor="candidateName">Nom complet</Label>
             <Input
               id="candidateName"
               name="candidateName"
@@ -70,7 +71,7 @@ export default async function BulkApplyPage({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="candidateEmail">Email</Label>
+            <Label htmlFor="candidateEmail">Adresse e-mail</Label>
             <Input
               id="candidateEmail"
               name="candidateEmail"
@@ -82,13 +83,13 @@ export default async function BulkApplyPage({
           </div>
 
           <Button type="submit" className="w-full">
-            Start application
+            Commencer ma candidature
           </Button>
         </form>
 
         <p className="mt-4 text-xs text-slate-400 leading-relaxed">
-          By starting your application you confirm that the information you provide is
-          accurate and you consent to its review by the {ORG_NAME} hiring team.
+          En commençant votre candidature, vous confirmez que les informations que vous fournissez
+          sont exactes et vous acceptez leur examen par l’équipe de recrutement de {ORG_NAME}.
         </p>
       </div>
     </div>

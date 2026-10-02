@@ -42,12 +42,12 @@ export default async function StagePage({
   const sub = state.submission;
 
   const stageStatuses = [
-    { label: "Welcome and consent", complete: sub.consentGiven },
-    { label: "Background and CV", complete: !!sub.cvPath },
-    { label: "Role-specific questions", complete: Object.keys(sub.roleAnswers as object ?? {}).length > 0 },
-    { label: "Standard questions", complete: Object.keys(sub.standardAnswers as object ?? {}).length > 0 },
-    { label: "Short assessment", complete: Object.keys(sub.psychoAnswers as object ?? {}).length > 0 },
-    { label: "Final reflection", complete: !!sub.finalReflection },
+    { label: "Bienvenue et consentement", complete: sub.consentGiven },
+    { label: "Parcours et CV", complete: !!sub.cvPath },
+    { label: "Questions sur le poste", complete: Object.keys(sub.roleAnswers as object ?? {}).length > 0 },
+    { label: "Questions générales", complete: Object.keys(sub.standardAnswers as object ?? {}).length > 0 },
+    { label: "Évaluation courte", complete: Object.keys(sub.psychoAnswers as object ?? {}).length > 0 },
+    { label: "Réflexion finale", complete: !!sub.finalReflection },
   ];
 
   return (

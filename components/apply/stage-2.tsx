@@ -54,14 +54,14 @@ export function Stage2({
       const res = await fetch("/api/apply/upload", { method: "POST", body: form });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setUploadError(data.error ?? "Upload failed. Please try again.");
+        setUploadError(data.error ?? "Échec du téléversement. Veuillez réessayer.");
         return;
       }
       const data = await res.json();
       setCvPath(data.path);
       setCvFileName(file.name);
     } catch {
-      setUploadError("Upload failed. Please check your connection and try again.");
+      setUploadError("Échec du téléversement. Veuillez vérifier votre connexion et réessayer.");
     } finally {
       setUploading(false);
     }
@@ -86,15 +86,15 @@ export function Stage2({
       <input type="hidden" name="projectsJson" value={JSON.stringify(projects)} />
 
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold text-slate-900">Your background</h1>
+        <h1 className="text-2xl font-semibold text-slate-900">Votre parcours</h1>
         <p className="text-slate-500 text-sm">
-          Tell us about your work history and things you have built.
+          Parlez-nous de votre parcours professionnel et de ce que vous avez réalisé.
         </p>
       </div>
 
       {error === "cv_required" && (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          Please upload your CV before continuing.
+          Veuillez téléverser votre CV avant de continuer.
         </div>
       )}
 
@@ -102,9 +102,9 @@ export function Stage2({
       <div className="space-y-3">
         <div>
           <label className="block text-sm font-medium text-slate-900 mb-1">
-            CV / Resume <span className="text-red-500">*</span>
+            CV <span className="text-red-500">*</span>
           </label>
-          <p className="text-xs text-slate-500 mb-2">PDF or DOCX, max 10 MB.</p>
+          <p className="text-xs text-slate-500 mb-2">PDF ou DOCX, 10 Mo maximum.</p>
         </div>
 
         <div
@@ -116,14 +116,14 @@ export function Stage2({
           {cvPath ? (
             <div className="space-y-1">
               <p className="text-sm font-medium text-emerald-700">{cvFileName}</p>
-              <p className="text-xs text-emerald-600">Uploaded. Click to replace.</p>
+              <p className="text-xs text-emerald-600">Téléversé. Cliquez pour remplacer.</p>
             </div>
           ) : uploading ? (
-            <p className="text-sm text-slate-500">Uploading...</p>
+            <p className="text-sm text-slate-500">Téléversement en cours...</p>
           ) : (
             <div className="space-y-1">
-              <p className="text-sm text-slate-600">Click to upload your CV</p>
-              <p className="text-xs text-slate-400">PDF or DOCX</p>
+              <p className="text-sm text-slate-600">Cliquez pour téléverser votre CV</p>
+              <p className="text-xs text-slate-400">PDF ou DOCX</p>
             </div>
           )}
         </div>
@@ -140,13 +140,13 @@ export function Stage2({
       {/* Cover letter */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-slate-900">
-          Cover letter <span className="text-slate-400 font-normal">(optional)</span>
+          Lettre de motivation <span className="text-slate-400 font-normal">(facultative)</span>
         </label>
         <WordCountTextarea
           name="coverLetter"
           defaultValue={initialCoverLetter ?? ""}
           wordLimit={500}
-          placeholder="Tell us why this role interests you and what you would bring to the team."
+          placeholder="Dites-nous pourquoi ce poste vous intéresse et ce que vous apporteriez à l’équipe."
           rows={5}
         />
       </div>
@@ -155,38 +155,38 @@ export function Stage2({
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-slate-900 mb-1">
-            Proof of work <span className="text-slate-400 font-normal">(optional, up to 3)</span>
+            Réalisations <span className="text-slate-400 font-normal">(facultatives, 3 au maximum)</span>
           </label>
           <p className="text-xs text-slate-500">
-            Share projects, products, or pieces of work you are proud of. A link is enough.
+            Partagez des projets, des produits ou des réalisations dont vous êtes fier·ère. Un lien suffit.
           </p>
         </div>
 
         {projects.map((proj, i) => (
           <div key={i} className="rounded-lg border border-slate-200 p-4 space-y-3 bg-white">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-slate-700">Project {i + 1}</p>
+              <p className="text-sm font-medium text-slate-700">Projet {i + 1}</p>
               <button
                 type="button"
                 onClick={() => removeProject(i)}
                 className="text-xs text-slate-400 hover:text-red-500 transition-colors"
               >
-                Remove
+                Supprimer
               </button>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1">
-                <label className="text-xs text-slate-500">Title</label>
+                <label className="text-xs text-slate-500">Titre</label>
                 <input
                   type="text"
                   value={proj.title}
                   onChange={(e) => updateProject(i, "title", e.target.value)}
                   className="w-full rounded-lg border border-slate-200 px-3 py-1.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
-                  placeholder="My project"
+                  placeholder="Mon projet"
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-xs text-slate-500">Link</label>
+                <label className="text-xs text-slate-500">Lien</label>
                 <input
                   type="url"
                   value={proj.url}
@@ -197,13 +197,13 @@ export function Stage2({
               </div>
             </div>
             <div className="space-y-1">
-              <label className="text-xs text-slate-500">Description (optional)</label>
+              <label className="text-xs text-slate-500">Description (facultative)</label>
               <textarea
                 value={proj.description}
                 onChange={(e) => updateProject(i, "description", e.target.value)}
                 rows={2}
                 className="w-full rounded-lg border border-slate-200 px-3 py-1.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200 resize-none"
-                placeholder="What did you build and what was your role?"
+                placeholder="Qu’avez-vous réalisé et quel était votre rôle ?"
               />
             </div>
           </div>
@@ -215,7 +215,7 @@ export function Stage2({
             onClick={addProject}
             className="text-sm text-slate-500 hover:text-slate-900 transition-colors border border-dashed border-slate-200 rounded-lg px-4 py-2 w-full hover:border-slate-300"
           >
-            + Add project
+            + Ajouter un projet
           </button>
         )}
       </div>
@@ -226,19 +226,19 @@ export function Stage2({
           formAction={deleteApplicationAction}
           className="text-xs text-slate-400 hover:text-red-500 transition-colors"
           onClick={(e) => {
-            if (!confirm("Are you sure you want to delete your application? This cannot be undone.")) {
+            if (!confirm("Voulez-vous vraiment supprimer votre candidature ? Cette action est irréversible.")) {
               e.preventDefault();
             }
           }}
         >
-          Delete my application
+          Supprimer ma candidature
         </button>
 
         <button
           type="submit"
           className="bg-slate-900 text-white text-sm font-medium px-6 py-2.5 rounded-lg hover:bg-slate-800 transition-colors"
         >
-          Next: Role questions
+          Continuer : Questions sur le poste
         </button>
       </div>
     </form>

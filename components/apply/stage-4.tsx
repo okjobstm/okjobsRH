@@ -43,9 +43,9 @@ export function Stage4({
       <input type="hidden" name="token" value={token} />
 
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold text-slate-900">Standard questions</h1>
+        <h1 className="text-2xl font-semibold text-slate-900">Questions générales</h1>
         <p className="text-slate-500 text-sm">
-          These questions are the same for all candidates. Answer honestly and with examples where possible.
+          Ces questions sont les mêmes pour tous les candidats. Répondez honnêtement et avec des exemples si possible.
         </p>
       </div>
 
@@ -59,7 +59,7 @@ export function Stage4({
               name={`answer_${q.id}`}
               defaultValue={initialAnswers[q.id] ?? ""}
               wordLimit={q.wordLimit}
-              placeholder="Your answer..."
+              placeholder="Votre réponse..."
               rows={6}
             />
           </div>
@@ -73,12 +73,12 @@ export function Stage4({
             formAction={deleteApplicationAction}
             className="text-xs text-slate-400 hover:text-red-500 transition-colors"
             onClick={(e) => {
-              if (!confirm("Are you sure you want to delete your application? This cannot be undone.")) {
+              if (!confirm("Voulez-vous vraiment supprimer votre candidature action est irréversible.")) {
                 e.preventDefault();
               }
             }}
           >
-            Delete my application
+            Supprimer ma candidature
           </button>
           <SavedIndicator savedAt={savedAt} saving={saving} />
         </div>
@@ -87,7 +87,7 @@ export function Stage4({
           type="submit"
           className="bg-slate-900 text-white text-sm font-medium px-6 py-2.5 rounded-lg hover:bg-slate-800 transition-colors"
         >
-          Next: Assessment
+          Continuer : Évaluation
         </button>
       </div>
     </form>

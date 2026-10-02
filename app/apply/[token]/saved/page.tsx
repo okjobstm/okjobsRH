@@ -17,9 +17,10 @@ export default async function SavedPage({
         </div>
 
         <div className="space-y-3">
-          <h1 className="text-2xl font-semibold text-slate-900">Progress saved</h1>
+          <h1 className="text-2xl font-semibold text-slate-900">Progression enregistrée</h1>
           <p className="text-slate-500">
-            Your application has been saved. You can return to it at any time using your invitation link.
+            Votre candidature a été enregistrée. Vous pouvez y revenir à tout moment grâce au
+            lien contenu dans votre invitation.
           </p>
         </div>
 
@@ -27,7 +28,7 @@ export default async function SavedPage({
           href={`/apply/${token}`}
           className="inline-block bg-slate-900 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-slate-800 transition-colors"
         >
-          Continue application
+          Continuer ma candidature
         </a>
 
         <p className="text-sm text-slate-400">{ORG_NAME}</p>

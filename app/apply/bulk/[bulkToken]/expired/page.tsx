@@ -9,10 +9,10 @@ export default function BulkLinkExpiredPage() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <h1 className="text-2xl font-semibold text-slate-900">This application link is no longer active</h1>
+        <h1 className="text-2xl font-semibold text-slate-900">Ce lien de candidature n’est plus actif</h1>
         <p className="text-slate-500">
-          The link you used has expired, been revoked, or is no longer accepting new
-          applicants. Please contact the hiring team if you believe this is an error.
+          Le lien que vous avez utilisé a expiré, a été révoqué ou n’accepte plus de nouvelles
+          candidatures. Contactez l’équipe de recrutement si vous pensez qu’il s’agit d’une erreur.
         </p>
         <p className="text-sm text-slate-400">{ORG_NAME}</p>
       </div>

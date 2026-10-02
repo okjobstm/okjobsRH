@@ -53,11 +53,11 @@ function StarBehavioralItem({
         value={value}
         onChange={handleChange}
         rows={8}
-        placeholder="Write your answer here..."
+        placeholder="Écrivez votre réponse ici..."
         className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 resize-y"
       />
       <div className={`text-xs text-right ${meetsMin ? "text-slate-400" : "text-amber-600"}`}>
-        {charCount} characters{min > 0 && ` (minimum ${min})`}
+        {charCount} caractères{min > 0 && ` (minimum ${min})`}
       </div>
     </div>
   );
@@ -203,7 +203,7 @@ function TradeoffRankItem({
   return (
     <div className="space-y-3">
       <p className="text-sm font-medium text-slate-900">{item.body}</p>
-      <p className="text-xs text-slate-500">1 = most preferred, {options.length} = least preferred. Each rank can only be used once.</p>
+      <p className="text-xs text-slate-500">1 = votre préférence la plus forte, {options.length} = votre préférence la plus faible. Chaque rang ne peut être utilisé qu’une seule fois.</p>
       <input type="hidden" name={`item_${item.id}`} value={rankString} />
       <div className="space-y-2">
         {options.map((opt) => {
@@ -215,7 +215,7 @@ function TradeoffRankItem({
                 onChange={(e) => handleRankChange(opt.id, e.target.value)}
                 className="w-16 rounded border border-slate-200 px-2 py-1 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900"
               >
-                <option value="">—</option>
+                <option value="">·</option>
                 {Array.from({ length: options.length }, (_, i) => i + 1).map((n) => (
                   <option key={n} value={String(n)} disabled={used.has(String(n))}>
                     {n}
@@ -241,7 +241,7 @@ function ConsistencyCheckItem({
   onChange: (val: string) => void;
 }) {
   const [selected, setSelected] = useState(initialValue);
-  const labels = ["Strongly disagree", "Disagree", "Neither", "Agree", "Strongly agree"];
+  const labels = ["Pas du tout d’accord", "Plutôt pas d’accord", "Neutre", "Plutôt d’accord", "Tout à fait d’accord"];
   const parts = item.body.split("\n\n");
   const prompt = parts[0];
   const statement = parts[1] ?? "";
@@ -303,13 +303,13 @@ function ReflectionItem({
   return (
     <div className="space-y-2">
       <p className="text-sm font-medium text-slate-900">{item.body}</p>
-      <p className="text-xs text-slate-500">Optional — there is no right answer here.</p>
+      <p className="text-xs text-slate-500">Facultatif n’y a pas de bonne réponse ici.</p>
       <textarea
         name={`item_${item.id}`}
         value={value}
         onChange={handleChange}
         rows={6}
-        placeholder="Your answer (optional)..."
+        placeholder="Votre réponse (facultatif)..."
         className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 resize-y"
       />
     </div>
@@ -353,9 +353,9 @@ export function Stage5({
 
   const sections: { label: string | null; sublabel?: string; itemIds: string[] }[] = [
     { label: null, itemIds: ["C-S1"] },
-    { label: "Quick questions", sublabel: "Pick the option that feels most like you. There are no right answers.", itemIds: FC_A },
+    { label: "Questions rapides", sublabel: "Choisissez l’option qui vous ressemble le plus. Il n’y a pas de bonne réponse.", itemIds: FC_A },
     { label: null, itemIds: ["C-S2", "C-S3"] },
-    { label: "More quick questions", sublabel: "Pick the option that feels most like you.", itemIds: FC_B },
+    { label: "Encore quelques questions rapides", sublabel: "Choisissez l’option qui vous ressemble le plus.", itemIds: FC_B },
     { label: null, itemIds: ["C-T1", "C-T2"] },
     { label: null, itemIds: ["C-S4"] },
     { label: null, itemIds: ["C-CC1", "C-CC2", "C-R1"] },
@@ -410,7 +410,7 @@ export function Stage5({
       case "reflection":
         return (
           <div key={item.id} className="space-y-3">
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Final question</div>
+            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Dernière question</div>
             <ReflectionItem item={item} initialValue={initialStr} onChange={(v) => updateAnswer(item.id, v)} />
           </div>
         );
@@ -426,10 +426,10 @@ export function Stage5({
       <input type="hidden" name="token" value={token} />
 
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold text-slate-900">Assessment</h1>
+        <h1 className="text-2xl font-semibold text-slate-900">Évaluation</h1>
         <p className="text-slate-500 text-sm">
-          This section has a mix of question types — written responses, quick paired choices, and a ranking.
-          Take your time. There are no right or wrong answers. Expected time: 25–30 minutes.
+          Cette section mêle plusieurs types de questionséponses rédigées, choix rapides par paires et un classement.
+          Prenez votre temps. Il n’y a pas de bonne ou de mauvaise réponse. Durée estimée à 30 minutes.
         </p>
       </div>
 
@@ -462,24 +462,24 @@ export function Stage5({
           formAction={deleteApplicationAction}
           className="text-xs text-slate-400 hover:text-red-500 transition-colors"
           onClick={(e) => {
-            if (!confirm("Are you sure you want to delete your application? This cannot be undone.")) {
+            if (!confirm("Voulez-vous vraiment supprimer votre candidature action est irréversible.")) {
               e.preventDefault();
             }
           }}
         >
-          Delete my application
+          Supprimer ma candidature
         </button>
 
         <div className="flex items-center gap-4">
           {!canSubmit && (
-            <span className="text-xs text-slate-400">Complete all required questions to continue</span>
+            <span className="text-xs text-slate-400">Complétez toutes les questions obligatoires pour continuer</span>
           )}
           <button
             type="submit"
             disabled={!canSubmit}
             className="bg-slate-900 text-white text-sm font-medium px-6 py-2.5 rounded-lg hover:bg-slate-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            Next: Review &amp; Submit
+            Continuerérifier et envoyer
           </button>
         </div>
       </div>

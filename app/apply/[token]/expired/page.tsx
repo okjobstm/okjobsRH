@@ -19,16 +19,18 @@ export default async function ExpiredPage({
 
         {isDeleted ? (
           <>
-            <h1 className="text-2xl font-semibold text-slate-900">Application deleted</h1>
+            <h1 className="text-2xl font-semibold text-slate-900">Candidature supprimée</h1>
             <p className="text-slate-500">
-              Your application has been deleted. If you would like to apply again, please contact the team for a new invitation link.
+              Votre candidature a été supprimée. Si vous souhaitez postuler à nouveau,
+              contactez l’équipe afin d’obtenir un nouveau lien d’invitation.
             </p>
           </>
         ) : (
           <>
-            <h1 className="text-2xl font-semibold text-slate-900">This link is no longer valid</h1>
+            <h1 className="text-2xl font-semibold text-slate-900">Ce lien n’est plus valide</h1>
             <p className="text-slate-500">
-              This invitation link has expired, been revoked, or does not exist. Please contact the hiring team if you believe this is an error.
+              Ce lien d’invitation a expiré, a été révoqué ou n’existe pas. Contactez l’équipe
+              de recrutement si vous pensez qu’il s’agit d’une erreur.
             </p>
           </>
         )}
