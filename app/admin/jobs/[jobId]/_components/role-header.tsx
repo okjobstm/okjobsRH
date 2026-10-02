@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { JobMenu } from "./job-menu";
+import { INVITE_STATUS_LABEL } from "@/lib/format";
+import type { InviteStatus } from "@prisma/client";
 
 export function RoleHeader({
   jobId,
@@ -24,7 +26,7 @@ export function RoleHeader({
   hasReusableLink: boolean;
   reusableLinkUrl: string | null;
 }) {
-  const subtitle = [department || "General", location, employmentType]
+  const subtitle = [department || "Non renseigné", location, employmentType]
     .filter(Boolean)
     .join(" · ");
 
@@ -35,27 +37,27 @@ export function RoleHeader({
           href="/admin"
           className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-700"
         >
-          <ArrowLeft className="h-3.5 w-3.5" /> All jobs
+          <ArrowLeft className="h-3.5 w-3.5" /> Tous les postes
         </Link>
         <div className="mt-1 flex items-baseline gap-2">
           <h1 className="text-xl font-semibold text-slate-900 truncate">{title}</h1>
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600">
-            {status}
+            {INVITE_STATUS_LABEL[status as InviteStatus] ?? status}
           </span>
         </div>
         <p className="mt-0.5 text-xs text-slate-500 truncate">{subtitle}</p>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <StatChip jobId={jobId} filter="all" n={stats.invited} label="invited" />
-        <StatChip jobId={jobId} filter="submitted" n={stats.submitted} label="submitted" emphasis />
-        <StatChip jobId={jobId} filter="shortlisted" n={stats.shortlisted} label="shortlisted" />
-        <StatChip jobId={jobId} filter="rejected" n={stats.rejected} label="rejected" />
+        <StatChip jobId={jobId} filter="all" n={stats.invited} label="invités" />
+        <StatChip jobId={jobId} filter="submitted" n={stats.submitted} label="soumises" emphasis />
+        <StatChip jobId={jobId} filter="shortlisted" n={stats.shortlisted} label="présélectionnés" />
+        <StatChip jobId={jobId} filter="rejected" n={stats.rejected} label="refusés" />
 
         <div className="mx-1 h-6 w-px bg-slate-200" />
 
         <Button asChild size="sm">
-          <Link href={`/admin/jobs/${jobId}?tab=invites#invite-hero`}>+ Invite</Link>
+          <Link href={`/admin/jobs/${jobId}?tab=invites#invite-hero`}>+ Inviter</Link>
         </Button>
         <JobMenu
           jobId={jobId}

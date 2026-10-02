@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="min-h-screen bg-slate-50">
       <main className="mx-auto max-w-3xl px-6 py-16 prose prose-slate">
         <p className="text-xs uppercase tracking-wide text-slate-400 mb-2">
-          Dernière mise à jour : 2026-04-30
+          Dernière mise à jour : 2026-04-30
         </p>
         <h1>Politique de confidentialité</h1>
 
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           <li>Vos réponses écrites aux questions d’évaluation</li>
           <li>Votre CV si vous en téléversez un</li>
           <li>
-            Données d’engagement : date d’ouverture du lien, durée de passation de
+            Données d’engagement : date d’ouverture du lien, durée de passation de
             l’évaluation, sections complétées et métadonnées techniques de base
             (navigateur, adresse IP) utilisées à des fins de sécurité
           </li>
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
         <p>
           Le site est servi en HTTPS. L’accès administrateur est restreint à une
           liste restreinte d’adresses e-mail de salariés. Votre lien de candidature
-          contient un jeton à usage unique qui vous est propre : ne le partagez pas.
+          contient un jeton à usage unique qui vous est propre : ne le partagez pas.
         </p>
 
         <h2>Contact</h2>

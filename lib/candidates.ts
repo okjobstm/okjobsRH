@@ -19,16 +19,16 @@ export function sortByStage<T extends { stage: CandidateStage }>(candidates: T[]
 
 export function formatStage(stage: CandidateStage): string {
   const labels: Record<CandidateStage, string> = {
-    NOT_STARTED: "Not started",
-    IN_PROGRESS: "In progress",
-    COMPLETED: "Completed",
-    REVIEWING: "Reviewing",
-    SHORTLISTED: "Shortlisted",
-    OFFER: "Offer",
-    HIRED: "Hired",
-    REJECTED: "Rejected",
-    WITHDRAWN: "Withdrawn",
-    ARCHIVED: "Archived",
+    NOT_STARTED: "Non commencée",
+    IN_PROGRESS: "En cours",
+    COMPLETED: "Terminée",
+    REVIEWING: "En évaluation",
+    SHORTLISTED: "Présélectionnée",
+    OFFER: "Offre",
+    HIRED: "Embauchée",
+    REJECTED: "Refusée",
+    WITHDRAWN: "Retirée",
+    ARCHIVED: "Archivée",
   };
   return labels[stage];
 }

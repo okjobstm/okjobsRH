@@ -8,14 +8,14 @@ import { formatDateTime } from "@/lib/format";
 
 const TEMPLATE_META: Record<string, { title: string; description: string }> = {
   star_scoring: {
-    title: "STAR rubric scoring prompt",
+    title: "Prompt de scoring de la grille STAR",
     description:
-      "Template used to extract rubric features from candidate STAR responses. Placeholders: {{item_prompt}}, {{response_text}}, {{rubric_features}}.",
+      "Modèle utilisé pour extraire les critères de la grille à partir des réponses STAR des candidats. Variables : {{item_prompt}}, {{response_text}}, {{rubric_features}}.",
   },
   followup_generation: {
-    title: "Follow-up question generation prompt",
+    title: "Prompt de génération des questions de relance",
     description:
-      "Template used to suggest interview follow-ups based on candidate patterns. Placeholders: {{patterns}}, {{excerpts}}. Not yet wired to live generation.",
+      "Modèle utilisé pour suggérer des questions de relance en entretien à partir des tendances des candidats. Variables : {{patterns}}, {{excerpts}}. Pas encore relié à la génération en production.",
   },
 };
 
@@ -30,9 +30,9 @@ export default async function SettingsPage() {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h2 className="text-2xl font-semibold text-slate-900">Settings</h2>
+        <h2 className="text-2xl font-semibold text-slate-900">Paramètres</h2>
         <p className="text-sm text-slate-500 mt-0.5">
-          Edit prompt templates used by the AI scoring pipeline.
+          Modifiez les prompts utilisés par le pipeline de scoring IA.
         </p>
       </div>
 
@@ -47,9 +47,9 @@ export default async function SettingsPage() {
                 {meta.description}
                 {template && (
                   <span className="block mt-1 text-xs text-slate-400">
-                    Version {template.version} · dernière modification{" "}
+                    Version {template.version} · dernière modification le{" "}
                     {formatDateTime(template.updatedAt)}
-                    {template.updatedBy ? ` by ${template.updatedBy}` : ""}
+                    {template.updatedBy ? ` par ${template.updatedBy}` : ""}
                   </span>
                 )}
               </CardDescription>
@@ -66,7 +66,7 @@ export default async function SettingsPage() {
                 />
                 <div className="flex justify-end">
                   <Button type="submit" size="sm">
-                    Save template
+                    Enregistrer le modèle
                   </Button>
                 </div>
               </form>

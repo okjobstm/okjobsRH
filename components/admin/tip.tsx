@@ -59,7 +59,7 @@ export function Tip({ id, title, children, tone = "info" }: Props) {
       <button
         type="button"
         onClick={dismiss}
-        aria-label="Dismiss tip"
+        aria-label="Masquer l’astuce"
         className="absolute top-2 right-2 p-1 rounded hover:bg-white/40 transition-colors"
       >
         <X className="h-3.5 w-3.5 opacity-60" />

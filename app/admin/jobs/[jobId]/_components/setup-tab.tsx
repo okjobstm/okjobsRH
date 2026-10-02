@@ -29,21 +29,22 @@ export function SetupTab({
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-base">
             <FileText className="h-4 w-4 text-slate-400" />
-            Job description
+            Description du poste
           </CardTitle>
           <CardDescription>
-            Source text used to generate questions and shown to admins for context.
+            Texte source utilisé pour générer les questions et affiché aux administrateurs à
+            titre de contexte.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="grid gap-2 text-sm sm:grid-cols-2">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Source</p>
-              <p className="text-slate-700">{descriptionSource || "Pasted text"}</p>
+              <p className="text-slate-700">{descriptionSource || "Texte collé"}</p>
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">PDF reference</p>
-              <p className="text-slate-700">{descriptionFileName || "None"}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Référence PDF</p>
+              <p className="text-slate-700">{descriptionFileName || "Aucune"}</p>
             </div>
           </div>
           <DescriptionEditor jobId={jobId} initial={descriptionText} />

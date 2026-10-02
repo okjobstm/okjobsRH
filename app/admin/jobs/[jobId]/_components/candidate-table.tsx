@@ -58,7 +58,7 @@ export function CandidateTable({
           return action(fd);
         })
       );
-      toast.success(`${successLabel} ${ids.length}`, "Bulk action complete");
+      toast.success(`${successLabel} ${ids.length}`, "Action groupée terminée");
       setSelected(new Set());
       router.refresh();
     });
@@ -71,22 +71,22 @@ export function CandidateTable({
       `/api/admin/jobs/${jobId}/export?ids=${encodeURIComponent(ids.join(","))}`,
       "_blank"
     );
-    toast.success(`Downloading ${ids.length} candidate${ids.length === 1 ? "" : "s"}`);
+    toast.success(`Téléchargement de ${ids.length} candidat${ids.length === 1 ? "" : "s"}`);
   }
 
   function exportAll() {
     window.open(`/api/admin/jobs/${jobId}/export`, "_blank");
-    toast.success("Downloading all submitted candidates");
+    toast.success("Téléchargement de toutes les candidatures reçues");
   }
 
   async function bulkArchive() {
     const ok = await confirmDialog.ask({
-      title: `Archive ${selected.size} candidates?`,
-      description: "They will be hidden from the main views. You can restore individually.",
-      confirmLabel: "Archive",
+      title: `Archiver ${selected.size} candidat${selected.size === 1 ? "" : "s"} ?`,
+      description: "Ils seront masqués dans les vues principales. Vous pourrez les restaurer une par une.",
+      confirmLabel: "Archiver",
     });
     if (!ok) return;
-    runBulk(archiveCandidateAction, "Archived");
+    runBulk(archiveCandidateAction, "Archivés");
   }
 
   const allChecked = rows.length > 0 && selected.size === rows.length;
@@ -96,7 +96,7 @@ export function CandidateTable({
     <>
       <div className="flex items-center justify-end gap-2 border-b border-slate-100 py-2">
         <Button variant="outline" size="sm" onClick={exportAll}>
-          <Download className="h-3.5 w-3.5" /> Download all to Excel
+          <Download className="h-3.5 w-3.5" /> Tout télécharger au format Excel
         </Button>
       </div>
 
@@ -129,11 +129,11 @@ export function CandidateTable({
                   className="h-3.5 w-3.5 rounded border-slate-300"
                 />
               </th>
-              <th className="px-3 py-2">Candidate</th>
-              <th className="px-3 py-2">Submitted</th>
-              <th className="px-3 py-2">Role fit</th>
-              <th className="px-3 py-2">Status</th>
-              <th className="px-3 py-2">Reviewer</th>
+              <th className="px-3 py-2">Candidat</th>
+              <th className="px-3 py-2">Soumise</th>
+              <th className="px-3 py-2">Adéquation au poste</th>
+              <th className="px-3 py-2">Statut</th>
+              <th className="px-3 py-2">Évaluateur</th>
               <th className="px-3 py-2"></th>
             </tr>
           </thead>
@@ -154,23 +154,23 @@ export function CandidateTable({
       {selected.size > 0 && (
         <div className="fixed inset-x-0 bottom-4 z-40 mx-auto flex w-fit max-w-[calc(100vw-2rem)] items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-lg">
           <span className="px-2 text-sm font-medium text-slate-700">
-            {selected.size} selected
+            {selected.size} sélectionné{selected.size === 1 ? "" : "s"}
           </span>
           <span className="h-5 w-px bg-slate-200" />
-          <Button size="sm" variant="ghost" disabled={pending} onClick={() => runBulk(shortlistCandidateAction, "Shortlisted")}>
-            ★ Shortlist
+          <Button size="sm" variant="ghost" disabled={pending} onClick={() => runBulk(shortlistCandidateAction, "Présélectionnés")}>
+            ★ Présélectionner
           </Button>
-          <Button size="sm" variant="ghost" disabled={pending} onClick={() => runBulk(rejectCandidateAction, "Rejected")}>
-            ⊘ Reject
+          <Button size="sm" variant="ghost" disabled={pending} onClick={() => runBulk(rejectCandidateAction, "Refusés")}>
+            ⊘ Refuser
           </Button>
           <Button size="sm" variant="ghost" disabled={pending} onClick={bulkArchive}>
-            Archive
+            Archiver
           </Button>
           <Button size="sm" variant="ghost" onClick={exportSelected}>
             <Download className="h-3.5 w-3.5" /> Excel
           </Button>
           <Button size="sm" variant="ghost" onClick={() => setSelected(new Set())}>
-            Clear
+            Effacer
           </Button>
         </div>
       )}

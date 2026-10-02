@@ -78,12 +78,12 @@ export function RoleQuestionsEditor({ jobId, initialQuestions }: Props) {
   function addQuestion() {
     setQuestions((cur) => [
       ...cur,
-      { prompt: "New role-specific question", wordLimit: 250, source: "CUSTOM" },
+      { prompt: "Nouvelle question spécifique au poste", wordLimit: 250, source: "CUSTOM" },
     ]);
     setExpanded(questions.length, true);
   }
   function editWordLimit(i: number) {
-    const raw = prompt(`Word limit for question ${i + 1}:`, String(questions[i].wordLimit));
+    const raw = prompt(`Limite de mots pour la question ${i + 1} :`, String(questions[i].wordLimit));
     if (!raw) return;
     const n = parseInt(raw, 10);
     if (!Number.isFinite(n) || n < 50 || n > 1500) return;
@@ -95,13 +95,13 @@ export function RoleQuestionsEditor({ jobId, initialQuestions }: Props) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-yfs-accent" />
-          <h2 className="text-base font-semibold text-slate-900">Role questions</h2>
+          <h2 className="text-base font-semibold text-slate-900">Questions sur le poste</h2>
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600">
             {questions.length}
           </span>
         </div>
         <Button type="button" variant="outline" size="sm" onClick={addQuestion}>
-          <Plus className="h-3.5 w-3.5" /> Add question
+          <Plus className="h-3.5 w-3.5" /> Ajouter une question
         </Button>
       </div>
 
@@ -113,15 +113,15 @@ export function RoleQuestionsEditor({ jobId, initialQuestions }: Props) {
           {questions.map((q, i) => {
             const isExpanded = expandedIdxs.has(i);
             const items: MenuItem[] = [
-              { label: isExpanded ? "Collapse" : "Expand", kbd: "↵", onSelect: () => toggleExpanded(i) },
-              { label: "Duplicate", kbd: "⌘D", onSelect: () => duplicate(i) },
+              { label: isExpanded ? "Replier" : "Déplier", kbd: "↵", onSelect: () => toggleExpanded(i) },
+              { label: "Dupliquer", kbd: "⌘D", onSelect: () => duplicate(i) },
               { type: "separator" },
-              { label: "Move up", kbd: "⌘↑", disabled: i === 0, onSelect: () => move(i, -1) },
-              { label: "Move down", kbd: "⌘↓", disabled: i === questions.length - 1, onSelect: () => move(i, 1) },
+              { label: "Monter", kbd: "⌘↑", disabled: i === 0, onSelect: () => move(i, -1) },
+              { label: "Descendre", kbd: "⌘↓", disabled: i === questions.length - 1, onSelect: () => move(i, 1) },
               { type: "separator" },
-              { label: "Change word limit…", onSelect: () => editWordLimit(i) },
+              { label: "Modifier la limite de mots…", onSelect: () => editWordLimit(i) },
               { type: "separator" },
-              { label: "Delete question", danger: true, onSelect: () => remove(i) },
+              { label: "Supprimer la question", danger: true, onSelect: () => remove(i) },
             ];
 
             return (
@@ -138,7 +138,7 @@ export function RoleQuestionsEditor({ jobId, initialQuestions }: Props) {
                       {q.prompt}
                     </p>
                     <p className="text-[11px] text-slate-400">
-                      {q.wordLimit} words · {q.source}
+                      {q.wordLimit} mots · {q.source}
                     </p>
                   </div>
                   <div onClick={(e) => e.stopPropagation()}>
@@ -172,7 +172,7 @@ function SaveButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" disabled={pending} size="sm">
-      {pending ? "Saving…" : "Save questions"}
+      {pending ? "Enregistrement…" : "Enregistrer les questions"}
     </Button>
   );
 }

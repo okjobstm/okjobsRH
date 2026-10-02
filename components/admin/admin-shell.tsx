@@ -61,7 +61,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
         </div>
         <div>
           <span className="font-semibold text-slate-900 text-sm block">{APP_NAME}</span>
-          <span className="text-[11px] text-slate-500">Internal hiring console</span>
+          <span className="text-[11px] text-slate-500">Console de recrutement interne</span>
         </div>
       </Link>
 
@@ -72,7 +72,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
             className="flex items-center gap-2.5 px-2 py-2 rounded-md text-sm font-medium text-slate-800 hover:bg-slate-100 transition-colors"
           >
             <ClipboardCheck className="w-4 h-4 shrink-0 text-slate-500" />
-            <span className="flex-1">Reviews</span>
+            <span className="flex-1">Évaluations</span>
             {pendingReviewCount > 0 && (
               <span className="rounded-full bg-amber-100 text-amber-800 px-1.5 py-0.5 text-[10px] font-semibold">
                 {pendingReviewCount}
@@ -84,26 +84,26 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
             className="flex items-center gap-2.5 px-2 py-2 rounded-md text-sm font-medium text-slate-800 hover:bg-slate-100 transition-colors"
           >
             <BarChart3 className="w-4 h-4 shrink-0 text-slate-500" />
-            <span className="flex-1">Analytics</span>
+            <span className="flex-1">Statistiques</span>
           </Link>
           <Link
             href="/admin/help"
             className="flex items-center gap-2.5 px-2 py-2 rounded-md text-sm font-medium text-slate-800 hover:bg-slate-100 transition-colors"
           >
             <HelpCircle className="w-4 h-4 shrink-0 text-slate-500" />
-            <span className="flex-1">How to use</span>
+            <span className="flex-1">Mode d’emploi</span>
           </Link>
         </div>
 
         <div>
         <div className="flex items-center justify-between px-2 mb-2">
           <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-            Jobs
+            Postes
           </p>
           <Button asChild type="button" variant="ghost" size="sm" className="h-7 px-2 text-xs">
             <Link href="/admin#new-job">
               <Plus className="w-3.5 h-3.5" />
-              New
+              Nouveau
             </Link>
           </Button>
         </div>
@@ -112,7 +112,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
             <li>
               <div className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-sm text-slate-400 select-none">
                 <Briefcase className="w-4 h-4 shrink-0" />
-                <span className="truncate">No jobs yet</span>
+                <span className="truncate">Aucun poste pour l’instant</span>
               </div>
             </li>
           ) : (
@@ -132,7 +132,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
               ) : (
                 <ChevronRight className="h-3 w-3" />
               )}
-              Archived ({archivedJobs.length})
+              Archivés ({archivedJobs.length})
             </button>
             {showArchived && (
               <ul className="mt-1 space-y-1">
@@ -155,7 +155,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
         >
           <Link href="/admin/settings">
             <Settings className="w-4 h-4 shrink-0" />
-            Settings
+            Paramètres
           </Link>
         </Button>
         <div className="mb-2 px-2">
@@ -169,7 +169,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
             className="w-full justify-start gap-2 text-slate-600"
           >
             <LogOut className="w-4 h-4 shrink-0" />
-            Sign out
+            Se déconnecter
           </Button>
         </form>
       </div>
@@ -202,7 +202,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
         <button
           onClick={() => setSidebarOpen(false)}
           className="absolute top-3.5 right-3 p-1.5 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100"
-          aria-label="Close menu"
+          aria-label="Fermer le menu"
         >
           <X className="w-4 h-4" />
         </button>
@@ -216,7 +216,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
             <button
               onClick={() => setSidebarOpen(true)}
               className="lg:hidden p-1.5 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100"
-              aria-label="Open menu"
+              aria-label="Ouvrir le menu"
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -230,7 +230,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
           <Button asChild size="sm">
             <Link href="/admin/jobs/new">
               <Plus className="w-4 h-4 sm:mr-1.5" />
-              <span className="hidden sm:inline">Create job</span>
+              <span className="hidden sm:inline">Créer un poste</span>
             </Link>
           </Button>
         </header>

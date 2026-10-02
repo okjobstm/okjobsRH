@@ -16,7 +16,7 @@ export function FollowUpQuestion({ candidateId, targetId, surface, initialQuesti
   return (
     <div className="mt-3 pt-2.5 border-t border-slate-200/70 space-y-1">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Suggested probe</p>
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Question suggérée</p>
         <RegenerateQuestionButton
           candidateId={candidateId}
           targetId={targetId}

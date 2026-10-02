@@ -7,10 +7,10 @@ import { Tip } from "@/components/admin/tip";
 import { LOCALE, TIME_ZONE } from "@/lib/site-config";
 
 const RECOMMENDATION_LABEL: Record<ReviewRecommendation, string> = {
-  STRONG_YES: "Strong yes",
-  YES: "Yes",
-  LEAN_NO: "Lean no",
-  NO: "No",
+  STRONG_YES: "Oui clairement",
+  YES: "Oui",
+  LEAN_NO: "Plutôt non",
+  NO: "Non",
 };
 
 const RECOMMENDATION_BADGE: Record<ReviewRecommendation, string> = {
@@ -81,20 +81,20 @@ export default async function ReviewsPage() {
   return (
     <div className="max-w-[960px] space-y-6">
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Reviews</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Évaluations</h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-          Candidate review assignments. Pending items need your decision.
+          Affectations d’évaluations. Les éléments en attente requièrent votre décision.
         </p>
       </div>
 
       <Tip id="reviews-queue">
-        Click any pending row to open the candidate. Read their assessment, then submit your decision from the
-        <em> Reviewers </em> panel on that page. Submitted decisions are final — withdraw and reassign if you need to redo.
+        Cliquez sur une ligne en attente pour ouvrir le candidat. Lisez son évaluation, puis transmettez votre décision depuis le panneau
+        <em> Évaluateurs </em> de cette page. Une décision transmise est définitive : annulez-la et réaffectez-la si vous devez la refaire.
       </Tip>
 
       <Section
-        title="Assigned to you — pending"
-        emptyText="No reviews waiting on you."
+        title="Vos affectations : en attente"
+        emptyText="Aucune évaluation ne vous attend."
         count={myPending.length}
         accent="amber"
       >
@@ -106,14 +106,14 @@ export default async function ReviewsPage() {
             secondary={`${r.candidate.email} · ${r.candidate.job.title}`}
             stage={r.candidate.stage}
             recommendation={null}
-            timestampLabel={`Assigned ${fmt.format(r.assignedAt)}`}
+            timestampLabel={`Affectée le ${fmt.format(r.assignedAt)}`}
           />
         ))}
       </Section>
 
       <Section
-        title="Assigned to you — submitted"
-        emptyText="No submitted reviews yet."
+        title="Vos affectations : transmises"
+        emptyText="Aucune évaluation transmise pour le moment."
         count={mySubmitted.length}
       >
         {mySubmitted.map((r) => (
@@ -125,15 +125,15 @@ export default async function ReviewsPage() {
             stage={r.candidate.stage}
             recommendation={r.recommendation}
             timestampLabel={
-              r.submittedAt ? `Submitted ${fmt.format(r.submittedAt)}` : ""
+              r.submittedAt ? `Transmise le ${fmt.format(r.submittedAt)}` : ""
             }
           />
         ))}
       </Section>
 
       <Section
-        title="Team queue — open assignments"
-        emptyText="No outstanding reviews on the team."
+        title="File de l’équipe : affectations ouvertes"
+        emptyText="Aucune évaluation en attente dans l’équipe."
         count={teamPending.length}
       >
         {teamPending.map((r) => (
@@ -144,7 +144,7 @@ export default async function ReviewsPage() {
             secondary={`${r.reviewerEmail} · ${r.candidate.job.title}`}
             stage={r.candidate.stage}
             recommendation={null}
-            timestampLabel={`Assigned ${fmt.format(r.assignedAt)}`}
+            timestampLabel={`Affectée le ${fmt.format(r.assignedAt)}`}
           />
         ))}
       </Section>

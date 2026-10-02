@@ -1,16 +1,17 @@
 import { requireAuth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { JobStatus } from "@prisma/client";
+import { JOB_STATUS_LABEL } from "@/lib/format";
 import Link from "next/link";
 
 const STAGE_LABELS: Record<number, string> = {
-  1: "Welcome",
-  2: "Work history",
-  3: "Role questions",
-  4: "Standard questions",
-  5: "Assessment",
-  6: "Final reflection",
-  7: "Submitted",
+  1: "Accueil",
+  2: "Parcours professionnel",
+  3: "Questions sur le poste",
+  4: "Questions standard",
+  5: "Évaluation",
+  6: "Bilan final",
+  7: "Envoyée",
 };
 
 export default async function AnalyticsPage() {
@@ -48,15 +49,15 @@ export default async function AnalyticsPage() {
   return (
     <div className="max-w-[960px] space-y-6 pb-12">
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Analytics</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Statistiques</h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-          Where candidates drop off in the application flow, per role.
+          Où les candidats décrochent dans le parcours de candidature, poste par poste.
         </p>
       </div>
 
       {jobs.length === 0 ? (
         <div className="rounded-lg border border-dashed border-slate-200 p-8 text-sm text-slate-400 text-center">
-          No open or closed jobs to analyse yet.
+          Aucun poste ouvert ou clôturé à analyser pour le moment.
         </div>
       ) : (
         jobs.map((job) => {
@@ -102,28 +103,28 @@ export default async function AnalyticsPage() {
                     {job.title}
                   </Link>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {job.department || "General"}
+                    {job.department || "Général"}
                     {job.location ? ` · ${job.location}` : ""}
                     {" · "}
-                    {total} {total === 1 ? "candidate" : "candidates"}
+                    {total} {total === 1 ? "candidat" : "candidats"}
                     {" · "}
-                    {submitRate}% submitted
+{submitRate} % de candidatures envoyées
                   </p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500 shrink-0">
-                  {job.status}
+                  {JOB_STATUS_LABEL[job.status]}
                 </span>
               </div>
 
               {total === 0 ? (
                 <div className="px-5 py-6 text-sm text-slate-400 text-center">
-                  No candidates yet.
+                  Aucun candidat pour le moment.
                 </div>
               ) : (
                 <div className="px-5 py-4 space-y-4">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-2">
-                      Stage funnel
+                      Entonnoir des étapes
                     </p>
                     <ul className="space-y-1.5">
                       {[1, 2, 3, 4, 5, 6, 7].map((s) => {
@@ -152,7 +153,7 @@ export default async function AnalyticsPage() {
                   {droppedAt.some((n) => n > 0) && (
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-2">
-                        Drop-offs (reached stage and stopped)
+                        Abandons (étape atteinte puis arrêt)
                       </p>
                       <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                         {droppedAt.map((count, i) => (
@@ -162,8 +163,8 @@ export default async function AnalyticsPage() {
                               count > 0 ? "border-amber-200 bg-amber-50 text-amber-900" : "border-slate-100 text-slate-400"
                             }`}
                           >
-                            <span className="font-medium">Stage {i + 1}:</span>{" "}
-                            {count > 0 ? `${count} stopped` : "—"}
+<span className="font-medium">Étape {i + 1} :</span>{" "}
+                            {count > 0 ? `${count} ${count > 1 ? "arrêtés" : "arrêté"}` : "—"}
                           </li>
                         ))}
                       </ul>
@@ -172,9 +173,10 @@ export default async function AnalyticsPage() {
 
                   {medianSpan !== null && (
                     <div className="rounded-md bg-slate-50 px-3 py-2 text-xs text-slate-600">
-                      Median time-to-finish for submitters: <strong>{formatSpan(medianSpan)}</strong>
+Temps médian de finalisation pour les candidats ayant envoyé leur candidature :{" "}
+                      <strong>{formatSpan(medianSpan)}</strong>
                       {" · "}
-                      based on {spans.length} {spans.length === 1 ? "candidate" : "candidates"}
+                      d’après {spans.length} {spans.length === 1 ? "candidat" : "candidats"}
                     </div>
                   )}
                 </div>
@@ -196,11 +198,11 @@ function median(values: number[]): number | null {
 
 function formatSpan(ms: number): string {
   const minutes = Math.floor(ms / 60000);
-  if (minutes < 60) return `${minutes}m`;
+  if (minutes < 60) return `${minutes} min`;
   const hours = Math.floor(minutes / 60);
   const remMinutes = minutes % 60;
-  if (hours < 24) return remMinutes > 0 ? `${hours}h ${remMinutes}m` : `${hours}h`;
+  if (hours < 24) return remMinutes > 0 ? `${hours} h ${remMinutes} min` : `${hours} h`;
   const days = Math.floor(hours / 24);
   const remHours = hours % 24;
-  return remHours > 0 ? `${days}d ${remHours}h` : `${days}d`;
+  return remHours > 0 ? `${days} j ${remHours} h` : `${days} j`;
 }

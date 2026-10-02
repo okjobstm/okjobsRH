@@ -45,15 +45,15 @@ const ROLE_FIT_CLASSES: Record<RoleFitBand, string> = {
 };
 
 const STAGE_LABEL: Partial<Record<CandidateStage, { label: string; className: string }>> = {
-  COMPLETED: { label: "Submitted", className: "bg-emerald-100 text-emerald-700" },
-  REVIEWING: { label: "In review", className: "bg-violet-100 text-violet-700" },
-  SHORTLISTED: { label: "Shortlisted", className: "bg-blue-100 text-blue-700" },
-  REJECTED: { label: "Rejected", className: "bg-red-100 text-red-600" },
-  ARCHIVED: { label: "Archived", className: "bg-slate-100 text-slate-500" },
-  HIRED: { label: "Hired", className: "bg-emerald-600 text-white" },
-  OFFER: { label: "Offer", className: "bg-indigo-100 text-indigo-700" },
-  WITHDRAWN: { label: "Withdrawn", className: "bg-slate-100 text-slate-400" },
-  IN_PROGRESS: { label: "In progress", className: "bg-amber-100 text-amber-700" },
+  COMPLETED: { label: "Soumise", className: "bg-emerald-100 text-emerald-700" },
+  REVIEWING: { label: "En cours d’examen", className: "bg-violet-100 text-violet-700" },
+  SHORTLISTED: { label: "Présélectionné", className: "bg-blue-100 text-blue-700" },
+  REJECTED: { label: "Refusé", className: "bg-red-100 text-red-600" },
+  ARCHIVED: { label: "Archivé", className: "bg-slate-100 text-slate-500" },
+  HIRED: { label: "Embauché", className: "bg-emerald-600 text-white" },
+  OFFER: { label: "Offre", className: "bg-indigo-100 text-indigo-700" },
+  WITHDRAWN: { label: "Retrait", className: "bg-slate-100 text-slate-400" },
+  IN_PROGRESS: { label: "En cours", className: "bg-amber-100 text-amber-700" },
 };
 
 export function CandidateRow({
@@ -89,16 +89,16 @@ export function CandidateRow({
 
   async function editNote() {
     const next = await promptDialog.ask({
-      title: c.notes ? `Edit note for ${c.name}` : `Add note for ${c.name}`,
+      title: c.notes ? `Modifier la note de ${c.name}` : `Ajouter une note pour ${c.name}`,
       initialValue: c.notes ?? "",
-      placeholder: "Anything relevant for the hiring team…",
+      placeholder: "Tout élément utile pour l’équipe de recrutement…",
       multiline: true,
-      confirmLabel: "Save note",
+      confirmLabel: "Enregistrer la note",
     });
     if (next === null) return;
     startTransition(async () => {
       await updateCandidateNotesAction(c.id, next);
-      toast.success(c.notes ? "Note updated" : "Note added", c.name);
+      toast.success(c.notes ? "Note mise à jour" : "Note ajoutée", c.name);
       router.refresh();
     });
   }
@@ -106,44 +106,44 @@ export function CandidateRow({
   function copyEmail() {
     navigator.clipboard
       .writeText(c.email)
-      .then(() => toast.success("Email copied", c.email))
-      .catch(() => toast.error("Couldn't copy", "Clipboard unavailable"));
+      .then(() => toast.success("E-mail copié", c.email))
+      .catch(() => toast.error("Copie impossible", "Presse-papiers indisponible"));
   }
 
   const isArchived = c.stage === CandidateStage.ARCHIVED;
 
   const items: MenuItem[] = [
     {
-      label: "View profile",
+      label: "Voir la fiche",
       kbd: "↵",
       onSelect: () => router.push(`/admin/candidates/${c.id}`),
     },
     {
-      label: "Open in new tab",
+      label: "Ouvrir dans un nouvel onglet",
       kbd: "⌘↵",
       onSelect: () => window.open(`/admin/candidates/${c.id}`, "_blank", "noopener"),
     },
     { type: "separator" },
-    { type: "label", label: "Status" },
-    { label: "★ Shortlist", onSelect: () => action(shortlistCandidateAction, "Shortlisted") },
-    { label: "Move to in-review", onSelect: () => action(moveToInReviewAction, "Moved to in-review") },
-    { label: "⊘ Reject", onSelect: () => action(rejectCandidateAction, "Rejected") },
+    { type: "label", label: "Statut" },
+    { label: "★ Présélectionner", onSelect: () => action(shortlistCandidateAction, "Présélectionné") },
+    { label: "Passer en cours d’examen", onSelect: () => action(moveToInReviewAction, "Passé en cours d’examen") },
+    { label: "⊘ Refuser", onSelect: () => action(rejectCandidateAction, "Refusé") },
     { type: "separator" },
     {
       type: "submenu",
-      label: "Assign reviewer…",
+      label: "Affecter un évaluateur…",
       items: reviewerEmails.map((email) => ({
         label: email,
-        onSelect: () => action(assignReviewerAction, `Assigned to ${email}`, { reviewerEmail: email }),
+        onSelect: () => action(assignReviewerAction, `Affecté à ${email}`, { reviewerEmail: email }),
       })),
     },
-    { label: c.notes ? "Edit note…" : "Add note…", onSelect: editNote },
+    { label: c.notes ? "Modifier la note…" : "Ajouter une note…", onSelect: editNote },
     { type: "separator" },
-    { label: "Copy email", kbd: "⌘C", onSelect: copyEmail },
+    { label: "Copier l’e-mail", kbd: "⌘C", onSelect: copyEmail },
     { type: "separator" },
     isArchived
-      ? { label: "Restore from archive", onSelect: () => action(unarchiveCandidateAction, "Restored") }
-      : { label: "Archive candidate", onSelect: () => action(archiveCandidateAction, "Archived") },
+      ? { label: "Restaurer depuis l’archive", onSelect: () => action(unarchiveCandidateAction, "Restauré") }
+      : { label: "Archiver le candidat", onSelect: () => action(archiveCandidateAction, "Archivé") },
   ];
 
   const stageLabel = STAGE_LABEL[c.stage];
@@ -198,17 +198,17 @@ export function CandidateRow({
         <div className="flex items-center justify-end gap-1">
           <button
             type="button"
-            title="Shortlist"
+            title="Présélectionner"
             className="rounded-md p-1 text-slate-400 hover:bg-amber-50 hover:text-amber-600"
-            onClick={() => action(shortlistCandidateAction, "Shortlisted")}
+            onClick={() => action(shortlistCandidateAction, "Présélectionné")}
           >
             ★
           </button>
           <button
             type="button"
-            title="Reject"
+            title="Refuser"
             className="rounded-md p-1 text-slate-400 hover:bg-red-50 hover:text-red-600"
-            onClick={() => action(rejectCandidateAction, "Rejected")}
+            onClick={() => action(rejectCandidateAction, "Refusé")}
           >
             ⊘
           </button>

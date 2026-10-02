@@ -94,7 +94,7 @@ export function RowOverflowMenu({
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          aria-label="Open row menu"
+          aria-label="Ouvrir le menu de la ligne"
           onClick={(e) => e.stopPropagation()}
           className={cn(
             dim,
@@ -116,7 +116,7 @@ export function RowOverflowMenu({
  */
 export function BorderedOverflowMenu({
   items,
-  label = "Open menu",
+  label = "Ouvrir le menu",
   className,
 }: {
   items: MenuItem[];

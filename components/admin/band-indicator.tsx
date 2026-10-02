@@ -17,13 +17,13 @@ const BAND_LEVEL: Record<string, number> = {
 };
 
 const BAND_LABEL: Record<string, string> = {
-  unusually_strong: "Unusually strong",
-  strong_positive: "Strong positive",
-  moderate_positive: "Moderate positive",
-  mixed: "Mixed signal",
-  limited_signal: "Limited signal",
-  insufficient_signal: "Insufficient signal",
-  concern: "Concern",
+  unusually_strong: "Exceptionnellement fort",
+  strong_positive: "Fortement positif",
+  moderate_positive: "Modérément positif",
+  mixed: "Signal mitigé",
+  limited_signal: "Signal limité",
+  insufficient_signal: "Signal insuffisant",
+  concern: "Point de vigilance",
 };
 
 const BAND_COLOR: Record<string, string> = {

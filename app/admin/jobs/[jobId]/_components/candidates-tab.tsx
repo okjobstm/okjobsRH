@@ -38,13 +38,13 @@ export const CANDIDATES_FILTERS: readonly CandidatesFilter[] = [
 ];
 
 const FILTER_LABELS: Record<CandidatesFilter, string> = {
-  all: "All",
-  submitted: "Submitted",
-  in_review: "In review",
-  shortlisted: "Shortlisted",
-  rejected: "Rejected",
-  archived: "Archived",
-  compare: "Compare",
+  all: "Tous",
+  submitted: "Soumises",
+  in_review: "À examiner",
+  shortlisted: "Présélectionnés",
+  rejected: "Refusés",
+  archived: "Archivés",
+  compare: "Comparer",
 };
 
 const STAGE_GROUPS: Record<Exclude<CandidatesFilter, "all" | "compare">, CandidateStage[]> = {
@@ -100,7 +100,7 @@ export function CandidatesTab({
   return (
     <div className="px-4 sm:px-6">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 py-3">
-        <span className="text-xs text-slate-500">Status</span>
+        <span className="text-xs text-slate-500">Statut</span>
         {CANDIDATES_FILTERS.map((f) => {
           const isActive = filter === f;
           const count = counts[f];
@@ -173,16 +173,16 @@ function toRowData(c: RawCandidate): CandidateRowData {
 function emptyMessage(filter: CandidatesFilter): string {
   switch (filter) {
     case "submitted":
-      return "Nothing waiting for review yet.";
+      return "Rien à examiner pour l’instant.";
     case "in_review":
-      return "No candidates in review.";
+      return "Aucun candidat en cours d’examen.";
     case "shortlisted":
-      return "Nobody shortlisted yet.";
+      return "Aucun candidat présélectionné pour le moment.";
     case "rejected":
-      return "No rejected candidates.";
+      return "Aucun candidat refusé.";
     case "archived":
-      return "No archived candidates.";
+      return "Aucun candidat archivé.";
     default:
-      return "No candidates yet.";
+      return "Aucun candidat pour le moment.";
   }
 }

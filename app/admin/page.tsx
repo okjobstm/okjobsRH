@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Briefcase, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { JobStatus, CandidateStage, ReviewStatus } from "@prisma/client";
+import { JOB_STATUS_LABEL } from "@/lib/format";
 import { RoleGroup } from "@/components/admin/role-group";
 import { Tip } from "@/components/admin/tip";
 import { formatStage, stageBadgeClass, sortByStage } from "@/lib/candidates";
@@ -104,40 +105,40 @@ export default async function AdminDashboard({
     <div className="space-y-5">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Pipeline overview</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Vue d’ensemble du pipeline</h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">{session.email}</p>
         </div>
         <Button asChild size="sm" className="shrink-0">
           <Link href="/admin/jobs/new">
             <Plus className="h-3.5 w-3.5 sm:mr-1.5" />
-            <span className="hidden sm:inline">Create job</span>
+            <span className="hidden sm:inline">Créer un poste</span>
           </Link>
         </Button>
       </div>
 
-      <Tip id="dashboard-overview" title="New here?">
-        Click a role title to open its detail page, or right-click a job in the sidebar to archive
-        it. See the <a href="/admin/help" className="underline font-medium">How to use</a> page for
-        the full walkthrough.
+      <Tip id="dashboard-overview" title="Vous débutez ?">
+        Cliquez sur le titre d’un poste pour ouvrir sa page de détail, ou faites un clic droit sur un poste dans le
+        menu latéral pour l’archiver. Consultez la page <a href="/admin/help" className="underline font-medium">Mode d’emploi</a> pour
+        le parcours complet.
       </Tip>
 
       {/* Inline stat strip */}
       <div className="flex flex-wrap items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
-        <Stat n={activeRoles} label="open roles" emphasis />
-        <Stat n={totalCandidates} label="candidates" />
-        <Stat n={submittedCount} label="submitted" />
-        <Stat n={shortlistedCount} label="shortlisted" />
-        <Stat n={inProgressCount} label="in progress" />
+        <Stat n={activeRoles} label="postes ouverts" emphasis />
+        <Stat n={totalCandidates} label="candidats" />
+        <Stat n={submittedCount} label="candidatures envoyées" />
+        <Stat n={shortlistedCount} label="présélectionnés" />
+        <Stat n={inProgressCount} label="en cours" />
       </div>
 
       {/* Tab strip */}
       <nav className="flex gap-1 border-b border-slate-200">
         {(
           [
-            ["all", "All", counts.all],
-            ["open", "Open", counts.open],
-            ["draft", "Drafts", counts.draft],
-            ["archived", "Archived", counts.archived],
+            ["all", "Tous", counts.all],
+            ["open", "Ouverts", counts.open],
+            ["draft", "Brouillons", counts.draft],
+            ["archived", "Archivés", counts.archived],
           ] as Array<[DashboardTab, string, number]>
         ).map(([key, label, n]) => {
           const isActive = filter === key;
@@ -172,10 +173,10 @@ export default async function AdminDashboard({
           <div className="flex flex-col items-center gap-2 rounded-lg border border-dashed border-slate-200 p-8 text-sm text-slate-500">
             <Briefcase className="h-5 w-5 text-slate-300" />
             {filter === "archived"
-              ? "No archived roles."
+              ? "Aucun poste archivé."
               : filter === "draft"
-              ? "No drafts. Create a role to get started."
-              : "No roles yet. Create the first one above."}
+              ? "Aucun brouillon. Créez un poste pour commencer."
+              : "Aucun poste pour le moment. Créez le premier ci-dessus."}
           </div>
         ) : (
           filtered.map((job, index) => {
@@ -203,7 +204,7 @@ export default async function AdminDashboard({
                     <div className="min-w-0">
                       <p className="font-medium text-slate-900 truncate">{job.title}</p>
                       <p className="text-xs text-slate-500 mt-0.5">
-                        {job.department || "General"}
+                        {job.department || "Général"}
                         {job.location ? ` · ${job.location}` : ""}
                         {stageSummary ? ` · ${stageSummary}` : ""}
                       </p>
@@ -211,21 +212,21 @@ export default async function AdminDashboard({
                     {needsDecisionInJob > 0 && (
                       <span
                         className="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[10px] font-semibold shrink-0"
-                        title="Candidates with submitted reviews awaiting your shortlist or reject"
+                        title="Candidats dont les évaluations sont transmises, en attente de votre présélection ou de votre refus"
                       >
-                        {needsDecisionInJob} need decision
+                        {needsDecisionInJob} décision{needsDecisionInJob > 1 ? "s" : ""} à prendre
                       </span>
                     )}
                     {staleInvitesInJob > 0 && (
                       <span
                         className="rounded-full bg-amber-50 text-amber-700 px-2 py-0.5 text-[10px] font-semibold shrink-0 border border-amber-200"
-                        title="Invites with no candidate activity for 7+ days"
+                        title="Invitations sans activité du candidat depuis 7 jours ou plus"
                       >
-                        {staleInvitesInJob} stale {staleInvitesInJob === 1 ? "invite" : "invites"}
+                        {staleInvitesInJob} invitation{staleInvitesInJob === 1 ? "" : "s"} sans activité
                       </span>
                     )}
                     <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500 shrink-0">
-                      {job.status}
+                      {JOB_STATUS_LABEL[job.status]}
                     </span>
                   </div>
                 }
@@ -287,11 +288,11 @@ function buildStageSummary(candidates: Array<{ stage: CandidateStage }>): string
     counts[c.stage] = (counts[c.stage] ?? 0) + 1;
   }
   const parts: string[] = [];
-  if (counts.COMPLETED) parts.push(`${counts.COMPLETED} completed`);
-  if (counts.OFFER) parts.push(`${counts.OFFER} offer`);
-  if (counts.REVIEWING) parts.push(`${counts.REVIEWING} reviewing`);
-  if (counts.IN_PROGRESS) parts.push(`${counts.IN_PROGRESS} in progress`);
-  if (counts.NOT_STARTED) parts.push(`${counts.NOT_STARTED} not started`);
+  if (counts.COMPLETED) parts.push(`${counts.COMPLETED} terminées`);
+  if (counts.OFFER) parts.push(`${counts.OFFER} offre`);
+  if (counts.REVIEWING) parts.push(`${counts.REVIEWING} en évaluation`);
+  if (counts.IN_PROGRESS) parts.push(`${counts.IN_PROGRESS} en cours`);
+  if (counts.NOT_STARTED) parts.push(`${counts.NOT_STARTED} non commencées`);
   return parts.join(" · ");
 }
 
@@ -348,15 +349,15 @@ function CandidateRow({
         {showNeedsDecision && (
           <span
             className="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[11px] font-semibold"
-            title="Reviewer has submitted a decision — awaiting your shortlist or reject"
+            title="L’évaluateur a transmis sa décision : présélection ou refus en attente de votre part"
           >
-            Needs decision
+            Décision à prendre
           </span>
         )}
         {engagement.band !== "none" && (
           <span
             className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${ENGAGEMENT_BAND_CLASS[engagement.band]}`}
-            title={`Engagement score ${engagement.score}/100`}
+            title={`Score d’engagement : ${engagement.score}/100`}
           >
             {ENGAGEMENT_BAND_LABEL[engagement.band]}
           </span>
@@ -367,7 +368,7 @@ function CandidateRow({
           </span>
         )}
         {sessionStats && sessionStats.sessionCount > 0 && (
-          <span className="text-xs text-slate-400 hidden md:block" title="Sessions · total time">
+          <span className="text-xs text-slate-400 hidden md:block" title="Sessions · temps total">
             {sessionStats.sessionCount}× · {formatDurationShort(sessionStats.totalSeconds)}
           </span>
         )}
@@ -391,9 +392,9 @@ function CandidateRow({
               <button
                 type="submit"
                 className="rounded px-2 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors"
-                title="Shortlist"
+                title="Présélectionner"
               >
-                Shortlist
+                Présélectionner
               </button>
             </form>
           )}
@@ -403,9 +404,9 @@ function CandidateRow({
               <button
                 type="submit"
                 className="rounded px-2 py-1 text-[11px] font-semibold text-red-600 bg-red-50 hover:bg-red-100 transition-colors"
-                title="Reject"
+                title="Refuser"
               >
-                Reject
+                Refuser
               </button>
             </form>
           )}

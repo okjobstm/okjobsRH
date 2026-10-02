@@ -21,7 +21,7 @@ export function RoleGroup({ href, header, children, defaultOpen = false, candida
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Collapse" : "Expand"}
+          aria-label={open ? "Replier" : "Déplier"}
           className="flex h-11 w-11 items-center justify-center text-slate-400 hover:text-slate-700"
         >
           {open ? (
@@ -38,7 +38,7 @@ export function RoleGroup({ href, header, children, defaultOpen = false, candida
           <div className="flex-1 min-w-0 py-3 pr-3">{header}</div>
         )}
         <span className="hidden sm:inline pr-3 text-xs text-slate-400 shrink-0">
-          {candidateCount} {candidateCount === 1 ? "candidate" : "candidates"}
+          {candidateCount} {candidateCount === 1 ? "candidat" : "candidats"}
         </span>
       </div>
 
@@ -46,7 +46,7 @@ export function RoleGroup({ href, header, children, defaultOpen = false, candida
         <div className="border-t border-slate-100">
           {candidateCount === 0 ? (
             <div className="px-4 py-5 text-sm text-slate-400 text-center">
-              No candidates yet. Create invites to get started.
+              Aucun candidat pour l’instant. Créez des invitations pour commencer.
             </div>
           ) : (
             children

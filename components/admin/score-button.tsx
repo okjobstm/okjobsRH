@@ -29,15 +29,15 @@ export function ScoreButton({ candidateId, hasFailures }: Props) {
       const res = await fetch(`/api/admin/score/${candidateId}`, { method: "POST" });
       if (!res.ok) {
         const body = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error ?? `Request failed with status ${res.status}`);
+        throw new Error(body.error ?? `Requête échouée avec le statut ${res.status}`);
       }
       const data = (await res.json()) as { scored: number; failed: number; insufficient: number };
       if (data.failed > 0) {
-        setError(`${data.failed} item(s) failed to score. Check ANTHROPIC_API_KEY or credits.`);
+        setError(`${data.failed} élément(s) non évalué(s). Vérifiez ANTHROPIC_API_KEY ou les crédits.`);
       }
       router.refresh();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Scoring request failed");
+      setError(e instanceof Error ? e.message : "Échec de la demande d’évaluation");
     } finally {
       setLoading(false);
     }
@@ -52,7 +52,7 @@ export function ScoreButton({ candidateId, hasFailures }: Props) {
         size="sm"
         className={hasFailures ? "border-red-300 text-red-600 hover:bg-red-50" : ""}
       >
-        {loading ? "Scoring…" : hasFailures ? "Re-assess with AI" : "Score with AI"}
+        {loading ? "Évaluation…" : hasFailures ? "Réévaluer avec l’IA" : "Évaluer avec l’IA"}
       </Button>
       {error && <p className="text-xs text-red-600 max-w-xs text-right">{error}</p>}
     </div>

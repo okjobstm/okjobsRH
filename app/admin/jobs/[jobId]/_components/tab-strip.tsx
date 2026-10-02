@@ -19,9 +19,9 @@ export function TabStrip({
   setupSubline: string;
 }) {
   const tabs: Array<{ key: JobTab; label: string; sub: string }> = [
-    { key: "candidates", label: "Candidates", sub: candidatesSubline },
-    { key: "invites", label: "Invites", sub: invitesSubline },
-    { key: "setup", label: "Role setup", sub: setupSubline },
+    { key: "candidates", label: "Candidats", sub: candidatesSubline },
+    { key: "invites", label: "Invitations", sub: invitesSubline },
+    { key: "setup", label: "Configuration du poste", sub: setupSubline },
   ];
 
   return (

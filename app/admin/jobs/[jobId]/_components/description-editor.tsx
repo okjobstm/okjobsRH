@@ -36,10 +36,10 @@ export function DescriptionEditor({
       />
       <div className="flex items-center justify-between">
         <p className="text-xs text-slate-400">
-          {value.trim().length} characters{value.trim().length < 100 && " · minimum 100"}
+          {value.trim().length} caractères{value.trim().length < 100 && " · minimum 100"}
         </p>
         <Button size="sm" disabled={!dirty || pending} onClick={save}>
-          {pending ? "Saving…" : dirty ? "Save description" : "Saved"}
+          {pending ? "Enregistrement…" : dirty ? "Enregistrer la description" : "Enregistré"}
         </Button>
       </div>
     </div>

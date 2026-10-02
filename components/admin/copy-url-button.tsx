@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function CopyUrlButton({ url, label = "Copy link" }: { url: string; label?: string }) {
+export function CopyUrlButton({ url, label = "Copier le lien" }: { url: string; label?: string }) {
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
@@ -22,7 +22,7 @@ export function CopyUrlButton({ url, label = "Copy link" }: { url: string; label
       {copied ? (
         <>
           <Check className="h-3.5 w-3.5 text-emerald-600" />
-          <span className="text-emerald-600">Copied</span>
+          <span className="text-emerald-600">Copié</span>
         </>
       ) : (
         <>

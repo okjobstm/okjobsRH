@@ -38,10 +38,11 @@ export function DangerZone({
 
   return (
     <div className="rounded-md border border-dashed border-red-200 bg-red-50/40 p-4">
-      <h3 className="text-sm font-semibold text-red-700">Danger zone</h3>
+      <h3 className="text-sm font-semibold text-red-700">Zone sensible</h3>
       <p className="mt-1 text-xs text-slate-500">
-        Close, archive, or delete this role. Archive hides it from the dashboard but preserves
-        data. Delete removes the role and all its candidates permanently.
+        Clôturez, archivez ou supprimez ce poste. L’archivage le masque sur le tableau de
+        bord tout en conservant les données. La suppression efface définitivement le poste et
+        tous ses candidats.
       </p>
 
       <div className="mt-3 flex flex-wrap gap-2">
@@ -52,7 +53,7 @@ export function DangerZone({
           disabled={pending || status === "CLOSED" || status === "ARCHIVED"}
           onClick={() => setStatus("CLOSED")}
         >
-          Close to applicants
+          Clôturer aux candidats
         </Button>
         <Button
           type="button"
@@ -61,7 +62,7 @@ export function DangerZone({
           disabled={pending || status === "ARCHIVED"}
           onClick={() => setStatus("ARCHIVED")}
         >
-          Archive role
+          Archiver le poste
         </Button>
         <Button
           type="button"
@@ -70,14 +71,14 @@ export function DangerZone({
           disabled={pending}
           onClick={() => setConfirmDelete(true)}
         >
-          Delete role…
+          Supprimer le poste…
         </Button>
       </div>
 
       {confirmDelete && (
         <div className="mt-4 rounded-md border border-red-300 bg-white p-3">
           <Label htmlFor="confirm-delete" className="text-xs text-slate-700">
-            Type the role name to confirm: <b>{jobTitle}</b>
+            Saisissez le nom du poste pour confirmer : <b>{jobTitle}</b>
           </Label>
           <Input
             id="confirm-delete"
@@ -97,7 +98,7 @@ export function DangerZone({
                 setTyped("");
               }}
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               type="button"
@@ -106,7 +107,7 @@ export function DangerZone({
               disabled={pending || typed.trim() !== jobTitle.trim()}
               onClick={tryDelete}
             >
-              {pending ? "Deleting…" : "Delete forever"}
+              {pending ? "Suppression…" : "Supprimer définitivement"}
             </Button>
           </div>
         </div>

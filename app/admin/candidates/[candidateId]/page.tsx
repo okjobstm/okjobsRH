@@ -36,24 +36,24 @@ import { formatDateTime, formatNumber, ROLE_FIT_LABEL } from "@/lib/format";
 // ─── Display constants ────────────────────────────────────────────────────────
 
 const DIMENSION_LABELS: Record<string, string> = {
-  conscientiousness: "Conscientiousness",
-  honesty_humility: "Honesty & Humility",
-  composure: "Composure",
-  learning: "Learning Orientation",
-  interpersonal: "Interpersonal Style",
-  motivation_scope: "Motivation: Scope",
-  motivation_autonomy: "Motivation: Autonomy",
-  motivation_stability: "Motivation: Stability",
-  motivation_mission: "Motivation: Mission",
-  motivation_recognition: "Motivation: Recognition",
+  conscientiousness: "Rigueur professionnelle",
+  honesty_humility: "Honnêteté et humilité",
+  composure: "Sang-froid",
+  learning: "Orientation apprentissage",
+  interpersonal: "Style relationnel",
+  motivation_scope: "Motivation : périmètre",
+  motivation_autonomy: "Motivation : autonomie",
+  motivation_stability: "Motivation : stabilité",
+  motivation_mission: "Motivation : mission",
+  motivation_recognition: "Motivation : reconnaissance",
 };
 
 const DIMENSION_DESCRIPTION: Record<string, string> = {
-  conscientiousness: "Reliability, self-discipline, and goal-directed follow-through",
-  honesty_humility: "Sincerity, fairness, modesty, and low exploitativeness",
-  composure: "Behavioural response and recovery under stress or setback",
-  learning: "Openness to disconfirming information and self-directed updating",
-  interpersonal: "Patterns in disagreement, feedback, collaboration, and direction-giving",
+  conscientiousness: "Fiabilité, autodiscipline et poursuite des objectifs",
+  honesty_humility: "Sincérité, équité, modestie et faible propension à l’exploitation d’autrui",
+  composure: "Réaction comportementale et rétablissement face au stress ou à l’échec",
+  learning: "Ouverture aux informations qui contredisent et mise à jour autonome",
+  interpersonal: "Patterns observés dans le désaccord, la remontée d’information, la collaboration et la conduite d’équipe",
 };
 
 const ROLE_FIT_COLOR: Record<RoleFitBand, string> = {
@@ -221,12 +221,12 @@ export default async function CandidateDetailPage({
                 {formatStage(candidate.stage)}
               </span>
               {sub?.submittedAt && (
-                <span className="text-xs text-slate-400">Submitted {fmt.format(sub.submittedAt)}</span>
+                <span className="text-xs text-slate-400">Candidature envoyée le {fmt.format(sub.submittedAt)}</span>
               )}
             </div>
           </div>
           <Button asChild variant="outline" size="sm" className="shrink-0">
-            <Link href={`/admin/jobs/${candidate.job.id}`}>← <span className="hidden sm:inline">{candidate.job.title}</span><span className="sm:hidden">Back</span></Link>
+            <Link href={`/admin/jobs/${candidate.job.id}`}>← <span className="hidden sm:inline">{candidate.job.title}</span><span className="sm:hidden">Retour</span></Link>
           </Button>
         </div>
         {/* Action bar */}
@@ -234,39 +234,39 @@ export default async function CandidateDetailPage({
           <Button asChild variant="outline" size="sm">
             <Link href={`/api/admin/report/${candidate.id}`} target="_blank">
               <Download className="h-3.5 w-3.5 sm:mr-1.5" />
-              <span className="hidden sm:inline">Report PDF</span>
+              <span className="hidden sm:inline">Rapport PDF</span>
             </Link>
           </Button>
           {([CandidateStage.COMPLETED, CandidateStage.REVIEWING] as CandidateStage[]).includes(candidate.stage) && (
             <form action={shortlistCandidateAction}>
               <input type="hidden" name="candidateId" value={candidate.id} />
-              <Button type="submit" size="sm">Shortlist</Button>
+              <Button type="submit" size="sm">Présélectionner</Button>
             </form>
           )}
           {candidate.stage === CandidateStage.REJECTED && (
             <form action={restoreToShortlistAction}>
               <input type="hidden" name="candidateId" value={candidate.id} />
-              <Button type="submit" size="sm" variant="outline">Move to Shortlist</Button>
+              <Button type="submit" size="sm" variant="outline">Repasser en présélection</Button>
             </form>
           )}
           {candidate.stage === CandidateStage.SHORTLISTED && (
             <form action={hireCandidateAction}>
               <input type="hidden" name="candidateId" value={candidate.id} />
-              <Button type="submit" size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">Hire</Button>
+              <Button type="submit" size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">Embaucher</Button>
             </form>
           )}
           {([CandidateStage.COMPLETED, CandidateStage.REVIEWING, CandidateStage.SHORTLISTED] as CandidateStage[]).includes(candidate.stage) && (
             <form action={rejectCandidateAction}>
               <input type="hidden" name="candidateId" value={candidate.id} />
-              <Button type="submit" size="sm" variant="ghost" className="text-rose-600 hover:text-rose-700 hover:bg-rose-50">Reject</Button>
+              <Button type="submit" size="sm" variant="ghost" className="text-rose-600 hover:text-rose-700 hover:bg-rose-50">Refuser</Button>
             </form>
           )}
         </div>
       </div>
 
       <Tip id="candidate-detail">
-        Run <em>Analyse candidate</em> below to generate a structured assessment, then assign a reviewer in the panel underneath.
-        Reviewers can read the assessment and submit a Strong yes / Yes / Lean no / No decision.
+        Lancez <em>Analyser le candidat</em> ci-dessous pour générer une évaluation structurée, puis affectez un évaluateur dans le panneau juste en dessous.
+        Les évaluateurs peuvent lire l’évaluation et rendre une décision (oui franc, oui, non mesuré, non).
       </Tip>
 
       {/* ── Reviewer panel ──────────────────────────────────────────────────── */}
@@ -305,34 +305,34 @@ export default async function CandidateDetailPage({
                 {ENGAGEMENT_BAND_LABEL[engagementSummary.band]} · {engagementSummary.score}
               </span>
             </div>
-            <span className="text-[11px] text-slate-400">{engagement.eventCount} events</span>
+            <span className="text-[11px] text-slate-400">{engagement.eventCount} événements</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
             <EngagementStat label="Sessions" value={String(engagement.sessionCount)} />
-            <EngagementStat label="Active time" value={timing.activeLabel} />
+            <EngagementStat label="Temps actif" value={timing.activeLabel} />
             <EngagementStat
-              label={timing.spanLabel ? "Time to finish" : "First opened"}
+              label={timing.spanLabel ? "Durée totale" : "Première ouverture"}
               value={
                 timing.spanLabel ??
                 (engagement.firstOpenedAt ? fmt.format(engagement.firstOpenedAt) : "—")
               }
             />
             <EngagementStat
-              label="Last active"
+              label="Dernière activité"
               value={engagement.lastActiveAt ? fmtLong.format(engagement.lastActiveAt) : "—"}
             />
           </div>
           {recentEvents.length > 0 && (
             <details className="mt-4 group">
               <summary className="text-xs text-slate-500 cursor-pointer select-none hover:text-slate-700">
-                Activity timeline ({recentEvents.length} most recent)
+                Historique d’activité ({recentEvents.length} derniers événements)
               </summary>
               <ul className="mt-2 space-y-1 text-xs">
                 {recentEvents.map((e) => (
                   <li key={e.id} className="flex items-baseline justify-between gap-3 py-0.5">
                     <span className="text-slate-700">
                       {formatEventType(e.eventType)}
-                      {e.stage ? ` · stage ${e.stage}` : ""}
+                      {e.stage ? ` · étape ${e.stage}` : ""}
                     </span>
                     <span className="text-slate-400 shrink-0 tabular-nums">{fmtLong.format(e.occurredAt)}</span>
                   </li>
@@ -346,7 +346,7 @@ export default async function CandidateDetailPage({
 
       {!sub ? (
         <div className="rounded-lg border border-slate-200 bg-white p-8 text-center text-slate-400 text-sm">
-          No submission data yet.
+          Aucune donnée de candidature pour l’instant.
         </div>
       ) : (
         <div className="space-y-3">
@@ -356,7 +356,7 @@ export default async function CandidateDetailPage({
           ════════════════════════════════════════════════════════════════════ */}
           <div className="rounded-lg border border-slate-200 bg-white overflow-hidden">
             <div className="px-5 py-3.5 flex items-center justify-between border-b border-slate-100">
-              <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">Assessment summary</span>
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">Synthèse de l’évaluation</span>
               {hasStarAnswers && (
                 <AnalyseButton candidateId={candidate.id} hasExisting={hasSynthesis} />
               )}
@@ -366,7 +366,7 @@ export default async function CandidateDetailPage({
               {hasScoringFailures && (
                 <div className="rounded-md bg-rose-50 border border-rose-200 px-4 py-3 flex items-start gap-2.5 text-sm text-rose-800">
                   <span className="shrink-0 font-bold">!</span>
-                  <span>Some items failed to score. Click <strong>Re-analyse</strong> above to retry.</span>
+                  <span>Certains éléments n’ont pas pu être évalués. Cliquez sur <strong>Réanalyser</strong> ci-dessus pour réessayer.</span>
                 </div>
               )}
               {hasSynthesis && synthesis ? (
@@ -375,13 +375,13 @@ export default async function CandidateDetailPage({
                   <div className={`rounded-lg border-l-4 pl-5 pr-4 py-4 border-slate-200 bg-slate-50 ${ROLE_FIT_BORDER[synthesis.roleFitRead.band] ?? "border-l-slate-300"}`}>
                     <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">Role-fit read</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">Lecture d’adéquation</p>
                         <p className={`text-2xl font-semibold tracking-tight ${ROLE_FIT_COLOR[synthesis.roleFitRead.band] ?? "text-slate-800"}`}>
                           {ROLE_FIT_LABEL[synthesis.roleFitRead.band]}
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">Confidence</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">Confiance</p>
                         <p className="text-xs text-slate-600 font-medium">
                           {(synthesis as { overallConfidenceDescription?: string }).overallConfidenceDescription ?? synthesis.overallConfidence}
                         </p>
@@ -400,14 +400,14 @@ export default async function CandidateDetailPage({
                     )}
 
                     <p className="text-xs text-slate-400 italic">
-                      This is a summary of observed signal against the hiring frame. It is not a hire or no-hire recommendation — an interview is required.
+                      Ceci est une synthèse des signaux observés au regard du référentiel de recrutement. Ce n’est pas une recommandation d’embauche ni de refus : un entretien est nécessaire.
                     </p>
                   </div>
 
                   {/* Pattern flags */}
                   {synthesis.flags.length > 0 && (
                     <div className="space-y-3">
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">Patterns and concerns</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">Motifs et points de vigilance</p>
                       {synthesis.flags
                         .sort((a, b) => {
                           const sev = { high: 0, medium: 1, operational: 2 };
@@ -426,7 +426,7 @@ export default async function CandidateDetailPage({
                             </p>
                             {flag.contributingItems.length > 0 && (
                               <p className="text-xs text-slate-400">
-                                Referenced:{" "}
+                                Références :{" "}
                                 {flag.contributingItems.map((ci, i) => (
                                   <span key={i}>
                                     {i > 0 && ", "}
@@ -444,7 +444,7 @@ export default async function CandidateDetailPage({
                               />
                             ) : (
                               <div className="mt-3 pt-2.5 border-t border-slate-100">
-                                <p className="text-[10px] text-slate-400 italic">Re-analyse to generate a suggested probe.</p>
+                                <p className="text-[10px] text-slate-400 italic">Réanalysez le candidat pour générer une relance suggérée.</p>
                               </div>
                             )}
                           </div>
@@ -455,7 +455,7 @@ export default async function CandidateDetailPage({
                   {/* Strengths */}
                   {synthesis.prose?.strengths && synthesis.prose.strengths.length > 0 && (
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2.5">Strengths</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2.5">Forces</p>
                       <ul className="space-y-2">
                         {synthesis.prose.strengths.map((s, i) => (
                           <li key={i} className="flex gap-2.5 text-sm">
@@ -479,11 +479,11 @@ export default async function CandidateDetailPage({
                 </>
               ) : (
                 <div className="rounded-lg border border-dashed border-slate-200 p-6 text-center">
-                  <p className="text-sm text-slate-500 mb-1">Analysis not yet generated.</p>
+                  <p className="text-sm text-slate-500 mb-1">Analyse pas encore générée.</p>
                   <p className="text-xs text-slate-400">
                     {hasStarAnswers
-                      ? "Run STAR scoring first, then click Analyse to generate dimension bands, flags, and role-fit read."
-                      : "Psychometric data recorded. Scoring and synthesis available once STAR responses are present."}
+                      ? "Lancez d’abord l’évaluation STAR, puis cliquez sur Analyser pour générer les niveaux par dimension, les points de vigilance et la lecture d’adéquation."
+                      : "Données psychométriques enregistrées. L’évaluation et la synthèse seront disponibles dès que les réponses STAR seront présentes."}
                   </p>
                 </div>
               )}
@@ -494,7 +494,13 @@ export default async function CandidateDetailPage({
               TIER 2 — DIMENSION CARDS
           ════════════════════════════════════════════════════════════════════ */}
           {hasSynthesis && synthesis && (
-            <TierSection storageKey="tier-2" title="Dimension estimates" badge={`${Object.keys(synthesis.dimensions).length} dimensions`}>
+            <>
+            <p className="text-xs text-amber-700">
+              Scores non calibrés : les seuils et les libellés ont été traduits en français,
+              mais ils ne sont pas recalibrés sur des normes francophones. À lire comme un
+              repère comparatif entre candidats, pas comme une mesure absolue.
+            </p>
+            <TierSection storageKey="tier-2" title="Estimations par dimension" badge={`${Object.keys(synthesis.dimensions).length} dimensions`}>
               <div className="space-y-2">
                 {Object.entries(synthesis.dimensions).map(([dim, result]) => (
                   <details key={dim} className="group rounded-lg border border-slate-200 overflow-hidden bg-white">
@@ -506,7 +512,7 @@ export default async function CandidateDetailPage({
                         </div>
                         <div className="flex items-center gap-3 shrink-0">
                           <BandIndicator band={result.band as DimensionBand} />
-                          <span className="text-[10px] text-slate-400">confidence: {result.confidence.replace("_signal", "").replace("_", " ")}</span>
+                          <span className="text-[10px] text-slate-400">confiance : {result.confidence.replace("_signal", "").replace("_", " ")}</span>
                           <span className="text-slate-300 group-open:rotate-180 transition-transform select-none text-xs">▾</span>
                         </div>
                       </div>
@@ -516,16 +522,16 @@ export default async function CandidateDetailPage({
                               .map((ci) =>
                                 typeof ci === "string"
                                   ? ci
-                                      .replace(/motivation_(\w+)/g, (_, m) => `Motivation: ${m.charAt(0).toUpperCase() + m.slice(1)}`)
-                                      .replace(/FC \(honesty_humility tally:/, "FC (Honesty & Humility tally:")
-                                      .replace(/FC \(conscientiousness tally:/, "FC (Conscientiousness tally:")
-                                      .replace(/FC \(composure tally:/, "FC (Composure tally:")
-                                      .replace(/FC \(learning tally:/, "FC (Learning Orientation tally:")
-                                      .replace(/FC \(interpersonal tally:/, "FC (Interpersonal tally:")
+                                      .replace(/motivation_(\w+)/g, (_, m) => DIMENSION_LABELS[`motivation_${m}`] ?? m)
+                                      .replace(/FC \(honesty_humility tally:/, "FC (décompte honnêteté et humilité :")
+                                      .replace(/FC \(conscientiousness tally:/, "FC (décompte rigueur professionnelle :")
+                                      .replace(/FC \(composure tally:/, "FC (décompte sang-froid :")
+                                      .replace(/FC \(learning tally:/, "FC (décompte orientation apprentissage :")
+                                      .replace(/FC \(interpersonal tally:/, "FC (décompte style relationnel :")
                                   : String(ci)
                               )
                               .join(" · ")
-                          : "Contributing evidence: none"}
+                          : "Éléments de preuve : aucun"}
                       </p>
                     </summary>
                     <div className="border-t border-slate-100 px-4 py-4 space-y-3 bg-slate-50/50">
@@ -556,9 +562,9 @@ export default async function CandidateDetailPage({
                   <details className="group rounded-lg border border-slate-200 overflow-hidden bg-white">
                     <summary className="px-4 py-3.5 cursor-pointer list-none hover:bg-slate-50 transition-colors">
                       <div className="flex items-center justify-between gap-3">
-                        <span className="text-sm font-medium text-slate-800">Interpersonal Style</span>
+                        <span className="text-sm font-medium text-slate-800">Style relationnel</span>
                         <div className="flex items-center gap-2 shrink-0">
-                          <span className="text-xs text-slate-500 bg-slate-100 rounded px-2 py-0.5">profile</span>
+                          <span className="text-xs text-slate-500 bg-slate-100 rounded px-2 py-0.5">profil</span>
                           <span className="text-slate-300 group-open:rotate-180 transition-transform select-none text-xs">▾</span>
                         </div>
                       </div>
@@ -566,10 +572,10 @@ export default async function CandidateDetailPage({
                     <div className="border-t border-slate-100 px-4 py-4 bg-slate-50/50 space-y-3">
                       <div className="grid grid-cols-2 gap-3">
                         {([
-                          ["Directness", synthesis.interpersonalProfile.directness],
-                          ["Conflict approach", synthesis.interpersonalProfile.conflictApproach],
-                          ["Regard for others", synthesis.interpersonalProfile.regardForOthers],
-                          ["Follow-through", synthesis.interpersonalProfile.followThrough],
+                          ["Directesse", synthesis.interpersonalProfile.directness],
+                          ["Approche du conflit", synthesis.interpersonalProfile.conflictApproach],
+                          ["Considération des autres", synthesis.interpersonalProfile.regardForOthers],
+                          ["Tenue dans l’exécution", synthesis.interpersonalProfile.followThrough],
                         ] as const).map(([label, value]) => (
                           <div key={label}>
                             <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{label}</p>
@@ -591,16 +597,16 @@ export default async function CandidateDetailPage({
                   <details className="group rounded-lg border border-slate-200 overflow-hidden bg-white">
                     <summary className="px-4 py-3.5 cursor-pointer list-none hover:bg-slate-50 transition-colors">
                       <div className="flex items-center justify-between gap-3">
-                        <span className="text-sm font-medium text-slate-800">Motivational Drivers</span>
+                        <span className="text-sm font-medium text-slate-800">Facteurs de motivation</span>
                         <div className="flex items-center gap-2 shrink-0">
-                          <span className="text-xs text-slate-500 bg-slate-100 rounded px-2 py-0.5">profile</span>
+                          <span className="text-xs text-slate-500 bg-slate-100 rounded px-2 py-0.5">profil</span>
                           <span className="text-slate-300 group-open:rotate-180 transition-transform select-none text-xs">▾</span>
                         </div>
                       </div>
                     </summary>
                     <div className="border-t border-slate-100 px-4 py-4 bg-slate-50/50 space-y-3">
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">Ranked priority</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">Priorité classée</p>
                         <p className="text-sm text-slate-700">
                           {synthesis.motivationProfile.t1Ranking.map((m, i) => (
                             <span key={m}>
@@ -619,9 +625,9 @@ export default async function CandidateDetailPage({
                       )}
                       {t2Chosen && (
                         <div>
-                          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">Integrity scenario (C-T2)</p>
+                          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">Scénario d’intégrité (C-T2)</p>
                           <p className="text-sm text-slate-700">
-                            <span className="font-medium">Option {t2Chosen.id}:</span> {t2Chosen.text}
+                            <span className="font-medium">Option {t2Chosen.id} :</span> {t2Chosen.text}
                           </p>
                           {scores?.t2Scores && Object.keys(scores.t2Scores).length > 0 && (
                             <div className="flex gap-2 flex-wrap mt-1.5">
@@ -636,7 +642,7 @@ export default async function CandidateDetailPage({
                       )}
                       {synthesis.fcRankOrderProse && (
                         <div>
-                          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">Forced-choice profile</p>
+                          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">Profil de choix forcé</p>
                           <p className="text-sm text-slate-600">{synthesis.fcRankOrderProse}</p>
                         </div>
                       )}
@@ -645,30 +651,31 @@ export default async function CandidateDetailPage({
                 )}
               </div>
             </TierSection>
+            </>
           )}
 
           {/* ════════════════════════════════════════════════════════════════════
               TIER 3 — PATTERNS AND RESPONSE STYLE
           ════════════════════════════════════════════════════════════════════ */}
           {hasSynthesis && synthesis && (
-            <TierSection storageKey="tier-3" title="Patterns and response style">
+            <TierSection storageKey="tier-3" title="Motifs et style de réponse">
               <div className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {[
                     {
-                      label: "Response specificity",
+                      label: "Spécificité des réponses",
                       value: starFeatureAggregates.specificity,
-                      note: `Across scored STAR items`,
+                      note: `Sur l’ensemble des éléments STAR évalués`,
                     },
                     {
-                      label: "First-person agency",
+                      label: "Implication à la première personne",
                       value: starFeatureAggregates.agency,
-                      note: "How consistently the candidate used 'I' language",
+                      note: "La régularité avec laquelle le candidat a employé le « je »",
                     },
                     {
-                      label: "Attribution pattern",
+                      label: "Schéma d’attribution",
                       value: starFeatureAggregates.attribution,
-                      note: "Internal vs. external attribution of events",
+                      note: "Attribution interne ou externe des événements",
                     },
                   ].map(({ label, value, note }) => (
                     <div key={label} className="rounded-lg border border-slate-200 bg-white px-4 py-3">
@@ -681,13 +688,13 @@ export default async function CandidateDetailPage({
 
                 {starFeatureAggregates.starWordCounts.length > 0 && (
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Response length by item</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Longueur des réponses par élément</p>
                     <div className="space-y-1">
                       {starFeatureAggregates.starWordCounts.map(({ label, words }) => (
                         <div key={label} className="flex items-center gap-3 text-xs text-slate-600">
                           <span className="w-10 text-slate-400 font-mono">{label}</span>
-                          <span className={words < 100 ? "text-amber-600 font-medium" : "text-slate-700"}>{words} words</span>
-                          {words < 100 && <span className="text-amber-500 text-[10px]">below expected</span>}
+                          <span className={words < 100 ? "text-amber-600 font-medium" : "text-slate-700"}>{words} mots</span>
+                          {words < 100 && <span className="text-amber-500 text-[10px]">en dessous du attendu</span>}
                         </div>
                       ))}
                     </div>
@@ -696,7 +703,7 @@ export default async function CandidateDetailPage({
 
                 {scores?.ccValues && Object.keys(scores.ccValues).length > 0 && (
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Consistency check responses</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Réponses aux contrôles de cohérence</p>
                     {ccItems.map((item) => {
                       const val = scores?.ccValues?.[item.itemId];
                       if (val === undefined) return null;
@@ -706,8 +713,8 @@ export default async function CandidateDetailPage({
                             &ldquo;{item.body}&rdquo;
                           </p>
                           <p className="text-xs text-slate-700">
-                            Response: <span className="font-semibold">{val}/5</span>
-                            {val >= 4 && <span className="text-amber-600 ml-1.5">— notable agreement</span>}
+                            Réponse : <span className="font-semibold">{val}/5</span>
+                            {val >= 4 && <span className="text-amber-600 ml-1.5">· accord notable</span>}
                           </p>
                         </div>
                       );
@@ -715,7 +722,7 @@ export default async function CandidateDetailPage({
                   </div>
                 )}
 
-                {/* Conflict notes from dimensions that weren't flagged */}
+                {/* Conflict notes from dimensions that weren’t flagged */}
                 {(() => {
                   const conflicts = Object.entries(synthesis.dimensions)
                     .filter(([, r]) => r.conflictNote)
@@ -723,11 +730,11 @@ export default async function CandidateDetailPage({
                   if (!conflicts.length) return null;
                   return (
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Signal divergences</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Divergences de signal</p>
                       <div className="space-y-1.5">
                         {conflicts.map(({ dim, note }) => (
                           <div key={dim} className="text-xs text-slate-600 bg-amber-50/60 rounded px-3 py-2">
-                            <span className="font-medium text-slate-700">{DIMENSION_LABELS[dim] ?? dim}:</span>{" "}
+                            <span className="font-medium text-slate-700">{DIMENSION_LABELS[dim] ?? dim} :</span>{" "}
                             {note}
                           </div>
                         ))}
@@ -742,14 +749,14 @@ export default async function CandidateDetailPage({
           {/* ════════════════════════════════════════════════════════════════════
               TIER 4 — FULL RESPONSES
           ════════════════════════════════════════════════════════════════════ */}
-          <TierSection storageKey="tier-4" title="Full responses">
+          <TierSection storageKey="tier-4" title="Réponses complètes">
             <div className="space-y-7">
 
               {/* Role-specific questions */}
               {candidate.job.roleQuestions.length > 0 && (
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
-                    Role-specific questions — {candidate.job.title}
+                    Questions spécifiques au poste : {candidate.job.title}
                   </p>
                   <div className="space-y-5">
                     {candidate.job.roleQuestions.map((q, i) => (
@@ -766,7 +773,7 @@ export default async function CandidateDetailPage({
                             </div>
                           </div>
                         ) : (
-                          <p className="text-sm text-slate-400 italic">No answer provided.</p>
+                          <p className="text-sm text-slate-400 italic">Aucune réponse fournie.</p>
                         )}
                       </div>
                     ))}
@@ -777,7 +784,7 @@ export default async function CandidateDetailPage({
               {/* Standard questions */}
               {standardQuestions.length > 0 && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Standard questions</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Questions standard</p>
                   <div className="space-y-5">
                     {standardQuestions.map((q, i) => (
                       <div key={q.id}>
@@ -793,7 +800,7 @@ export default async function CandidateDetailPage({
                             </div>
                           </div>
                         ) : (
-                          <p className="text-sm text-slate-400 italic">No answer provided.</p>
+                          <p className="text-sm text-slate-400 italic">Aucune réponse fournie.</p>
                         )}
                       </div>
                     ))}
@@ -804,9 +811,9 @@ export default async function CandidateDetailPage({
               {/* STAR behavioural items */}
               {starItems.length > 0 && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Behavioural assessment</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Évaluation comportementale</p>
                   {!hasAnyScoredOrFailed && (
-                    <p className="text-xs text-amber-600 mb-3">Rubric scoring pending — responses stored but AI evaluation not yet run.</p>
+                    <p className="text-xs text-amber-600 mb-3">Évaluation par grille en attente : les réponses sont enregistrées, mais l’évaluation par IA n’a pas encore été lancée.</p>
                   )}
                   <div className="space-y-2">
                     {starItems.map((item) => {
@@ -826,16 +833,16 @@ export default async function CandidateDetailPage({
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
                               {!score && answer && (
-                                <span className="text-[11px] text-amber-600 font-medium">Pending</span>
+                                <span className="text-[11px] text-amber-600 font-medium">En attente</span>
                               )}
                               {score?.status === "scored" && (
                                 <BandIndicator band={score.bandEstimate} showLabel={true} />
                               )}
                               {score?.status === "scoring_failed" && (
-                                <span className="text-[11px] text-slate-400">Not scored</span>
+                                <span className="text-[11px] text-slate-400">Non évalué</span>
                               )}
                               {score?.status === "insufficient" && (
-                                <span className="text-[11px] text-slate-400">Too short</span>
+                                <span className="text-[11px] text-slate-400">Trop courte</span>
                               )}
                               <span className="text-slate-300 group-open:rotate-180 transition-transform select-none text-xs">▾</span>
                             </div>
@@ -852,12 +859,12 @@ export default async function CandidateDetailPage({
                                 </div>
                               </div>
                             ) : (
-                              <p className="text-sm text-slate-400 italic">No response recorded.</p>
+                              <p className="text-sm text-slate-400 italic">Aucune réponse enregistrée.</p>
                             )}
                             {score?.status === "scored" && features && Object.keys(features).length > 0 && (
                               <details className="mt-1">
                                 <summary className="text-xs text-slate-400 cursor-pointer hover:text-slate-600">
-                                  Rubric features ▾
+                                  Critères de grille ▾
                                 </summary>
                                 <div className="mt-2 rounded border border-slate-200 bg-white p-3">
                                   <ul className="space-y-1">
@@ -865,7 +872,7 @@ export default async function CandidateDetailPage({
                                       <li key={name} className="text-xs text-slate-600">
                                         <span className="font-semibold text-slate-700">{name}:</span>{" "}
                                         <span className="font-mono text-slate-600">{data.value}</span>
-                                        {data.justification && <span className="text-slate-400"> — {data.justification}</span>}
+                                        {data.justification && <span className="text-slate-400">· {data.justification}</span>}
                                       </li>
                                     ))}
                                   </ul>
@@ -874,7 +881,7 @@ export default async function CandidateDetailPage({
                             )}
                             {score?.status === "scoring_failed" && (
                               <p className="text-xs text-slate-400 italic">
-                                This response was not scored. Use Re-assess to retry.
+                                Cette réponse n’a pas été évaluée. Utilisez Réanalyser pour réessayer.
                               </p>
                             )}
                           </div>
@@ -888,7 +895,7 @@ export default async function CandidateDetailPage({
               {/* FC pairs */}
               {fcItems.length > 0 && scores?.fcTallies && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Forced-choice pairs</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Paires de choix forcé</p>
                   <div className="space-y-2">
                     {fcItems.map((item) => {
                       const answer = psychoAnswers[item.id] as string | undefined;
@@ -917,7 +924,7 @@ export default async function CandidateDetailPage({
                               </div>
                             ))}
                           </div>
-                          {chosen && <p className="text-[10px] text-slate-400 mt-1">Selected: {chosen.id}</p>}
+                          {chosen && <p className="text-[10px] text-slate-400 mt-1">Sélection : {chosen.id}</p>}
                         </div>
                       );
                     })}
@@ -928,7 +935,7 @@ export default async function CandidateDetailPage({
               {/* T1 ranking + T2 + CC + reflection */}
               {t1Item && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">{t1Item.itemId} — Motivation ranking</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">{t1Item.itemId} · Classement des motivations</p>
                   <p className="text-xs text-slate-500 italic mb-2">{t1Item.body}</p>
                   {scores?.t1Ranking && scores.t1Ranking.length > 0 ? (
                     <ol className="space-y-1">
@@ -939,17 +946,17 @@ export default async function CandidateDetailPage({
                         </li>
                       ))}
                     </ol>
-                  ) : <p className="text-sm text-slate-400 italic">Not answered.</p>}
+                  ) : <p className="text-sm text-slate-400 italic">Sans réponse.</p>}
                 </div>
               )}
 
               {t2Item && t2Chosen && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">{t2Item.itemId} — Integrity scenario</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">{t2Item.itemId} · Scénario d’intégrité</p>
                   <p className="text-xs text-slate-500 italic mb-2">{t2Item.body}</p>
                   <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
                     <p className="text-sm text-slate-700">
-                      <span className="font-semibold">Option {t2Chosen.id}:</span> {t2Chosen.text}
+                      <span className="font-semibold">Option {t2Chosen.id} :</span> {t2Chosen.text}
                     </p>
                   </div>
                 </div>
@@ -958,14 +965,14 @@ export default async function CandidateDetailPage({
               {ccItems.map((item) => {
                 const answer = psychoAnswers[item.id];
                 if (!answer) return null;
-                const labels = ["Strongly disagree", "Disagree", "Neither", "Agree", "Strongly agree"];
+                const labels = ["Pas du tout d’accord", "Plutôt pas d’accord", "Ni l’un ni l’autre", "Plutôt d’accord", "Tout à fait d’accord"];
                 const val = typeof answer === "string" ? parseInt(answer, 10) : 0;
                 return (
                   <div key={item.id}>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">{item.itemId} — Consistency check</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">{item.itemId} · Contrôle de cohérence</p>
                     <p className="text-xs text-slate-500 italic mb-2">{item.body}</p>
                     <p className="text-sm text-slate-700">
-                      {val}/5 — <span className="font-medium">{labels[val - 1] ?? "—"}</span>
+                      {val}/5 · <span className="font-medium">{labels[val - 1] ?? "—"}</span>
                     </p>
                   </div>
                 );
@@ -973,8 +980,8 @@ export default async function CandidateDetailPage({
 
               {reflectionItem && psychoAnswers[reflectionItem.id] && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1">C-R1 — Reflection</p>
-                  <p className="text-[11px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-2 py-1 mb-2 inline-block">Self-reported — not scored. Candidate&apos;s own description; treat as impression management data, not observed signal.</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1">C-R1 · Réflexion</p>
+                  <p className="text-[11px] text-amber-700 bg-amber-50 border border-amber-100 rounded px-2 py-1 mb-2 inline-block">Déclaratif, non évalué. Description du candidat lui-même : traitez-la comme une donnée de gestion des impressions, pas comme un signal observé.</p>
                   <p className="text-xs text-slate-500 italic mb-2">{reflectionItem.body}</p>
                   <blockquote className="border-l-2 border-slate-200 pl-3">
                     <p className="whitespace-pre-wrap text-sm text-slate-700 leading-relaxed" style={{ fontFamily: "var(--font-serif)" }}>
@@ -986,7 +993,7 @@ export default async function CandidateDetailPage({
 
               {sub.finalReflection && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">Final reflection</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2">Réflexion finale</p>
                   <p className="whitespace-pre-wrap text-sm text-slate-700 leading-relaxed" style={{ fontFamily: "var(--font-serif)" }}>
                     {sub.finalReflection}
                   </p>
@@ -996,7 +1003,7 @@ export default async function CandidateDetailPage({
               {/* Background */}
               {(sub.cvPath || sub.coverLetter || (Array.isArray(sub.projects) && (sub.projects as unknown[]).length > 0)) && (
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Background</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">Parcours</p>
                   {sub.cvPath && (
                     <div className="mb-3 space-y-2">
                       <div className="flex items-center gap-3 flex-wrap">
@@ -1005,7 +1012,7 @@ export default async function CandidateDetailPage({
                           className="inline-flex items-center gap-1.5 text-sm text-sky-700 hover:text-sky-900 underline"
                           download
                         >
-                          <Download className="h-3.5 w-3.5" /> Download CV
+                          <Download className="h-3.5 w-3.5" /> Télécharger le CV
                         </a>
                         {sub.cvText && (
                           <span className="text-xs text-slate-400">
@@ -1015,14 +1022,14 @@ export default async function CandidateDetailPage({
                         )}
                         {sub.cvExtractError && !sub.cvText && (
                           <span className="text-xs text-amber-700">
-                            Extraction failed: {sub.cvExtractError}
+                            Échec de l’extraction : {sub.cvExtractError}
                           </span>
                         )}
                       </div>
                       {sub.cvText && (
                         <details className="group">
                           <summary className="text-xs text-slate-500 cursor-pointer select-none hover:text-slate-700">
-                            Show extracted CV text
+                            Afficher le texte extrait du CV
                           </summary>
                           <pre className="mt-2 whitespace-pre-wrap break-words text-[13px] text-slate-700 leading-relaxed bg-slate-50 rounded border border-slate-200 px-4 py-3 max-h-96 overflow-y-auto" style={{ fontFamily: "var(--font-serif)" }}>
                             {sub.cvText}
@@ -1033,7 +1040,7 @@ export default async function CandidateDetailPage({
                   )}
                   {sub.coverLetter && (
                     <div className="mb-3">
-                      <p className="text-xs font-medium text-slate-500 mb-1.5">Cover letter</p>
+                      <p className="text-xs font-medium text-slate-500 mb-1.5">Lettre de motivation</p>
                       <p className="whitespace-pre-wrap text-sm text-slate-700 leading-relaxed bg-slate-50 rounded border border-slate-200 px-4 py-3" style={{ fontFamily: "var(--font-serif)" }}>
                         {sub.coverLetter}
                       </p>
@@ -1041,7 +1048,7 @@ export default async function CandidateDetailPage({
                   )}
                   {Array.isArray(sub.projects) && (sub.projects as unknown[]).length > 0 && (
                     <div>
-                      <p className="text-xs font-medium text-slate-500 mb-2">Projects</p>
+                      <p className="text-xs font-medium text-slate-500 mb-2">Projets</p>
                       <div className="space-y-2">
                         {(sub.projects as Array<{ title: string; url: string; description: string }>).map((p, i) => (
                           <div key={i} className="rounded-lg border border-slate-200 bg-white px-4 py-3">
@@ -1066,9 +1073,9 @@ export default async function CandidateDetailPage({
               TIER 5 — SCORING DETAIL / AUDIT
           ════════════════════════════════════════════════════════════════════ */}
           {hasAnyScoredOrFailed && (
-            <TierSection storageKey="tier-5" title="Scoring detail — for auditing">
+            <TierSection storageKey="tier-5" title="Détail de l’évaluation (audit)">
               <div className="space-y-4">
-                <p className="text-xs text-slate-400 italic">Raw pipeline output — for troubleshooting and transparency. Not a primary review surface.</p>
+                <p className="text-xs text-slate-400 italic">Sortie brute du pipeline, pour le diagnostic et la transparence. Ce n’est pas la surface de consultation principale.</p>
                 {starItems.map((item) => {
                   const score = itemScoreMap.get(item.itemId);
                   if (!score) return null;
@@ -1078,8 +1085,8 @@ export default async function CandidateDetailPage({
                       <div className="flex items-center justify-between mb-2">
                         <p className="text-xs font-mono font-semibold text-slate-700">{item.itemId}</p>
                         <div className="flex items-center gap-2 text-[10px] text-slate-400">
-                          {score.modelUsed && <span>model: {score.modelUsed}</span>}
-                          {score.rubricVersion && <span>rubric: {score.rubricVersion}</span>}
+                          {score.modelUsed && <span>modèle : {score.modelUsed}</span>}
+                          {score.rubricVersion && <span>grille : {score.rubricVersion}</span>}
                           {score.scoredAt && <span>{formatDateTime(score.scoredAt)}</span>}
                         </div>
                       </div>
@@ -1101,14 +1108,14 @@ export default async function CandidateDetailPage({
                                 <span className="text-slate-500">{name}:</span>{" "}
                                 <span className="text-slate-800">{data.value}</span>
                                 {data.justification && (
-                                  <span className="text-slate-400 font-sans"> — {data.justification}</span>
+                                  <span className="text-slate-400 font-sans">· {data.justification}</span>
                                 )}
                               </li>
                             ))}
                           </ul>
                         </div>
                       ) : (
-                        <p className="text-xs text-slate-400 italic">No features extracted.</p>
+                        <p className="text-xs text-slate-400 italic">Aucun critère extrait.</p>
                       )}
                     </div>
                   );
@@ -1132,7 +1139,7 @@ export default async function CandidateDetailPage({
       <div className="fixed bottom-0 left-72 right-0 z-10 bg-white/90 backdrop-blur-sm border-t border-slate-100 px-6 py-2">
         <div className="flex items-center justify-between gap-4 max-w-[840px] mx-auto">
           <p className="text-[11px] text-slate-400 italic">
-            This report is a structured summary of a short assessment. It is not a psychological evaluation. Use alongside, not in place of, interviews and work samples.
+            Ce rapport est une synthèse structurée d’une évaluation courte. Il ne s’agit pas d’un bilan psychologique. À utiliser en complément des entretiens et des échantillons de travail, jamais à leur place.
           </p>
           <div className="flex items-center gap-2">
             {candidate.name !== "[Erased]" && (
@@ -1142,7 +1149,7 @@ export default async function CandidateDetailPage({
                 download
               >
                 <Download className="h-3 w-3" />
-                Export data
+                Exporter les données
               </a>
             )}
             {candidate.name !== "[Erased]" && (
@@ -1165,13 +1172,13 @@ function EngagementStat({ label, value }: { label: string; value: string }) {
 }
 
 const EVENT_LABELS: Record<string, string> = {
-  link_clicked: "Link clicked",
-  session_started: "Session started",
-  stage_viewed: "Stage viewed",
-  stage_completed: "Stage completed",
-  application_submitted: "Application submitted",
-  save_and_exit: "Save & exit",
-  cv_uploaded: "CV uploaded",
+  link_clicked: "Lien cliqué",
+  session_started: "Session démarrée",
+  stage_viewed: "Étape consultée",
+  stage_completed: "Étape terminée",
+  application_submitted: "Candidature envoyée",
+  save_and_exit: "Enregistrer et quitter",
+  cv_uploaded: "CV déposé",
 };
 
 function formatEventType(eventType: string): string {

@@ -28,10 +28,10 @@ type Props = {
 };
 
 const RECOMMENDATION_LABEL: Record<ReviewRecommendation, string> = {
-  STRONG_YES: "Strong yes",
-  YES: "Yes",
-  LEAN_NO: "Lean no",
-  NO: "No",
+  STRONG_YES: "Oui franc",
+  YES: "Oui",
+  LEAN_NO: "Non mesuré",
+  NO: "Non",
 };
 
 const RECOMMENDATION_BADGE: Record<ReviewRecommendation, string> = {
@@ -48,9 +48,9 @@ const STATUS_BADGE: Record<ReviewStatus, string> = {
 };
 
 const STATUS_LABEL: Record<ReviewStatus, string> = {
-  PENDING: "Pending",
-  SUBMITTED: "Submitted",
-  WITHDRAWN: "Withdrawn",
+  PENDING: "En attente",
+  SUBMITTED: "Rendue",
+  WITHDRAWN: "Retirée",
 };
 
 const fmt = new Intl.DateTimeFormat(LOCALE, { dateStyle: "medium", timeZone: TIME_ZONE });
@@ -77,11 +77,11 @@ export function ReviewerPanel({
     <div className="rounded-lg border border-slate-200 bg-white">
       <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
         <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-          Reviewers
+          Évaluateurs
         </span>
         <span className="text-[11px] text-slate-400">
           {activeReviews.length}{" "}
-          {activeReviews.length === 1 ? "assignment" : "assignments"}
+          {activeReviews.length === 1 ? "attribution" : "attributions"}
         </span>
       </div>
 
@@ -98,14 +98,14 @@ export function ReviewerPanel({
           <span className="uppercase tracking-wider text-[10px] mr-2 opacity-75">Consensus</span>
           {consensus.headline}
           {consensus.leaning === "split" && (
-            <span className="ml-2 text-[11px] opacity-75">(split)</span>
+            <span className="ml-2 text-[11px] opacity-75">(partagé)</span>
           )}
         </div>
       )}
 
       <div className="px-5 py-4 space-y-4">
         {activeReviews.length === 0 ? (
-          <p className="text-sm text-slate-500 italic">No reviewers assigned yet.</p>
+          <p className="text-sm text-slate-500 italic">Aucun évaluateur attribué pour l’instant.</p>
         ) : (
           <ul className="space-y-3">
             {activeReviews.map((r) => (
@@ -130,7 +130,7 @@ export function ReviewerPanel({
           >
             <input type="hidden" name="candidateId" value={candidateId} />
             <label className="text-xs text-slate-500" htmlFor="reviewerEmail">
-              Assign to
+              Attribuer à
             </label>
             <select
               id="reviewerEmail"
@@ -140,7 +140,7 @@ export function ReviewerPanel({
               className="rounded-md border border-slate-200 bg-white px-2 py-1.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="" disabled>
-                Choose reviewer…
+                Choisir un évaluateur…
               </option>
               {assignableReviewers.map((email) => (
                 <option key={email} value={email}>
@@ -149,7 +149,7 @@ export function ReviewerPanel({
               ))}
             </select>
             <Button type="submit" size="sm">
-              Assign
+              Attribuer
             </Button>
           </form>
         )}
@@ -157,7 +157,7 @@ export function ReviewerPanel({
         {withdrawn.length > 0 && (
           <details className="pt-3 border-t border-slate-100">
             <summary className="text-xs text-slate-400 cursor-pointer select-none hover:text-slate-600">
-              {withdrawn.length} withdrawn
+              {withdrawn.length} retirée{withdrawn.length > 1 ? "s" : ""}
             </summary>
             <ul className="mt-2 space-y-1 text-xs text-slate-400">
               {withdrawn.map((r) => (
@@ -191,7 +191,7 @@ function ReviewerRow({
             {review.reviewerEmail}
             {isMe && (
               <span className="ml-1.5 text-[10px] font-semibold text-blue-600 uppercase tracking-wider">
-                you
+                vous
               </span>
             )}
           </span>
@@ -210,8 +210,8 @@ function ReviewerRow({
         </div>
         <span className="text-[11px] text-slate-400 shrink-0">
           {review.submittedAt
-            ? `Submitted ${fmt.format(review.submittedAt)}`
-            : `Assigned ${fmt.format(review.assignedAt)}`}
+            ? `Rendue le ${fmt.format(review.submittedAt)}`
+            : `Attribuée le ${fmt.format(review.assignedAt)}`}
         </span>
       </div>
 
@@ -232,7 +232,7 @@ function ReviewerRow({
             type="submit"
             className="text-[11px] text-slate-400 hover:text-rose-600 underline decoration-dotted"
           >
-            Withdraw assignment
+            Retirer l’attribution
           </button>
         </form>
       )}
@@ -242,10 +242,10 @@ function ReviewerRow({
 
 function DecisionForm({ reviewId }: { reviewId: string }) {
   const options: Array<{ value: ReviewRecommendation; label: string }> = [
-    { value: "STRONG_YES", label: "Strong yes" },
-    { value: "YES", label: "Yes" },
-    { value: "LEAN_NO", label: "Lean no" },
-    { value: "NO", label: "No" },
+    { value: "STRONG_YES", label: "Oui franc" },
+    { value: "YES", label: "Oui" },
+    { value: "LEAN_NO", label: "Non mesuré" },
+    { value: "NO", label: "Non" },
   ];
 
   return (
@@ -271,11 +271,11 @@ function DecisionForm({ reviewId }: { reviewId: string }) {
       <textarea
         name="notes"
         rows={3}
-        placeholder="Notes (optional). What stood out, concerns, follow-up questions"
+        placeholder="Notes (facultatives). Ce qui vous a marqué, points de vigilance, questions de relance"
         className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <Button type="submit" size="sm">
-        Submit decision
+        Rendre votre décision
       </Button>
     </form>
   );

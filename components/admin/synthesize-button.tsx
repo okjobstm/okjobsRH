@@ -17,12 +17,12 @@ export function SynthesizeButton({ candidateId, hasExisting }: { candidateId: st
       const res = await fetch(`/api/admin/synthesize/${candidateId}`, { method: "POST" });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setError((data as { error?: string }).error ?? "Synthesis failed");
+        setError((data as { error?: string }).error ?? "Échec de la synthèse");
         return;
       }
       router.refresh();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Network error");
+      setError(e instanceof Error ? e.message : "Erreur réseau");
     } finally {
       setLoading(false);
     }
@@ -36,7 +36,7 @@ export function SynthesizeButton({ candidateId, hasExisting }: { candidateId: st
         ) : (
           <Sparkles className="h-3.5 w-3.5 mr-1.5" />
         )}
-        {loading ? "Analysing…" : hasExisting ? "Re-analyse" : "Analyse candidate"}
+        {loading ? "Analyse…" : hasExisting ? "Réanalyser" : "Analyser le candidat"}
       </Button>
       {error && <p className="text-xs text-red-600">{error}</p>}
     </div>

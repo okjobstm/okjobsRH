@@ -30,12 +30,12 @@ export function CopyLinkButton({ url, inviteId, jobId }: CopyLinkButtonProps) {
       {copied ? (
         <>
           <Check className="h-3.5 w-3.5 text-emerald-600" />
-          <span className="text-emerald-600">Copied</span>
+          <span className="text-emerald-600">Copié</span>
         </>
       ) : (
         <>
           <Copy className="h-3.5 w-3.5" />
-          Copy Link
+          Copier le lien
         </>
       )}
     </Button>

@@ -22,12 +22,12 @@ export function CopyButton({ text, label, className = "" }: Props) {
     <button
       onClick={handleCopy}
       className={`inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-slate-600 transition-colors ${className}`}
-      title={label ?? "Copy to clipboard"}
+      title={label ?? "Copier dans le presse-papiers"}
     >
       {copied ? (
         <>
           <Check className="h-3 w-3 text-emerald-500" />
-          <span className="text-emerald-500">Copied</span>
+          <span className="text-emerald-500">Copié</span>
         </>
       ) : (
         <>

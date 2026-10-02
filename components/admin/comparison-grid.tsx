@@ -10,11 +10,11 @@ type CandidateRow = {
 };
 
 const DIMENSIONS = [
-  { key: "conscientiousness", short: "C" },
-  { key: "honesty_humility", short: "H/H" },
-  { key: "composure", short: "Comp" },
-  { key: "learning", short: "Learn" },
-  { key: "interpersonal", short: "Interpersonal" },
+  { key: "conscientiousness", short: "Consci." },
+  { key: "honesty_humility", short: "Honnêt./Hum." },
+  { key: "composure", short: "Sang-froid" },
+  { key: "learning", short: "Appr." },
+  { key: "interpersonal", short: "Interpers." },
 ];
 
 const ROLE_FIT_BG: Record<RoleFitBand, string> = {
@@ -36,17 +36,17 @@ const BAND_COLOR: Record<DimensionBand, string> = {
 };
 
 const BAND_SHORT: Record<DimensionBand, string> = {
-  unusually_strong: "Strong+",
-  strong_positive: "Strong",
-  moderate_positive: "Moderate",
-  mixed: "Mixed",
-  limited_signal: "Limited",
-  insufficient_signal: "Insufficient",
-  concern: "Concern",
+  unusually_strong: "Exceptionnel",
+  strong_positive: "Fort",
+  moderate_positive: "Modéré",
+  mixed: "Mitigé",
+  limited_signal: "Limité",
+  insufficient_signal: "Insuffisant",
+  concern: "Vigilance",
 };
 
 function DimDot({ band }: { band: DimensionBand | undefined }) {
-  if (!band) return <div className="w-2.5 h-2.5 rounded-full bg-slate-100" title="No data" />;
+  if (!band) return <div className="w-2.5 h-2.5 rounded-full bg-slate-100" title="Aucune donnée" />;
   return (
     <div
       className={`w-2.5 h-2.5 rounded-full ${BAND_COLOR[band]}`}
@@ -62,7 +62,7 @@ export function ComparisonGrid({ candidates }: { candidates: CandidateRow[] }) {
   if (candidates.length === 0) {
     return (
       <div className="px-6 py-8 text-sm text-slate-400 text-center">
-        No submitted candidates to compare.
+        Aucun candidat ayant répondu à comparer.
       </div>
     );
   }
@@ -71,7 +71,7 @@ export function ComparisonGrid({ candidates }: { candidates: CandidateRow[] }) {
     <div className="px-6 py-4 space-y-4">
       {/* Legend */}
       <div className="flex items-center gap-3 flex-wrap text-[11px] text-slate-500">
-        <span className="font-semibold uppercase tracking-wider">Dimension key:</span>
+        <span className="font-semibold uppercase tracking-wider">Dimensions :</span>
         {DIMENSIONS.map((d) => (
           <span key={d.key}>{d.short}</span>
         ))}
@@ -87,17 +87,17 @@ export function ComparisonGrid({ candidates }: { candidates: CandidateRow[] }) {
 
       {/* Header row */}
       <div className="hidden sm:grid grid-cols-[1fr_140px_120px_auto] gap-4 px-4 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-        <span>Candidate</span>
-        <span>Role-fit</span>
+        <span>Candidat</span>
+        <span>Adéquation poste</span>
         <span>Dimensions</span>
-        <span>Flags</span>
+        <span>Signaux</span>
       </div>
 
       {/* Analysed candidates */}
       <div className="divide-y divide-slate-100 rounded-lg border border-slate-200 overflow-hidden">
         {analysed.length === 0 && (
           <div className="px-4 py-6 text-sm text-slate-400 text-center">
-            No candidates have been analysed yet. Open each candidate and run Analysis.
+            Aucun candidat n’a encore été analysé. Ouvrez chaque candidature et lancez l’analyse.
           </div>
         )}
         {analysed.map((c) => {
@@ -125,12 +125,12 @@ export function ComparisonGrid({ candidates }: { candidates: CandidateRow[] }) {
               <div className="flex items-center gap-1.5 text-xs shrink-0">
                 {highFlags > 0 && (
                   <span className="rounded-full bg-rose-100 text-rose-700 px-1.5 py-0.5 font-semibold">
-                    {highFlags} high
+                    {highFlags} élevé{highFlags > 1 ? "s" : ""}
                   </span>
                 )}
                 {medFlags > 0 && (
                   <span className="rounded-full bg-amber-100 text-amber-700 px-1.5 py-0.5 font-semibold">
-                    {medFlags} med
+                    {medFlags} moyen{medFlags > 1 ? "s" : ""}
                   </span>
                 )}
                 {highFlags === 0 && medFlags === 0 && (
@@ -153,7 +153,7 @@ export function ComparisonGrid({ candidates }: { candidates: CandidateRow[] }) {
               <p className="text-xs text-slate-400 truncate">{c.email}</p>
             </div>
             <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-400 shrink-0">
-              Not analysed
+              Non analysé
             </span>
             <div className="flex items-center gap-1.5">
               {DIMENSIONS.map((d) => (

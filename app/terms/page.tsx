@@ -11,7 +11,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-slate-50">
       <main className="mx-auto max-w-3xl px-6 py-16 prose prose-slate">
         <p className="text-xs uppercase tracking-wide text-slate-400 mb-2">
-          Dernière mise à jour : 2026-04-30
+          Dernière mise à jour : 2026-04-30
         </p>
         <h1>Conditions d’utilisation</h1>
 

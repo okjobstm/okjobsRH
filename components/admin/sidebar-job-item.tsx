@@ -13,6 +13,8 @@ import {
 import { useToast } from "@/components/ui/toast";
 import { useConfirm } from "@/components/ui/confirm-dialog";
 import { setJobStatusAction, deleteJobAction } from "@/actions/jobs";
+import { JOB_STATUS_LABEL } from "@/lib/format";
+import type { JobStatus } from "@prisma/client";
 
 export type SidebarJob = {
   id: string;
@@ -34,7 +36,7 @@ export function SidebarJobItem({ job }: { job: SidebarJob }) {
   function archive() {
     startTransition(async () => {
       await setJobStatusAction(job.id, "ARCHIVED");
-      toast.success("Role archived", job.title);
+      toast.success("Poste archivé", job.title);
       router.refresh();
     });
   }
@@ -42,24 +44,24 @@ export function SidebarJobItem({ job }: { job: SidebarJob }) {
   function unarchive() {
     startTransition(async () => {
       await setJobStatusAction(job.id, "OPEN");
-      toast.success("Role restored", job.title);
+      toast.success("Poste restauré", job.title);
       router.refresh();
     });
   }
 
   async function tryDelete() {
     const ok = await confirmDialog.ask({
-      title: `Delete "${job.title}"?`,
+      title: `Supprimer « ${job.title} » ?`,
       description:
-        "This permanently removes the role and every candidate, invite, and submission attached to it. There is no undo.",
-      confirmLabel: "Delete forever",
+        "Cette action supprime définitivement le poste ainsi que tous les candidats, invitations et candidatures qui lui sont rattachés. Elle est irréversible.",
+      confirmLabel: "Supprimer définitivement",
       kind: "danger",
       typeToConfirm: job.title,
     });
     if (!ok) return;
     startTransition(async () => {
       await deleteJobAction(job.id);
-      toast.success("Role deleted", job.title);
+      toast.success("Poste supprimé", job.title);
       router.push("/admin");
       router.refresh();
     });
@@ -82,35 +84,35 @@ export function SidebarJobItem({ job }: { job: SidebarJob }) {
               {job.candidateCount > 0 && (
                 <span className="text-[10px] text-slate-400">
                   {job.candidateCount}{" "}
-                  {job.candidateCount === 1 ? "candidate" : "candidates"}
+                  {job.candidateCount === 1 ? "candidat" : "candidats"}
                 </span>
               )}
             </div>
             <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
-              {job.status}
+              {JOB_STATUS_LABEL[job.status as JobStatus] ?? job.status}
             </span>
           </Link>
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuItem onSelect={() => router.push(`/admin/jobs/${job.id}`)}>
-            Open
+            Ouvrir
           </ContextMenuItem>
           <ContextMenuItem
             onSelect={() => window.open(`/admin/jobs/${job.id}`, "_blank", "noopener")}
           >
-            Open in new tab
+            Ouvrir dans un nouvel onglet
           </ContextMenuItem>
           <ContextMenuSeparator />
           {isArchived ? (
             <>
-              <ContextMenuItem onSelect={unarchive}>Restore from archive</ContextMenuItem>
+              <ContextMenuItem onSelect={unarchive}>Restaurer depuis les archives</ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem danger onSelect={tryDelete}>
-                Delete forever…
+                Supprimer définitivement…
               </ContextMenuItem>
             </>
           ) : (
-            <ContextMenuItem onSelect={archive}>Archive role</ContextMenuItem>
+            <ContextMenuItem onSelect={archive}>Archiver le poste</ContextMenuItem>
           )}
         </ContextMenuContent>
       </ContextMenu>

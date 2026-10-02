@@ -4,6 +4,12 @@ Each entry is one line per shipped commit on `main`. Newest at the top.
 Append a line whenever you commit something user-visible or operationally meaningful.
 Skip purely internal cleanups (formatting, comment fixes) unless they affect behavior.
 
+## 2026-10-02
+
+- FR: interface admin entièrement en français (tableau de bord, statistiques, évaluations, paramètres, détail candidat, aide, fichiers de poste). Les clés machine restent en anglais : valeurs `RoleFitBand` et `DimensionBand`, enums Prisma, clés des maps de classes CSS. Libellés français ajoutés au seul point de rendu (`ROLE_FIT_LABEL`, `JOB_STATUS_LABEL`, `INVITE_STATUS_LABEL`, `formatStage`, `ENGAGEMENT_BAND_LABEL`). Avertissement « scores non calibrés » ajouté au détail candidat.
+- FR: parcours de candidature (étapes 1 à 6, libellés d'étapes, compteur de mots, enregistrement automatique), pages de confirmation d'envoi et de lien expiré, candidatures groupées. Apostrophes typographiques, espaces insécables, aucun tiret cadratin.
+- FR: pages Confidentialité et Conditions d'utilisation traduites, avec bandeau « à faire relire avant mise en production ». Incohérence de durée de conservation relevée (consentement 24 mois contre 12 mois dans la politique) et signalée dans les deux pages, non tranchée.
+
 ## 2026-06-05
 
 - Ops: `scripts/deploy.sh` now fails fast if anything under `node_modules`/`.next` is not owned by the deploy user, printing the exact `chown` fix. Root-owned dirs (from a stray `npm install`/`next build` as root) make `npm ci` die with `EACCES rmdir` and had silently blocked every deploy from May 22 to Jun 5.

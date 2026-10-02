@@ -132,10 +132,10 @@ export default async function JobDetailPage({
   const needsReviewCount = job.candidates.filter((c) => c.stage === CandidateStage.COMPLETED).length;
   const candidatesSubline =
     needsReviewCount > 0
-      ? `${needsReviewCount} to review`
-      : `${job.candidates.length} candidate${job.candidates.length === 1 ? "" : "s"}`;
+      ? `${needsReviewCount} à examiner`
+      : `${job.candidates.length} candidat${job.candidates.length === 1 ? "" : "s"}`;
   const pendingInviteCount = activeInvites.length;
-  const invitesSubline = `${activeReusable ? "reusable link · " : ""}${pendingInviteCount} pending`;
+  const invitesSubline = `${activeReusable ? "lien réutilisable · " : ""}${pendingInviteCount} en attente`;
   const setupSubline = `description · ${job.roleQuestions.length} questions`;
 
   return (

@@ -6,9 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { formatDateTime } from "@/lib/format";
 
 const FILTER_GROUPS: Record<string, { label: string; actions: string[] }> = {
-  all: { label: "All", actions: [] },
+  all: { label: "Tout", actions: [] },
   invites: {
-    label: "Invites",
+    label: "Invitations",
     actions: [
       "INVITE_CREATED",
       "INVITE_LINK_COPIED",
@@ -23,7 +23,7 @@ const FILTER_GROUPS: Record<string, { label: string; actions: string[] }> = {
     ],
   },
   candidates: {
-    label: "Candidates",
+    label: "Candidats",
     actions: [
       "CANDIDATE_SHORTLISTED",
       "CANDIDATE_REJECTED",
@@ -37,11 +37,11 @@ const FILTER_GROUPS: Record<string, { label: string; actions: string[] }> = {
     ],
   },
   reviews: {
-    label: "Reviews",
+    label: "Évaluations",
     actions: ["REVIEW_ASSIGNED", "REVIEW_SUBMITTED", "REVIEW_WITHDRAWN"],
   },
   job: {
-    label: "Role config",
+    label: "Configuration du poste",
     actions: [
       "JOB_CREATED",
       "JOB_STATUS_CHANGED",
@@ -89,7 +89,7 @@ export default async function JobAuditPage({
           href={`/admin/jobs/${job.id}`}
           className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-700"
         >
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to {job.title}
+          <ArrowLeft className="h-3.5 w-3.5" /> Retour à {job.title}
         </Link>
       </div>
 
@@ -97,10 +97,10 @@ export default async function JobAuditPage({
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-base">
             <ShieldCheck className="h-4 w-4 text-slate-400" />
-            Audit log
+            Journal d’audit
           </CardTitle>
           <CardDescription>
-            All admin actions on this role. Most recent first.
+            Toutes les actions d’administration sur ce poste. Les plus récentes en premier.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -124,7 +124,7 @@ export default async function JobAuditPage({
           </div>
 
           {job.auditLogs.length === 0 ? (
-            <p className="text-sm text-slate-400">No entries.</p>
+            <p className="text-sm text-slate-400">Aucune entrée.</p>
           ) : (
             <ul className="divide-y divide-slate-100">
               {job.auditLogs.map((log) => (

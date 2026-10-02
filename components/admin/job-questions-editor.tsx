@@ -59,7 +59,7 @@ export function JobQuestionsEditor({ jobId, initialQuestions }: Props) {
     setQuestions((current) => [
       ...current,
       {
-        prompt: "New role-specific question",
+        prompt: "Nouvelle question spécifique au poste",
         wordLimit: 250,
         source: "CUSTOM",
       },
@@ -73,15 +73,15 @@ export function JobQuestionsEditor({ jobId, initialQuestions }: Props) {
           <div>
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-yfs-accent" />
-              Role-specific questions
+              Questions spécifiques au poste
             </CardTitle>
             <CardDescription>
-              Edit, add, reorder, and tune the generated question set for this job.
+              Modifiez, ajoutez, réordonnez et ajustez le jeu de questions généré pour ce poste.
             </CardDescription>
           </div>
           <Button type="button" variant="outline" size="sm" onClick={addQuestion}>
             <Plus className="h-4 w-4" />
-            Add question
+            Ajouter une question
           </Button>
         </div>
       </CardHeader>
@@ -96,7 +96,7 @@ export function JobQuestionsEditor({ jobId, initialQuestions }: Props) {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-sm font-medium text-slate-900">Question {index + 1}</p>
-                    <p className="text-xs text-slate-500">Source: {question.source}</p>
+                    <p className="text-xs text-slate-500">Source : {question.source}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <Button type="button" variant="ghost" size="icon" onClick={() => moveQuestion(index, -1)}>
@@ -112,7 +112,7 @@ export function JobQuestionsEditor({ jobId, initialQuestions }: Props) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Prompt</Label>
+                  <Label>Énoncé</Label>
                   <Textarea
                     value={question.prompt}
                     onChange={(event) => updateQuestion(index, { prompt: event.target.value })}
@@ -122,7 +122,7 @@ export function JobQuestionsEditor({ jobId, initialQuestions }: Props) {
 
                 <div className="grid gap-3 sm:grid-cols-1">
                   <div className="space-y-2">
-                    <Label>Word limit</Label>
+                    <Label>Limite de mots</Label>
                     <Input
                       type="number"
                       min={50}
@@ -153,7 +153,7 @@ function SaveButton() {
 
   return (
     <Button type="submit" disabled={pending}>
-      {pending ? "Saving questions..." : "Save questions"}
+      {pending ? "Enregistrement…" : "Enregistrer les questions"}
     </Button>
   );
 }

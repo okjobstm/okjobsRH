@@ -24,13 +24,13 @@ export function RegenerateQuestionButton({ candidateId, targetId, surface, onReg
         body: JSON.stringify({ targetId, surface }),
       });
       if (!res.ok) {
-        setError("Failed to regenerate");
+        setError("Échec de la régénération");
         return;
       }
       const data = await res.json() as { question?: string };
       if (data.question) onRegenerate(data.question);
     } catch {
-      setError("Network error");
+      setError("Erreur réseau");
     } finally {
       setLoading(false);
     }
@@ -42,10 +42,10 @@ export function RegenerateQuestionButton({ candidateId, targetId, surface, onReg
         onClick={handleClick}
         disabled={loading}
         className="text-[10px] text-slate-400 hover:text-slate-600 disabled:opacity-50 flex items-center gap-0.5 transition-colors"
-        title="Regenerate this question"
+        title="Régénérer cette question"
       >
         <RefreshCw className={`h-2.5 w-2.5 ${loading ? "animate-spin" : ""}`} />
-        {loading ? "Regenerating…" : "Regenerate"}
+        {loading ? "Régénération…" : "Régénérer"}
       </button>
       {error && <span className="text-[10px] text-red-400">{error}</span>}
     </span>

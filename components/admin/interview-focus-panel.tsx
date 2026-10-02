@@ -28,17 +28,17 @@ export function InterviewFocusPanel({ candidateId, initialTopThree, gapQuestions
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Interview focus</p>
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Points d’attention entretien</p>
         {hasAny && (
           <button
             onClick={copyAll}
             className="inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-slate-600 transition-colors"
-            title="Copy all questions"
+            title="Copier toutes les questions"
           >
             {copied ? (
-              <><Check className="h-3 w-3 text-emerald-500" /><span className="text-emerald-500">Copied</span></>
+              <><Check className="h-3 w-3 text-emerald-500" /><span className="text-emerald-500">Copié</span></>
             ) : (
-              <><Copy className="h-3 w-3" /><span>Copy all</span></>
+              <><Copy className="h-3 w-3" /><span>Tout copier</span></>
             )}
           </button>
         )}
@@ -59,7 +59,7 @@ export function InterviewFocusPanel({ candidateId, initialTopThree, gapQuestions
                 onClick={() => { setRegenerating(i); setTimeout(() => setRegenerating(null), 1200); }}
                 disabled={regenerating === i}
                 className="shrink-0 text-slate-300 hover:text-slate-500 transition-colors mt-0.5 disabled:opacity-40"
-                title="Re-analyse candidate to regenerate this question"
+                title="Réanalyser le candidat pour régénérer cette question"
               >
                 <RefreshCw className={`h-3.5 w-3.5 ${regenerating === i ? "animate-spin" : ""}`} />
               </button>
@@ -72,7 +72,7 @@ export function InterviewFocusPanel({ candidateId, initialTopThree, gapQuestions
       {gapQuestions.length > 0 && (
         <>
           {flagQuestions.length > 0 && (
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 pt-1">From signal gaps</p>
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 pt-1">Relances sur les signaux manquants</p>
           )}
           <ol className="space-y-3" start={flagQuestions.length + 1}>
             {gapQuestions.map((q, i) => (
@@ -93,10 +93,10 @@ export function InterviewFocusPanel({ candidateId, initialTopThree, gapQuestions
       {!hasAny && (
         hasNoFlags ? (
           <p className="text-xs text-slate-500 leading-relaxed">
-            No pattern flags. Use standard competency probes and reference checks. Re-analyse to generate dimension-specific gap questions if needed.
+            Aucun signal détecté. Utilisez les relances de compétences habituelles et les vérifications de références. Réanalysez le candidat pour générer des questions ciblées sur les dimensions manquantes, si nécessaire.
           </p>
         ) : (
-          <p className="text-xs text-slate-400 italic">Re-analyse to generate candidate-specific interview probes.</p>
+          <p className="text-xs text-slate-400 italic">Réanalysez le candidat pour générer des relances d’entretien spécifiques.</p>
         )
       )}
     </div>

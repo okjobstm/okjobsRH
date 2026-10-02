@@ -32,60 +32,61 @@ export function JobMenu({
   }
 
   const items: MenuItem[] = [
-    { type: "label", label: `${jobTitle.toUpperCase()} ROLE` },
+    { type: "label", label: `${jobTitle.toUpperCase()} · POSTE` },
     {
-      label: "Edit description",
+      label: "Modifier la description",
       onSelect: () => router.push(`/admin/jobs/${jobId}?tab=setup`),
     },
     {
-      label: "View audit log",
+      label: "Voir le journal d’audit",
       onSelect: () => router.push(`/admin/jobs/${jobId}/audit`),
     },
     { type: "separator" },
     {
-      label: "Copy public invite link",
+      label: "Copier le lien d’invitation public",
       kbd: "⌘L",
       disabled: !hasReusableLink || !reusableLinkUrl,
       onSelect: () => {
         if (!reusableLinkUrl) return;
         navigator.clipboard
           .writeText(reusableLinkUrl)
-          .then(() => toast.success("Public link copied"))
-          .catch(() => toast.error("Couldn't copy"));
+          .then(() => toast.success("Lien public copié"))
+          .catch(() => toast.error("Copie impossible"));
       },
     },
     { type: "separator" },
     {
-      label: "Close to new applicants",
-      onSelect: () => setStatus("CLOSED", "Closed to applicants"),
+      label: "Clôturer aux nouveaux candidats",
+      onSelect: () => setStatus("CLOSED", "Clôturé aux candidats"),
     },
     {
-      label: "Archive role",
+      label: "Archiver le poste",
       onSelect: async () => {
         const ok = await confirmDialog.ask({
-          title: `Archive "${jobTitle}"?`,
-          description: "It will be hidden from the dashboard but all data is preserved. You can restore it later.",
-          confirmLabel: "Archive",
+          title: `Archiver « ${jobTitle} » ?`,
+          description:
+            "Il sera masqué sur le tableau de bord, mais toutes les données sont conservées. Vous pourrez le restaurer plus tard.",
+          confirmLabel: "Archiver",
         });
-        if (ok) setStatus("ARCHIVED", "Role archived");
+        if (ok) setStatus("ARCHIVED", "Poste archivé");
       },
     },
     {
-      label: "Delete role…",
+      label: "Supprimer le poste…",
       danger: true,
       onSelect: async () => {
         const ok = await confirmDialog.ask({
-          title: `Delete "${jobTitle}"?`,
+          title: `Supprimer « ${jobTitle} » ?`,
           description:
-            "This permanently removes the role and every candidate, invite, and submission attached to it. There is no undo.",
-          confirmLabel: "Delete forever",
+            "Cette action supprime définitivement le poste ainsi que tous les candidats, invitations et candidatures qui y sont rattachés. Action irréversible.",
+          confirmLabel: "Supprimer définitivement",
           kind: "danger",
           typeToConfirm: jobTitle,
         });
         if (!ok) return;
         startTransition(async () => {
           await deleteJobAction(jobId);
-          toast.success("Role deleted", jobTitle);
+          toast.success("Poste supprimé", jobTitle);
           router.push("/admin");
         });
       },
@@ -94,7 +95,7 @@ export function JobMenu({
 
   return (
     <>
-      <BorderedOverflowMenu items={items} label="Job options" />
+      <BorderedOverflowMenu items={items} label="Options du poste" />
       {confirmDialog.dialog}
     </>
   );

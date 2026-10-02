@@ -13,13 +13,14 @@ export default function NewJobPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-slate-900">Create a new job</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Créer un poste</h2>
           <p className="text-sm text-slate-500 mt-0.5">
-            Paste the JD, set the role basics, and generate an editable question pack.
+            Collez la description du poste, renseignez les informations clés et générez un
+            jeu de questions modifiable.
           </p>
         </div>
         <Button asChild variant="outline" size="sm">
-          <Link href="/admin">← Back</Link>
+          <Link href="/admin">← Retour</Link>
         </Button>
       </div>
 
@@ -28,70 +29,72 @@ export default function NewJobPage() {
           <form action={createJobAction} className="space-y-5">
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="title">Job title</Label>
-                <Input id="title" name="title" placeholder="Founding Programme Manager" required />
+                <Label htmlFor="title">Intitulé du poste</Label>
+                <Input id="title" name="title" placeholder="Responsable de programme fondateur" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="status">Status</Label>
+                <Label htmlFor="status">Statut</Label>
                 <select
                   id="status"
                   name="status"
                   className="flex h-9 w-full rounded-md border border-slate-200 bg-white px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yfs-accent"
                   defaultValue={JobStatus.DRAFT}
                 >
-                  <option value={JobStatus.DRAFT}>Draft</option>
-                  <option value={JobStatus.OPEN}>Open</option>
-                  <option value={JobStatus.CLOSED}>Closed</option>
+                  <option value={JobStatus.DRAFT}>Brouillon</option>
+                  <option value={JobStatus.OPEN}>Ouvert</option>
+                  <option value={JobStatus.CLOSED}>Clôturé</option>
                 </select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="department">Department</Label>
+                <Label htmlFor="department">Département</Label>
                 <Input id="department" name="department" placeholder="Programmes" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="location">Location</Label>
-                <Input id="location" name="location" placeholder="Singapore / Remote" />
+                <Label htmlFor="location">Localisation</Label>
+                <Input id="location" name="location" placeholder="Singapour / Télétravail" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="employmentType">Employment type</Label>
-                <Input id="employmentType" name="employmentType" placeholder="Full-time" />
+                <Label htmlFor="employmentType">Type de contrat</Label>
+                <Input id="employmentType" name="employmentType" placeholder="Temps plein" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="descriptionFileName">JD PDF filename reference</Label>
+                <Label htmlFor="descriptionFileName">Référence du nom de fichier du PDF</Label>
                 <Input id="descriptionFileName" name="descriptionFileName" placeholder="programme-manager.pdf" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="descriptionText">Job description</Label>
+              <Label htmlFor="descriptionText">Description du poste</Label>
               <Textarea
                 id="descriptionText"
                 name="descriptionText"
                 rows={10}
-                placeholder="Paste the full job description here. The generated role questions will use this text."
+                placeholder="Collez ici la description complète du poste. Les questions générées s’appuieront sur ce texte."
                 required
               />
               <p className="text-xs text-slate-500 flex items-center gap-1.5">
                 <Files className="h-3.5 w-3.5" />
-                PDF upload parsing comes next. For now, paste the extracted JD text and keep the filename as a reference.
+                L’analyse des PDF arrive bientôt. Pour l’instant, collez le texte extrait de
+                la description et conservez le nom de fichier comme référence.
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="customQuestionPrompt">Optional prompt tweak</Label>
+              <Label htmlFor="customQuestionPrompt">Consigne de génération (facultatif)</Label>
               <Textarea
                 id="customQuestionPrompt"
                 name="customQuestionPrompt"
                 rows={2}
-                placeholder="Add a role-specific angle, for example: prioritise community building, programme delivery, and stakeholder management."
+                placeholder="Ajoutez un angle propre au poste, par exemple : prioriser l’animation de la communauté, la conduite de programmes et la relation avec les parties prenantes."
               />
             </div>
 
             <div className="flex items-center justify-between gap-4 border-t border-slate-200 pt-5">
               <p className="text-sm text-slate-500 max-w-xl">
-                Creating the job also generates a first pass of 10 role-specific questions, ready for editing on the job page.
+                La création du poste génère également une première série de 10 questions
+                spécifiques au poste, modifiables depuis la page du poste.
               </p>
-              <Button type="submit">Create job</Button>
+              <Button type="submit">Créer le poste</Button>
             </div>
           </form>
         </CardContent>

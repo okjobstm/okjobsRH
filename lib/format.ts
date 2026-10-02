@@ -1,5 +1,6 @@
 import { LOCALE, TIME_ZONE } from "@/lib/site-config";
 import type { RoleFitBand } from "@/lib/scoring/synthesis";
+import type { InviteStatus, JobStatus } from "@prisma/client";
 
 type Dateish = Date | string | number | null | undefined;
 
@@ -43,4 +44,19 @@ export const ROLE_FIT_LABEL: Record<RoleFitBand, string> = {
   "Mixed fit": "Adéquation moyenne",
   "Weak fit": "Adéquation faible",
   "Likely mis-fit": "Inadéquation probable",
+};
+
+// Prisma enums are compared as raw keys elsewhere (job.status === "OPEN"), so
+// only the rendered label is French.
+export const JOB_STATUS_LABEL: Record<JobStatus, string> = {
+  DRAFT: "Brouillon",
+  OPEN: "Ouvert",
+  CLOSED: "Clôturé",
+  ARCHIVED: "Archivé",
+};
+
+export const INVITE_STATUS_LABEL: Record<InviteStatus, string> = {
+  ACTIVE: "Actif",
+  EXPIRED: "Expiré",
+  REVOKED: "Révoqué",
 };

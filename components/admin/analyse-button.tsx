@@ -31,7 +31,7 @@ export function AnalyseButton({ candidateId, hasExisting }: Props) {
       const scoreRes = await fetch(`/api/admin/score/${candidateId}`, { method: "POST" });
       if (!scoreRes.ok) {
         const body = (await scoreRes.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error ?? `Scoring failed (${scoreRes.status})`);
+        throw new Error(body.error ?? `Échec de l’évaluation (${scoreRes.status})`);
       }
       const scoreData = (await scoreRes.json()) as {
         scored: number;
@@ -40,7 +40,7 @@ export function AnalyseButton({ candidateId, hasExisting }: Props) {
       };
       if (scoreData.failed > 0) {
         throw new Error(
-          `${scoreData.failed} item(s) failed to score. Check ANTHROPIC_API_KEY or credits.`
+          `${scoreData.failed} élément(s) non évalué(s). Vérifiez ANTHROPIC_API_KEY ou les crédits.`
         );
       }
 
@@ -49,12 +49,12 @@ export function AnalyseButton({ candidateId, hasExisting }: Props) {
       const synthRes = await fetch(`/api/admin/synthesize/${candidateId}`, { method: "POST" });
       if (!synthRes.ok) {
         const body = (await synthRes.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error ?? `Synthesis failed (${synthRes.status})`);
+        throw new Error(body.error ?? `Échec de la synthèse (${synthRes.status})`);
       }
 
       router.refresh();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Analysis failed");
+      setError(e instanceof Error ? e.message : "Échec de l’analyse");
     } finally {
       setLoading(false);
       setStep(null);
@@ -63,11 +63,11 @@ export function AnalyseButton({ candidateId, hasExisting }: Props) {
 
   const label = loading
     ? step === "scoring"
-      ? "Scoring…"
-      : "Analysing…"
+      ? "Évaluation…"
+      : "Analyse…"
     : hasExisting
-      ? "Re-analyse"
-      : "Analyse candidate";
+      ? "Réanalyser"
+      : "Analyser le candidat";
 
   const Icon = loading ? Loader2 : hasExisting ? RefreshCw : Sparkles;
 
