@@ -36,6 +36,14 @@ export default async function SettingsPage() {
         </p>
       </div>
 
+      <p className="text-xs text-amber-700">
+        Un prompt modifié ne s’applique qu’aux candidats évalués après
+        l’enregistrement. Les scores déjà calculés ne sont pas recalculés, donc
+        les comparaisons entre une candidature ancienne et une candidature récente
+        reposent sur des consignes différentes. Chaque version du texte est
+        conservée, mais elle n’est pas affichée ici.
+      </p>
+
       {TEMPLATE_ORDER.map((key) => {
         const template = byKey.get(key);
         const meta = TEMPLATE_META[key];

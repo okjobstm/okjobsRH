@@ -244,12 +244,29 @@ model Review {
 }
 
 model PromptTemplate {
-  id        String   @id @default(cuid())
-  key       String   @unique // "star_scoring" | "followup_generation"
+  id        String           @id @default(cuid())
+  key       String           @unique // "star_scoring" | "followup_generation"
   body      String
-  version   Int      @default(1)
-  updatedAt DateTime @updatedAt
+  version   Int              @default(1)
+  updatedAt DateTime         @updatedAt
   updatedBy String?
+  revisions PromptRevision[]
+}
+
+// Append-only: one row per published version of a template body. The template
+// row keeps only the current text, so without this a saved prompt left no trace
+// of what it replaced.
+model PromptRevision {
+  id         String         @id @default(cuid())
+  templateId String
+  template   PromptTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  version    Int
+  body       String
+  createdBy  String?
+  createdAt  DateTime       @default(now())
+
+  @@unique([templateId, version])
+  @@index([templateId, createdAt])
 }
 
 model ItemScore {
@@ -260,6 +277,7 @@ model ItemScore {
   rubricVersion  String // e.g. "v1"
   modelUsed      String // e.g. "claude-sonnet-4-6"
   responseHash   String // sha256 of response text
+  promptVersion  Int? // PromptTemplate.version that produced this score, null on rows scored before prompt versioning
   scoredAt       DateTime   @default(now())
   features       Json
   bandEstimate   String
