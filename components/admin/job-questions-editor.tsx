@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useMemo, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { updateRoleQuestionsAction } from "@/actions/jobs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -25,7 +25,7 @@ const initialState = {} as { success?: string; error?: string };
 
 export function JobQuestionsEditor({ jobId, initialQuestions }: Props) {
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
-  const [state, formAction] = useFormState(updateRoleQuestionsAction, initialState);
+  const [state, formAction] = useActionState(updateRoleQuestionsAction, initialState);
 
   const questionsJson = useMemo(
     () => JSON.stringify(questions.map((question, index) => ({ ...question, sortOrder: index }))),

@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useMemo, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { updateRoleQuestionsAction } from "@/actions/jobs";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,7 +19,7 @@ export function RoleQuestionsEditor({ jobId, initialQuestions }: Props) {
   const [expandedIdxs, setExpandedIdxs] = useState<Set<number>>(
     () => new Set(initialQuestions.map((_, i) => i))
   );
-  const [state, formAction] = useFormState(updateRoleQuestionsAction, initialState);
+  const [state, formAction] = useActionState(updateRoleQuestionsAction, initialState);
 
   function toggleExpanded(i: number) {
     setExpandedIdxs((cur) => {
