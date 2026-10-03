@@ -6,8 +6,9 @@ import path from "path";
 import { randomUUID } from "crypto";
 import { extractCvText } from "@/lib/cv-extract";
 import { validateToken } from "@/lib/apply";
+import { logCandidateEvent } from "@/lib/events";
+import { UPLOADS_DIR } from "@/lib/uploads";
 
-const UPLOADS_DIR = process.env.UPLOADS_DIR ?? "/var/recruit/uploads";
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 const ALLOWED_MIME_TYPES = new Set([
   "application/pdf",
@@ -90,6 +91,8 @@ export async function POST(req: NextRequest) {
       },
       "cv uploaded and extracted"
     );
+
+    await logCandidateEvent(candidateId, tokenResult.invite.jobId, "cv_uploaded");
 
     return NextResponse.json({ path: storedPath });
   } catch (err) {

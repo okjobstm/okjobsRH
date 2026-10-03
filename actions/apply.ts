@@ -314,19 +314,3 @@ async function advanceStage(
     stage: completedStage,
   });
 }
-
-// Upload CV — called from file upload API route, updates submission directly
-export async function recordCvUpload(candidateId: string, cvPath: string) {
-  await prisma.submission.update({
-    where: { candidateId },
-    data: { cvPath },
-  });
-
-  const candidate = await prisma.candidate.findUnique({
-    where: { id: candidateId },
-    select: { jobId: true },
-  });
-  if (candidate) {
-    await logCandidateEvent(candidateId, candidate.jobId, "cv_uploaded");
-  }
-}

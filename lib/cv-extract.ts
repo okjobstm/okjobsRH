@@ -4,6 +4,7 @@ import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import { PDFParse } from "pdf-parse";
 import mammoth from "mammoth";
+import { isInsideUploads } from "./uploads.ts";
 
 // pdf-parse v2 uses pdfjs-dist's worker. Next's bundler rewrites import.meta.url
 // inside the route handler so the auto-detect can't find the worker .mjs at
@@ -37,6 +38,10 @@ export interface CvExtractionResult {
  * are stored on the submission so admins can see why text is missing.
  */
 export async function extractCvText(absolutePath: string): Promise<CvExtractionResult> {
+  if (!isInsideUploads(absolutePath)) {
+    return { text: null, error: "Refus de lire un fichier hors du répertoire de dépôt" };
+  }
+
   const ext = path.extname(absolutePath).toLowerCase();
   try {
     const buffer = await fs.readFile(absolutePath);

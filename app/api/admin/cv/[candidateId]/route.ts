@@ -3,8 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { requireAuth } from "@/lib/auth";
 import fs from "fs/promises";
 import path from "path";
-
-const UPLOADS_DIR = process.env.UPLOADS_DIR ?? "/var/recruit/uploads";
+import { resolveInsideUploads } from "@/lib/uploads";
 
 export async function GET(
   _req: NextRequest,
@@ -27,8 +26,8 @@ export async function GET(
     return NextResponse.json({ error: "Aucun CV trouvé" }, { status: 404 });
   }
 
-  const absolutePath = path.join(UPLOADS_DIR, submission.cvPath);
-  if (!absolutePath.startsWith(path.resolve(UPLOADS_DIR))) {
+  const absolutePath = resolveInsideUploads(submission.cvPath);
+  if (!absolutePath) {
     return NextResponse.json({ error: "Chemin invalide" }, { status: 400 });
   }
 

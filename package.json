@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:unit": "node --experimental-strip-types --no-warnings tests/cv-extract-normalize.test.mjs && node --experimental-strip-types --no-warnings tests/band-rules.test.mjs && node --experimental-strip-types --no-warnings tests/feature-values.test.mjs",
+    "test:unit": "node --experimental-strip-types --no-warnings tests/cv-extract-normalize.test.mjs && node --experimental-strip-types --no-warnings tests/band-rules.test.mjs && node --experimental-strip-types --no-warnings tests/feature-values.test.mjs && node --experimental-strip-types --no-warnings tests/uploads-confinement.test.mjs",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
