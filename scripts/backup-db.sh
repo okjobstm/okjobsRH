@@ -6,7 +6,7 @@
 # Rotation:
 #   - keep all dumps from the last 7 days
 #   - keep one weekly dump (Sunday) for the last 4 weeks
-#   - keep one monthly dump (1st of month) indefinitely (manual prune)
+#   - keep one monthly dump (1st of month) for the last 35 days
 
 set -euo pipefail
 
@@ -15,6 +15,7 @@ DATABASE_URL="${DATABASE_URL:-postgresql://postgres@127.0.0.1:5433/recruit}"
 LOG_FILE="${BACKUP_LOG:-/var/log/recruit-backup.log}"
 RETAIN_DAILY_DAYS=7
 RETAIN_WEEKLY_WEEKS=4
+RETAIN_MONTHLY_DAYS=35
 
 mkdir -p "$BACKUP_DIR/daily" "$BACKUP_DIR/weekly" "$BACKUP_DIR/monthly"
 touch "$LOG_FILE"
@@ -56,5 +57,8 @@ fi
 # Rotation
 find "$BACKUP_DIR/daily" -name "recruit-*.dump.gz" -mtime "+$RETAIN_DAILY_DAYS" -delete
 find "$BACKUP_DIR/weekly" -name "recruit-week-*.dump.gz" -mtime "+$((RETAIN_WEEKLY_WEEKS * 7))" -delete
+# find matches -mtime +N from N+1 full days, so the age is one lower than the
+# number of days we promise to keep. Without the -1 a dump would survive 36 days.
+find "$BACKUP_DIR/monthly" -name "recruit-month-*.dump.gz" -mtime "+$((RETAIN_MONTHLY_DAYS - 1))" -delete
 
 log "Done. Daily count: $(ls "$BACKUP_DIR/daily" 2>/dev/null | wc -l), weekly: $(ls "$BACKUP_DIR/weekly" 2>/dev/null | wc -l), monthly: $(ls "$BACKUP_DIR/monthly" 2>/dev/null | wc -l)"
