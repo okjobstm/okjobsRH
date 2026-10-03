@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="min-h-screen bg-slate-50">
       <main className="mx-auto max-w-3xl px-6 py-16 prose prose-slate">
         <p className="text-xs uppercase tracking-wide text-slate-400 mb-2">
-          Dernière mise à jour : 2026-04-30
+          Dernière mise à jour&nbsp;: 2026-10-03
         </p>
         <h1>Politique de confidentialité</h1>
 
@@ -83,18 +83,24 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
-        <h2>Durée de conservation</h2>
+        <h2>Conservation et effacement</h2>
         <p>
-          <span className="bg-amber-100 px-1">
-            [Incohérence à trancher : le formulaire de consentement (étape 1) annonce
-            24 mois, le présent paragraphe 12 mois. Alignez les deux avant mise en
-            production.]
-          </span>{" "}
-          Nous conservons les données de votre candidature pendant la durée du
-          processus de recrutement, augmentée d’une période d’archivage raisonnable
-          (généralement jusqu’à 12 mois), afin de pouvoir nous reporter sur des
-          candidatures passées. Passé ce délai, les données sont supprimées sur
-          votre demande ou lors des opérations de nettoyage régulier.
+          Les données de votre candidature (identité, CV, réponses, résultats
+          d’analyse) sont conservées 24 mois à compter de la date de votre
+          candidature, afin de permettre à l’entreprise de vous recontacter pour
+          des postes similaires, puis supprimées automatiquement.
+        </p>
+        <p>
+          Vous pouvez demander leur effacement à tout moment, soit avec le bouton{" "}
+          <strong>«&nbsp;Effacer mes données&nbsp;»</strong> de votre parcours de
+          candidature, soit en écrivant à{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, qui traitera
+          votre demande sous 14 jours.
+        </p>
+        <p>
+          Les sauvegardes techniques sont conservées 35 jours au maximum puis
+          détruites&nbsp;: des copies de vos données peuvent subsister dans ces
+          sauvegardes pendant cette durée.
         </p>
 
         <h2>Vos droits</h2>

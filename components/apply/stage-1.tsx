@@ -38,15 +38,10 @@ export function Stage1({
       <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 space-y-4 text-sm text-slate-600">
         <h2 className="font-semibold text-slate-900">Mention relative à la confidentialité</h2>
         <p className="text-xs text-amber-700">
-          Texte à faire valider par un juriste avant diffusion. La durée de
-          conservation annoncée ici (24 mois) doit correspondre à celle de la
-          politique de confidentialité.
+          Texte à faire valider par un juriste avant diffusion.
         </p>
         <p>
           {ORG_NAME} utilisera les informations que vous fournissez dans cette candidature uniquement afin d’évaluer votre adéquation au poste décrit. Vos données seront stockées en toute sécurité et ne seront pas communiquées à des tiers en dehors de l’équipe de recrutement.
-        </p>
-        <p>
-          Nous conservons les données de candidature pendant 24 mois au maximum. Vous pouvez à tout moment demander la suppression de vos données en nous contactant. L’envoi de ce formulaire vaut consentement de votre part au traitement de vos données personnelles à des fins de recrutement.
         </p>
       </div>
 
@@ -58,7 +53,12 @@ export function Stage1({
           className="mt-0.5 h-4 w-4 rounded border-slate-300 accent-slate-900"
         />
         <span className="text-sm text-slate-700 group-hover:text-slate-900 transition-colors">
-          Je comprends et je consens à ce que {ORG_NAME} traite mes données de candidature comme décrit ci-dessus.
+          J’accepte que mes réponses et mon CV soient analysés avec l’aide d’un
+          outil d’intelligence artificielle et transmis à l’entreprise qui recrute.
+          Un recruteur examine les résultats et prend la décision. Mes données sont
+          conservées 24 mois à compter de ma candidature, afin que l’entreprise
+          puisse me recontacter pour des postes similaires, puis supprimées
+          automatiquement. Je peux demander leur effacement à tout moment.
         </span>
       </label>
 
