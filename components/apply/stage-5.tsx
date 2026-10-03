@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { saveStage5Action } from "@/actions/apply";
-import { deleteApplicationAction } from "@/actions/apply";
+import { EraseApplicationButton } from "./erase-application-button";
 
 type FCOption = { id: string; text: string; dimension?: string };
 type ChoiceOption = { id: string; text: string; scores?: Record<string, number> };
@@ -457,18 +457,7 @@ export function Stage5({
       })}
 
       <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-        <button
-          type="submit"
-          formAction={deleteApplicationAction}
-          className="text-xs text-slate-400 hover:text-red-500 transition-colors"
-          onClick={(e) => {
-            if (!confirm("Voulez-vous vraiment supprimer votre candidature action est irréversible.")) {
-              e.preventDefault();
-            }
-          }}
-        >
-          Supprimer ma candidature
-        </button>
+        <EraseApplicationButton />
 
         <div className="flex items-center gap-4">
           {!canSubmit && (

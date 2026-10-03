@@ -3,8 +3,10 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
+import fs from "fs/promises";
 import { prisma } from "@/lib/prisma";
 import { getApplicationState, computeCompletionPercent, scorePsychometric } from "@/lib/apply";
+import { resolveInsideUploads } from "@/lib/uploads";
 import { CandidateStage } from "@prisma/client";
 import logger from "@/lib/logger";
 import { autoAnalyzeCandidate } from "@/lib/scoring/auto-analyze";
@@ -245,7 +247,9 @@ export async function submitApplicationAction(formData: FormData) {
   redirect(`/apply/${token}/submitted`);
 }
 
-// Delete application
+// Erase application: the candidate asked for their data to go, so the invite is
+// deleted rather than reactivated. Reactivating it kept the name and the email
+// address and left the token live, which is the opposite of what was promised.
 export async function deleteApplicationAction(formData: FormData) {
   const token = formData.get("token") as string;
   if (!token) return;
@@ -253,19 +257,42 @@ export async function deleteApplicationAction(formData: FormData) {
   const state = await resolveCandidate(token);
   if (!state) redirect(`/apply/${token}/expired`);
 
-  const inviteId = state.invite.id;
+  const { candidate, invite, job, submission } = state;
 
-  await prisma.candidate.delete({ where: { id: state.candidate.id } });
+  if (submission.cvPath) {
+    const absolutePath = resolveInsideUploads(submission.cvPath);
+    if (absolutePath) {
+      await fs.unlink(absolutePath).catch((err) => {
+        logger.warn(
+          { err, storedPath: submission.cvPath },
+          "cv still on disk after erase, the reaper will collect it"
+        );
+      });
+    } else {
+      logger.warn({ storedPath: submission.cvPath }, "stored cvPath outside the uploads root, not deleted");
+    }
+  }
 
-  // Restore invite to ACTIVE so admin can resend
-  await prisma.invite.update({
-    where: { id: inviteId },
-    data: { status: "ACTIVE" },
-  });
+  await prisma.$transaction([
+    // AuditLog.inviteId cascades on Invite, so the recruiter's trail is detached
+    // first: erasing candidate data must not erase the company's own history.
+    prisma.auditLog.updateMany({ where: { inviteId: invite.id }, data: { inviteId: null } }),
+    prisma.candidate.delete({ where: { id: candidate.id } }),
+    prisma.auditLog.create({
+      data: {
+        actorEmail: "candidat:auto-service",
+        action: "CANDIDATE_DATA_ERASED",
+        entityType: "CANDIDATE",
+        entityId: candidate.id,
+        jobId: job.id,
+      },
+    }),
+    prisma.invite.delete({ where: { id: invite.id } }),
+  ]);
 
-  logger.info({ inviteId, jobId: state.job.id }, "candidate deleted application");
+  logger.info({ candidateId: candidate.id, jobId: job.id }, "candidate erased their application data");
 
-  revalidatePath(`/admin/jobs/${state.job.id}`);
+  revalidatePath(`/admin/jobs/${job.id}`);
   redirect(`/apply/${token}/expired?reason=deleted`);
 }
 

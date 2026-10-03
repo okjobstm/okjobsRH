@@ -4,7 +4,7 @@ import { useRef, useCallback } from "react";
 import { saveStage3Action, autosaveStage3Action } from "@/actions/apply";
 import { WordCountTextarea } from "./word-count";
 import { useAutosave, SavedIndicator } from "./autosave-form";
-import { deleteApplicationAction } from "@/actions/apply";
+import { EraseApplicationButton } from "./erase-application-button";
 
 type RoleQuestion = { id: string; prompt: string; wordLimit: number };
 
@@ -68,18 +68,7 @@ export function Stage3({
 
       <div className="flex items-center justify-between pt-2 border-t border-slate-100">
         <div className="flex items-center gap-4">
-          <button
-            type="submit"
-            formAction={deleteApplicationAction}
-            className="text-xs text-slate-400 hover:text-red-500 transition-colors"
-            onClick={(e) => {
-              if (!confirm("Voulez-vous vraiment supprimer votre candidature ? Cette action est irréversible.")) {
-                e.preventDefault();
-              }
-            }}
-          >
-            Supprimer ma candidature
-          </button>
+          <EraseApplicationButton />
           <SavedIndicator savedAt={savedAt} saving={saving} />
         </div>
 

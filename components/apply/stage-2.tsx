@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { saveStage2Action } from "@/actions/apply";
 import { WordCountTextarea } from "./word-count";
-import { deleteApplicationAction } from "@/actions/apply";
+import { EraseApplicationButton } from "./erase-application-button";
 
 type Project = {
   title: string;
@@ -219,18 +219,7 @@ export function Stage2({
       </div>
 
       <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-        <button
-          type="submit"
-          formAction={deleteApplicationAction}
-          className="text-xs text-slate-400 hover:text-red-500 transition-colors"
-          onClick={(e) => {
-            if (!confirm("Voulez-vous vraiment supprimer votre candidature ? Cette action est irréversible.")) {
-              e.preventDefault();
-            }
-          }}
-        >
-          Supprimer ma candidature
-        </button>
+        <EraseApplicationButton />
 
         <button
           type="submit"

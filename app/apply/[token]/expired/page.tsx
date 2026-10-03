@@ -19,10 +19,12 @@ export default async function ExpiredPage({
 
         {isDeleted ? (
           <>
-            <h1 className="text-2xl font-semibold text-slate-900">Candidature supprimée</h1>
+            <h1 className="text-2xl font-semibold text-slate-900">Données effacées</h1>
             <p className="text-slate-500">
-              Votre candidature a été supprimée. Si vous souhaitez postuler à nouveau,
-              contactez l’équipe afin d’obtenir un nouveau lien d’invitation.
+              Vos données ont été effacées : votre profil, votre CV et vos résultats ont été
+              supprimés. Des copies de sauvegarde peuvent subsister jusqu’à 35 jours avant
+              destruction définitive. Pour postuler de nouveau, vous devrez recevoir une
+              nouvelle invitation.
             </p>
           </>
         ) : (
