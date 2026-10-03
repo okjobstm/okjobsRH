@@ -40,7 +40,18 @@ export type ApplicationState = {
 };
 
 export type TokenValidationResult =
-  | { valid: true; invite: { id: string; token: string; jobId: string; candidateName: string; candidateEmail: string; expiresAt: Date } }
+  | {
+      valid: true;
+      invite: {
+        id: string;
+        token: string;
+        jobId: string;
+        candidateName: string;
+        candidateEmail: string;
+        expiresAt: Date;
+        candidateId: string | null;
+      };
+    }
   | { valid: false; reason: "not_found" | "expired" | "revoked" };
 
 export async function validateToken(token: string): Promise<TokenValidationResult> {
@@ -54,6 +65,7 @@ export async function validateToken(token: string): Promise<TokenValidationResul
       candidateEmail: true,
       expiresAt: true,
       status: true,
+      candidate: { select: { id: true } },
     },
   });
 
@@ -61,7 +73,7 @@ export async function validateToken(token: string): Promise<TokenValidationResul
   if (invite.status === "REVOKED") return { valid: false, reason: "revoked" };
   if (invite.expiresAt < new Date()) return { valid: false, reason: "expired" };
 
-  return { valid: true, invite };
+  return { valid: true, invite: { ...invite, candidateId: invite.candidate?.id ?? null } };
 }
 
 export async function getOrCreateCandidate(inviteId: string, jobId: string, name: string, email: string) {

@@ -4,6 +4,10 @@ Each entry is one line per shipped commit on `main`. Newest at the top.
 Append a line whenever you commit something user-visible or operationally meaningful.
 Skip purely internal cleanups (formatting, comment fixes) unless they affect behavior.
 
+## 2026-10-03
+
+- Securite: `POST /api/apply/upload` n'autorisait plus que sur un `candidateId` envoye par le client, sans jeton. La route ecrivait le fichier fourni et ecrivait par-dessus `Submission.cvPath` / `cvText`, puis relanait l'extraction qui alimente le scoring STAR : connaitre un simple identifiant suffisait a substituer le CV d'un candidat et donc son evaluation. L'identite vient desormais du jeton d'invitation (`validateToken`), le `candidateId` a disparu du corps de requete, et un jeton absent, expire ou revoque renvoie 403. `field` passe en liste blanche (`cv`) : il entrait dans le nom de fichier, donc une valeur contenant `../` permettait d'ecrire hors du dossier du candidat.
+
 ## 2026-10-02
 
 - FR: couche IA en français (critères d'évaluation STAR, prompts de synthèse, prose déterministe, détection de poste `CEO_TITLE_RE` et `MARKETING_ENGINEER_TITLE_RE` qui reconnaissent aussi les intitulés français). Le scorer produit désormais une sortie JSON contrainte (`output_config.format`) qui n'admet que les tokens ASCII, avec un repli `normalizeFeatureValue` qui résout les libellés français vers leur token et journalise l'écart. Test A/B : un jeu de features français tombe sur la même bande et les mêmes règles que son jumeau anglais. Plafond des questions de relance porté de 60 à 75 mots, le français étant 15 à 20 % plus long. Les synthèses déjà générées restent en anglais jusqu'à leur régénération (prose addressée par contenu).

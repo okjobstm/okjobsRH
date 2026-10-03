@@ -16,14 +16,12 @@ const EMPTY_PROJECT: Project = { title: "", url: "", description: "" };
 
 export function Stage2({
   token,
-  candidateId,
   initialCvPath,
   initialCoverLetter,
   initialProjects,
   error,
 }: {
   token: string;
-  candidateId: string;
   initialCvPath: string | null;
   initialCoverLetter: string | null;
   initialProjects: Project[];
@@ -47,7 +45,7 @@ export function Stage2({
 
     const form = new FormData();
     form.append("file", file);
-    form.append("candidateId", candidateId);
+    form.append("token", token);
     form.append("field", "cv");
 
     try {

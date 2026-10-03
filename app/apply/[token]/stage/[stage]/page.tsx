@@ -66,7 +66,6 @@ export default async function StagePage({
       {stageNum === 2 && (
         <Stage2
           token={token}
-          candidateId={state.candidate.id}
           initialCvPath={sub.cvPath}
           initialCoverLetter={sub.coverLetter}
           initialProjects={(sub.projects as Array<{ title: string; url: string; description: string }>) ?? []}

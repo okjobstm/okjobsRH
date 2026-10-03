@@ -5,6 +5,7 @@ import fs from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 import { extractCvText } from "@/lib/cv-extract";
+import { validateToken } from "@/lib/apply";
 
 const UPLOADS_DIR = process.env.UPLOADS_DIR ?? "/var/recruit/uploads";
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
@@ -14,24 +15,31 @@ const ALLOWED_MIME_TYPES = new Set([
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ]);
 const ALLOWED_EXTENSIONS = new Set([".pdf", ".doc", ".docx"]);
+const ALLOWED_FIELDS = new Set(["cv"]);
 
 export async function POST(req: NextRequest) {
   try {
     const form = await req.formData();
     const file = form.get("file") as File | null;
-    const candidateId = form.get("candidateId") as string | null;
+    const token = form.get("token") as string | null;
     const field = (form.get("field") as string | null) ?? "cv";
 
-    if (!file || !candidateId) {
-      return NextResponse.json({ error: "Fichier ou candidateId manquant" }, { status: 400 });
+    if (!file || !token) {
+      return NextResponse.json({ error: "Fichier ou jeton manquant" }, { status: 400 });
     }
 
-    // Validate candidate exists
-    const candidate = await prisma.candidate.findUnique({
-      where: { id: candidateId },
-      select: { id: true },
-    });
-    if (!candidate) {
+    if (!ALLOWED_FIELDS.has(field)) {
+      return NextResponse.json({ error: "Type de document non autorisé" }, { status: 400 });
+    }
+
+    // L'identité vient du jeton d'invitation, jamais du corps de la requête :
+    // un candidateId fourni par le client permettrait d'écrire dans le dossier d'un autre candidat.
+    const tokenResult = await validateToken(token);
+    if (!tokenResult.valid) {
+      return NextResponse.json({ error: "Candidat invalide" }, { status: 403 });
+    }
+    const candidateId = tokenResult.invite.candidateId;
+    if (!candidateId) {
       return NextResponse.json({ error: "Candidat invalide" }, { status: 403 });
     }
 
@@ -62,31 +70,26 @@ export async function POST(req: NextRequest) {
 
     const storedPath = `${candidateId}/${safeName}`;
 
-    // Update submission
-    if (field === "cv") {
-      const extracted = await extractCvText(filePath);
-      await prisma.submission.update({
-        where: { candidateId },
-        data: {
-          cvPath: storedPath,
-          cvText: extracted.text,
-          cvExtractedAt: extracted.text ? new Date() : null,
-          cvExtractError: extracted.error,
-        },
-      });
-      logger.info(
-        {
-          candidateId,
-          field,
-          storedPath,
-          extractedChars: extracted.text?.length ?? 0,
-          extractError: extracted.error,
-        },
-        "cv uploaded and extracted"
-      );
-    } else {
-      logger.info({ candidateId, field, storedPath }, "file uploaded");
-    }
+    const extracted = await extractCvText(filePath);
+    await prisma.submission.update({
+      where: { candidateId },
+      data: {
+        cvPath: storedPath,
+        cvText: extracted.text,
+        cvExtractedAt: extracted.text ? new Date() : null,
+        cvExtractError: extracted.error,
+      },
+    });
+    logger.info(
+      {
+        candidateId,
+        field,
+        storedPath,
+        extractedChars: extracted.text?.length ?? 0,
+        extractError: extracted.error,
+      },
+      "cv uploaded and extracted"
+    );
 
     return NextResponse.json({ path: storedPath });
   } catch (err) {
