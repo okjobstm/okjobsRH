@@ -1,7 +1,12 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 import { parse, serialize } from "parse5";
+import { applyPersonaCopy, rewritePersonaRuntime } from "./okjobs-persona-copy.mjs";
+import { rewriteGuide, rewriteGuideLinks } from "./okjobs-guides.mjs";
+import { applyDirectorHomeCopy } from "./okjobs-home-director-copy.mjs";
+import { applyOkjobsImages } from "./okjobs-public-images.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const defaultRoot = path.join(projectRoot, "public", "_lobbystack");
@@ -526,9 +531,9 @@ const blog = new Map(Object.entries({
 
 const pageMaps = { "/": home, "/features/": features, "/solutions/": solutions, "/pricing/": pricing, "/about/": about, "/blog/": blog };
 const pageMeta = {
-  "/": ["Okjobs | Profil professionnel et recrutement", "Construisez un profil professionnel structuré et évaluez les candidatures selon des critères métier clairs."],
-  "/features/": ["Candidats | Okjobs", "Structurez votre parcours, vos compétences et vos évaluations dans un profil professionnel clair."],
-  "/solutions/": ["Entreprises | Okjobs", "Évaluez les candidatures selon vos critères métier et préparez une shortlist documentée."],
+  "/": ["Okjobs | Recrutez avec confiance", "Dirigeants de PME, ONG et institutions : comparez les compétences utiles au poste, levez vos doutes et préparez une sélection expliquée avec Okjobs."],
+  "/features/": ["Candidats | Okjobs", "Premier emploi, expérience de terrain ou évolution : faites ressortir vos acquis et identifiez votre prochaine étape avec Okjobs."],
+  "/solutions/": ["Entreprises | Okjobs", "Levez vos doutes sur les candidats, préparez des entretiens utiles et avancez vers une sélection que votre équipe peut expliquer."],
   "/pricing/": ["Tarifs | Okjobs", "Accès candidat gratuit et offres d’évaluation ou de recrutement sur devis."],
   "/about/": ["Vision et méthode | Okjobs", "Découvrez la vision, la transparence et la validation progressive de la méthode Okjobs."],
   "/blog/": ["Ressources | Okjobs", "Guides pour comprendre les compétences, les évaluations et le recrutement structuré."],
@@ -640,6 +645,40 @@ const sectorPages = {
     criteria: ["Autonomie", "Fiabilité", "Coordination", "Gestion des imprévus"],
   },
 };
+
+// Public service pages keep their original layout and use the same editorial slots.
+Object.assign(sectorPages, {
+  "/affiliate-program/": {
+    title: "Entreprise : trouvez l’accompagnement qui fera avancer votre recrutement",
+    audience: "candidats à votre recrutement", context: "besoin clarifié, comparaison des compétences et sélection expliquée",
+    criteria: ["Attentes du poste", "Compétences observées", "Écarts à approfondir", "Arguments de sélection"],
+  },
+  "/solutions/ai-phone-answering/": {
+    title: "Assessment : comparez vos candidats avant de choisir",
+    audience: "candidats à votre poste", context: "compétences utiles, raisonnement, attentes du poste et points à confirmer",
+    criteria: ["Compétences du poste", "Raisonnement", "Méthode de travail", "Points à confirmer"],
+  },
+  "/solutions/ai-appointment-scheduler/": {
+    title: "Évaluation individuelle : levez vos doutes sur un profil",
+    audience: "candidats que vous souhaitez approfondir", context: "compétences attendues, éléments observés et préparation de l’entretien",
+    criteria: ["Acquis utiles", "Réponse aux situations", "Éléments documentés", "Besoins d’accompagnement"],
+  },
+  "/solutions/after-hours-answering-service/": {
+    title: "Évaluation en groupe : comparez sans perdre vos repères",
+    audience: "candidats de votre campagne de recrutement", context: "critères communs, comparaison des résultats et justification de la présélection",
+    criteria: ["Critères du poste", "Éléments comparables", "Écarts à approfondir", "Points de vérification"],
+  },
+  "/solutions/self-hosted-ai-receptionist/": {
+    title: "Un besoin particulier ? Construisons votre accompagnement",
+    audience: "candidats de votre organisation", context: "responsabilités du poste, contraintes de passation et décisions à préparer",
+    criteria: ["Attentes prioritaires", "Compétences utiles", "Conditions de passation", "Vérifications nécessaires"],
+  },
+  "/solutions/open-source-ai-receptionist/": {
+    title: "Recruitment : avancez vers une shortlist expliquée",
+    audience: "candidats à votre recrutement", context: "besoin clarifié, présélection, évaluation et préparation de la shortlist",
+    criteria: ["Attentes du poste", "Acquis des candidats", "Écarts à approfondir", "Arguments de sélection"],
+  },
+});
 
 const organisationPages = {
   "/solutions/ai-receptionist-for-plumbers/": {
@@ -802,17 +841,29 @@ function setElementText(node, next) {
 }
 
 function applySectorCopy(document, data) {
+  const outcomes = {
+    "candidats de votre PME": ["PME : choisissez avec confiance, même sans équipe RH", "Vous devez recruter sans y consacrer toutes vos journées ? Clarifiez le poste, comparez les compétences utiles et avancez vers une shortlist dont vous comprenez les raisons."],
+    "candidats aux postes de votre ONG": ["ONG : une sélection adaptée au terrain et facile à expliquer", "Préparez votre campagne avec des critères liés à la mission. Votre équipe retrouve les éléments de sélection et les points à vérifier, sans confondre aisance à l’écrit et compétence terrain."],
+    "candidats aux postes de votre institution": ["Institutions : justifiez vos choix avec des critères communs", "Vous devez rendre votre sélection compréhensible ? Comparez les candidatures sur des attentes définies et retrouvez les éléments derrière chaque recommandation."],
+    "candidats aux métiers opérationnels": ["Métiers opérationnels : voyez ce que le candidat sait faire", "Un CV ne suffit pas à montrer comment une personne résout un problème. Approfondissez les compétences utiles au poste et repérez les pratiques qui nécessitent une vérification sur le terrain."],
+    "candidats aux fonctions support": ["Fonctions support : trouvez les compétences qui soutiendront votre équipe", "Organisation, outils, communication et suivi : distinguez les acquis annoncés des éléments observés pour préparer un choix utile à votre activité."],
+    "candidats juniors et jeunes diplômés": ["Profils juniors : repérez les acquis derrière un premier CV", "Un parcours court ne signifie pas une absence de compétences. Donnez une place aux acquis des stages, des projets et des formations, puis identifiez les besoins d’accompagnement pour le poste."],
+    "candidats expérimentés": ["Profils expérimentés : distinguez les années de pratique des acquis démontrés", "Deux candidats peuvent avoir la même ancienneté sans avoir exercé les mêmes responsabilités. Approfondissez leur expérience et les compétences utiles à votre poste avant de choisir."],
+    "candidats à votre recrutement individuel": ["Un poste à pourvoir : levez vos doutes avant de choisir", "Votre décision compte pour toute l’équipe. Clarifiez vos attentes, évaluez les compétences utiles et préparez les questions qui vous aideront à départager les profils."],
+    "candidats de votre campagne de recrutement": ["Campagnes de recrutement : gardez une sélection lisible à chaque étape", "Quand les candidatures se multiplient, gardez les mêmes repères. Comparez les résultats, identifiez les dossiers à approfondir et expliquez votre présélection à votre équipe."],
+  };
+  const selectedOutcome = outcomes[data.audience];
   const headings = [
-    `Les compétences clés des ${data.audience}`,
-    "Évaluer sur une base commune, sans réduire une personne à une note",
-    "Du besoin de recrutement aux critères observables",
-    "Une batterie d’évaluation adaptée au poste",
-    "Des résultats conçus pour préparer l’entretien",
+    "Repérez les compétences utiles à votre équipe",
+    "Comparez vos candidats sans vous fier à une note unique",
+    "Mettez votre équipe d’accord avant de choisir",
+    "Levez vos doutes avec une évaluation ciblée",
+    "Sachez quoi approfondir en entretien",
     "Ce que l’évaluation mesure — et ce qu’elle ne mesure pas",
     "Un parcours clair en trois étapes",
     "Assessment ou Recruitment : choisissez votre accompagnement",
     "Questions fréquentes",
-    `Mieux documenter vos recrutements de ${data.audience}`,
+    "Avancez vers une sélection que vous pouvez expliquer",
   ];
   const subheadings = [
     ...data.criteria,
@@ -824,19 +875,19 @@ function applySectorCopy(document, data) {
     "Suivre les résultats dans le temps",
   ];
   const paragraphs = [
-    `Okjobs aide les entreprises à évaluer les ${data.audience} à partir de critères liés au travail réel : ${data.context}.`,
-    "Le CV reste une source utile, mais il ne suffit pas toujours pour comprendre la manière de raisonner, d’agir ou de communiquer dans une situation professionnelle.",
-    "Le parcours commence par une fiche de poste clarifiée avec votre équipe. Les attentes sont transformées en compétences, niveaux cibles et éléments observables.",
-    "Chaque candidature est examinée avec la même grille. Les informations déclarées restent séparées des éléments documentés et des résultats issus d’une évaluation.",
+    selectedOutcome?.[1] ?? `Vous hésitez entre plusieurs profils ? Comparez les ${data.audience} sur les exigences de votre poste : ${data.context}. Retrouvez les éléments utiles pour décider et les points à confirmer.`,
+    "Deux CV proches peuvent cacher des acquis différents. Allez au-delà du discours pour comprendre ce qui a été observé et ce qui reste à vérifier.",
+    "Évitez les attentes qui changent en cours de recrutement. Définissez avec votre équipe les compétences nécessaires et le niveau réellement attendu.",
+    "Comparez les candidatures avec les mêmes repères. Vous distinguez les compétences annoncées des éléments documentés et des résultats d’évaluation.",
     `Pour ce besoin, l’analyse peut notamment porter sur ${data.criteria.join(", ").toLowerCase()}. La combinaison exacte dépend du poste et du niveau recherché.`,
     "Les évaluations complètent l’entretien ; elles ne le remplacent pas. Elles donnent des repères communs et font émerger les questions qui méritent une vérification humaine.",
-    "Le rapport présente les dimensions observées, les correspondances avec les critères, les écarts éventuels et le niveau de confiance associé aux résultats.",
+    "Retrouvez ce qui répond à vos attentes, les écarts et les informations manquantes. Vous pouvez concentrer votre entretien sur ce qui fera avancer votre décision.",
     "Aucun résultat n’est présenté comme une vérité absolue. La méthode, la version utilisée et les limites d’interprétation restent visibles.",
     "Les compétences auto-déclarées ne sont jamais fusionnées avec les compétences vérifiées. Cette séparation protège la lisibilité du profil candidat.",
     "Lorsque les données sont insuffisantes, Okjobs le signale clairement au lieu de produire une conclusion artificiellement précise.",
-    "Votre équipe conserve la décision finale. Okjobs structure les informations et aide à préparer un échange plus factuel avec chaque candidat.",
-    "L’offre Assessment convient aux équipes qui pilotent elles-mêmes le recrutement et souhaitent disposer d’évaluations et de rapports contextualisés.",
-    "L’offre Recruitment ajoute un accompagnement sur le cadrage, la présélection, les évaluations et la préparation d’une shortlist documentée.",
+    "Vous gardez le dernier mot. Les résultats vous aident à poser les bonnes questions, sans choisir une personne à votre place.",
+    "Vous avez une équipe qui mène les entretiens ? Assessment vous apporte les évaluations et les rapports pour comparer les profils et approfondir vos doutes.",
+    "Vous manquez de temps ou de ressources RH ? Recruitment vous accompagne sur les étapes convenues, du besoin à la préparation d’une shortlist expliquée.",
     "Le périmètre est défini selon le nombre de candidats, la complexité du poste et le niveau d’accompagnement attendu.",
     "Les premières missions servent aussi à améliorer progressivement les référentiels et à vérifier l’utilité réelle des rapports dans les décisions.",
     "Les normes provisoires sont identifiées comme telles. Elles doivent être recalibrées à partir de données de suivi fiables avant toute promesse prédictive.",
@@ -894,7 +945,7 @@ function applySectorCopy(document, data) {
       for (const child of node.childNodes ?? []) transform(child);
       return;
     }
-    if (node.tagName === "h1") { setElementText(node, data.title); counters.h1 += 1; return; }
+    if (node.tagName === "h1") { setElementText(node, selectedOutcome?.[0] ?? data.title); counters.h1 += 1; return; }
     if (node.tagName === "h2") { setElementText(node, headings[counters.h2++ % headings.length]); return; }
     if (["h3", "h4", "h5", "h6"].includes(node.tagName)) {
       setElementText(node, subheadings[counters.h3++ % subheadings.length]); return;
@@ -1065,6 +1116,26 @@ function rewrite(html, route, outputRoute = route) {
     }
   }
   walk(document);
+  rewriteGuide(document, route);
+  rewriteGuideLinks(document);
+  applyPersonaCopy(document);
+  if (route === "/") applyDirectorHomeCopy(document);
+  // Keep search/social previews aligned with the visible promise, not the old title.
+  const findHeading = (node) => node.tagName === "h1" ? textContent(node).trim()
+    : (node.childNodes ?? []).map(findHeading).find(Boolean);
+  const heading = findHeading(document);
+  if (heading && (hasEditedMain || sector)) {
+    function syncMeta(node) {
+      if (node.tagName === "title") setElementText(node, `${heading} | Okjobs`);
+      if (node.tagName === "meta" && ["og:title", "twitter:title"].includes(getAttr(node, "property")?.value ?? getAttr(node, "name")?.value)) {
+        const content = getAttr(node, "content");
+        if (content) content.value = `${heading} | Okjobs`;
+      }
+      for (const child of node.childNodes ?? []) syncMeta(child);
+    }
+    syncMeta(document);
+  }
+  applyOkjobsImages(document);
   return serialize(document);
 }
 
@@ -1106,6 +1177,28 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
     for (const file of await walkFiles(root)) {
       const original = await readFile(file, "utf8");
       const rewritten = original.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i, sharedHeader);
+      if (rewritten !== original) await writeFile(file, rewritten, "utf8");
+    }
+  }
+  const assets = path.join(root, "_astro");
+  for (const name of await readdir(assets).catch(() => [])) {
+    if (!name.endsWith(".js")) continue;
+    const file = path.join(assets, name);
+    const source = await readFile(file, "utf8");
+    const rewritten = rewritePersonaRuntime(source);
+    if (rewritten !== source) await writeFile(file, rewritten, "utf8");
+  }
+  // Astro hashes stay unchanged when only compiled copy is patched. Invalidate
+  // immutable browser caches so hydration cannot restore the previous wording.
+  for (const name of await readdir(assets).catch(() => [])) {
+    if (!(name.startsWith("PricingSection.") || name.startsWith("LobbyStackWebVoiceWidget.")) || !name.endsWith(".js")) continue;
+    const source = await readFile(path.join(assets, name), "utf8");
+    const version = createHash("sha256").update(source).digest("hex").slice(0, 12);
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(`(/_astro/${escaped})(?:\\?copy=[a-f0-9]+)?(?=["'])`, "g");
+    for (const file of await walkFiles(root)) {
+      const original = await readFile(file, "utf8");
+      const rewritten = original.replace(pattern, `$1?copy=${version}`);
       if (rewritten !== original) await writeFile(file, rewritten, "utf8");
     }
   }

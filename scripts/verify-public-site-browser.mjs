@@ -106,7 +106,7 @@ if (!(await interactionPage.getByText("Sur devis", { exact: true }).count())) {
 
 if (!publicOnly) {
   await interactionPage.goto(`${origin}/signup`, { waitUntil: "domcontentloaded" });
-  if (!(await interactionPage.getByRole("heading", { name: "Créer votre compte" }).count())) {
+  if (!(await interactionPage.getByRole("heading", { name: "Commencez votre parcours Okjobs" }).count())) {
     failures.push("/signup: Okjobs signup heading missing");
   }
   const signupButton = interactionPage.getByRole("button", { name: "Créer le compte" });

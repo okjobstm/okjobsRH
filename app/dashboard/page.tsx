@@ -50,8 +50,8 @@ export default async function DashboardPage() {
         <div className="space-y-8">
           <header>
             <p className="text-sm font-medium text-blue-600">Espace candidat</p>
-            <h1 className="mt-1 text-3xl font-bold tracking-tight">Tableau de bord</h1>
-            <p className="mt-2 text-sm text-slate-500">Suivez vos candidatures et reprenez un dossier en cours.</p>
+            <h1 className="mt-1 text-3xl font-bold tracking-tight">Votre prochaine étape commence ici</h1>
+            <p className="mt-2 text-sm text-slate-500">Retrouvez où en est chaque candidature et complétez les dossiers qui attendent encore vos réponses.</p>
           </header>
 
           <section aria-labelledby="applications-title" id="applications">
@@ -80,8 +80,8 @@ export default async function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <EmptyState title="Aucune candidature associée">
-                Les candidatures envoyées avec {user.email} apparaîtront ici. Vous pouvez également ouvrir le lien reçu par courriel.
+              <EmptyState title="Votre première candidature apparaîtra ici">
+                Vous avez reçu une invitation ? Ouvrez le lien dans votre courriel pour commencer. Les candidatures associées à {user.email} seront regroupées dans cet espace.
               </EmptyState>
             )}
           </section>

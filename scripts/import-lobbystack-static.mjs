@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promi
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { applyOkjobsPublicText, rewriteVoiceDemoCopy } from "./apply-okjobs-public-text.mjs";
+import { rewritePersonaRuntime } from "./okjobs-persona-copy.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicRoot = path.join(projectRoot, "public");
@@ -103,7 +104,8 @@ async function patchOkjobsPricingRuntime(files) {
     .replace('children:`Pro`', 'children:`Recruitment`')
     .replace('children:`Enterprise`', 'children:`Sur mesure`');
 
-  if (rewritten !== original) await writeFile(pricingAsset, rewritten, "utf8");
+  const personaRuntime = rewritePersonaRuntime(rewritten);
+  if (personaRuntime !== original) await writeFile(pricingAsset, personaRuntime, "utf8");
 }
 
 function toPosix(relativePath) {

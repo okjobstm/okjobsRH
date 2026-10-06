@@ -50,7 +50,7 @@ const homepage = await (await check("/")) .text();
 if (!homepage.includes('href="/login"')) failures.push("/: local login CTA missing");
 if (!homepage.includes('href="/signup"')) failures.push("/: local signup CTA missing");
 if (!homepage.includes('href="/features/"')) failures.push("/: candidate entry missing");
-if (!homepage.includes("Montrez ce que vous")) failures.push("/: Okjobs homepage copy missing");
+if (!homepage.includes("Choisissez vos prochains collaborateurs avec confiance")) failures.push("/: Okjobs homepage copy missing");
 if (/https:\/\/app\.lobbystack\.com\/(?:en|fr|es|sr)\/(?:login|signup)/.test(homepage)) {
   failures.push("/: external LobbyStack authentication URL remains");
 }
@@ -69,13 +69,13 @@ for (const page of manifest.pages) {
 }
 
 const representativePages = [
-  ["/features/", "Un profil professionnel qui montre"],
-  ["/solutions/", "Évaluation et recrutement structurés"],
+  ["/features/", "Votre CV ne montre pas tout votre potentiel"],
+  ["/solutions/", "Ne choisissez plus sur le CV seul"],
   ["/pricing/", "Sur devis"],
-  ["/about/", "contexte congolais"],
-  ["/blog/", "Ressources pour mieux comprendre les compétences"],
-  ["/solutions/evaluation-techniciens-cvc/", "ONG : évaluez les candidatures"],
-  ["/solutions/evaluation-techniciens-maintenance/", "Métiers opérationnels : observez les compétences"],
+  ["/about/", "Au Congo"],
+  ["/blog/", "Des conseils pour faire avancer votre prochaine étape"],
+  ["/solutions/evaluation-techniciens-cvc/", "ONG : une sélection adaptée au terrain"],
+  ["/solutions/evaluation-techniciens-maintenance/", "Métiers opérationnels : voyez ce que le candidat sait faire"],
 ];
 for (const [pathname, marker] of representativePages) {
   const html = await (await check(pathname)).text();

@@ -105,7 +105,7 @@ export default async function AdminDashboard({
     <div className="space-y-5">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Vue d’ensemble du pipeline</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Faites avancer vos recrutements</h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">{email}</p>
         </div>
         <Button asChild size="sm" className="shrink-0">
@@ -116,10 +116,9 @@ export default async function AdminDashboard({
         </Button>
       </div>
 
-      <Tip id="dashboard-overview" title="Vous débutez ?">
-        Cliquez sur le titre d’un poste pour ouvrir sa page de détail, ou faites un clic droit sur un poste dans le
-        menu latéral pour l’archiver. Consultez la page <a href="/admin/help" className="underline font-medium">Mode d’emploi</a> pour
-        le parcours complet.
+      <Tip id="dashboard-overview" title="Quelle est votre prochaine décision ?">
+        Ouvrez un poste pour retrouver les candidatures, identifier les dossiers à examiner et préparer votre sélection.
+        Pour suivre les étapes du recrutement, consultez le <a href="/admin/help" className="underline font-medium">Mode d’emploi</a>.
       </Tip>
 
       {/* Inline stat strip */}

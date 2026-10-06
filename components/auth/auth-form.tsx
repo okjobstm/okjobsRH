@@ -71,14 +71,14 @@ export function AuthForm({ mode, returnTo = "/admin", externalError }: AuthFormP
   ) : undefined;
 
   return (
-    <AuthShell legalFooter={legalFooter} progress={!login} title={login ? "Bon retour" : "Créer votre compte"}>
+    <AuthShell legalFooter={legalFooter} progress={!login} title={login ? "Retrouvez votre espace Okjobs" : "Commencez votre parcours Okjobs"}>
       <div className="flex w-full flex-col gap-6">
         <form action={action}>
           <input name="returnTo" type="hidden" value={returnTo} />
           <div className="flex w-full flex-col gap-4">
             {!login ? (
               <fieldset className="flex w-full flex-col gap-3">
-                <legend className="text-sm font-medium leading-snug">Type de compte</legend>
+                <legend className="text-sm font-medium leading-snug">Quel espace souhaitez-vous rejoindre ?</legend>
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                   {[
                     { value: "CANDIDATE", label: "Candidat" },

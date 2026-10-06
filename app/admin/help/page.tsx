@@ -16,9 +16,9 @@ export default async function HelpPage() {
   return (
     <div className="max-w-[760px] space-y-8 pb-12">
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Comment utiliser {APP_NAME}</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Avancez jusqu’à votre sélection avec {APP_NAME}</h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-          Un aperçu rapide des parcours principaux. Lisez-le une fois, vous n’en aurez plus besoin ensuite.
+          Du poste à pourvoir à la décision finale, retrouvez l’action à mener à chaque étape de votre recrutement.
         </p>
       </div>
 
