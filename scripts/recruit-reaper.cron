@@ -8,8 +8,8 @@ SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 MAILTO=""
 
-# Sunday 04:15 UTC, after the 03:15 backup. .env is sourced because the script
-# needs DATABASE_URL and UPLOADS_DIR from it. Output goes to a log rather than
-# /dev/null: the script refuses to run when UPLOADS_DIR is unreadable or empty,
-# and that refusal has to be visible.
-15 4 * * 0 root cd /path/to/recruit && set -a && . ./.env && set +a && node scripts/reap-orphan-uploads.mjs --apply >>/var/log/recruit-reaper.log 2>&1
+# Sunday 04:15 UTC. .env is sourced because the script needs DATABASE_URL and the
+# Supabase keys from it. Output goes to a log rather than /dev/null: the script
+# refuses to run when the CV bucket is unreachable or not this app's, and that
+# refusal has to be visible.
+15 4 * * 0 root cd /path/to/recruit && set -a && . ./.env && set +a && node --experimental-strip-types --no-warnings scripts/reap-orphan-uploads.mjs --apply >>/var/log/recruit-reaper.log 2>&1

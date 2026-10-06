@@ -2,7 +2,7 @@
 // privacy policy, terms of use, page metadata). Override these via env to
 // rebrand the app for your organization. NEXT_PUBLIC_ is required so they are
 // available in both server and client components.
-export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Recruit";
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Okjobs";
 
 export const ORG_NAME = process.env.NEXT_PUBLIC_ORG_NAME || "Your Organization";
 

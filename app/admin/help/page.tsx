@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Lightbulb,
 } from "lucide-react";
+import { APP_NAME } from "@/lib/site-config";
 
 export default async function HelpPage() {
   await requireAuth();
@@ -15,7 +16,7 @@ export default async function HelpPage() {
   return (
     <div className="max-w-[760px] space-y-8 pb-12">
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Comment utiliser Recruit</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Comment utiliser {APP_NAME}</h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
           Un aperçu rapide des parcours principaux. Lisez-le une fois, vous n’en aurez plus besoin ensuite.
         </p>

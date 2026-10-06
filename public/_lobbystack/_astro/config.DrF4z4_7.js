@@ -1,0 +1,1 @@
+var e=[`en`,`fr`,`es`,`sr`];e.filter(e=>e!==`en`);var t=t=>!!(t&&e.includes(t));export{t};

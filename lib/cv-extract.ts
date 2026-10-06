@@ -1,10 +1,8 @@
-import fs from "fs/promises";
 import path from "path";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import { PDFParse } from "pdf-parse";
 import mammoth from "mammoth";
-import { isInsideUploads } from "./uploads.ts";
 
 // pdf-parse v2 uses pdfjs-dist's worker. Next's bundler rewrites import.meta.url
 // inside the route handler so the auto-detect can't find the worker .mjs at
@@ -34,17 +32,18 @@ export interface CvExtractionResult {
  * Old .doc (binary Word) is intentionally not supported — we ask candidates
  * to re-export to PDF or DOCX rather than ship a fragile binary parser.
  *
+ * The bytes come from Storage, so the buffer is passed in: the caller has already
+ * fetched it and re-reading it from disk would mean trusting a path again.
+ *
  * Never throws; on failure returns { text: null, error: <reason> }. Errors
  * are stored on the submission so admins can see why text is missing.
  */
-export async function extractCvText(absolutePath: string): Promise<CvExtractionResult> {
-  if (!isInsideUploads(absolutePath)) {
-    return { text: null, error: "Refus de lire un fichier hors du répertoire de dépôt" };
-  }
-
-  const ext = path.extname(absolutePath).toLowerCase();
+export async function extractCvText(
+  buffer: Buffer,
+  filename: string
+): Promise<CvExtractionResult> {
+  const ext = path.extname(filename).toLowerCase();
   try {
-    const buffer = await fs.readFile(absolutePath);
     if (ext === ".pdf") {
       configureWorker();
       const parser = new PDFParse({ data: buffer });

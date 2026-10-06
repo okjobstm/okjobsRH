@@ -5,11 +5,12 @@ Covers TC-013 through TC-018: the /apply/[token] candidate experience.
 
 Run with:
     cd /path/to/recruit
+    set -a && source .env.test && set +a
     python3 tests/e2e/test_candidate_flow.py
 
 Prerequisites:
     - Recruit running on http://localhost:3000 (PM2 process "recruit")
-    - DATABASE_URL points to the dev Postgres
+    - .env.test loaded, so the app and this script share one disposable project
     - Existing job + invite in DB (or this script will create them via the admin UI)
 """
 
@@ -19,9 +20,10 @@ import subprocess
 import sys
 from playwright.sync_api import sync_playwright, Page, Browser
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from admin_auth import authenticate
+
 BASE_URL       = "http://localhost:3000"
-ADMIN_EMAIL    = os.environ.get("ADMIN_E2E_EMAIL", "admin@example.com")
-ADMIN_PASSWORD = os.environ.get("ADMIN_E2E_PASSWORD", "")
 SCREENSHOT_DIR = "tests/e2e/screenshots"
 
 results: list[dict] = []
@@ -42,19 +44,14 @@ def ss(page: Page, name: str) -> str:
 
 
 def admin_login(page: Page):
-    page.goto(f"{BASE_URL}/login")
-    page.wait_for_load_state("networkidle")
-    page.locator('input[name="email"]').fill(ADMIN_EMAIL)
-    page.locator('input[type="password"]').fill(ADMIN_PASSWORD)
-    page.locator('button[type="submit"]').click()
-    page.wait_for_load_state("networkidle")
-    page.wait_for_timeout(1500)
+    authenticate(page.context)
+    page.goto(f"{BASE_URL}/admin")
+    page.wait_for_load_state("domcontentloaded")
 
 
 def setup_fixture() -> dict | None:
     """Create test job + invite via Prisma helper. Returns dict with jobId, applyUrl, candidateEmail."""
-    db_url = os.environ.get("DATABASE_URL", "postgresql://postgres@127.0.0.1:5433/recruit")
-    env = {**os.environ, "DATABASE_URL": db_url, "BASE_URL": BASE_URL}
+    env = {**os.environ, "BASE_URL": BASE_URL}
     try:
         result = subprocess.run(
             ["node", "tests/e2e/setup_fixture.mjs"],

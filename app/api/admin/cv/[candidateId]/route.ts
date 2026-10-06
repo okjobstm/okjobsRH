@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAuth } from "@/lib/auth";
-import fs from "fs/promises";
 import path from "path";
-import { resolveInsideUploads } from "@/lib/uploads";
+import { downloadCv, isValidCvKey } from "@/lib/supabase/storage";
+
+const MIME_TYPES: Record<string, string> = {
+  ".pdf": "application/pdf",
+  ".doc": "application/msword",
+  ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+};
 
 export async function GET(
   _req: NextRequest,
@@ -26,31 +31,29 @@ export async function GET(
     return NextResponse.json({ error: "Aucun CV trouvé" }, { status: 404 });
   }
 
-  const absolutePath = resolveInsideUploads(submission.cvPath);
-  if (!absolutePath) {
+  if (!isValidCvKey(submission.cvPath)) {
     return NextResponse.json({ error: "Chemin invalide" }, { status: 400 });
   }
 
+  let fileBuffer: Buffer | null;
   try {
-    await fs.access(absolutePath, fs.constants.R_OK);
+    fileBuffer = await downloadCv(submission.cvPath);
   } catch {
     return NextResponse.json({ error: "Fichier introuvable" }, { status: 404 });
   }
 
-  const ext = path.extname(absolutePath).toLowerCase();
-  const mimeTypes: Record<string, string> = {
-    ".pdf": "application/pdf",
-    ".doc": "application/msword",
-    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  };
+  if (!fileBuffer) {
+    return NextResponse.json({ error: "Fichier introuvable" }, { status: 404 });
+  }
 
-  const fileBuffer = await fs.readFile(absolutePath);
+  const basename = path.posix.basename(submission.cvPath);
+  const ext = path.posix.extname(basename).toLowerCase();
 
-  return new NextResponse(fileBuffer, {
+  return new NextResponse(new Uint8Array(fileBuffer), {
     status: 200,
     headers: {
-      "Content-Type": mimeTypes[ext] ?? "application/octet-stream",
-      "Content-Disposition": `attachment; filename="${path.basename(absolutePath)}"`,
+      "Content-Type": MIME_TYPES[ext] ?? "application/octet-stream",
+      "Content-Disposition": `attachment; filename="${basename}"`,
       "Cache-Control": "no-store",
     },
   });

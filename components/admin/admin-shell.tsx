@@ -8,6 +8,8 @@ import { ToastProvider } from "@/components/ui/toast";
 import { SidebarJobItem, type SidebarJob } from "@/components/admin/sidebar-job-item";
 import { BarChart3, Briefcase, ChevronDown, ChevronRight, ClipboardCheck, HelpCircle, LogOut, Menu, Plus, Settings, X } from "lucide-react";
 import { APP_NAME } from "@/lib/site-config";
+import type { RecruiterIdentity } from "@/lib/auth";
+import { BrandMark } from "@/components/brand-mark";
 
 type Job = {
   id: string;
@@ -19,12 +21,13 @@ type Job = {
 type Props = {
   jobs: Job[];
   email: string;
+  role: RecruiterIdentity["role"];
   pendingReviewCount: number;
   logoutAction: () => Promise<void>;
   children: React.ReactNode;
 };
 
-export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, children }: Props) {
+export function AdminShell({ jobs, email, role, pendingReviewCount, logoutAction, children }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const pathname = usePathname();
@@ -56,12 +59,12 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
         href="/admin"
         className="h-14 flex items-center gap-2.5 px-4 border-b border-slate-200 hover:bg-slate-50 transition-colors shrink-0"
       >
-        <div className="w-7 h-7 bg-blue-600 rounded flex items-center justify-center shrink-0">
-          <span className="text-white text-[10px] font-bold">{APP_NAME.charAt(0)}</span>
-        </div>
+        <BrandMark className="size-7" priority />
         <div>
           <span className="font-semibold text-slate-900 text-sm block">{APP_NAME}</span>
-          <span className="text-[11px] text-slate-500">Console de recrutement interne</span>
+          <span className="text-[11px] text-slate-500">
+            {role === "COMPANY" ? "Espace entreprise" : "Administration globale"}
+          </span>
         </div>
       </Link>
 
@@ -221,9 +224,7 @@ export function AdminShell({ jobs, email, pendingReviewCount, logoutAction, chil
               <Menu className="w-5 h-5" />
             </button>
             <Link href="/admin" className="flex items-center gap-2 lg:hidden">
-              <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center shrink-0">
-                <span className="text-white text-[9px] font-bold">{APP_NAME.charAt(0)}</span>
-              </div>
+              <BrandMark className="size-6" priority />
               <span className="font-semibold text-slate-900 text-sm">{APP_NAME}</span>
             </Link>
           </div>

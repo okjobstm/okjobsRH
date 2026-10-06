@@ -3,6 +3,7 @@ Phase 4 reviewer-flow smoke test.
 
 Run with:
     cd /path/to/recruit
+    set -a && source .env.test && set +a
     python3 tests/e2e/test_phase4_reviews.py
 """
 
@@ -11,18 +12,18 @@ import sys
 import time
 from playwright.sync_api import sync_playwright, expect
 
-BASE_URL = "http://localhost:3010"
-ADMIN_EMAIL = os.environ.get("ADMIN_E2E_EMAIL", "admin@example.com")
-ADMIN_PASSWORD = os.environ.get("ADMIN_E2E_PASSWORD", "")
-CANDIDATE_ID = "cmo45gooe0002n46j8vvuqhdd"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from admin_auth import authenticate
+
+BASE_URL = os.environ.get("BASE_URL", "http://localhost:3000")
+CANDIDATE_ID = os.environ.get("CANDIDATE_ID", "cmo45gooe0002n46j8vvuqhdd")
 
 
 def login(page):
-    page.goto(f"{BASE_URL}/login")
-    page.fill('input[name="email"]', ADMIN_EMAIL)
-    page.fill('input[name="password"]', ADMIN_PASSWORD)
-    page.click('button[type="submit"]')
+    email = authenticate(page.context)
+    page.goto(f"{BASE_URL}/admin")
     page.wait_for_url(f"{BASE_URL}/admin", timeout=10_000)
+    return email
 
 
 def main():
@@ -34,7 +35,7 @@ def main():
 
         try:
             print("[1/6] Login as admin")
-            login(page)
+            admin_email = login(page)
 
             print("[2/6] Open candidate detail page")
             page.goto(f"{BASE_URL}/admin/candidates/{CANDIDATE_ID}")
@@ -44,12 +45,12 @@ def main():
             print("[3/6] Assign self as reviewer")
             select = page.locator('select[name="reviewerEmail"]')
             select.wait_for(state="visible", timeout=5_000)
-            select.select_option(ADMIN_EMAIL)
+            select.select_option(admin_email)
             page.click('button:has-text("Assign")')
             page.wait_for_load_state("networkidle")
 
             # The reviewer should now appear as PENDING with a "you" badge
-            reviewer_card = page.locator(f'li:has-text("{ADMIN_EMAIL}")').first
+            reviewer_card = page.locator(f'li:has-text("{admin_email}")').first
             expect(reviewer_card).to_be_visible(timeout=5_000)
             expect(reviewer_card.get_by_text("Pending", exact=True)).to_be_visible()
             expect(reviewer_card.get_by_text("you", exact=True)).to_be_visible()
@@ -66,7 +67,7 @@ def main():
             page.wait_for_load_state("networkidle")
 
             # Now the row should show "Submitted" and "Strong yes"
-            reviewer_card_after = page.locator(f'li:has-text("{ADMIN_EMAIL}")').first
+            reviewer_card_after = page.locator(f'li:has-text("{admin_email}")').first
             expect(reviewer_card_after.get_by_text("Submitted", exact=True)).to_be_visible(timeout=5_000)
             expect(reviewer_card_after.get_by_text("Strong yes", exact=True)).to_be_visible()
             expect(

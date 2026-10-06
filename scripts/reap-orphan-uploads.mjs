@@ -1,37 +1,47 @@
-// Collects CV files that no Submission points at any more. Two paths leave a
-// file behind: the erase flow, when unlink failed because the disk was busy or
-// the file was already gone, and an upload that wrote the file and then failed
-// before the database write.
+// Collects CVs that no Submission points at any more. Two paths leave one behind:
+// the erase flow, when the Storage delete failed, and an upload that stored the
+// file and then failed before the database write.
 //
 // Usage:
 //   set -a && source .env && set +a
-//   node scripts/reap-orphan-uploads.mjs            # dry run by default
-//   node scripts/reap-orphan-uploads.mjs --apply    # actually unlink
+//   node --experimental-strip-types --no-warnings scripts/reap-orphan-uploads.mjs
+//   node --experimental-strip-types --no-warnings scripts/reap-orphan-uploads.mjs --apply
 
-import path from "node:path";
-import fs from "node:fs/promises";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { isValidCvKey, listCvKeys, removeCv } from "../lib/supabase/storage.ts";
 
 const APPLY = process.argv.includes("--apply");
-const ROOT = path.resolve(process.env.UPLOADS_DIR ?? "/var/recruit/uploads");
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  let entries;
+  let inBucket;
   try {
-    entries = await fs.readdir(ROOT, { recursive: true, withFileTypes: true });
+    inBucket = await listCvKeys();
   } catch (err) {
-    console.error(`Refusing to run: cannot read UPLOADS_DIR (${ROOT}): ${err.message}`);
+    console.error(`Refusing to run: CV bucket unreachable: ${err.message}`);
     process.exit(1);
   }
 
-  const files = entries.filter((entry) => entry.isFile());
-  if (files.length === 0) {
+  // An empty bucket means the credentials or the bucket name are wrong, not that
+  // every CV was deleted. Refuse, so an --apply run cannot report success having
+  // verified nothing.
+  if (inBucket.length === 0) {
     console.error(
-      `Refusing to run: ${ROOT} holds no file, so it is most likely not the uploads directory.`
+      "Refusing to run: the CV bucket is empty, so it is most likely not this app's bucket."
+    );
+    process.exit(1);
+  }
+
+  // Everything we ever write is <candidateId>/<field>_<uuid>.<ext>. A key that
+  // breaks that shape means the credentials point at some other bucket, and a
+  // --apply run would delete files this app never owned.
+  const foreign = inBucket.filter((key) => !isValidCvKey(key));
+  if (foreign.length > 0) {
+    console.error(
+      `Refusing to run: ${foreign.length} key(s) in the bucket do not match the CV layout, so it is not this app's bucket. First offender: ${foreign[0]}`
     );
     process.exit(1);
   }
@@ -40,29 +50,21 @@ async function main() {
     where: { cvPath: { not: null } },
     select: { cvPath: true },
   });
-  const referenced = new Set(stored.map((row) => row.cvPath.split(path.sep).join("/")));
+  const referenced = new Set(stored.map((row) => row.cvPath.replaceAll("\\", "/")));
 
-  // Stored paths are relative to the uploads root; key the files the same way.
-  const onDisk = files.map((entry) => {
-    const parent = entry.parentPath ?? entry.path ?? "";
-    return path.relative(ROOT, path.join(parent, entry.name)).split(path.sep).join("/");
-  });
+  const orphans = inBucket.filter((key) => !referenced.has(key));
 
-  const orphans = onDisk.filter((file) => !referenced.has(file));
-
-  console.log(`Uploads root: ${ROOT}`);
-  console.log(`Files on disk: ${files.length}, referenced by a submission: ${referenced.size}`);
-  console.log(`Mode: ${APPLY ? "APPLY (will unlink)" : "DRY RUN (nothing deleted)"}`);
+  console.log(`Files in bucket: ${inBucket.length}, referenced by a submission: ${referenced.size}`);
+  console.log(`Mode: ${APPLY ? "APPLY (will delete)" : "DRY RUN (nothing deleted)"}`);
   console.log();
 
   let removed = 0;
   let failed = 0;
 
   for (const orphan of orphans) {
-    const absolutePath = path.join(ROOT, orphan);
     if (APPLY) {
       try {
-        await fs.unlink(absolutePath);
+        await removeCv(orphan);
         console.log(`  DELETED  ${orphan}`);
         removed++;
       } catch (err) {
@@ -81,7 +83,7 @@ async function main() {
       : `Summary: ${orphans.length} orphan(s) would be deleted`
   );
   if (!APPLY && orphans.length > 0) {
-    console.log("Re-run with --apply to unlink them.");
+    console.log("Re-run with --apply to delete them.");
   }
 
   await prisma.$disconnect();

@@ -24,7 +24,7 @@ export function EraseApplicationButton() {
           const confirmed = await confirmDialog.ask({
             title: "Effacer mes données",
             description:
-              "Votre profil, votre CV et vos résultats d'analyse seront supprimés définitivement. Des copies de sauvegarde peuvent subsister jusqu'à 35 jours avant destruction définitive. Pour postuler de nouveau, vous devrez recevoir une nouvelle invitation. Cette action est irréversible.",
+              "Votre profil, votre CV et vos résultats d'analyse seront supprimés définitivement. Des copies de sauvegarde peuvent subsister jusqu'à 28 jours avant destruction définitive. Pour postuler de nouveau, vous devrez recevoir une nouvelle invitation. Cette action est irréversible.",
             confirmLabel: "Effacer mes données",
             cancelLabel: "Annuler",
             kind: "danger",

@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import logger from "@/lib/logger";
-import fs from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 import { extractCvText } from "@/lib/cv-extract";
 import { validateToken } from "@/lib/apply";
 import { logCandidateEvent } from "@/lib/events";
-import { UPLOADS_DIR } from "@/lib/uploads";
+import { uploadCv } from "@/lib/supabase/storage";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 const ALLOWED_MIME_TYPES = new Set([
@@ -60,18 +59,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Type de fichier non autorisé." }, { status: 400 });
     }
 
-    // Write to disk
-    const candidateDir = path.join(UPLOADS_DIR, candidateId);
-    await fs.mkdir(candidateDir, { recursive: true });
-
+    // The key is derived from the invitation's candidateId, never from the body,
+    // and safeName comes from a whitelist field plus a random UUID, so it can only
+    // ever address this candidate's own folder.
     const safeName = `${field}_${randomUUID()}${ext}`;
-    const filePath = path.join(candidateDir, safeName);
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await fs.writeFile(filePath, buffer);
-
     const storedPath = `${candidateId}/${safeName}`;
+    const buffer = Buffer.from(await file.arrayBuffer());
 
-    const extracted = await extractCvText(filePath);
+    await uploadCv(storedPath, buffer, file.type || "application/octet-stream");
+
+    const extracted = await extractCvText(buffer, safeName);
     await prisma.submission.update({
       where: { candidateId },
       data: {

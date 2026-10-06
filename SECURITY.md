@@ -22,11 +22,22 @@ remediation progress.
 
 This is open-source software you self-host. A few essentials when running it:
 
-- Set a strong, unique `SESSION_SECRET` (32+ random bytes).
-- Set `COOKIE_SECURE=true` when serving over HTTPS.
-- Restrict admin sign-in by setting `ADMIN_HOSTED_DOMAIN` to your own Google
-  Workspace domain. The default is deliberately unusable so a misconfigured
-  deployment fails closed.
-- Keep `ANTHROPIC_API_KEY` and database credentials out of version control;
-  they belong in `.env`, which is gitignored.
+- Serve the app over HTTPS. Supabase sets the `Secure` flag on its session
+  cookies itself.
+- Keep `SUPABASE_SERVICE_ROLE_KEY` server-only. It bypasses RLS and is the one
+  credential that can read every CV, so it must never be prefixed with
+  `NEXT_PUBLIC_` and never reach a client component.
+- Restrict admin sign-in by setting `ADMIN_HOSTED_DOMAIN` to your organization’s
+  email domain, and use `ADMIN_EMAILS` for any admin outside it. Candidate and
+  company signup remains open, while the Admin role fails closed when both are
+  empty.
+- Treat Supabase `app_metadata.role` as the authorization source. The signup
+  choice is initially untrusted `user_metadata`; only the server-side callback
+  may promote it after email confirmation and the Admin allowlist check.
+- Keep Supabase **Confirm email** enabled for email/password signup, configure a
+  production SMTP provider, and allow only your exact `/auth/callback` origins.
+- Keep the `cvs` bucket private. Nothing in this app relies on public object
+  URLs, and nothing should be able to list it anonymously.
+- Keep `ANTHROPIC_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, and the Supabase database
+  password out of version control; they belong in `.env`, which is gitignored.
 - Rotate any credential that may have been exposed.

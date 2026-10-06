@@ -6,6 +6,8 @@ import { defineConfig, env } from "prisma/config";
 
 export default defineConfig({
   datasource: {
-    url: env("DATABASE_URL"),
+    // Prisma migrations and the long-lived Next.js server both use Supabase's
+    // IPv4 session pooler so multi-statement transactions keep one connection.
+    url: env("DIRECT_URL"),
   },
 });

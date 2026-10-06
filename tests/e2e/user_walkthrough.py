@@ -3,19 +3,21 @@ Full user walkthrough — candidate end-to-end + admin view.
 Screenshots at every meaningful step so a human can see it works.
 
 Run:
+  set -a && source .env.test && set +a
   python3 tests/e2e/user_walkthrough.py
 """
 import json, os, subprocess, sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from admin_auth import authenticate
+
 BASE_URL = os.environ.get("BASE_URL", "http://localhost:3000")
 ROOT = Path(__file__).resolve().parents[2]
 SCREEN = ROOT / "tests/e2e/screenshots/walkthrough"
 SCREEN.mkdir(parents=True, exist_ok=True)
 CV_PATH = "/tmp/recruit_e2e_cv.pdf"
-ADMIN_EMAIL = os.environ.get("ADMIN_E2E_EMAIL", "admin@example.com")
-ADMIN_PASSWORD = os.environ.get("ADMIN_E2E_PASSWORD", "")
 
 STAR_ANSWER = (
     "Last quarter I owned the migration of our billing pipeline from a legacy cron-based "
@@ -170,11 +172,9 @@ def main():
         print("\n[Admin] Login")
         ctx2 = browser.new_context(viewport={"width": 1400, "height": 950})
         admin = ctx2.new_page()
-        admin.goto(f"{BASE_URL}/login")
-        admin.fill('input[name="email"]', ADMIN_EMAIL)
-        admin.fill('input[name="password"]', ADMIN_PASSWORD)
-        admin.click('button[type="submit"]')
-        admin.wait_for_url("**/admin", timeout=15_000)
+        authenticate(ctx2)
+        admin.goto(f"{BASE_URL}/admin")
+        admin.wait_for_load_state("domcontentloaded")
         admin.wait_for_timeout(800)
         shot(admin, "08_admin_dashboard")
 

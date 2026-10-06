@@ -1,0 +1,1129 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://lobbystack.com/#organization",
+      "name": "Okjobs",
+      "legalName": "Okjobs Inc.",
+      "alternateName": [
+        "lobbystack",
+        "Okjobs",
+        "Okjobs AI receptionist",
+        "Okjobs open-source AI receptionist"
+      ],
+      "url": "https://lobbystack.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://lobbystack.com/#logo",
+        "url": "/brand/okjobs-logo.png",
+        "width": 1030,
+        "height": 286
+      },
+      "description": "Okjobs is an open-source AI receptionist platform for small businesses that answers calls, books appointments, captures caller details, and routes urgent requests.",
+      "sameAs": [
+        "https://github.com/lobbystack",
+        "https://github.com/lobbystack/lobbystack",
+        "https://www.capterra.com/p/10046185/LobbyStack/",
+        "https://sourceforge.net/software/product/LobbyStack/",
+        "https://www.g2.com/products/lobbystack/reviews",
+        "https://alternativeto.net/software/lobbystack/about/",
+        "https://www.saashub.com/lobbystack"
+      ],
+      "knowsAbout": [
+        "AI receptionist software",
+        "AI phone answering",
+        "appointment booking automation",
+        "after-hours call answering",
+        "self-hosted receptionist software"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "support@lobbystack.com",
+        "url": "https://docs.lobbystack.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lobbystack.com/#website",
+      "name": "Okjobs",
+      "alternateName": [
+        "lobbystack",
+        "Okjobs",
+        "Okjobs AI receptionist",
+        "Okjobs open-source AI receptionist"
+      ],
+      "url": "https://lobbystack.com/",
+      "description": "Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan.",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://lobbystack.com/#software"
+      },
+      "publisher": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://lobbystack.com/search/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://lobbystack.com/#software",
+      "name": "Okjobs",
+      "alternateName": [
+        "lobbystack",
+        "Okjobs",
+        "Okjobs AI receptionist",
+        "Okjobs open-source AI receptionist"
+      ],
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://lobbystack.com/",
+      "image": "https://lobbystack.com/og/lobbystack-og.webp",
+      "description": "Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan.",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "Okjobs, lobbystack, AI receptionist, open-source AI receptionist, AI phone answering, appointment scheduler",
+      "brand": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "creator": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "maintainer": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "sameAs": [
+        "https://github.com/lobbystack",
+        "https://github.com/lobbystack/lobbystack",
+        "https://www.capterra.com/p/10046185/LobbyStack/",
+        "https://sourceforge.net/software/product/LobbyStack/",
+        "https://www.g2.com/products/lobbystack/reviews",
+        "https://alternativeto.net/software/lobbystack/about/",
+        "https://www.saashub.com/lobbystack"
+      ],
+      "codeRepository": "https://github.com/lobbystack/lobbystack",
+      "softwareHelp": {
+        "@type": "CreativeWork",
+        "url": "https://docs.lobbystack.com"
+      },
+      "featureList": [
+        "AI phone answering",
+        "appointment booking",
+        "lead qualification",
+        "call routing",
+        "call summaries and owner alerts",
+        "self-hosted deployment"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Test 30 browser voice minutes on Free, with no telephone number. Store up to 25 MB in your knowledge base.",
+          "url": "https://lobbystack.com/pricing/",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "30",
+          "priceCurrency": "USD",
+          "description": "Starter includes 150 voice minutes, 20 transfer attempts, 50 alert SMS segments, and 100 MB knowledge base.",
+          "url": "https://lobbystack.com/pricing/",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "100",
+          "priceCurrency": "USD",
+          "description": "Pro includes 500 voice minutes, 100 transfer attempts, 200 alert SMS segments, and 500 MB knowledge base.",
+          "url": "https://lobbystack.com/pricing/",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://lobbystack.com/#product",
+      "name": "Okjobs",
+      "alternateName": [
+        "lobbystack",
+        "Okjobs",
+        "Okjobs AI receptionist",
+        "Okjobs open-source AI receptionist"
+      ],
+      "url": "https://lobbystack.com/",
+      "image": "https://lobbystack.com/og/lobbystack-og.webp",
+      "description": "Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan.",
+      "inLanguage": "en",
+      "category": "AI receptionist software",
+      "brand": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "manufacturer": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "sameAs": [
+        "https://github.com/lobbystack",
+        "https://github.com/lobbystack/lobbystack",
+        "https://www.capterra.com/p/10046185/LobbyStack/",
+        "https://sourceforge.net/software/product/LobbyStack/",
+        "https://www.g2.com/products/lobbystack/reviews",
+        "https://alternativeto.net/software/lobbystack/about/",
+        "https://www.saashub.com/lobbystack"
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "url": "https://lobbystack.com/pricing/",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "100",
+        "offerCount": "3",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/index.jpg#image",
+      "url": "https://lobbystack.com/og/index.jpg",
+      "caption": "AI Receptionist Software for Small Businesses | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/#webpage",
+      "name": "AI Receptionist Software for Small Businesses | Okjobs",
+      "url": "https://lobbystack.com/",
+      "description": "Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan.",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://lobbystack.com/#software"
+      },
+      "mainEntity": {
+        "@id": "https://lobbystack.com/#product"
+      },
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/index.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/features.jpg#image",
+      "url": "https://lobbystack.com/og/features.jpg",
+      "caption": "AI Receptionist Features for Calls, Booking, and Alerts",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/features/#webpage",
+      "name": "AI Receptionist Features for Calls, Booking, and Alerts",
+      "url": "https://lobbystack.com/features/",
+      "description": "Explore Okjobs AI receptionist features for phone answering, appointment booking, call transfers, lead qualification, owner alerts, and call summaries.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/features.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/features/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist Features for Calls, Booking, and Alerts",
+          "item": "https://lobbystack.com/features/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/pricing.jpg#image",
+      "url": "https://lobbystack.com/og/pricing.jpg",
+      "caption": "AI Receptionist Pricing for Small Businesses",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/pricing/#webpage",
+      "name": "AI Receptionist Pricing for Small Businesses",
+      "url": "https://lobbystack.com/pricing/",
+      "description": "Compare Okjobs AI receptionist pricing for Free, Starter, Pro, and Enterprise plans, including voice minutes, annual billing, SMS alerts, and overage rates.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/pricing.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/pricing/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist Pricing for Small Businesses",
+          "item": "https://lobbystack.com/pricing/"
+        }
+      ]
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://lobbystack.com/blog/#blog",
+      "name": "AI Receptionist Blog and Product Updates",
+      "url": "https://lobbystack.com/blog/",
+      "description": "Product updates and practical guides about AI receptionists, phone answering, appointment booking, and small-business call automation.",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://lobbystack.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/blog.jpg#image",
+      "url": "https://lobbystack.com/og/blog.jpg",
+      "caption": "AI Receptionist Blog and Product Updates",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://lobbystack.com/blog/#webpage",
+      "name": "AI Receptionist Blog and Product Updates",
+      "url": "https://lobbystack.com/blog/",
+      "description": "Read Okjobs product updates and practical guides about AI receptionists, phone answering, appointment booking, and small-business call automation.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/blog.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/blog/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist Blog and Product Updates",
+          "item": "https://lobbystack.com/blog/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/changelog.jpg#image",
+      "url": "https://lobbystack.com/og/changelog.jpg",
+      "caption": "Okjobs Changelog",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/changelog/#webpage",
+      "name": "Okjobs Changelog",
+      "url": "https://lobbystack.com/changelog/",
+      "description": "Follow Okjobs product updates, new AI receptionist features, integrations, and improvements for small businesses.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/changelog.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/changelog/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Okjobs Changelog",
+          "item": "https://lobbystack.com/changelog/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/docs/api.jpg#image",
+      "url": "https://lobbystack.com/og/docs/api.jpg",
+      "caption": "Okjobs Public API Documentation",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/docs/api/#webpage",
+      "name": "Okjobs Public API Documentation",
+      "url": "https://lobbystack.com/docs/api/",
+      "description": "Machine-readable discovery resources for agents and integrators visiting Okjobs.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/docs/api.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/docs/api/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Okjobs Public API Documentation",
+          "item": "https://lobbystack.com/docs/api/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/missed-call-revenue-calculator.jpg#image",
+      "url": "https://lobbystack.com/og/missed-call-revenue-calculator.jpg",
+      "caption": "Missed Call Revenue Calculator for Contractors",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/missed-call-revenue-calculator/#webpage",
+      "name": "Missed Call Revenue Calculator for Contractors",
+      "url": "https://lobbystack.com/missed-call-revenue-calculator/",
+      "description": "Estimate weekly, monthly, and annual revenue at risk from missed contractor calls and see how much a 24/7 AI receptionist could recover.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/missed-call-revenue-calculator.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/missed-call-revenue-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Missed Call Revenue Calculator for Contractors",
+          "item": "https://lobbystack.com/missed-call-revenue-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/about.jpg#image",
+      "url": "https://lobbystack.com/og/about.jpg",
+      "caption": "About Okjobs - Open-Source AI Receptionist",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/about/#webpage",
+      "name": "About Okjobs - Open-Source AI Receptionist",
+      "url": "https://lobbystack.com/about/",
+      "description": "Learn about Okjobs, the open-source AI receptionist for small businesses that need call answering, appointment booking, and call transfers.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/about.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/about/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Okjobs - Open-Source AI Receptionist",
+          "item": "https://lobbystack.com/about/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/after-hours-answering-service.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/after-hours-answering-service.jpg",
+      "caption": "After-Hours Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/after-hours-answering-service/#webpage",
+      "name": "After-Hours Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/after-hours-answering-service/",
+      "description": "Okjobs answers your business calls after hours, books appointments into your calendar, and transfers emergencies to whoever is on call. Free plan, then $30 a month.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/after-hours-answering-service.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/after-hours-answering-service/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "After-Hours Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/after-hours-answering-service/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-dental-offices.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-dental-offices.jpg",
+      "caption": "AI Dental Answering Service for Dental Offices | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-dental-offices/#webpage",
+      "name": "AI Dental Answering Service for Dental Offices | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-dental-offices/",
+      "description": "Okjobs answers your dental office's calls when the front desk is busy or closed. It books new patients, answers insurance questions, and transfers emergencies.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-dental-offices.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-dental-offices/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Dental Answering Service for Dental Offices | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-dental-offices/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-salons-and-spas.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-salons-and-spas.jpg",
+      "caption": "Salon and Spa Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-salons-and-spas/#webpage",
+      "name": "Salon and Spa Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-salons-and-spas/",
+      "description": "Okjobs is an AI answering service for salons and spas that answers booking calls, schedules appointments, handles reschedules, and answers service questions.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-salons-and-spas.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-salons-and-spas/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Salon and Spa Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-salons-and-spas/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/self-hosted-ai-receptionist.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/self-hosted-ai-receptionist.jpg",
+      "caption": "Self-Hosted AI Receptionist, Open Source | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/self-hosted-ai-receptionist/#webpage",
+      "name": "Self-Hosted AI Receptionist, Open Source | Okjobs",
+      "url": "https://lobbystack.com/solutions/self-hosted-ai-receptionist/",
+      "description": "Run Okjobs, an open-source AI receptionist, on your own servers with Docker Compose. Keep call recordings, transcripts, and customer data in your own PostgreSQL database.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/self-hosted-ai-receptionist.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/self-hosted-ai-receptionist/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Self-Hosted AI Receptionist, Open Source | Okjobs",
+          "item": "https://lobbystack.com/solutions/self-hosted-ai-receptionist/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-plumbers.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-plumbers.jpg",
+      "caption": "24/7 Plumbing Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-plumbers/#webpage",
+      "name": "24/7 Plumbing Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-plumbers/",
+      "description": "Okjobs is an AI plumbing answering service. It tells callers how to shut off the water, quotes your drain and dispatch fees, and routes burst pipes to your on-call plumber.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-plumbers.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-plumbers/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "24/7 Plumbing Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-plumbers/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-hvac.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-hvac.jpg",
+      "caption": "24/7 HVAC Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-hvac/#webpage",
+      "name": "24/7 HVAC Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-hvac/",
+      "description": "Okjobs is an AI HVAC answering service. It picks up overflow during heat waves and cold snaps, flags urgent no-heat and no-AC calls, and books tune-ups and estimates.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-hvac.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-hvac/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "24/7 HVAC Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-hvac/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-electricians.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-electricians.jpg",
+      "caption": "Electrician Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-electricians/#webpage",
+      "name": "Electrician Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-electricians/",
+      "description": "Okjobs is an AI answering service for electricians. It reads your safety instructions for sparks and burning smells and books panel upgrade, EV charger, and generator estimates.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-electricians.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-electricians/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Electrician Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-electricians/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-garage-door-repair.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-garage-door-repair.jpg",
+      "caption": "AI Receptionist for Garage Door Repair | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-garage-door-repair/#webpage",
+      "name": "AI Receptionist for Garage Door Repair | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-garage-door-repair/",
+      "description": "Okjobs answers garage-door calls, gathers equipment details, books repairs, and routes urgent stuck-door or broken-spring requests to your technician.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-garage-door-repair.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-garage-door-repair/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist for Garage Door Repair | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-garage-door-repair/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-appliance-repair.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-appliance-repair.jpg",
+      "caption": "AI Receptionist for Appliance Repair | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-appliance-repair/#webpage",
+      "name": "AI Receptionist for Appliance Repair | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-appliance-repair/",
+      "description": "Okjobs answers appliance-repair calls, collects appliance, brand, model, and symptom details, then books an appropriate service visit.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-appliance-repair.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-appliance-repair/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist for Appliance Repair | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-appliance-repair/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-restoration-companies.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-restoration-companies.jpg",
+      "caption": "AI Receptionist for Restoration Companies | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-restoration-companies/#webpage",
+      "name": "AI Receptionist for Restoration Companies | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-restoration-companies/",
+      "description": "Okjobs qualifies water, fire, and mold damage calls, books restoration estimates, and routes urgent mitigation requests to your on-call team.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-restoration-companies.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-restoration-companies/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist for Restoration Companies | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-restoration-companies/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-locksmiths.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/ai-receptionist-for-locksmiths.jpg",
+      "caption": "AI Receptionist for Locksmiths | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-locksmiths/#webpage",
+      "name": "AI Receptionist for Locksmiths | Okjobs",
+      "url": "https://lobbystack.com/solutions/ai-receptionist-for-locksmiths/",
+      "description": "An AI receptionist for locksmiths that answers emergency lockout calls, books service appointments, and routes urgent calls to your on-call technician.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/ai-receptionist-for-locksmiths.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/ai-receptionist-for-locksmiths/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Receptionist for Locksmiths | Okjobs",
+          "item": "https://lobbystack.com/solutions/ai-receptionist-for-locksmiths/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/after-hours-answering-service-for-contractors.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/after-hours-answering-service-for-contractors.jpg",
+      "caption": "Contractor Answering Service for After-Hours Calls | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/after-hours-answering-service-for-contractors/#webpage",
+      "name": "Contractor Answering Service for After-Hours Calls | Okjobs",
+      "url": "https://lobbystack.com/solutions/after-hours-answering-service-for-contractors/",
+      "description": "Okjobs is an after-hours contractor answering service. It screens emergencies, books next-day visits, and routes urgent jobs to your on-call staff with context.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/after-hours-answering-service-for-contractors.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/after-hours-answering-service-for-contractors/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contractor Answering Service for After-Hours Calls | Okjobs",
+          "item": "https://lobbystack.com/solutions/after-hours-answering-service-for-contractors/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/property-management-answering-service.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/property-management-answering-service.jpg",
+      "caption": "Property Management Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/property-management-answering-service/#webpage",
+      "name": "Property Management Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/property-management-answering-service/",
+      "description": "Okjobs is an AI answering service for property managers. It sorts after-hours maintenance emergencies, answers leasing questions, and books showings.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/property-management-answering-service.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/property-management-answering-service/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Property Management Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/property-management-answering-service/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/roofing-answering-service.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/roofing-answering-service.jpg",
+      "caption": "Roofing Answering Service with AI | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/roofing-answering-service/#webpage",
+      "name": "Roofing Answering Service with AI | Okjobs",
+      "url": "https://lobbystack.com/solutions/roofing-answering-service/",
+      "description": "Okjobs is an AI answering service for roofers. It handles storm-surge calls, sends active leaks to your on-call crew, and books inspections and estimates.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/roofing-answering-service.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/roofing-answering-service/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Roofing Answering Service with AI | Okjobs",
+          "item": "https://lobbystack.com/solutions/roofing-answering-service/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://lobbystack.com/og/solutions/open-source-ai-receptionist.jpg#image",
+      "url": "https://lobbystack.com/og/solutions/open-source-ai-receptionist.jpg",
+      "caption": "Open-Source AI Receptionist | Okjobs",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lobbystack.com/solutions/open-source-ai-receptionist/#webpage",
+      "name": "Open-Source AI Receptionist | Okjobs",
+      "url": "https://lobbystack.com/solutions/open-source-ai-receptionist/",
+      "description": "Okjobs is an open-source AI receptionist you can audit, customize, and self-host. Inspect call handling, modify prompts, and run it on your infrastructure.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://lobbystack.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://lobbystack.com/og/solutions/open-source-ai-receptionist.jpg#image"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lobbystack.com/solutions/open-source-ai-receptionist/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lobbystack.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Open-Source AI Receptionist | Okjobs",
+          "item": "https://lobbystack.com/solutions/open-source-ai-receptionist/"
+        }
+      ]
+    }
+  ]
+}

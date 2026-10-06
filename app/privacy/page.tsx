@@ -98,7 +98,7 @@ export default function PrivacyPage() {
           votre demande sous 14 jours.
         </p>
         <p>
-          Les sauvegardes techniques sont conservées 35 jours au maximum puis
+          Les sauvegardes techniques sont conservées 28 jours au maximum puis
           détruites&nbsp;: des copies de vos données peuvent subsister dans ces
           sauvegardes pendant cette durée.
         </p>
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
         </p>
 
         <p className="text-xs text-slate-500 mt-12 border-t border-slate-200 pt-4">
-          <Link href="/terms">Conditions d’utilisation</Link>
+          <Link href="/okjobs/terms">Conditions d’utilisation</Link>
         </p>
       </main>
     </div>

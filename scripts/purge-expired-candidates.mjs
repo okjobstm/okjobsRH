@@ -2,44 +2,44 @@
 // privacy page and the stage 1 consent both promise automatic deletion at that
 // point, so this is what makes the promise true.
 //
-// Each run deletes the CV file, the candidate row (Submission, ItemScore and
-// events cascade), and the invite, after detaching the audit rows that point at
-// the invite: AuditLog.inviteId cascades, and the recruiter's own trail must
-// outlive the candidate's data.
+// Each run deletes the CV from the private Storage bucket, the candidate row
+// (Submission, ItemScore and events cascade), and the invite, after detaching the
+// audit rows that point at the invite: AuditLog.inviteId cascades, and the
+// recruiter's own trail must outlive the candidate's data.
 //
 // Usage:
 //   set -a && source .env && set +a
-//   node scripts/purge-expired-candidates.mjs            # dry run by default
-//   node scripts/purge-expired-candidates.mjs --apply    # actually delete
+//   node --experimental-strip-types --no-warnings scripts/purge-expired-candidates.mjs
+//   node --experimental-strip-types --no-warnings scripts/purge-expired-candidates.mjs --apply
 
-import path from "node:path";
-import fs from "node:fs/promises";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { listCvKeys, removeCv } from "../lib/supabase/storage.ts";
 
 const APPLY = process.argv.includes("--apply");
 const RETENTION_MONTHS = Number(process.env.RETENTION_MONTHS ?? 24);
-const ROOT = path.resolve(process.env.UPLOADS_DIR ?? "/var/recruit/uploads");
 const ACTOR = "systeme:purge-retention";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
-function isInsideRoot(target) {
-  return target !== ROOT && target.startsWith(ROOT + path.sep);
-}
-
 async function main() {
-  let entries;
+  // Never erase the rows while the bucket is unreachable: the CV objects would
+  // survive with nothing left pointing at them, and the reaper would collect them
+  // as orphans while the retention copy still promised they were gone.
+  let inBucket;
   try {
-    entries = await fs.readdir(ROOT, { recursive: true, withFileTypes: true });
+    inBucket = await listCvKeys();
   } catch (err) {
-    console.error(`Refusing to run: cannot read UPLOADS_DIR (${ROOT}): ${err.message}`);
+    console.error(`Refusing to run: CV bucket unreachable: ${err.message}`);
     process.exit(1);
   }
-  if (entries.filter((entry) => entry.isFile()).length === 0) {
+
+  // An empty bucket means the credentials or the bucket name are wrong, not that
+  // every CV was deleted. Refuse, same as the reaper.
+  if (inBucket.length === 0) {
     console.error(
-      `Refusing to run: ${ROOT} holds no file, so it is most likely not the uploads directory.`
+      "Refusing to run: the CV bucket is empty, so it is most likely not this app's bucket."
     );
     process.exit(1);
   }
@@ -61,7 +61,6 @@ async function main() {
     orderBy: { createdAt: "asc" },
   });
 
-  console.log(`Uploads root: ${ROOT}`);
   console.log(`Cutoff: candidates created before ${cutoff.toISOString()} (${RETENTION_MONTHS} months)`);
   console.log(`Expired applications: ${expired.length}`);
   console.log(`Mode: ${APPLY ? "APPLY (will delete)" : "DRY RUN (nothing deleted)"}`);
@@ -76,19 +75,15 @@ async function main() {
     console.log(`  ${candidate.createdAt.toISOString().slice(0, 10)}  ${candidate.name}  ${candidate.email}`);
 
     if (storedPath) {
-      const absolutePath = path.resolve(ROOT, storedPath);
-      if (!isInsideRoot(absolutePath)) {
-        console.log(`      CV kept, stored path outside the uploads root: ${storedPath}`);
-        filesKept++;
-      } else if (!APPLY) {
+      if (!APPLY) {
         console.log(`      would delete ${storedPath}`);
       } else {
         try {
-          await fs.unlink(absolutePath);
+          await removeCv(storedPath);
           console.log(`      deleted ${storedPath}`);
           filesRemoved++;
         } catch (err) {
-          console.log(`      CV kept, unlink failed (${err.code}): ${storedPath}`);
+          console.log(`      CV kept, deletion failed: ${err.message}`);
           filesKept++;
         }
       }

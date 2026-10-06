@@ -8,7 +8,7 @@ SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 MAILTO=""
 
-# 04:45 UTC every day, after the 03:15 backup. Output goes to a log rather than
-# /dev/null so the number of erased applications is recorded, and so a refusal to
-# run (unreadable or empty UPLOADS_DIR) is never silent.
-45 4 * * * root cd /path/to/recruit && set -a && . ./.env && set +a && node scripts/purge-expired-candidates.mjs --apply >>/var/log/recruit-purge.log 2>&1
+# 04:45 UTC every day. Output goes to a log rather than /dev/null so the number
+# of erased applications is recorded, and so a refusal to run (unreachable CV
+# bucket) is never silent.
+45 4 * * * root cd /path/to/recruit && set -a && . ./.env && set +a && node --experimental-strip-types --no-warnings scripts/purge-expired-candidates.mjs --apply >>/var/log/recruit-purge.log 2>&1

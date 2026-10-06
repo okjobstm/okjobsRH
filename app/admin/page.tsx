@@ -1,4 +1,4 @@
-import { getSession } from "@/lib/session";
+import { requireAuth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { Briefcase, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,7 @@ export default async function AdminDashboard({
 }: {
   searchParams: Promise<{ filter?: string }>;
 }) {
-  const session = await getSession();
+  const { email } = await requireAuth();
   const sp = await searchParams;
   const filterParam = sp.filter as DashboardTab | undefined;
   const filter: DashboardTab =
@@ -106,7 +106,7 @@ export default async function AdminDashboard({
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Vue d’ensemble du pipeline</h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">{session.email}</p>
+          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">{email}</p>
         </div>
         <Button asChild size="sm" className="shrink-0">
           <Link href="/admin/jobs/new">

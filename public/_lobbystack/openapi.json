@@ -1,0 +1,327 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Okjobs Public Agent Discovery API",
+    "version": "0.1.0",
+    "description": "Public discovery endpoints for agents, crawlers, and integrators visiting lobbystack.com."
+  },
+  "servers": [
+    {
+      "url": "https://lobbystack.com"
+    }
+  ],
+  "paths": {
+    "/api/status": {
+      "get": {
+        "summary": "Get public site status",
+        "operationId": "getPublicStatus",
+        "responses": {
+          "200": {
+            "description": "The public discovery surface is available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/api-catalog": {
+      "get": {
+        "summary": "Get the API catalog linkset",
+        "operationId": "getApiCatalog",
+        "responses": {
+          "200": {
+            "description": "RFC 9727 API catalog serialized as a JSON linkset.",
+            "content": {
+              "application/linkset+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiCatalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/agent-skills/index.json": {
+      "get": {
+        "summary": "Get the agent skills discovery index",
+        "operationId": "getAgentSkills",
+        "responses": {
+          "200": {
+            "description": "Agent Skills Discovery index.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSkillsIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/mcp/server-card.json": {
+      "get": {
+        "summary": "Get the MCP server card",
+        "operationId": "getMcpServerCard",
+        "responses": {
+          "200": {
+            "description": "Machine-readable MCP server card.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Get the compact LLM context file",
+        "operationId": "getLlmsTxt",
+        "responses": {
+          "200": {
+            "description": "Plain-text product, feature, pricing, and discovery context.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/feed.xml": {
+      "get": {
+        "summary": "Get the Okjobs RSS feed",
+        "operationId": "getRssFeed",
+        "responses": {
+          "200": {
+            "description": "RSS 2.0 feed for Okjobs blog posts.",
+            "content": {
+              "application/rss+xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schemamap.xml": {
+      "get": {
+        "summary": "Get the schema endpoint map",
+        "operationId": "getSchemaMap",
+        "responses": {
+          "200": {
+            "description": "XML map of public structured-data endpoints.",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schema/page.json": {
+      "get": {
+        "summary": "Get the page schema graph",
+        "operationId": "getPageSchemaGraph",
+        "responses": {
+          "200": {
+            "description": "Corpus-wide JSON-LD graph for public pages.",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schema/post.json": {
+      "get": {
+        "summary": "Get the blog post schema graph",
+        "operationId": "getPostSchemaGraph",
+        "responses": {
+          "200": {
+            "description": "Corpus-wide JSON-LD graph for blog posts.",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/index.md": {
+      "get": {
+        "summary": "Get the homepage markdown summary",
+        "operationId": "getHomepageMarkdown",
+        "responses": {
+          "200": {
+            "description": "Markdown summary of Okjobs's homepage.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/features.md": {
+      "get": {
+        "summary": "Get the features markdown summary",
+        "operationId": "getFeaturesMarkdown",
+        "responses": {
+          "200": {
+            "description": "Markdown summary of Okjobs's public features.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pricing.md": {
+      "get": {
+        "summary": "Get the pricing markdown summary",
+        "operationId": "getPricingMarkdown",
+        "responses": {
+          "200": {
+            "description": "Markdown summary of Okjobs's plans, included limits, plan features, and overage rates.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/affiliate-program.md": {
+      "get": {
+        "summary": "Get the affiliate program markdown summary",
+        "operationId": "getAffiliateProgramMarkdown",
+        "responses": {
+          "200": {
+            "description": "Markdown summary of the Okjobs Affiliate Program terms, payouts, and onboarding.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/missed-call-revenue-calculator/index.md": {
+      "get": {
+        "summary": "Get the missed call revenue calculator markdown",
+        "operationId": "getCalculatorMarkdown",
+        "responses": {
+          "200": {
+            "description": "Markdown representation of the missed call revenue calculator tool.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StatusResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          },
+          "service": {
+            "type": "string"
+          },
+          "documentation": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [
+          "status",
+          "service",
+          "documentation"
+        ]
+      },
+      "ApiCatalog": {
+        "type": "object",
+        "properties": {
+          "linkset": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "linkset"
+        ]
+      },
+      "AgentSkillsIndex": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "type": "string",
+            "format": "uri"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "$schema",
+          "skills"
+        ]
+      }
+    }
+  }
+}

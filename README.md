@@ -11,7 +11,7 @@ role-fit read for human reviewers. It is not a hire/no-hire engine — it
 surfaces structured signal to support an interview decision.
 
 > Originally built as an internal tool and released under the MIT license. You
-> will need to supply your own configuration (database, Google OAuth client,
+> will need to supply your own configuration (database, Supabase Auth providers,
 > Anthropic API key) and customize the branding and legal copy for your
 > organization.
 
@@ -30,14 +30,14 @@ surfaces structured signal to support an interview decision.
   queue and badge.
 - **Audit log** — every administrative action is recorded.
 - **Engagement signals, analytics, and an in-app help walkthrough.**
-- **Ops** — `/healthz` check, structured pino logging, nightly DB backups, and
-  optional Sentry error monitoring.
+- **Ops** — `/healthz` check, structured pino logging, Supabase point-in-time
+  recovery, and optional Sentry error monitoring.
 
 ## Stack
 
 - [Next.js 15](https://nextjs.org/) App Router, React 19, TypeScript
-- [Prisma 7](https://www.prisma.io/) (driver-adapter pattern) on PostgreSQL
-- [iron-session](https://github.com/vvo/iron-session) cookie auth + Google Sign-In
+- [Prisma 7](https://www.prisma.io/) (driver-adapter pattern) on Supabase Postgres
+- [Supabase Auth](https://supabase.com/docs/guides/auth) (email/password and Google) + Storage
 - Tailwind CSS v4, shadcn-style components
 - [pino](https://getpino.io/) structured logging
 - [Anthropic Claude API](https://docs.anthropic.com/) for rubric scoring
@@ -46,8 +46,10 @@ surfaces structured signal to support an interview decision.
 ## Prerequisites
 
 - Node.js 22+
-- PostgreSQL 14+
-- A Google OAuth client ID (for admin sign-in)
+- Three [Supabase](https://supabase.com/) projects (production, dev, test), or at
+  least one to start. Production needs the IPv4 add-on for direct connections
+- The Email provider enabled in Supabase Auth with email confirmation; Google is optional
+- Supabase Site URL and Redirect URLs configured for `/auth/callback`
 - An Anthropic API key (for AI scoring)
 
 ## Setup
@@ -68,18 +70,35 @@ Then edit `.env`. The key variables:
 
 | Variable | Required | Description |
 |---|---|---|
-| `DATABASE_URL` | yes | PostgreSQL connection string |
-| `SESSION_SECRET` | yes | Random string, minimum 32 characters (`openssl rand -base64 32`) |
-| `ADMIN_HOSTED_DOMAIN` | yes | Google Workspace domain allowed to sign in (e.g. `acme.com`) |
-| `GOOGLE_CLIENT_ID` | yes | Google OAuth client ID for sign-in |
+| `DATABASE_URL` | yes | Supabase session-pooler URL used by the application |
+| `DIRECT_URL` | yes | Supabase session-pooler URL used by Prisma migrations |
+| `NEXT_PUBLIC_SUPABASE_URL` | yes | Project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | yes | Publishable API key, safe in the browser |
+| `SUPABASE_SERVICE_ROLE_KEY` | yes | Service-role key, server-only, bypasses RLS |
 | `ANTHROPIC_API_KEY` | yes | Enables AI rubric scoring |
+| `ADMIN_HOSTED_DOMAIN` | no | Email domain allowed to use the Admin role (e.g. `acme.com`) |
+| `ADMIN_EMAILS` | no | Comma-separated allowlist, also seeds the reviewer picker |
 | `NEXT_PUBLIC_BASE_URL` | recommended | Public origin used to build candidate links |
 | `NEXT_PUBLIC_APP_NAME` / `NEXT_PUBLIC_ORG_NAME` / `NEXT_PUBLIC_CONTACT_EMAIL` | no | Branding and legal-copy customization |
-| `ADMIN_EMAILS` | no | Comma-separated seed emails for the reviewer picker |
 
-Admin access is restricted to Google accounts on `ADMIN_HOSTED_DOMAIN`. The
-sign-in route verifies Google's hosted-domain (`hd`) claim before issuing a
-session, so only members of that Workspace can reach the admin area.
+Candidate and company accounts can be created with any valid email address.
+The selected role is promoted into server-controlled Supabase `app_metadata`
+after email confirmation. Candidate accounts use the restricted `/dashboard`.
+Company accounts use the complete recruitment console under `/admin` (offers,
+invites, candidates, reviews, analytics, exports, help, and settings). The Admin
+role currently inherits that console and is the base for a future global view.
+Admin access additionally requires a match on `ADMIN_HOSTED_DOMAIN` **or**
+`ADMIN_EMAILS`, so choosing “Admin” in the form never bypasses the allowlist.
+
+In Supabase Auth, keep **Confirm email** enabled. Add both the production origin
+and the local development origin to the allowed redirect URLs, including
+`/auth/callback`. The `/login`, `/signup`, `/forgot-password`, and
+`/reset-password` pages use the public Supabase client. The service-role key is
+used only on the server to assign the verified role in protected `app_metadata`.
+
+Create the private Storage bucket named `cvs` in each project. It holds one
+object per candidate CV at `<candidateId>/<field>_<uuid>.<ext>`, and is read and
+written only with the service-role key.
 
 ### 3. Set up the database
 
@@ -101,8 +120,10 @@ npm run db:seed
 npm run dev
 ```
 
-The app runs at `http://localhost:3000`. The root redirects to `/admin`, which
-redirects to `/login` when there is no session.
+The app runs at `http://localhost:3000`. The root is the public LobbyStack site;
+its authentication calls to action lead to `/login` and `/signup`. The private
+application remains under `/admin` and redirects to `/login` without a valid
+administrator session.
 
 ## Scripts
 
@@ -125,16 +146,27 @@ redirects to `/login` when there is no session.
 - `app/apply/[token]/*` — candidate-facing flow (stages 1–6)
 - `actions/*` — server actions (auth, jobs, candidates, reviews, apply)
 - `lib/scoring/*` — STAR scoring, dimension synthesis, role-fit reads
+- `lib/supabase/*` — Auth, Storage, and service-role clients
 - `components/*` — admin and candidate UI components
 - `prisma/schema.prisma` — data model (single source of truth)
 - `tests/e2e/*` — Playwright end-to-end suites
-- `scripts/*` — deploy, backup, and ops helpers
+- `scripts/*` — deploy and ops helpers
 
 ## Testing
 
 Unit tests run with `npm run test:unit`. End-to-end suites use Playwright
-(Python) and expect a running app plus a database. Configure credentials and
-target URL via env: `BASE_URL`, `ADMIN_E2E_EMAIL`, `ADMIN_E2E_PASSWORD`.
+(Python) and expect a running app plus a database. Point everything at a
+**disposable** Supabase test project, since these suites write rows and delete CVs:
+
+```bash
+set -a && source .env.test && set +a
+npm run dev:safe &
+python tests/e2e/test_candidate_erase.py
+```
+
+`tests/e2e/mint_admin_session.mjs` mints a real Supabase session for
+`ADMIN_E2E_EMAIL` and prints its cookies, so admin suites skip the browser OAuth
+dance. `ADMIN_E2E_PASSWORD` is no longer used.
 
 ## Deployment
 
@@ -143,7 +175,8 @@ Actions self-hosted runner that, on each push to `main`, runs
 `scripts/deploy.sh` (`git pull && npm ci && prisma migrate deploy && next build
 && pm2 reload`) with a `/healthz` gate. Both scripts read their paths and names
 from the environment, so adapt or replace them to suit your infrastructure. See
-`scripts/RESTORE.md` and `scripts/UPTIME.md` for backup and uptime guidance.
+`scripts/RESTORE.md` for the point-in-time recovery runbook and
+`scripts/UPTIME.md` for uptime guidance.
 
 ## Contributing
 

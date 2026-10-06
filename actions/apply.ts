@@ -3,10 +3,9 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
-import fs from "fs/promises";
 import { prisma } from "@/lib/prisma";
 import { getApplicationState, computeCompletionPercent, scorePsychometric } from "@/lib/apply";
-import { resolveInsideUploads } from "@/lib/uploads";
+import { removeCv } from "@/lib/supabase/storage";
 import { CandidateStage } from "@prisma/client";
 import logger from "@/lib/logger";
 import { autoAnalyzeCandidate } from "@/lib/scoring/auto-analyze";
@@ -260,16 +259,13 @@ export async function deleteApplicationAction(formData: FormData) {
   const { candidate, invite, job, submission } = state;
 
   if (submission.cvPath) {
-    const absolutePath = resolveInsideUploads(submission.cvPath);
-    if (absolutePath) {
-      await fs.unlink(absolutePath).catch((err) => {
-        logger.warn(
-          { err, storedPath: submission.cvPath },
-          "cv still on disk after erase, the reaper will collect it"
-        );
-      });
-    } else {
-      logger.warn({ storedPath: submission.cvPath }, "stored cvPath outside the uploads root, not deleted");
+    try {
+      await removeCv(submission.cvPath);
+    } catch (err) {
+      logger.warn(
+        { err, storedPath: submission.cvPath },
+        "cv still in storage after erase, the reaper will collect it"
+      );
     }
   }
 

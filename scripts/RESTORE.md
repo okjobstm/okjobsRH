@@ -2,69 +2,67 @@
 
 ## What runs
 
-Nightly at 03:15 UTC, `/etc/cron.d/recruit-backup` runs `scripts/backup-db.sh`.
-Backups land in `/var/backups/recruit/`:
+Nothing on this host. The nightly `pg_dump` cron is gone: it wrote to the same
+disk as the database, so it protected against nothing that matters.
 
-```
-/var/backups/recruit/
-  daily/    # last 7 days
-  weekly/   # Sunday dumps, last 4 weeks
-  monthly/  # 1st-of-month dumps, kept indefinitely (manual prune)
-```
+Backups are now Supabase's:
 
-Logs: `/var/log/recruit-backup.log`
+- **Point-in-time recovery**, 28-day window, on the paid project. Off-site,
+  managed by Supabase, survives loss of this box.
+- **Daily automated backups**, kept for 14 days on the same project.
 
-## Run a backup manually
+Set the window in Dashboard → your project → Settings → Backups → PITR. Keep it
+at 28 days: the retention copy in `app/privacy/page.tsx` promises exactly that,
+and a longer window would contradict it.
+
+## Restore the whole database to a point in time
+
+Dashboard → project → Settings → Backups → Point-in-time recovery, pick a
+timestamp, then either restore into a branch (safe, lets you verify) or into
+production (destructive, replaces the current database).
+
+With the Supabase CLI, linked to the project:
 
 ```bash
-/path/to/recruit/scripts/backup-db.sh
+supabase link --project-ref <ref> --password '<db password>'
+supabase db restore --backup-id <backup-id>   # from supabase backup list
 ```
 
-## Restore (full DB rollback)
-
-**Warning:** restore is destructive — it drops and recreates the target database.
+After any restore, re-apply migrations, since a restore point predates whatever
+has shipped since:
 
 ```bash
-# 1. Stop the app so no writes happen during restore
 pm2 stop recruit
-
-# 2. Drop and recreate the DB
-psql -h 127.0.0.1 -p 5433 -U postgres -c "DROP DATABASE recruit;"
-psql -h 127.0.0.1 -p 5433 -U postgres -c "CREATE DATABASE recruit;"
-
-# 3. Restore from a dump (gunzip + pg_restore)
-gunzip -c /var/backups/recruit/daily/recruit-YYYYMMDD-HHMMSS.dump.gz | \
-  pg_restore --no-owner --no-acl --dbname=postgresql://postgres@127.0.0.1:5433/recruit
-
-# 4. Restart the app
+npm run db:migrate
+npm run db:seed    # seed is idempotent; needed if the restore predates it
 pm2 start recruit
 ```
 
-## Restore a single table or partial data
+## Verify a restore without touching production
 
-```bash
-gunzip -c /var/backups/recruit/daily/recruit-YYYYMMDD-HHMMSS.dump.gz | \
-  pg_restore --no-owner --no-acl \
-    --table=Candidate \
-    --dbname=postgresql://postgres@127.0.0.1:5433/recruit
-```
+Restore into a branch, point that branch's `DATABASE_URL` at a scratch build,
+and check row counts. Do not rehearse a destructive restore on production.
 
-## Verify a backup is valid (without restoring to prod)
+## Storage is a different system
 
-```bash
-# List contents of a dump
-gunzip -c /var/backups/recruit/daily/recruit-YYYYMMDD-HHMMSS.dump.gz | pg_restore --list
+Candidate CVs are objects in the private `cvs` bucket. They are **not** rows, so
+what a database restore brings back depends on whether your plan's PITR and
+daily backups include Storage file objects. Confirm it once in Dashboard →
+Settings → Backups, and record the answer here:
 
-# Restore to a throwaway DB
-psql -h 127.0.0.1 -p 5433 -U postgres -c "CREATE DATABASE recruit_verify;"
-gunzip -c /var/backups/recruit/daily/recruit-YYYYMMDD-HHMMSS.dump.gz | \
-  pg_restore --no-owner --no-acl --dbname=postgresql://postgres@127.0.0.1:5433/recruit_verify
-psql -h 127.0.0.1 -p 5433 -U postgres -d recruit_verify -c "SELECT COUNT(*) FROM \"Candidate\";"
-psql -h 127.0.0.1 -p 5433 -U postgres -c "DROP DATABASE recruit_verify;"
-```
+- [ ] Verified: PITR includes Storage objects
+- [ ] Verified: Storage objects are **not** covered by PITR
+
+If they are not covered, a database restore leaves CV rows pointing at missing
+objects. The app treats that as a broken download rather than a crash, and the
+reaper in `scripts/reap-orphan-uploads.mjs` only prunes objects with no row, so
+it will not delete anything on its own. Re-uploading from a `pg_dump` of the old
+files, or paying for object-level versioning, are the two ways to close this.
 
 ## Known limitations
 
-- **Local-only.** Backups live on the same disk as the DB. If the disk fails, both are lost. Adding off-site sync (rsync to another host, or S3) is a known follow-up.
-- **No point-in-time recovery.** WAL archiving is not configured. Recovery granularity is "last nightly snapshot."
-- **Disk pressure.** Server is at ~89% disk. Monitor `/var/backups/recruit/` size.
+- **Recovery granularity is the last ~24h for PITR on this plan**, down to the
+  transaction. There is no weekly or monthly archive anymore: a mistake older
+  than 28 days is not recoverable.
+- **Storage coverage is unconfirmed** (see above). Until it is, treat a database
+  restore as a partial restore.

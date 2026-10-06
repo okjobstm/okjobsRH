@@ -22,7 +22,7 @@ export default async function ExpiredPage({
             <h1 className="text-2xl font-semibold text-slate-900">Données effacées</h1>
             <p className="text-slate-500">
               Vos données ont été effacées : votre profil, votre CV et vos résultats ont été
-              supprimés. Des copies de sauvegarde peuvent subsister jusqu’à 35 jours avant
+              supprimés. Des copies de sauvegarde peuvent subsister jusqu’à 28 jours avant
               destruction définitive. Pour postuler de nouveau, vous devrez recevoir une
               nouvelle invitation.
             </p>

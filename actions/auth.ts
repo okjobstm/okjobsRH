@@ -1,21 +1,24 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { prisma } from "@/lib/prisma";
-import { getSession } from "@/lib/session";
+import { createServerClient } from "@/lib/supabase/server";
 import logger from "@/lib/logger";
 
+// The AdminSession row is deliberately left behind: it records that this person
+// has signed in at least once, which is what the reviewer picker reads. Deleting
+// it on logout would empty the picker of everyone not currently connected.
 export async function logoutAction(): Promise<void> {
-  const session = await getSession();
+  const supabase = await createServerClient();
 
-  if (session.sessionId) {
-    await prisma.adminSession
-      .delete({ where: { id: session.sessionId } })
-      .catch(() => {});
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-    logger.info({ email: session.email, sessionId: session.sessionId }, "Admin logout");
+  await supabase.auth.signOut();
+
+  if (user?.email) {
+    logger.info({ email: user.email.toLowerCase() }, "User logout");
   }
 
-  session.destroy();
   redirect("/login");
 }

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { CandidateStage } from "@prisma/client";
-import { getKnownAdminEmails } from "@/lib/session";
+import { getKnownAdminEmails } from "@/lib/auth";
 import { bulkApplyUrl } from "@/lib/base-url";
 import { RoleHeader } from "./_components/role-header";
 import { TabStrip, VALID_TABS, type JobTab } from "./_components/tab-strip";

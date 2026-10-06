@@ -4,6 +4,7 @@ Covers TC-001 through TC-012 from TEST_CASES.md
 
 Run with:
     cd /path/to/recruit
+    set -a && source .env.test && set +a
     python3 tests/e2e/test_recruit.py
 """
 
@@ -13,13 +14,13 @@ import time
 import traceback
 from playwright.sync_api import sync_playwright, Page, Browser
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from admin_auth import authenticate
+
 # ─── Config ──────────────────────────────────────────────────────────────────
 
-BASE_URL       = "http://localhost:3000"
+BASE_URL       = os.environ.get("BASE_URL", "http://localhost:3000")
 ADMIN_EMAIL    = os.environ.get("ADMIN_E2E_EMAIL", "admin@example.com")
-ADMIN_PASSWORD = os.environ.get("ADMIN_E2E_PASSWORD", "")
-BAD_PASSWORD   = "wrongpassword123"
-BAD_EMAIL      = "notallowed@example.com"
 SCREENSHOT_DIR = "tests/e2e/screenshots"
 
 TEST_JOB_TITLE = f"E2E Test Job {int(time.time())}"
@@ -60,13 +61,10 @@ def ss(page: Page, name: str) -> str:
 
 # ─── Auth helpers ─────────────────────────────────────────────────────────────
 
-def do_login(page: Page, email=ADMIN_EMAIL, password=ADMIN_PASSWORD):
-    page.goto(f"{BASE_URL}/login")
-    page.wait_for_load_state("networkidle")
-    page.locator('input[name="email"]').fill(email)
-    page.locator('input[type="password"]').fill(password)
-    page.locator('button[type="submit"]').click()
-    # Login uses client-side router.push — wait for navigation
+def do_login(page: Page):
+    # There is no password form any more; the session comes from Supabase Auth.
+    authenticate(page.context)
+    page.goto(f"{BASE_URL}/admin")
     page.wait_for_load_state("networkidle")
     page.wait_for_timeout(1500)
 
@@ -102,15 +100,16 @@ def tc001_login_persists(browser: Browser):
         record(name, False, f"{e}")
 
 
-def tc005_wrong_password(browser: Browser):
-    """TC-005: Wrong password is rejected."""
-    name = "TC-005: Wrong password is rejected"
+def tc005_anonymous_rejected(browser: Browser):
+    """TC-005: An unauthenticated context cannot reach the admin area."""
+    name = "TC-005: Anonymous access is rejected"
     try:
         ctx = browser.new_context()
         page = ctx.new_page()
-        do_login(page, password=BAD_PASSWORD)
-        ss(page, "tc005_wrong_password")
-        assert "/admin" not in page.url, f"Should not reach /admin with wrong password, got {page.url}"
+        page.goto(f"{BASE_URL}/admin", wait_until="domcontentloaded")
+        page.wait_for_url(f"**/login**", timeout=10_000)
+        ss(page, "tc005_anonymous")
+        assert "/admin" not in page.url, f"Anonymous context reached /admin, got {page.url}"
         record(name, True)
         ctx.close()
     except Exception as e:
@@ -118,18 +117,21 @@ def tc005_wrong_password(browser: Browser):
 
 
 def tc006_bad_email(browser: Browser):
-    """TC-006: Non-allowlisted email is rejected."""
+    """TC-006: Non-allowlisted email is rejected.
+
+    Cannot run headlessly: the admin identity comes from a real Google sign-in, so
+    proving a *different* Google account is refused needs a second account and a
+    full OAuth round trip. Skipped rather than reported green.
+    """
     name = "TC-006: Unauthorized email is rejected"
-    try:
-        ctx = browser.new_context()
-        page = ctx.new_page()
-        do_login(page, email=BAD_EMAIL)
-        ss(page, "tc006_bad_email")
-        assert "/admin" not in page.url, f"Non-allowlisted email should not reach /admin, got {page.url}"
-        record(name, True)
-        ctx.close()
-    except Exception as e:
-        record(name, False, f"{e}")
+    print(f"  ⏭️  SKIP  {name}  (needs a second Google identity)")
+    results.append(
+        {
+            "name": name,
+            "passed": None,
+            "note": "needs a second Google identity to sign in as",
+        }
+    )
 
 
 def tc007_create_job(browser: Browser) -> str | None:
@@ -460,7 +462,7 @@ def main():
         try:
             # Auth tests — no shared state
             tc001_login_persists(browser)
-            tc005_wrong_password(browser)
+            tc005_anonymous_rejected(browser)
             tc006_bad_email(browser)
 
             # Create the test job — all subsequent tests depend on this
@@ -501,19 +503,23 @@ def main():
 
     # ── Summary ───────────────────────────────────────────────────────────────
     passed = [r for r in results if r["passed"]]
-    failed = [r for r in results if not r["passed"]]
+    skipped = [r for r in results if r["passed"] is None]
+    failed = [r for r in results if r["passed"] is False]
 
     print("\n" + "═" * 62)
     print("  SUMMARY")
     print("═" * 62)
     for r in results:
-        icon = "✅" if r["passed"] else "❌"
+        icon = "✅" if r["passed"] else ("⏭️" if r["passed"] is None else "❌")
         print(f"  {icon}  {r['name']}")
-        if not r["passed"] and r["note"]:
+        if r["passed"] is not True and r["note"]:
             print(f"      {r['note'][:120]}")
 
     print()
-    print(f"  {'✅' if not failed else '❌'}  {len(passed)} passed  /  {len(failed)} failed  /  {len(results)} total")
+    print(
+        f"  {'✅' if not failed else '❌'}  {len(passed)} passed  /  {len(failed)} failed"
+        f"  /  {len(skipped)} skipped  /  {len(results)} total"
+    )
     print(f"  Screenshots: {SCREENSHOT_DIR}/")
     print()
 

@@ -14,7 +14,9 @@ jobs:
     # real database or secrets. They only need to be present, not valid.
     env:
       DATABASE_URL: postgresql://user:password@localhost:5432/recruit
-      SESSION_SECRET: build-time-placeholder-secret-at-least-32-chars
+      NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_placeholder
+      SUPABASE_SERVICE_ROLE_KEY: sb_secret_placeholder
     steps:
       - uses: actions/checkout@v7
 

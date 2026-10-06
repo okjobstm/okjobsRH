@@ -34,6 +34,7 @@ export default async function AdminLayout({
     <AdminShell
       jobs={jobs}
       email={session.email}
+      role={session.role}
       pendingReviewCount={pendingReviewCount}
       logoutAction={logoutAction}
     >

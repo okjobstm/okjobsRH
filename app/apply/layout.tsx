@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { APP_NAME, ORG_NAME } from "@/lib/site-config";
+import { BrandMark } from "@/components/brand-mark";
 
 export default function ApplyLayout({ children }: { children: ReactNode }) {
   return (
@@ -7,6 +8,7 @@ export default function ApplyLayout({ children }: { children: ReactNode }) {
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center">
         <div className="flex items-center gap-2">
+          <BrandMark className="size-7" priority />
           <span className="text-lg font-bold tracking-tight text-slate-900">{APP_NAME}</span>
           <span className="text-slate-300">|</span>
           <span className="text-sm text-slate-500">Candidature</span>
@@ -23,9 +25,9 @@ export default function ApplyLayout({ children }: { children: ReactNode }) {
       <footer className="py-6 text-center text-xs text-slate-400 space-x-3">
         <span>{ORG_NAME}</span>
         <span>·</span>
-        <a href="/privacy" className="hover:text-slate-600 transition-colors">Confidentialité</a>
+        <a href="/okjobs/privacy" className="hover:text-slate-600 transition-colors">Confidentialité</a>
         <span>·</span>
-        <a href="/terms" className="hover:text-slate-600 transition-colors">Conditions</a>
+        <a href="/okjobs/terms" className="hover:text-slate-600 transition-colors">Conditions</a>
       </footer>
     </div>
   );

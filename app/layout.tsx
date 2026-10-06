@@ -9,6 +9,10 @@ const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", axe
 export const metadata: Metadata = {
   title: APP_NAME,
   description: `Plateforme de recrutement ${ORG_NAME}`,
+  icons: {
+    icon: "/brand/okjobs-logo.png",
+    apple: "/brand/okjobs-logo.png",
+  },
 };
 
 export default function RootLayout({

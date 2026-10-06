@@ -1,0 +1,99 @@
+---
+title: Alternative à My AI Front Desk
+canonical: "https://lobbystack.com/fr/blog/my-ai-front-desk-alternative/"
+pubDate: "2026-07-30T15:40:00.000Z"
+author: Équipe Okjobs
+description: "Comparez Frontdesk, anciennement My AI Front Desk, et Okjobs sur la voix, le CRM, la réservation, le prix, le code et l'auto-hébergement."
+categories: [Comparaisons]
+---
+
+Les acheteurs qui cherchent une **alternative à My AI Front Desk** doivent commencer par un détail tarifaire : le forfait Frontdesk à 20 $ inclut zéro minute vocale. Okjobs inclut 30 minutes vocales dans le navigateur sur son forfait gratuit, avec rendez-vous, résumés d'appel et historique.
+
+Frontdesk, anciennement My AI Front Desk, vend un large espace commercial IA. Okjobs fournit un réceptionniste téléphonique complet à un prix d'entrée inférieur, plus de minutes sur les forfaits payants comparables et le choix entre cloud géré et auto-hébergement.
+
+## Frontdesk et Okjobs
+
+| Critère | Frontdesk | Okjobs |
+| --- | --- | --- |
+| Forfait gratuit durable | Aucun, Basic coûte 20 $ avec 0 minute vocale | 30 minutes vocales dans le navigateur, sans carte ni numéro de téléphone |
+| Périmètre | Main-d'œuvre IA multicanale et CRM | Réceptionniste IA complet et opérations d'appel |
+| Premier accès vocal | 99 $ avec 200 minutes | Gratuit avec 30 minutes et fonctions de réception |
+| Près de 30 $ | Basic à 20 $ offre 0 minute vocale | Starter à 30 $ offre 150 minutes |
+| Près de 100 $ | Business à 99 $ offre 200 minutes | Pro à 100 $ offre 500 minutes |
+| Canaux | Voix, SMS, chat, courriel, formulaires | Voix, alertes au propriétaire par courriel ou SMS, tableau de bord |
+| Rendez-vous et dossiers | Inclus avec le forfait vocal | Inclus sur Gratuit, Starter et Pro |
+| CRM | CRM natif et séquences | Dossiers d'appelants et d'appels, sans synchronisation CRM |
+| Déploiement | Hébergé | Cloud géré ou auto-hébergement |
+| Code source | Non annoncé | Dépôt public sous licence MIT |
+
+Prix et fonctions vérifiés le 30 juillet 2026.
+
+## Testez Okjobs dans votre navigateur gratuitement
+
+Frontdesk présente Basic à 20 $ comme forfait d'entrée, mais ce forfait contient zéro minute vocale. Vous pouvez essayer le chat, les SMS, les courriels, les formulaires et les workflows. Le quota inclus ne permet pas de tester le travail principal d'un réceptionniste téléphonique.
+
+Avec le forfait Gratuit de Okjobs, vous pouvez tester 30 minutes vocales dans le navigateur. Vous n'obtenez aucun numéro de téléphone. Choisissez Starter ou Pro pour recevoir des appels sur un numéro dédié.
+
+Un forfait à 20 $ sans voix ne concurrence pas un forfait gratuit qui répond au téléphone.
+
+## Frontdesk couvre plus de canaux, si vous en avez besoin
+
+Les pages de Frontdesk annoncent la voix entrante et sortante, les SMS bidirectionnels, le chat web, la rédaction de courriels, les formulaires, les séquences et un CRM natif. Une petite équipe peut garder plusieurs échanges commerciaux dans le même produit.
+
+Ce périmètre aide une entreprise sans CRM qui veut capter un prospect, lui écrire, l'appeler et suivre l'échange. Frontdesk vend aussi une offre en marque blanche.
+
+Okjobs évite de facturer un CRM de remplacement aux clients qui veulent un réceptionniste. Il conserve les appelants, rendez-vous, messages, transcriptions, résumés et règles, et réserve les rendez-vous dans Google Calendar.
+
+## Le forfait à 20 $ n'inclut pas de minutes vocales
+
+Frontdesk affiche un forfait Basic à 20 $, sans minute vocale sur la page consultée. Business-in-a-Box inclut 200 minutes pour 99 $ par mois, ou un équivalent annuel annoncé à 79 $.
+
+Le forfait à 99 $ indique aussi 20 pages de connaissances, les 200 dernières interactions, trois destinataires de notifications et deux éditeurs. Une équipe qui veut plus d'historique ou de contenu doit chiffrer le niveau suivant.
+
+Okjobs offre beaucoup plus d'usage téléphonique au même niveau de dépense :
+
+- Gratuit : 30 minutes, contre zéro sur Frontdesk Basic à 20 $
+- Starter : 150 minutes pour 30 $ par mois
+- Pro : 500 minutes pour 100 $, contre 200 sur Frontdesk Business à 99 $
+
+À 200 minutes, Okjobs Starter coûte environ 40 $ avec le dépassement publié à 0,20 $ la minute. Frontdesk facture 99 $ au mois pour le même volume inclus. Près de 100 $, Okjobs inclut deux fois et demie plus de minutes.
+
+Frontdesk ajoute plus de logiciels commerciaux à son forfait. Une entreprise qui les utilise peut y trouver de la valeur. Un acheteur qui cherche un réceptionniste obtient plus de capacité par dollar avec Okjobs.
+
+## Une spécialisation peut mieux s'intégrer
+
+Une entreprise qui utilise déjà HubSpot, Salesforce, Jobber ou ServiceTitan ne veut pas toujours d'un second CRM.
+
+Okjobs s'occupe du téléphone et laisse le CRM en place. Un opérateur auto-hébergé contrôle le déploiement, les fournisseurs, les journaux et la conservation. Les pages de Frontdesk consultées n'annoncent ni auto-hébergement ni accès au code source. Okjobs conserve une sortie face au verrouillage fournisseur.
+
+## Exemple d'agence
+
+Une agence crée des sites et des campagnes publicitaires pour dix entreprises de services. Chaque client veut un réceptionniste IA qui répond à ses appels et réserve les interventions.
+
+Frontdesk offre un produit multicanal hébergé et une formule en marque blanche. Cela peut réduire le délai de lancement.
+
+Okjobs donne à l'agence un réceptionniste moins cher, du code qu'elle peut examiner et une pile qu'elle peut déployer. L'agence contrôle les fournisseurs, l'infrastructure, la conservation et la logique d'appel propre à chaque client.
+
+L'agence doit tester la séparation des clients, la facturation des fournisseurs, l'accès aux appels, les pannes de calendrier et les exports.
+
+## Choisissez frontdesk si
+
+Choisissez Frontdesk si vous avez besoin de regrouper voix, messagerie, chat, courriel et CRM et comptez utiliser ces canaux comme un seul espace commercial.
+
+## Choisissez Okjobs si
+
+Choisissez Okjobs pour tester la voix dans le navigateur gratuitement, payer moins entre 150 et 200 minutes, ou obtenir 500 minutes près de 100 $. Sur un forfait payant, vous pouvez recevoir des appels sur un numéro dédié sans remplacer votre CRM.
+
+## Sources
+
+- [Tarifs Frontdesk](https://www.myaifrontdesk.com/pricing)
+- [Réceptionniste Frontdesk](https://www.myaifrontdesk.com/ai-receptionist)
+- [Offre en marque blanche](https://www.myaifrontdesk.com/white-label)
+- [Fonctions Okjobs](/fr/features/)
+- [Pile open source Okjobs](/fr/blog/open-source-ai-receptionist-stack/)
+
+## Verdict
+
+Frontdesk vend plus de canaux. Okjobs offre la meilleure valeur pour la réception téléphonique : voix gratuite utilisable, plus de capacité sur les forfaits payants, opérations d'appel complètes et déploiement ouvert.
+
+[Testez 30 minutes vocales dans le navigateur sur Okjobs Gratuit](/fr/pricing/). Choisissez Starter ou Pro pour recevoir des appels téléphoniques sur un numéro dédié.

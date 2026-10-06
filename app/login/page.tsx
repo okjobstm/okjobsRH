@@ -1,42 +1,11 @@
-import { GoogleSigninButton } from "@/components/google-signin-button";
-import { APP_NAME, ORG_NAME } from "@/lib/site-config";
+import { AuthForm } from "@/components/auth/auth-form";
+import { getSafeAdminReturnTo } from "@/lib/auth-redirect";
 
-export default function LoginPage() {
-  const googleClientId = process.env.GOOGLE_CLIENT_ID;
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-12">
-      <div className="w-full max-w-sm">
-        <div className="flex justify-center mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-yfs-blue rounded flex items-center justify-center">
-              <span className="text-white text-xs font-bold">{APP_NAME.charAt(0)}</span>
-            </div>
-            <span className="text-lg font-semibold text-slate-900">{APP_NAME}</span>
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-center text-sm font-medium text-slate-900 mb-1">
-            Connectez-vous pour accéder au tableau de bord de recrutement
-          </p>
-          <p className="text-center text-xs text-slate-500 mb-5">
-            Connexion réservée aux administrateurs autorisés
-          </p>
-
-          {googleClientId ? (
-            <GoogleSigninButton clientId={googleClientId} />
-          ) : (
-            <p className="text-center text-xs text-red-600">
-              La connexion Google n&rsquo;est pas configurée. Contactez un administrateur.
-            </p>
-          )}
-        </div>
-
-        <p className="mt-6 text-center text-xs text-slate-400">
-          Outil interne {ORG_NAME}
-        </p>
-      </div>
-    </div>
-  );
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; returnTo?: string }>;
+}) {
+  const { error, returnTo } = await searchParams;
+  return <AuthForm externalError={error} mode="login" returnTo={getSafeAdminReturnTo(returnTo)} />;
 }

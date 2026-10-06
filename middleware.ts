@@ -1,30 +1,8 @@
+import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { unsealData } from "iron-session";
-import type { SessionData } from "@/lib/session";
-import { isAllowedAdminEmail } from "@/lib/admin-domain";
+import { isWorkspaceEmail } from "@/lib/admin-domain";
 import { rateLimit, maybeSweep } from "@/lib/rate-limit";
-
-const SESSION_COOKIE = "yfs_recruit_session";
-
-async function getSessionFromCookie(
-  request: NextRequest
-): Promise<SessionData | null> {
-  const cookieValue = request.cookies.get(SESSION_COOKIE)?.value;
-  if (!cookieValue) return null;
-
-  const secret = process.env.SESSION_SECRET;
-  if (!secret) return null;
-
-  try {
-    const data = await unsealData<SessionData>(cookieValue, {
-      password: secret,
-      ttl: 60 * 60 * 24 * 7,
-    });
-    return data ?? null;
-  } catch {
-    return null;
-  }
-}
+import { parseUserRole, roleHome } from "@/lib/roles";
 
 function getClientIp(request: NextRequest): string {
   // Cloudflare sits in front of nginx. Prefer CF-Connecting-IP (real client IP
@@ -50,6 +28,15 @@ function rateLimitResponse(retryAfter: number): NextResponse {
       },
     }
   );
+}
+
+// An admin page must never be served from a cache: it is personalised, and a
+// cached copy would outlive the session that produced it.
+function noStore(response: NextResponse): NextResponse {
+  response.headers.set("Cache-Control", "no-store, max-age=0");
+  response.headers.set("expires", "0");
+  response.headers.set("pragma", "no-cache");
+  return response;
 }
 
 export async function middleware(request: NextRequest) {
@@ -83,8 +70,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // ── Login route: stricter rate limit to slow brute-force ────────────────
-  if (pathname === "/login" || pathname === "/api/auth/login") {
+  // ── Sign-in routes: stricter rate limit to slow brute-force ──────────────
+  if (
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/forgot-password" ||
+    pathname === "/reset-password" ||
+    pathname === "/auth/callback"
+  ) {
     maybeSweep();
     const ip = getClientIp(request);
     const result = rateLimit(`login:${ip}`, {
@@ -97,34 +90,90 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // ── Admin auth gate ─────────────────────────────────────────────────────
-  if (!pathname.startsWith("/admin")) {
+  const dashboardRoute = pathname.startsWith("/dashboard");
+  const protectedRole = pathname.startsWith("/admin")
+    ? "ADMIN"
+    : pathname.startsWith("/candidate")
+      ? "CANDIDATE"
+      : pathname.startsWith("/company")
+        ? "COMPANY"
+        : null;
+
+  if (!protectedRole && !dashboardRoute) {
     return NextResponse.next();
   }
 
-  const session = await getSessionFromCookie(request);
+  // ── Admin auth gate ─────────────────────────────────────────────────────
+  const response = NextResponse.next({ request });
 
-  if (!session || !session.email || !session.sessionId) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet) {
+          for (const { name, value, options } of cookiesToSet) {
+            request.cookies.set(name, value);
+            response.cookies.set(name, value, options);
+          }
+        },
+      },
+    }
+  );
+
+  // getClaims() verifies the JWT locally against Supabase's signing keys, so the
+  // gate costs no network round trip. requireAuth() revalidates with getUser().
+  const { data } = await supabase.auth.getClaims();
+
+  const claimEmail = data?.claims?.email;
+  const email = typeof claimEmail === "string" ? claimEmail.toLowerCase() : "";
+  const appMetadata = data?.claims?.app_metadata;
+  const role = parseUserRole(
+    appMetadata && typeof appMetadata === "object" && "role" in appMetadata
+      ? appMetadata.role
+      : null
+  );
+  const authorized = dashboardRoute
+    ? Boolean(email) && role === "CANDIDATE"
+    : pathname.startsWith("/admin")
+      ? Boolean(email) &&
+        (role === "COMPANY" || (role === "ADMIN" && isWorkspaceEmail(email)))
+      : Boolean(email) &&
+        role === protectedRole &&
+        (role !== "ADMIN" || isWorkspaceEmail(email));
+
+  if (!authorized) {
+    // The refresh Supabase just wrote is on `response`; a redirect built from
+    // scratch would drop it and the retry would land unauthenticated.
+    const destination =
+      role && (role !== "ADMIN" || isWorkspaceEmail(email))
+        ? roleHome(role)
+        : "/login";
+    const redirect = NextResponse.redirect(new URL(destination, request.url));
+    for (const cookie of response.cookies.getAll()) {
+      redirect.cookies.set(cookie);
+    }
+    return noStore(redirect);
   }
 
-  if (session.expiresAt < Date.now()) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
-  if (!isAllowedAdminEmail(session.email)) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
-  return NextResponse.next();
+  return noStore(response);
 }
 
 export const config = {
   matcher: [
     "/admin/:path*",
+    "/candidate/:path*",
+    "/company/:path*",
+    "/dashboard/:path*",
     "/apply/:path*",
     "/api/apply/:path*",
     "/login",
-    "/api/auth/login",
+    "/signup",
+    "/forgot-password",
+    "/reset-password",
+    "/auth/callback",
   ],
 };

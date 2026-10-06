@@ -1,11 +1,11 @@
 """
-Admin-side e2e on the CEO job. Mints an iron-session cookie via Node, then
+Admin-side e2e on the CEO job. Mints a Supabase session cookie via Node, then
 drives Playwright through the redesigned role page to verify each tab and the
 context menus render.
 
 Run:
     cd /path/to/recruit
-    set -a; source .env; set +a
+    set -a; source .env.test; set +a
     python3 tests/e2e/test_ceo_admin_e2e.py
 """
 
@@ -43,7 +43,7 @@ def mint_session() -> dict:
     return json.loads(result.stdout.strip().splitlines()[-1])
 
 
-def delete_session(session_id: str):
+def delete_session(email: str):
     subprocess.run(
         ["node", "-e",
          """
@@ -52,11 +52,11 @@ def delete_session(session_id: str):
          const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
          const prisma = new PrismaClient({ adapter });
          (async () => {
-           await prisma.adminSession.delete({ where: { id: process.env.SID } }).catch(() => {});
+           await prisma.adminSession.deleteMany({ where: { email: process.env.EMAIL } }).catch(() => {});
            await prisma.$disconnect();
          })();
          """],
-        env={**os.environ, "SID": session_id},
+        env={**os.environ, "EMAIL": email},
         capture_output=True,
         text=True,
         timeout=10,
@@ -70,7 +70,7 @@ def main():
     print(f"  Target: {BASE_URL}")
 
     sess = mint_session()
-    print(f"  Session: {sess['email']} (id={sess['sessionId']})")
+    print(f"  Session: {sess['email']} ({len(sess['cookies'])} cookie(s))")
     print()
 
     failed = False
@@ -79,14 +79,15 @@ def main():
         ctx = browser.new_context(viewport={"width": 1440, "height": 900})
         ctx.add_cookies([
             {
-                "name": sess["name"],
-                "value": sess["value"],
+                "name": cookie["name"],
+                "value": cookie["value"],
                 "domain": "localhost",
                 "path": "/",
                 "secure": True,
                 "httpOnly": True,
                 "sameSite": "Lax",
             }
+            for cookie in sess["cookies"]
         ])
         page = ctx.new_page()
 
@@ -143,8 +144,8 @@ def main():
             ctx.close()
             browser.close()
 
-    delete_session(sess["sessionId"])
-    print(f"  → Cleaned up session {sess['sessionId']}")
+    delete_session(sess["email"])
+    print(f"  → Cleaned up session {sess['email']}")
     sys.exit(1 if failed else 0)
 
 

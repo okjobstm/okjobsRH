@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireAuth } from "@/lib/auth";
-import { isWorkspaceEmail } from "@/lib/session";
+import { isWorkspaceEmail } from "@/lib/admin-domain";
 import logger from "@/lib/logger";
 import { ReviewStatus, ReviewRecommendation } from "@prisma/client";
 

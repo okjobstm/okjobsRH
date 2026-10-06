@@ -23,8 +23,7 @@ CV_PATH = "/tmp/recruit_e2e_cv.pdf"
 
 
 def setup_fixture() -> dict:
-    db_url = os.environ.get("DATABASE_URL", "postgresql://postgres@127.0.0.1:5433/recruit")
-    env = {**os.environ, "DATABASE_URL": db_url, "BASE_URL": BASE_URL}
+    env = {**os.environ, "BASE_URL": BASE_URL}
     result = subprocess.run(
         ["node", "tests/e2e/setup_fixture.mjs"],
         cwd=str(ROOT),

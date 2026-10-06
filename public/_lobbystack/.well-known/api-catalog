@@ -1,0 +1,75 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://lobbystack.com/api",
+      "service-desc": [
+        {
+          "href": "https://lobbystack.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "LobbyStack public agent-discovery OpenAPI description"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://lobbystack.com/docs/api/",
+          "type": "text/html",
+          "title": "LobbyStack public API documentation"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://lobbystack.com/llms.txt",
+          "type": "text/plain",
+          "title": "LobbyStack LLM context"
+        },
+        {
+          "href": "https://lobbystack.com/schemamap.xml",
+          "type": "application/xml",
+          "title": "LobbyStack schema map"
+        },
+        {
+          "href": "https://lobbystack.com/schema/page.json",
+          "type": "application/ld+json",
+          "title": "LobbyStack page schema graph"
+        },
+        {
+          "href": "https://lobbystack.com/schema/post.json",
+          "type": "application/ld+json",
+          "title": "LobbyStack blog schema graph"
+        },
+        {
+          "href": "https://lobbystack.com/index.md",
+          "type": "text/markdown",
+          "title": "LobbyStack homepage markdown summary"
+        },
+        {
+          "href": "https://lobbystack.com/features.md",
+          "type": "text/markdown",
+          "title": "LobbyStack features markdown summary"
+        },
+        {
+          "href": "https://lobbystack.com/pricing.md",
+          "type": "text/markdown",
+          "title": "LobbyStack pricing markdown summary"
+        },
+        {
+          "href": "https://lobbystack.com/affiliate-program.md",
+          "type": "text/markdown",
+          "title": "LobbyStack affiliate program markdown summary"
+        },
+        {
+          "href": "https://lobbystack.com/missed-call-revenue-calculator/index.md",
+          "type": "text/markdown",
+          "title": "LobbyStack missed call revenue calculator markdown"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://lobbystack.com/api/status",
+          "type": "application/json",
+          "title": "LobbyStack public API status"
+        }
+      ]
+    }
+  ]
+}

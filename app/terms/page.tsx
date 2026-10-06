@@ -47,7 +47,7 @@ export default function TermsPage() {
           Vos réponses écrites sont examinées par l’équipe de recrutement de{" "}
           {ORG_NAME}, parallèlement à une évaluation assistée par IA. Nous vous
           communiquerons une décision dans un délai raisonnable. Consultez la{" "}
-          <Link href="/privacy">politique de confidentialité</Link> pour le détail
+          <Link href="/okjobs/privacy">politique de confidentialité</Link> pour le détail
           du traitement des données.
         </p>
 
@@ -80,7 +80,7 @@ export default function TermsPage() {
         </p>
 
         <p className="text-xs text-slate-500 mt-12 border-t border-slate-200 pt-4">
-          <Link href="/privacy">Politique de confidentialité</Link>
+          <Link href="/okjobs/privacy">Politique de confidentialité</Link>
         </p>
       </main>
     </div>

@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { requireAuth } from "@/lib/auth";
-import { getKnownAdminEmails } from "@/lib/session";
+import { getKnownAdminEmails, requireAuth } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { formatStage, stageBadgeClass } from "@/lib/candidates";

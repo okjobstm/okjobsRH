@@ -1,0 +1,1788 @@
+{
+  "generatedAt": "2026-10-06T08:51:57.743Z",
+  "pages": [
+    {
+      "route": "/",
+      "file": "index.html"
+    },
+    {
+      "route": "/404",
+      "file": "404.html"
+    },
+    {
+      "route": "/about/",
+      "file": "about/index.html"
+    },
+    {
+      "route": "/affiliate-program/",
+      "file": "affiliate-program/index.html"
+    },
+    {
+      "route": "/blog/",
+      "file": "blog/index.html"
+    },
+    {
+      "route": "/blog/ai-receptionist-affiliate-program/",
+      "file": "blog/ai-receptionist-affiliate-program/index.html"
+    },
+    {
+      "route": "/blog/ai-receptionist-savings/",
+      "file": "blog/ai-receptionist-savings/index.html"
+    },
+    {
+      "route": "/blog/ai-receptionist-vs-virtual-receptionist/",
+      "file": "blog/ai-receptionist-vs-virtual-receptionist/index.html"
+    },
+    {
+      "route": "/blog/ai-receptionist-vs-voicemail/",
+      "file": "blog/ai-receptionist-vs-voicemail/index.html"
+    },
+    {
+      "route": "/blog/ai-receptionist-workflows/",
+      "file": "blog/ai-receptionist-workflows/index.html"
+    },
+    {
+      "route": "/blog/ai-voice-agent-gpt-live/",
+      "file": "blog/ai-voice-agent-gpt-live/index.html"
+    },
+    {
+      "route": "/blog/best-open-source-ai-phone-answering-services/",
+      "file": "blog/best-open-source-ai-phone-answering-services/index.html"
+    },
+    {
+      "route": "/blog/build-or-buy-ai-receptionist/",
+      "file": "blog/build-or-buy-ai-receptionist/index.html"
+    },
+    {
+      "route": "/blog/cloudtalk-ai-receptionist-alternative/",
+      "file": "blog/cloudtalk-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/blog/dialzara-alternative/",
+      "file": "blog/dialzara-alternative/index.html"
+    },
+    {
+      "route": "/blog/elevenlabs-reception-alternative/",
+      "file": "blog/elevenlabs-reception-alternative/index.html"
+    },
+    {
+      "route": "/blog/goodcall-alternative/",
+      "file": "blog/goodcall-alternative/index.html"
+    },
+    {
+      "route": "/blog/how-to-choose-an-ai-receptionist/",
+      "file": "blog/how-to-choose-an-ai-receptionist/index.html"
+    },
+    {
+      "route": "/blog/lobbystack-is-live/",
+      "file": "blog/lobbystack-is-live/index.html"
+    },
+    {
+      "route": "/blog/lobbystack-mit-license-ai-receptionist-resellers/",
+      "file": "blog/lobbystack-mit-license-ai-receptionist-resellers/index.html"
+    },
+    {
+      "route": "/blog/moneypenny-ai-receptionist-alternative/",
+      "file": "blog/moneypenny-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/blog/my-ai-front-desk-alternative/",
+      "file": "blog/my-ai-front-desk-alternative/index.html"
+    },
+    {
+      "route": "/blog/nextiva-xbert-alternative/",
+      "file": "blog/nextiva-xbert-alternative/index.html"
+    },
+    {
+      "route": "/blog/open-source-ai-receptionist-stack/",
+      "file": "blog/open-source-ai-receptionist-stack/index.html"
+    },
+    {
+      "route": "/blog/quo-sona-alternative/",
+      "file": "blog/quo-sona-alternative/index.html"
+    },
+    {
+      "route": "/blog/ringcentral-ai-receptionist-alternative/",
+      "file": "blog/ringcentral-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/blog/rosie-ai-alternative/",
+      "file": "blog/rosie-ai-alternative/index.html"
+    },
+    {
+      "route": "/blog/smith-ai-alternative/",
+      "file": "blog/smith-ai-alternative/index.html"
+    },
+    {
+      "route": "/blog/upfirst-alternative/",
+      "file": "blog/upfirst-alternative/index.html"
+    },
+    {
+      "route": "/blog/why-lobbystack-is-moving-away-from-convex/",
+      "file": "blog/why-lobbystack-is-moving-away-from-convex/index.html"
+    },
+    {
+      "route": "/blog/zoom-ai-receptionist-alternative/",
+      "file": "blog/zoom-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/changelog/",
+      "file": "changelog/index.html"
+    },
+    {
+      "route": "/cookie-policy/",
+      "file": "cookie-policy/index.html"
+    },
+    {
+      "route": "/docs/api/",
+      "file": "docs/api/index.html"
+    },
+    {
+      "route": "/es/",
+      "file": "es/index.html"
+    },
+    {
+      "route": "/es/404/",
+      "file": "es/404/index.html"
+    },
+    {
+      "route": "/es/about/",
+      "file": "es/about/index.html"
+    },
+    {
+      "route": "/es/affiliate-program/",
+      "file": "es/affiliate-program/index.html"
+    },
+    {
+      "route": "/es/blog/",
+      "file": "es/blog/index.html"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-affiliate-program/",
+      "file": "es/blog/ai-receptionist-affiliate-program/index.html"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-savings/",
+      "file": "es/blog/ai-receptionist-savings/index.html"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-vs-virtual-receptionist/",
+      "file": "es/blog/ai-receptionist-vs-virtual-receptionist/index.html"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-vs-voicemail/",
+      "file": "es/blog/ai-receptionist-vs-voicemail/index.html"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-workflows/",
+      "file": "es/blog/ai-receptionist-workflows/index.html"
+    },
+    {
+      "route": "/es/blog/ai-voice-agent-gpt-live/",
+      "file": "es/blog/ai-voice-agent-gpt-live/index.html"
+    },
+    {
+      "route": "/es/blog/best-open-source-ai-phone-answering-services/",
+      "file": "es/blog/best-open-source-ai-phone-answering-services/index.html"
+    },
+    {
+      "route": "/es/blog/build-or-buy-ai-receptionist/",
+      "file": "es/blog/build-or-buy-ai-receptionist/index.html"
+    },
+    {
+      "route": "/es/blog/cloudtalk-ai-receptionist-alternative/",
+      "file": "es/blog/cloudtalk-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/dialzara-alternative/",
+      "file": "es/blog/dialzara-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/elevenlabs-reception-alternative/",
+      "file": "es/blog/elevenlabs-reception-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/goodcall-alternative/",
+      "file": "es/blog/goodcall-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/how-to-choose-an-ai-receptionist/",
+      "file": "es/blog/how-to-choose-an-ai-receptionist/index.html"
+    },
+    {
+      "route": "/es/blog/lobbystack-is-live/",
+      "file": "es/blog/lobbystack-is-live/index.html"
+    },
+    {
+      "route": "/es/blog/lobbystack-mit-license-ai-receptionist-resellers/",
+      "file": "es/blog/lobbystack-mit-license-ai-receptionist-resellers/index.html"
+    },
+    {
+      "route": "/es/blog/moneypenny-ai-receptionist-alternative/",
+      "file": "es/blog/moneypenny-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/my-ai-front-desk-alternative/",
+      "file": "es/blog/my-ai-front-desk-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/nextiva-xbert-alternative/",
+      "file": "es/blog/nextiva-xbert-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/open-source-ai-receptionist-stack/",
+      "file": "es/blog/open-source-ai-receptionist-stack/index.html"
+    },
+    {
+      "route": "/es/blog/quo-sona-alternative/",
+      "file": "es/blog/quo-sona-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/ringcentral-ai-receptionist-alternative/",
+      "file": "es/blog/ringcentral-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/rosie-ai-alternative/",
+      "file": "es/blog/rosie-ai-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/smith-ai-alternative/",
+      "file": "es/blog/smith-ai-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/upfirst-alternative/",
+      "file": "es/blog/upfirst-alternative/index.html"
+    },
+    {
+      "route": "/es/blog/why-lobbystack-is-moving-away-from-convex/",
+      "file": "es/blog/why-lobbystack-is-moving-away-from-convex/index.html"
+    },
+    {
+      "route": "/es/blog/zoom-ai-receptionist-alternative/",
+      "file": "es/blog/zoom-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/es/changelog/",
+      "file": "es/changelog/index.html"
+    },
+    {
+      "route": "/es/cookie-policy/",
+      "file": "es/cookie-policy/index.html"
+    },
+    {
+      "route": "/es/docs/api/",
+      "file": "es/docs/api/index.html"
+    },
+    {
+      "route": "/es/features/",
+      "file": "es/features/index.html"
+    },
+    {
+      "route": "/es/missed-call-revenue-calculator/",
+      "file": "es/missed-call-revenue-calculator/index.html"
+    },
+    {
+      "route": "/es/pricing/",
+      "file": "es/pricing/index.html"
+    },
+    {
+      "route": "/es/privacy/",
+      "file": "es/privacy/index.html"
+    },
+    {
+      "route": "/es/search/",
+      "file": "es/search/index.html"
+    },
+    {
+      "route": "/es/solutions/",
+      "file": "es/solutions/index.html"
+    },
+    {
+      "route": "/es/solutions/after-hours-answering-service-for-contractors/",
+      "file": "es/solutions/after-hours-answering-service-for-contractors/index.html"
+    },
+    {
+      "route": "/es/solutions/after-hours-answering-service/",
+      "file": "es/solutions/after-hours-answering-service/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-appointment-scheduler/",
+      "file": "es/solutions/ai-appointment-scheduler/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-phone-answering/",
+      "file": "es/solutions/ai-phone-answering/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-appliance-repair/",
+      "file": "es/solutions/ai-receptionist-for-appliance-repair/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-dental-offices/",
+      "file": "es/solutions/ai-receptionist-for-dental-offices/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-electricians/",
+      "file": "es/solutions/ai-receptionist-for-electricians/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-garage-door-repair/",
+      "file": "es/solutions/ai-receptionist-for-garage-door-repair/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-home-services/",
+      "file": "es/solutions/ai-receptionist-for-home-services/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-hvac/",
+      "file": "es/solutions/ai-receptionist-for-hvac/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-locksmiths/",
+      "file": "es/solutions/ai-receptionist-for-locksmiths/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-plumbers/",
+      "file": "es/solutions/ai-receptionist-for-plumbers/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-restoration-companies/",
+      "file": "es/solutions/ai-receptionist-for-restoration-companies/index.html"
+    },
+    {
+      "route": "/es/solutions/ai-receptionist-for-salons-and-spas/",
+      "file": "es/solutions/ai-receptionist-for-salons-and-spas/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-electriciens/",
+      "file": "es/solutions/evaluation-electriciens/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-equipes-terrain/",
+      "file": "es/solutions/evaluation-equipes-terrain/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-gestion-immobiliere/",
+      "file": "es/solutions/evaluation-gestion-immobiliere/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-intervention-apres-sinistre/",
+      "file": "es/solutions/evaluation-intervention-apres-sinistre/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-metiers-btp/",
+      "file": "es/solutions/evaluation-metiers-btp/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-metiers-securite/",
+      "file": "es/solutions/evaluation-metiers-securite/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-metiers-services/",
+      "file": "es/solutions/evaluation-metiers-services/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-plombiers/",
+      "file": "es/solutions/evaluation-plombiers/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-professionnels-sante/",
+      "file": "es/solutions/evaluation-professionnels-sante/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-relation-client/",
+      "file": "es/solutions/evaluation-relation-client/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-techniciens-cvc/",
+      "file": "es/solutions/evaluation-techniciens-cvc/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-techniciens-maintenance/",
+      "file": "es/solutions/evaluation-techniciens-maintenance/index.html"
+    },
+    {
+      "route": "/es/solutions/evaluation-techniciens-reparation/",
+      "file": "es/solutions/evaluation-techniciens-reparation/index.html"
+    },
+    {
+      "route": "/es/solutions/open-source-ai-receptionist/",
+      "file": "es/solutions/open-source-ai-receptionist/index.html"
+    },
+    {
+      "route": "/es/solutions/property-management-answering-service/",
+      "file": "es/solutions/property-management-answering-service/index.html"
+    },
+    {
+      "route": "/es/solutions/roofing-answering-service/",
+      "file": "es/solutions/roofing-answering-service/index.html"
+    },
+    {
+      "route": "/es/solutions/self-hosted-ai-receptionist/",
+      "file": "es/solutions/self-hosted-ai-receptionist/index.html"
+    },
+    {
+      "route": "/es/terms/",
+      "file": "es/terms/index.html"
+    },
+    {
+      "route": "/features/",
+      "file": "features/index.html"
+    },
+    {
+      "route": "/fr/",
+      "file": "fr/index.html"
+    },
+    {
+      "route": "/fr/404/",
+      "file": "fr/404/index.html"
+    },
+    {
+      "route": "/fr/about/",
+      "file": "fr/about/index.html"
+    },
+    {
+      "route": "/fr/affiliate-program/",
+      "file": "fr/affiliate-program/index.html"
+    },
+    {
+      "route": "/fr/blog/",
+      "file": "fr/blog/index.html"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-affiliate-program/",
+      "file": "fr/blog/ai-receptionist-affiliate-program/index.html"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-savings/",
+      "file": "fr/blog/ai-receptionist-savings/index.html"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-vs-virtual-receptionist/",
+      "file": "fr/blog/ai-receptionist-vs-virtual-receptionist/index.html"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-vs-voicemail/",
+      "file": "fr/blog/ai-receptionist-vs-voicemail/index.html"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-workflows/",
+      "file": "fr/blog/ai-receptionist-workflows/index.html"
+    },
+    {
+      "route": "/fr/blog/ai-voice-agent-gpt-live/",
+      "file": "fr/blog/ai-voice-agent-gpt-live/index.html"
+    },
+    {
+      "route": "/fr/blog/best-open-source-ai-phone-answering-services/",
+      "file": "fr/blog/best-open-source-ai-phone-answering-services/index.html"
+    },
+    {
+      "route": "/fr/blog/build-or-buy-ai-receptionist/",
+      "file": "fr/blog/build-or-buy-ai-receptionist/index.html"
+    },
+    {
+      "route": "/fr/blog/cloudtalk-ai-receptionist-alternative/",
+      "file": "fr/blog/cloudtalk-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/dialzara-alternative/",
+      "file": "fr/blog/dialzara-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/elevenlabs-reception-alternative/",
+      "file": "fr/blog/elevenlabs-reception-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/goodcall-alternative/",
+      "file": "fr/blog/goodcall-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/how-to-choose-an-ai-receptionist/",
+      "file": "fr/blog/how-to-choose-an-ai-receptionist/index.html"
+    },
+    {
+      "route": "/fr/blog/lobbystack-is-live/",
+      "file": "fr/blog/lobbystack-is-live/index.html"
+    },
+    {
+      "route": "/fr/blog/lobbystack-mit-license-ai-receptionist-resellers/",
+      "file": "fr/blog/lobbystack-mit-license-ai-receptionist-resellers/index.html"
+    },
+    {
+      "route": "/fr/blog/moneypenny-ai-receptionist-alternative/",
+      "file": "fr/blog/moneypenny-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/my-ai-front-desk-alternative/",
+      "file": "fr/blog/my-ai-front-desk-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/nextiva-xbert-alternative/",
+      "file": "fr/blog/nextiva-xbert-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/open-source-ai-receptionist-stack/",
+      "file": "fr/blog/open-source-ai-receptionist-stack/index.html"
+    },
+    {
+      "route": "/fr/blog/quo-sona-alternative/",
+      "file": "fr/blog/quo-sona-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/ringcentral-ai-receptionist-alternative/",
+      "file": "fr/blog/ringcentral-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/rosie-ai-alternative/",
+      "file": "fr/blog/rosie-ai-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/smith-ai-alternative/",
+      "file": "fr/blog/smith-ai-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/upfirst-alternative/",
+      "file": "fr/blog/upfirst-alternative/index.html"
+    },
+    {
+      "route": "/fr/blog/why-lobbystack-is-moving-away-from-convex/",
+      "file": "fr/blog/why-lobbystack-is-moving-away-from-convex/index.html"
+    },
+    {
+      "route": "/fr/blog/zoom-ai-receptionist-alternative/",
+      "file": "fr/blog/zoom-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/fr/changelog/",
+      "file": "fr/changelog/index.html"
+    },
+    {
+      "route": "/fr/cookie-policy/",
+      "file": "fr/cookie-policy/index.html"
+    },
+    {
+      "route": "/fr/docs/api/",
+      "file": "fr/docs/api/index.html"
+    },
+    {
+      "route": "/fr/features/",
+      "file": "fr/features/index.html"
+    },
+    {
+      "route": "/fr/missed-call-revenue-calculator/",
+      "file": "fr/missed-call-revenue-calculator/index.html"
+    },
+    {
+      "route": "/fr/pricing/",
+      "file": "fr/pricing/index.html"
+    },
+    {
+      "route": "/fr/privacy/",
+      "file": "fr/privacy/index.html"
+    },
+    {
+      "route": "/fr/search/",
+      "file": "fr/search/index.html"
+    },
+    {
+      "route": "/fr/solutions/",
+      "file": "fr/solutions/index.html"
+    },
+    {
+      "route": "/fr/solutions/after-hours-answering-service-for-contractors/",
+      "file": "fr/solutions/after-hours-answering-service-for-contractors/index.html"
+    },
+    {
+      "route": "/fr/solutions/after-hours-answering-service/",
+      "file": "fr/solutions/after-hours-answering-service/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-appointment-scheduler/",
+      "file": "fr/solutions/ai-appointment-scheduler/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-phone-answering/",
+      "file": "fr/solutions/ai-phone-answering/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-appliance-repair/",
+      "file": "fr/solutions/ai-receptionist-for-appliance-repair/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-dental-offices/",
+      "file": "fr/solutions/ai-receptionist-for-dental-offices/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-electricians/",
+      "file": "fr/solutions/ai-receptionist-for-electricians/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-garage-door-repair/",
+      "file": "fr/solutions/ai-receptionist-for-garage-door-repair/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-home-services/",
+      "file": "fr/solutions/ai-receptionist-for-home-services/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-hvac/",
+      "file": "fr/solutions/ai-receptionist-for-hvac/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-locksmiths/",
+      "file": "fr/solutions/ai-receptionist-for-locksmiths/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-plumbers/",
+      "file": "fr/solutions/ai-receptionist-for-plumbers/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-restoration-companies/",
+      "file": "fr/solutions/ai-receptionist-for-restoration-companies/index.html"
+    },
+    {
+      "route": "/fr/solutions/ai-receptionist-for-salons-and-spas/",
+      "file": "fr/solutions/ai-receptionist-for-salons-and-spas/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-electriciens/",
+      "file": "fr/solutions/evaluation-electriciens/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-equipes-terrain/",
+      "file": "fr/solutions/evaluation-equipes-terrain/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-gestion-immobiliere/",
+      "file": "fr/solutions/evaluation-gestion-immobiliere/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-intervention-apres-sinistre/",
+      "file": "fr/solutions/evaluation-intervention-apres-sinistre/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-metiers-btp/",
+      "file": "fr/solutions/evaluation-metiers-btp/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-metiers-securite/",
+      "file": "fr/solutions/evaluation-metiers-securite/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-metiers-services/",
+      "file": "fr/solutions/evaluation-metiers-services/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-plombiers/",
+      "file": "fr/solutions/evaluation-plombiers/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-professionnels-sante/",
+      "file": "fr/solutions/evaluation-professionnels-sante/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-relation-client/",
+      "file": "fr/solutions/evaluation-relation-client/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-techniciens-cvc/",
+      "file": "fr/solutions/evaluation-techniciens-cvc/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-techniciens-maintenance/",
+      "file": "fr/solutions/evaluation-techniciens-maintenance/index.html"
+    },
+    {
+      "route": "/fr/solutions/evaluation-techniciens-reparation/",
+      "file": "fr/solutions/evaluation-techniciens-reparation/index.html"
+    },
+    {
+      "route": "/fr/solutions/open-source-ai-receptionist/",
+      "file": "fr/solutions/open-source-ai-receptionist/index.html"
+    },
+    {
+      "route": "/fr/solutions/property-management-answering-service/",
+      "file": "fr/solutions/property-management-answering-service/index.html"
+    },
+    {
+      "route": "/fr/solutions/roofing-answering-service/",
+      "file": "fr/solutions/roofing-answering-service/index.html"
+    },
+    {
+      "route": "/fr/solutions/self-hosted-ai-receptionist/",
+      "file": "fr/solutions/self-hosted-ai-receptionist/index.html"
+    },
+    {
+      "route": "/fr/terms/",
+      "file": "fr/terms/index.html"
+    },
+    {
+      "route": "/missed-call-revenue-calculator/",
+      "file": "missed-call-revenue-calculator/index.html"
+    },
+    {
+      "route": "/pricing/",
+      "file": "pricing/index.html"
+    },
+    {
+      "route": "/privacy/",
+      "file": "privacy/index.html"
+    },
+    {
+      "route": "/search/",
+      "file": "search/index.html"
+    },
+    {
+      "route": "/solutions/",
+      "file": "solutions/index.html"
+    },
+    {
+      "route": "/solutions/after-hours-answering-service-for-contractors/",
+      "file": "solutions/after-hours-answering-service-for-contractors/index.html"
+    },
+    {
+      "route": "/solutions/after-hours-answering-service/",
+      "file": "solutions/after-hours-answering-service/index.html"
+    },
+    {
+      "route": "/solutions/ai-appointment-scheduler/",
+      "file": "solutions/ai-appointment-scheduler/index.html"
+    },
+    {
+      "route": "/solutions/ai-phone-answering/",
+      "file": "solutions/ai-phone-answering/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-appliance-repair/",
+      "file": "solutions/ai-receptionist-for-appliance-repair/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-dental-offices/",
+      "file": "solutions/ai-receptionist-for-dental-offices/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-electricians/",
+      "file": "solutions/ai-receptionist-for-electricians/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-garage-door-repair/",
+      "file": "solutions/ai-receptionist-for-garage-door-repair/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-home-services/",
+      "file": "solutions/ai-receptionist-for-home-services/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-hvac/",
+      "file": "solutions/ai-receptionist-for-hvac/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-locksmiths/",
+      "file": "solutions/ai-receptionist-for-locksmiths/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-plumbers/",
+      "file": "solutions/ai-receptionist-for-plumbers/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-restoration-companies/",
+      "file": "solutions/ai-receptionist-for-restoration-companies/index.html"
+    },
+    {
+      "route": "/solutions/ai-receptionist-for-salons-and-spas/",
+      "file": "solutions/ai-receptionist-for-salons-and-spas/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-electriciens/",
+      "file": "solutions/evaluation-electriciens/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-equipes-terrain/",
+      "file": "solutions/evaluation-equipes-terrain/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-gestion-immobiliere/",
+      "file": "solutions/evaluation-gestion-immobiliere/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-intervention-apres-sinistre/",
+      "file": "solutions/evaluation-intervention-apres-sinistre/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-metiers-btp/",
+      "file": "solutions/evaluation-metiers-btp/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-metiers-securite/",
+      "file": "solutions/evaluation-metiers-securite/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-metiers-services/",
+      "file": "solutions/evaluation-metiers-services/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-plombiers/",
+      "file": "solutions/evaluation-plombiers/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-professionnels-sante/",
+      "file": "solutions/evaluation-professionnels-sante/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-relation-client/",
+      "file": "solutions/evaluation-relation-client/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-techniciens-cvc/",
+      "file": "solutions/evaluation-techniciens-cvc/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-techniciens-maintenance/",
+      "file": "solutions/evaluation-techniciens-maintenance/index.html"
+    },
+    {
+      "route": "/solutions/evaluation-techniciens-reparation/",
+      "file": "solutions/evaluation-techniciens-reparation/index.html"
+    },
+    {
+      "route": "/solutions/open-source-ai-receptionist/",
+      "file": "solutions/open-source-ai-receptionist/index.html"
+    },
+    {
+      "route": "/solutions/property-management-answering-service/",
+      "file": "solutions/property-management-answering-service/index.html"
+    },
+    {
+      "route": "/solutions/roofing-answering-service/",
+      "file": "solutions/roofing-answering-service/index.html"
+    },
+    {
+      "route": "/solutions/self-hosted-ai-receptionist/",
+      "file": "solutions/self-hosted-ai-receptionist/index.html"
+    },
+    {
+      "route": "/sr/",
+      "file": "sr/index.html"
+    },
+    {
+      "route": "/sr/404/",
+      "file": "sr/404/index.html"
+    },
+    {
+      "route": "/sr/about/",
+      "file": "sr/about/index.html"
+    },
+    {
+      "route": "/sr/affiliate-program/",
+      "file": "sr/affiliate-program/index.html"
+    },
+    {
+      "route": "/sr/blog/",
+      "file": "sr/blog/index.html"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-affiliate-program/",
+      "file": "sr/blog/ai-receptionist-affiliate-program/index.html"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-savings/",
+      "file": "sr/blog/ai-receptionist-savings/index.html"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-vs-virtual-receptionist/",
+      "file": "sr/blog/ai-receptionist-vs-virtual-receptionist/index.html"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-vs-voicemail/",
+      "file": "sr/blog/ai-receptionist-vs-voicemail/index.html"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-workflows/",
+      "file": "sr/blog/ai-receptionist-workflows/index.html"
+    },
+    {
+      "route": "/sr/blog/ai-voice-agent-gpt-live/",
+      "file": "sr/blog/ai-voice-agent-gpt-live/index.html"
+    },
+    {
+      "route": "/sr/blog/best-open-source-ai-phone-answering-services/",
+      "file": "sr/blog/best-open-source-ai-phone-answering-services/index.html"
+    },
+    {
+      "route": "/sr/blog/build-or-buy-ai-receptionist/",
+      "file": "sr/blog/build-or-buy-ai-receptionist/index.html"
+    },
+    {
+      "route": "/sr/blog/cloudtalk-ai-receptionist-alternative/",
+      "file": "sr/blog/cloudtalk-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/dialzara-alternative/",
+      "file": "sr/blog/dialzara-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/elevenlabs-reception-alternative/",
+      "file": "sr/blog/elevenlabs-reception-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/goodcall-alternative/",
+      "file": "sr/blog/goodcall-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/how-to-choose-an-ai-receptionist/",
+      "file": "sr/blog/how-to-choose-an-ai-receptionist/index.html"
+    },
+    {
+      "route": "/sr/blog/lobbystack-is-live/",
+      "file": "sr/blog/lobbystack-is-live/index.html"
+    },
+    {
+      "route": "/sr/blog/lobbystack-mit-license-ai-receptionist-resellers/",
+      "file": "sr/blog/lobbystack-mit-license-ai-receptionist-resellers/index.html"
+    },
+    {
+      "route": "/sr/blog/moneypenny-ai-receptionist-alternative/",
+      "file": "sr/blog/moneypenny-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/my-ai-front-desk-alternative/",
+      "file": "sr/blog/my-ai-front-desk-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/nextiva-xbert-alternative/",
+      "file": "sr/blog/nextiva-xbert-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/open-source-ai-receptionist-stack/",
+      "file": "sr/blog/open-source-ai-receptionist-stack/index.html"
+    },
+    {
+      "route": "/sr/blog/quo-sona-alternative/",
+      "file": "sr/blog/quo-sona-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/ringcentral-ai-receptionist-alternative/",
+      "file": "sr/blog/ringcentral-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/rosie-ai-alternative/",
+      "file": "sr/blog/rosie-ai-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/smith-ai-alternative/",
+      "file": "sr/blog/smith-ai-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/upfirst-alternative/",
+      "file": "sr/blog/upfirst-alternative/index.html"
+    },
+    {
+      "route": "/sr/blog/why-lobbystack-is-moving-away-from-convex/",
+      "file": "sr/blog/why-lobbystack-is-moving-away-from-convex/index.html"
+    },
+    {
+      "route": "/sr/blog/zoom-ai-receptionist-alternative/",
+      "file": "sr/blog/zoom-ai-receptionist-alternative/index.html"
+    },
+    {
+      "route": "/sr/changelog/",
+      "file": "sr/changelog/index.html"
+    },
+    {
+      "route": "/sr/cookie-policy/",
+      "file": "sr/cookie-policy/index.html"
+    },
+    {
+      "route": "/sr/docs/api/",
+      "file": "sr/docs/api/index.html"
+    },
+    {
+      "route": "/sr/features/",
+      "file": "sr/features/index.html"
+    },
+    {
+      "route": "/sr/missed-call-revenue-calculator/",
+      "file": "sr/missed-call-revenue-calculator/index.html"
+    },
+    {
+      "route": "/sr/pricing/",
+      "file": "sr/pricing/index.html"
+    },
+    {
+      "route": "/sr/privacy/",
+      "file": "sr/privacy/index.html"
+    },
+    {
+      "route": "/sr/search/",
+      "file": "sr/search/index.html"
+    },
+    {
+      "route": "/sr/solutions/",
+      "file": "sr/solutions/index.html"
+    },
+    {
+      "route": "/sr/solutions/after-hours-answering-service-for-contractors/",
+      "file": "sr/solutions/after-hours-answering-service-for-contractors/index.html"
+    },
+    {
+      "route": "/sr/solutions/after-hours-answering-service/",
+      "file": "sr/solutions/after-hours-answering-service/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-appointment-scheduler/",
+      "file": "sr/solutions/ai-appointment-scheduler/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-phone-answering/",
+      "file": "sr/solutions/ai-phone-answering/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-appliance-repair/",
+      "file": "sr/solutions/ai-receptionist-for-appliance-repair/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-dental-offices/",
+      "file": "sr/solutions/ai-receptionist-for-dental-offices/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-electricians/",
+      "file": "sr/solutions/ai-receptionist-for-electricians/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-garage-door-repair/",
+      "file": "sr/solutions/ai-receptionist-for-garage-door-repair/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-home-services/",
+      "file": "sr/solutions/ai-receptionist-for-home-services/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-hvac/",
+      "file": "sr/solutions/ai-receptionist-for-hvac/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-locksmiths/",
+      "file": "sr/solutions/ai-receptionist-for-locksmiths/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-plumbers/",
+      "file": "sr/solutions/ai-receptionist-for-plumbers/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-restoration-companies/",
+      "file": "sr/solutions/ai-receptionist-for-restoration-companies/index.html"
+    },
+    {
+      "route": "/sr/solutions/ai-receptionist-for-salons-and-spas/",
+      "file": "sr/solutions/ai-receptionist-for-salons-and-spas/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-electriciens/",
+      "file": "sr/solutions/evaluation-electriciens/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-equipes-terrain/",
+      "file": "sr/solutions/evaluation-equipes-terrain/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-gestion-immobiliere/",
+      "file": "sr/solutions/evaluation-gestion-immobiliere/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-intervention-apres-sinistre/",
+      "file": "sr/solutions/evaluation-intervention-apres-sinistre/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-metiers-btp/",
+      "file": "sr/solutions/evaluation-metiers-btp/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-metiers-securite/",
+      "file": "sr/solutions/evaluation-metiers-securite/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-metiers-services/",
+      "file": "sr/solutions/evaluation-metiers-services/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-plombiers/",
+      "file": "sr/solutions/evaluation-plombiers/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-professionnels-sante/",
+      "file": "sr/solutions/evaluation-professionnels-sante/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-relation-client/",
+      "file": "sr/solutions/evaluation-relation-client/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-techniciens-cvc/",
+      "file": "sr/solutions/evaluation-techniciens-cvc/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-techniciens-maintenance/",
+      "file": "sr/solutions/evaluation-techniciens-maintenance/index.html"
+    },
+    {
+      "route": "/sr/solutions/evaluation-techniciens-reparation/",
+      "file": "sr/solutions/evaluation-techniciens-reparation/index.html"
+    },
+    {
+      "route": "/sr/solutions/open-source-ai-receptionist/",
+      "file": "sr/solutions/open-source-ai-receptionist/index.html"
+    },
+    {
+      "route": "/sr/solutions/property-management-answering-service/",
+      "file": "sr/solutions/property-management-answering-service/index.html"
+    },
+    {
+      "route": "/sr/solutions/roofing-answering-service/",
+      "file": "sr/solutions/roofing-answering-service/index.html"
+    },
+    {
+      "route": "/sr/solutions/self-hosted-ai-receptionist/",
+      "file": "sr/solutions/self-hosted-ai-receptionist/index.html"
+    },
+    {
+      "route": "/sr/terms/",
+      "file": "sr/terms/index.html"
+    },
+    {
+      "route": "/terms/",
+      "file": "terms/index.html"
+    }
+  ],
+  "endpoints": [
+    {
+      "route": "/.well-known/agent-skills/index.json",
+      "file": ".well-known/agent-skills/index.json"
+    },
+    {
+      "route": "/.well-known/agent-skills/lobbystack-discovery/SKILL.md",
+      "file": ".well-known/agent-skills/lobbystack-discovery/SKILL.md"
+    },
+    {
+      "route": "/.well-known/api-catalog",
+      "file": ".well-known/api-catalog"
+    },
+    {
+      "route": "/.well-known/mcp/server-card.json",
+      "file": ".well-known/mcp/server-card.json"
+    },
+    {
+      "route": "/about.md",
+      "file": "about.md"
+    },
+    {
+      "route": "/affiliate-program.md",
+      "file": "affiliate-program.md"
+    },
+    {
+      "route": "/blog.md",
+      "file": "blog.md"
+    },
+    {
+      "route": "/blog/ai-receptionist-affiliate-program.md",
+      "file": "blog/ai-receptionist-affiliate-program.md"
+    },
+    {
+      "route": "/blog/ai-receptionist-savings.md",
+      "file": "blog/ai-receptionist-savings.md"
+    },
+    {
+      "route": "/blog/ai-receptionist-vs-virtual-receptionist.md",
+      "file": "blog/ai-receptionist-vs-virtual-receptionist.md"
+    },
+    {
+      "route": "/blog/ai-receptionist-vs-voicemail.md",
+      "file": "blog/ai-receptionist-vs-voicemail.md"
+    },
+    {
+      "route": "/blog/ai-receptionist-workflows.md",
+      "file": "blog/ai-receptionist-workflows.md"
+    },
+    {
+      "route": "/blog/ai-voice-agent-gpt-live.md",
+      "file": "blog/ai-voice-agent-gpt-live.md"
+    },
+    {
+      "route": "/blog/best-open-source-ai-phone-answering-services.md",
+      "file": "blog/best-open-source-ai-phone-answering-services.md"
+    },
+    {
+      "route": "/blog/build-or-buy-ai-receptionist.md",
+      "file": "blog/build-or-buy-ai-receptionist.md"
+    },
+    {
+      "route": "/blog/cloudtalk-ai-receptionist-alternative.md",
+      "file": "blog/cloudtalk-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/blog/dialzara-alternative.md",
+      "file": "blog/dialzara-alternative.md"
+    },
+    {
+      "route": "/blog/elevenlabs-reception-alternative.md",
+      "file": "blog/elevenlabs-reception-alternative.md"
+    },
+    {
+      "route": "/blog/goodcall-alternative.md",
+      "file": "blog/goodcall-alternative.md"
+    },
+    {
+      "route": "/blog/how-to-choose-an-ai-receptionist.md",
+      "file": "blog/how-to-choose-an-ai-receptionist.md"
+    },
+    {
+      "route": "/blog/lobbystack-is-live.md",
+      "file": "blog/lobbystack-is-live.md"
+    },
+    {
+      "route": "/blog/lobbystack-mit-license-ai-receptionist-resellers.md",
+      "file": "blog/lobbystack-mit-license-ai-receptionist-resellers.md"
+    },
+    {
+      "route": "/blog/moneypenny-ai-receptionist-alternative.md",
+      "file": "blog/moneypenny-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/blog/my-ai-front-desk-alternative.md",
+      "file": "blog/my-ai-front-desk-alternative.md"
+    },
+    {
+      "route": "/blog/nextiva-xbert-alternative.md",
+      "file": "blog/nextiva-xbert-alternative.md"
+    },
+    {
+      "route": "/blog/open-source-ai-receptionist-stack.md",
+      "file": "blog/open-source-ai-receptionist-stack.md"
+    },
+    {
+      "route": "/blog/quo-sona-alternative.md",
+      "file": "blog/quo-sona-alternative.md"
+    },
+    {
+      "route": "/blog/ringcentral-ai-receptionist-alternative.md",
+      "file": "blog/ringcentral-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/blog/rosie-ai-alternative.md",
+      "file": "blog/rosie-ai-alternative.md"
+    },
+    {
+      "route": "/blog/smith-ai-alternative.md",
+      "file": "blog/smith-ai-alternative.md"
+    },
+    {
+      "route": "/blog/upfirst-alternative.md",
+      "file": "blog/upfirst-alternative.md"
+    },
+    {
+      "route": "/blog/why-lobbystack-is-moving-away-from-convex.md",
+      "file": "blog/why-lobbystack-is-moving-away-from-convex.md"
+    },
+    {
+      "route": "/blog/zoom-ai-receptionist-alternative.md",
+      "file": "blog/zoom-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/changelog.md",
+      "file": "changelog.md"
+    },
+    {
+      "route": "/docs/api.md",
+      "file": "docs/api.md"
+    },
+    {
+      "route": "/es/affiliate-program.md",
+      "file": "es/affiliate-program.md"
+    },
+    {
+      "route": "/es/blog.md",
+      "file": "es/blog.md"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-affiliate-program.md",
+      "file": "es/blog/ai-receptionist-affiliate-program.md"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-savings.md",
+      "file": "es/blog/ai-receptionist-savings.md"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-vs-virtual-receptionist.md",
+      "file": "es/blog/ai-receptionist-vs-virtual-receptionist.md"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-vs-voicemail.md",
+      "file": "es/blog/ai-receptionist-vs-voicemail.md"
+    },
+    {
+      "route": "/es/blog/ai-receptionist-workflows.md",
+      "file": "es/blog/ai-receptionist-workflows.md"
+    },
+    {
+      "route": "/es/blog/ai-voice-agent-gpt-live.md",
+      "file": "es/blog/ai-voice-agent-gpt-live.md"
+    },
+    {
+      "route": "/es/blog/best-open-source-ai-phone-answering-services.md",
+      "file": "es/blog/best-open-source-ai-phone-answering-services.md"
+    },
+    {
+      "route": "/es/blog/build-or-buy-ai-receptionist.md",
+      "file": "es/blog/build-or-buy-ai-receptionist.md"
+    },
+    {
+      "route": "/es/blog/cloudtalk-ai-receptionist-alternative.md",
+      "file": "es/blog/cloudtalk-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/es/blog/dialzara-alternative.md",
+      "file": "es/blog/dialzara-alternative.md"
+    },
+    {
+      "route": "/es/blog/elevenlabs-reception-alternative.md",
+      "file": "es/blog/elevenlabs-reception-alternative.md"
+    },
+    {
+      "route": "/es/blog/goodcall-alternative.md",
+      "file": "es/blog/goodcall-alternative.md"
+    },
+    {
+      "route": "/es/blog/how-to-choose-an-ai-receptionist.md",
+      "file": "es/blog/how-to-choose-an-ai-receptionist.md"
+    },
+    {
+      "route": "/es/blog/lobbystack-is-live.md",
+      "file": "es/blog/lobbystack-is-live.md"
+    },
+    {
+      "route": "/es/blog/lobbystack-mit-license-ai-receptionist-resellers.md",
+      "file": "es/blog/lobbystack-mit-license-ai-receptionist-resellers.md"
+    },
+    {
+      "route": "/es/blog/moneypenny-ai-receptionist-alternative.md",
+      "file": "es/blog/moneypenny-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/es/blog/my-ai-front-desk-alternative.md",
+      "file": "es/blog/my-ai-front-desk-alternative.md"
+    },
+    {
+      "route": "/es/blog/nextiva-xbert-alternative.md",
+      "file": "es/blog/nextiva-xbert-alternative.md"
+    },
+    {
+      "route": "/es/blog/open-source-ai-receptionist-stack.md",
+      "file": "es/blog/open-source-ai-receptionist-stack.md"
+    },
+    {
+      "route": "/es/blog/quo-sona-alternative.md",
+      "file": "es/blog/quo-sona-alternative.md"
+    },
+    {
+      "route": "/es/blog/ringcentral-ai-receptionist-alternative.md",
+      "file": "es/blog/ringcentral-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/es/blog/rosie-ai-alternative.md",
+      "file": "es/blog/rosie-ai-alternative.md"
+    },
+    {
+      "route": "/es/blog/smith-ai-alternative.md",
+      "file": "es/blog/smith-ai-alternative.md"
+    },
+    {
+      "route": "/es/blog/upfirst-alternative.md",
+      "file": "es/blog/upfirst-alternative.md"
+    },
+    {
+      "route": "/es/blog/why-lobbystack-is-moving-away-from-convex.md",
+      "file": "es/blog/why-lobbystack-is-moving-away-from-convex.md"
+    },
+    {
+      "route": "/es/blog/zoom-ai-receptionist-alternative.md",
+      "file": "es/blog/zoom-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/es/changelog.md",
+      "file": "es/changelog.md"
+    },
+    {
+      "route": "/es/docs/api.md",
+      "file": "es/docs/api.md"
+    },
+    {
+      "route": "/es/features.md",
+      "file": "es/features.md"
+    },
+    {
+      "route": "/es/index.md",
+      "file": "es/index.md"
+    },
+    {
+      "route": "/es/missed-call-revenue-calculator/index.md",
+      "file": "es/missed-call-revenue-calculator/index.md"
+    },
+    {
+      "route": "/es/pricing.md",
+      "file": "es/pricing.md"
+    },
+    {
+      "route": "/features.md",
+      "file": "features.md"
+    },
+    {
+      "route": "/feed.xml",
+      "file": "feed.xml"
+    },
+    {
+      "route": "/fr/affiliate-program.md",
+      "file": "fr/affiliate-program.md"
+    },
+    {
+      "route": "/fr/blog.md",
+      "file": "fr/blog.md"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-affiliate-program.md",
+      "file": "fr/blog/ai-receptionist-affiliate-program.md"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-savings.md",
+      "file": "fr/blog/ai-receptionist-savings.md"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-vs-virtual-receptionist.md",
+      "file": "fr/blog/ai-receptionist-vs-virtual-receptionist.md"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-vs-voicemail.md",
+      "file": "fr/blog/ai-receptionist-vs-voicemail.md"
+    },
+    {
+      "route": "/fr/blog/ai-receptionist-workflows.md",
+      "file": "fr/blog/ai-receptionist-workflows.md"
+    },
+    {
+      "route": "/fr/blog/ai-voice-agent-gpt-live.md",
+      "file": "fr/blog/ai-voice-agent-gpt-live.md"
+    },
+    {
+      "route": "/fr/blog/best-open-source-ai-phone-answering-services.md",
+      "file": "fr/blog/best-open-source-ai-phone-answering-services.md"
+    },
+    {
+      "route": "/fr/blog/build-or-buy-ai-receptionist.md",
+      "file": "fr/blog/build-or-buy-ai-receptionist.md"
+    },
+    {
+      "route": "/fr/blog/cloudtalk-ai-receptionist-alternative.md",
+      "file": "fr/blog/cloudtalk-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/fr/blog/dialzara-alternative.md",
+      "file": "fr/blog/dialzara-alternative.md"
+    },
+    {
+      "route": "/fr/blog/elevenlabs-reception-alternative.md",
+      "file": "fr/blog/elevenlabs-reception-alternative.md"
+    },
+    {
+      "route": "/fr/blog/goodcall-alternative.md",
+      "file": "fr/blog/goodcall-alternative.md"
+    },
+    {
+      "route": "/fr/blog/how-to-choose-an-ai-receptionist.md",
+      "file": "fr/blog/how-to-choose-an-ai-receptionist.md"
+    },
+    {
+      "route": "/fr/blog/lobbystack-is-live.md",
+      "file": "fr/blog/lobbystack-is-live.md"
+    },
+    {
+      "route": "/fr/blog/lobbystack-mit-license-ai-receptionist-resellers.md",
+      "file": "fr/blog/lobbystack-mit-license-ai-receptionist-resellers.md"
+    },
+    {
+      "route": "/fr/blog/moneypenny-ai-receptionist-alternative.md",
+      "file": "fr/blog/moneypenny-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/fr/blog/my-ai-front-desk-alternative.md",
+      "file": "fr/blog/my-ai-front-desk-alternative.md"
+    },
+    {
+      "route": "/fr/blog/nextiva-xbert-alternative.md",
+      "file": "fr/blog/nextiva-xbert-alternative.md"
+    },
+    {
+      "route": "/fr/blog/open-source-ai-receptionist-stack.md",
+      "file": "fr/blog/open-source-ai-receptionist-stack.md"
+    },
+    {
+      "route": "/fr/blog/quo-sona-alternative.md",
+      "file": "fr/blog/quo-sona-alternative.md"
+    },
+    {
+      "route": "/fr/blog/ringcentral-ai-receptionist-alternative.md",
+      "file": "fr/blog/ringcentral-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/fr/blog/rosie-ai-alternative.md",
+      "file": "fr/blog/rosie-ai-alternative.md"
+    },
+    {
+      "route": "/fr/blog/smith-ai-alternative.md",
+      "file": "fr/blog/smith-ai-alternative.md"
+    },
+    {
+      "route": "/fr/blog/upfirst-alternative.md",
+      "file": "fr/blog/upfirst-alternative.md"
+    },
+    {
+      "route": "/fr/blog/why-lobbystack-is-moving-away-from-convex.md",
+      "file": "fr/blog/why-lobbystack-is-moving-away-from-convex.md"
+    },
+    {
+      "route": "/fr/blog/zoom-ai-receptionist-alternative.md",
+      "file": "fr/blog/zoom-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/fr/changelog.md",
+      "file": "fr/changelog.md"
+    },
+    {
+      "route": "/fr/docs/api.md",
+      "file": "fr/docs/api.md"
+    },
+    {
+      "route": "/fr/features.md",
+      "file": "fr/features.md"
+    },
+    {
+      "route": "/fr/index.md",
+      "file": "fr/index.md"
+    },
+    {
+      "route": "/fr/missed-call-revenue-calculator/index.md",
+      "file": "fr/missed-call-revenue-calculator/index.md"
+    },
+    {
+      "route": "/fr/pricing.md",
+      "file": "fr/pricing.md"
+    },
+    {
+      "route": "/index.md",
+      "file": "index.md"
+    },
+    {
+      "route": "/missed-call-revenue-calculator/index.md",
+      "file": "missed-call-revenue-calculator/index.md"
+    },
+    {
+      "route": "/openapi.json",
+      "file": "openapi.json"
+    },
+    {
+      "route": "/pricing.md",
+      "file": "pricing.md"
+    },
+    {
+      "route": "/schema/page.json",
+      "file": "schema/page.json"
+    },
+    {
+      "route": "/schema/post.json",
+      "file": "schema/post.json"
+    },
+    {
+      "route": "/schemamap.xml",
+      "file": "schemamap.xml"
+    },
+    {
+      "route": "/sitemap-blog-0.xml",
+      "file": "sitemap-blog-0.xml"
+    },
+    {
+      "route": "/sitemap-index.xml",
+      "file": "sitemap-index.xml"
+    },
+    {
+      "route": "/sitemap-site-0.xml",
+      "file": "sitemap-site-0.xml"
+    },
+    {
+      "route": "/sr/affiliate-program.md",
+      "file": "sr/affiliate-program.md"
+    },
+    {
+      "route": "/sr/blog.md",
+      "file": "sr/blog.md"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-affiliate-program.md",
+      "file": "sr/blog/ai-receptionist-affiliate-program.md"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-savings.md",
+      "file": "sr/blog/ai-receptionist-savings.md"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-vs-virtual-receptionist.md",
+      "file": "sr/blog/ai-receptionist-vs-virtual-receptionist.md"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-vs-voicemail.md",
+      "file": "sr/blog/ai-receptionist-vs-voicemail.md"
+    },
+    {
+      "route": "/sr/blog/ai-receptionist-workflows.md",
+      "file": "sr/blog/ai-receptionist-workflows.md"
+    },
+    {
+      "route": "/sr/blog/ai-voice-agent-gpt-live.md",
+      "file": "sr/blog/ai-voice-agent-gpt-live.md"
+    },
+    {
+      "route": "/sr/blog/best-open-source-ai-phone-answering-services.md",
+      "file": "sr/blog/best-open-source-ai-phone-answering-services.md"
+    },
+    {
+      "route": "/sr/blog/build-or-buy-ai-receptionist.md",
+      "file": "sr/blog/build-or-buy-ai-receptionist.md"
+    },
+    {
+      "route": "/sr/blog/cloudtalk-ai-receptionist-alternative.md",
+      "file": "sr/blog/cloudtalk-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/sr/blog/dialzara-alternative.md",
+      "file": "sr/blog/dialzara-alternative.md"
+    },
+    {
+      "route": "/sr/blog/elevenlabs-reception-alternative.md",
+      "file": "sr/blog/elevenlabs-reception-alternative.md"
+    },
+    {
+      "route": "/sr/blog/goodcall-alternative.md",
+      "file": "sr/blog/goodcall-alternative.md"
+    },
+    {
+      "route": "/sr/blog/how-to-choose-an-ai-receptionist.md",
+      "file": "sr/blog/how-to-choose-an-ai-receptionist.md"
+    },
+    {
+      "route": "/sr/blog/lobbystack-is-live.md",
+      "file": "sr/blog/lobbystack-is-live.md"
+    },
+    {
+      "route": "/sr/blog/lobbystack-mit-license-ai-receptionist-resellers.md",
+      "file": "sr/blog/lobbystack-mit-license-ai-receptionist-resellers.md"
+    },
+    {
+      "route": "/sr/blog/moneypenny-ai-receptionist-alternative.md",
+      "file": "sr/blog/moneypenny-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/sr/blog/my-ai-front-desk-alternative.md",
+      "file": "sr/blog/my-ai-front-desk-alternative.md"
+    },
+    {
+      "route": "/sr/blog/nextiva-xbert-alternative.md",
+      "file": "sr/blog/nextiva-xbert-alternative.md"
+    },
+    {
+      "route": "/sr/blog/open-source-ai-receptionist-stack.md",
+      "file": "sr/blog/open-source-ai-receptionist-stack.md"
+    },
+    {
+      "route": "/sr/blog/quo-sona-alternative.md",
+      "file": "sr/blog/quo-sona-alternative.md"
+    },
+    {
+      "route": "/sr/blog/ringcentral-ai-receptionist-alternative.md",
+      "file": "sr/blog/ringcentral-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/sr/blog/rosie-ai-alternative.md",
+      "file": "sr/blog/rosie-ai-alternative.md"
+    },
+    {
+      "route": "/sr/blog/smith-ai-alternative.md",
+      "file": "sr/blog/smith-ai-alternative.md"
+    },
+    {
+      "route": "/sr/blog/upfirst-alternative.md",
+      "file": "sr/blog/upfirst-alternative.md"
+    },
+    {
+      "route": "/sr/blog/why-lobbystack-is-moving-away-from-convex.md",
+      "file": "sr/blog/why-lobbystack-is-moving-away-from-convex.md"
+    },
+    {
+      "route": "/sr/blog/zoom-ai-receptionist-alternative.md",
+      "file": "sr/blog/zoom-ai-receptionist-alternative.md"
+    },
+    {
+      "route": "/sr/changelog.md",
+      "file": "sr/changelog.md"
+    },
+    {
+      "route": "/sr/docs/api.md",
+      "file": "sr/docs/api.md"
+    },
+    {
+      "route": "/sr/features.md",
+      "file": "sr/features.md"
+    },
+    {
+      "route": "/sr/index.md",
+      "file": "sr/index.md"
+    },
+    {
+      "route": "/sr/missed-call-revenue-calculator/index.md",
+      "file": "sr/missed-call-revenue-calculator/index.md"
+    },
+    {
+      "route": "/sr/pricing.md",
+      "file": "sr/pricing.md"
+    }
+  ],
+  "assetPrefixes": [
+    "_astro",
+    "fonts",
+    "illustrations",
+    "og",
+    "pagefind",
+    "screenshots"
+  ],
+  "topLevelFiles": [
+    "_headers",
+    "_redirects",
+    "about.md",
+    "affiliate-program.md",
+    "blog.md",
+    "changelog.md",
+    "favicon.svg",
+    "features.md",
+    "feed.xml",
+    "index.md",
+    "llms.txt",
+    "lobbystack-logo-long.webp",
+    "lobbystack-logo.svg",
+    "logo-icon.png",
+    "logo-icon.svg",
+    "openapi.json",
+    "pricing.md",
+    "robots.txt",
+    "schemamap.xml",
+    "sitemap-blog-0.xml",
+    "sitemap-index.xml",
+    "sitemap-site-0.xml",
+    "webmcp.js"
+  ]
+}
