@@ -1,6 +1,6 @@
 ---
 title: Okjobs ya está disponible
-canonical: "https://lobbystack.com/es/blog/lobbystack-is-live/"
+canonical: "/about/"
 pubDate: "2026-05-13T16:00:00.000Z"
 author: Equipo de Okjobs
 description: "Okjobs ya está disponible: una recepcionista con IA de código abierto que responde llamadas, reserva citas y deja el control a su equipo."
@@ -9,7 +9,7 @@ categories: [Novedades del producto]
 
 La mayoría de los pequeños negocios no pierden clientes por hacer mal su trabajo. Los pierden porque el teléfono sonó mientras todos ya estaban trabajando.
 
-Hoy, [Okjobs](https://lobbystack.com/es/) ya está disponible.
+Hoy, [Okjobs](/about/) ya está disponible.
 
 Okjobs es una **recepcionista con IA de código abierto** para negocios que dependen de llamadas y reservas. Responde cuando su equipo está ocupado, el negocio está cerrado, alguien va conduciendo entre trabajos o ya está atendiendo a otro cliente.
 
@@ -65,7 +65,7 @@ Hay otra diferencia: Okjobs no le hace pagar por llamadas basura. Las llamadas d
 
 ## Código abierto por diseño
 
-Okjobs es de [código abierto](https://github.com/lobbystack/lobbystack) porque las llamadas contienen datos reales de clientes, y los negocios no deberían tratar su recepción como una caja negra.
+Okjobs es de [código abierto](/about/) porque las llamadas contienen datos reales de clientes, y los negocios no deberían tratar su recepción como una caja negra.
 
 Para muchos equipos, la versión alojada es la forma más rápida de empezar. Cree una cuenta, conecte las piezas, añada el conocimiento de su negocio y póngala en marcha.
 

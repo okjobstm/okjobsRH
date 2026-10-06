@@ -1,13 +1,13 @@
 ---
 title: "Okjobs | Réceptionniste IA open source"
-canonical: "https://lobbystack.com/fr/"
+canonical: "/about/"
 description: "Okjobs est le réceptionniste IA open source qui répond aux appels, qualifie les demandes, planifie des rendez‑vous et transfère les urgences 24/7."
 ---
 
 ---
 title: Okjobs | Réceptionniste IA open source
 description: Okjobs est le réceptionniste IA open source qui répond aux appels, qualifie les demandes, planifie des rendez‑vous et transfère les urgences 24/7.
-url: https://lobbystack.com/fr/
+url: /about/
 ---
 
 # Okjobs
@@ -23,9 +23,9 @@ Okjobs est un réceptionniste IA open source pour les petites entreprises qui d�
 
 ## Ressources publiques
 
-- Fonctionnalités : https://lobbystack.com/fr/features/
-- Tarifs : https://lobbystack.com/fr/pricing/
-- Solutions : https://lobbystack.com/fr/solutions/
-- Calculateur : https://lobbystack.com/fr/missed-call-revenue-calculator/
-- Blog : https://lobbystack.com/fr/blog/
-- GitHub : https://github.com/lobbystack/lobbystack
+- Fonctionnalités : /about/
+- Tarifs : /about/
+- Solutions : /about/
+- Calculateur : /about/
+- Blog : /about/
+- GitHub : /about/

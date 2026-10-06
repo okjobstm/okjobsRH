@@ -1,6 +1,6 @@
 ---
 title: "Gane un 20% con el programa de afiliados"
-canonical: "https://lobbystack.com/es/blog/ai-receptionist-affiliate-program/"
+canonical: "/about/"
 pubDate: "2026-07-07T13:00:00.000Z"
 author: Equipo de Okjobs
 description: "Compare programas de afiliados de recepcionistas con IA y vea por qué agencias, consultores, creadores y expertos en negocios locales pueden ganar ingresos recurrentes con Okjobs."

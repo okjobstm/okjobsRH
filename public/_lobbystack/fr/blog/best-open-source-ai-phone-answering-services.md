@@ -1,6 +1,6 @@
 ---
 title: Services open source de réponse IA
-canonical: "https://lobbystack.com/fr/blog/best-open-source-ai-phone-answering-services/"
+canonical: "/about/"
 pubDate: "2026-07-08T14:00:00.000Z"
 author: Équipe Okjobs
 description: "Comparez les services open source de réponse téléphonique IA en auto-hébergement : agents Asterisk, piles LiveKit et plateformes complètes de réceptionniste."
@@ -33,13 +33,13 @@ Faites un vrai test d'appel pour chaque finaliste : demande de réservation, que
 
 ### Okjobs: meilleure plateforme complète de réceptionniste (cloud ou auto-hébergée)
 
-**GitHub :** [lobbystack/lobbystack](https://github.com/lobbystack/lobbystack)
+**GitHub :** [lobbystack/lobbystack](/about/)
 
 **Licence :** MIT
 
 **Idéal pour :** Les entreprises de services et les agences qui veulent appels, réservations, transcriptions, tableaux de bord, facturation et auto-hébergement sans assembler dix dépôts
 
-[Okjobs](https://lobbystack.com/) est l'option de cette liste la plus proche d'un produit complet de **réceptionniste IA**. Il couvre les appels entrants, les réservations et modifications, les transcriptions et résumés, le contexte métier et les FAQ, les textos de réservation, les alertes courriel et SMS, le transfert humain, les tableaux de bord, le suivi d'usage et les déploiements type client. Vous pouvez utiliser le cloud hébergé, l'employer comme [réceptionniste IA open source](/solutions/open-source-ai-receptionist/) ou [l'auto-héberger avec Docker](/solutions/self-hosted-ai-receptionist/).
+[Okjobs](/about/) est l'option de cette liste la plus proche d'un produit complet de **réceptionniste IA**. Il couvre les appels entrants, les réservations et modifications, les transcriptions et résumés, le contexte métier et les FAQ, les textos de réservation, les alertes courriel et SMS, le transfert humain, les tableaux de bord, le suivi d'usage et les déploiements type client. Vous pouvez utiliser le cloud hébergé, l'employer comme [réceptionniste IA open source](/solutions/open-source-ai-receptionist/) ou [l'auto-héberger avec Docker](/solutions/self-hosted-ai-receptionist/).
 
 Le compromis, c'est l'ampleur. Vous obtenez une vraie couche opérationnelle autour de l'appel, mais vous apportez encore les comptes fournisseurs (Twilio, OpenAI, calendrier, courriel et services associés) et vous gérez le déploiement si vous auto-hébergez. C'est le coût honnête pour éviter le verrouillage SaaS tout en gardant la profondeur produit.
 
@@ -139,4 +139,4 @@ Le meilleur **service open source de réponse téléphonique IA** pour vous est 
 - Besoin d'un agent vocal Realtime léger sur LiveKit → **AIReceptionist**
 - Besoin d'un accueil pour services à domicile → **Hearthline**
 
-Si vous voulez inspecter une pile complète avant de transférer votre ligne principale, commencez par le [dépôt GitHub Okjobs](https://github.com/lobbystack/lobbystack) ou la [vue d'ensemble de la pile open source](/fr/blog/open-source-ai-receptionist-stack/).
+Si vous voulez inspecter une pile complète avant de transférer votre ligne principale, commencez par le [dépôt GitHub Okjobs](/about/) ou la [vue d'ensemble de la pile open source](/fr/blog/open-source-ai-receptionist-stack/).

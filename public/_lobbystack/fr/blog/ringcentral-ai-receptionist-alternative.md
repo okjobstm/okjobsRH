@@ -1,6 +1,6 @@
 ---
 title: Alternative à RingCentral AI Receptionist
-canonical: "https://lobbystack.com/fr/blog/ringcentral-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:40:00.000Z"
 author: Équipe Okjobs
 description: "Comparez RingCentral AI Receptionist et Okjobs : prix, téléphonie, canaux, réservation, intégrations métier, code ouvert et auto-hébergement."

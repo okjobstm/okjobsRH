@@ -1,13 +1,13 @@
 ---
 title: "Funkcije AI recepcionera za pozive, termine i obaveštenja"
-canonical: "https://lobbystack.com/sr/features/"
+canonical: "/about/"
 description: "Upoznajte funkcije Okjobs-a za javljanje na telefon, zakazivanje termina, preusmeravanje poziva, obaveštenja za vlasnika i rezimee poziva."
 ---
 
 ---
 title: Funkcije AI recepcionera za pozive, termine i obaveštenja
 description: Upoznajte funkcije Okjobs-a za javljanje na telefon, zakazivanje termina, preusmeravanje poziva, obaveštenja za vlasnika i rezimee poziva.
-url: https://lobbystack.com/sr/features/
+url: /about/
 ---
 
 # Okjobs funkcije

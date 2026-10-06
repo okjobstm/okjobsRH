@@ -1,6 +1,6 @@
 ---
 title: Alternative à CloudTalk AI Receptionist
-canonical: "https://lobbystack.com/fr/blog/cloudtalk-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:10:00.000Z"
 author: Équipe Okjobs
 description: "Comparez CloudTalk AI Receptionist et Okjobs : coût de plateforme, minutes, routage, CRM, intégrations, code source et déploiement auto-hébergé."

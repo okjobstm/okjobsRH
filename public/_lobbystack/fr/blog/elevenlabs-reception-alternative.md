@@ -1,6 +1,6 @@
 ---
 title: "Alternative à ElevenLabs Reception : minutes et contrôle"
-canonical: "https://lobbystack.com/fr/blog/elevenlabs-reception-alternative/"
+canonical: "/about/"
 pubDate: "2026-09-19T14:00:00.000Z"
 author: Équipe Okjobs
 description: "Comparez ElevenLabs Reception (Reception.ai) et Okjobs : 29 $ pour 75 minutes ou 30 $ pour 150, dépassements, clavardage web, HIPAA et auto-hébergement."
@@ -89,7 +89,7 @@ Choisissez Okjobs pour 150 minutes à 30 $ et un dépassement à 0,20 $. Vous po
 - [Fonctions de la réceptionniste Reception](https://elevenlabs.io/docs/reception-ai/receptionist/overview)
 - [Prix de Okjobs](/fr/pricing/)
 - [Réceptionniste IA open source](/fr/solutions/open-source-ai-receptionist/)
-- [Dépôt GitHub de Okjobs](https://github.com/lobbystack/lobbystack)
+- [Dépôt GitHub de Okjobs](/about/)
 
 Pour d'autres comparaisons, lisez nos guides [Alternative à Rosie](/fr/blog/rosie-ai-alternative/) et [Alternative à Dialzara](/fr/blog/dialzara-alternative/).
 

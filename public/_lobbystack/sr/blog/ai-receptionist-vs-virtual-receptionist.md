@@ -1,6 +1,6 @@
 ---
 title: "AI ili virtuelni recepcioner: praktičan vodič"
-canonical: "https://lobbystack.com/sr/blog/ai-receptionist-vs-virtual-receptionist/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:50:00.000Z"
 author: Okjobs tim
 description: "Uporedite AI i ljudske virtuelne recepcionere po ceni, broju poziva, empatiji, zakazivanju, preusmeravanju i nadzoru i izaberite pravu telefonsku podršku."
@@ -121,7 +121,7 @@ Podela treba da prati rizik i vrednost. Automatizujte posao koji se ponavlja. Lj
 
 [Okjobs](/sr/features/) obrađuje rutinska pitanja, prijem zahteva, zakazivanje, izmene termina, rezimee i podešena preusmeravanja. Vaš tim zadržava pozive koji traže stručnost ili empatiju.
 
-Kod je [javan na GitHubu](https://github.com/lobbystack/lobbystack), a timovi mogu da koriste upravljanu cloud verziju ili da [sami hostuju stek](https://docs.lobbystack.com/self-hosting/overview). Samostalno hostovanje daje više kontrole, ali traži tehničku odgovornost.
+Kod je [javan na GitHubu](/about/), a timovi mogu da koriste upravljanu cloud verziju ili da [sami hostuju stek](/about/). Samostalno hostovanje daje više kontrole, ali traži tehničku odgovornost.
 
 ## Zaključak
 

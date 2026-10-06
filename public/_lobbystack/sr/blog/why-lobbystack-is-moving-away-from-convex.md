@@ -1,6 +1,6 @@
 ---
 title: Zašto Okjobs napušta Convex
-canonical: "https://lobbystack.com/sr/blog/why-lobbystack-is-moving-away-from-convex/"
+canonical: "/about/"
 pubDate: "2026-09-04T14:00:00.000Z"
 author: Okjobs tim
 description: "Okjobs napušta Convex da bi olakšao samostalno hostovanje i doprinose uz stek koji mnogi timovi poznaju: Next.js, PostgreSQL, Drizzle i Redis."
@@ -75,6 +75,6 @@ Okjobs ostaje isti proizvod: AI recepcioner za pozive, poruke, zakazivanje, znan
 
 I licenca sada podržava taj cilj. Okjobs smo prebacili sa AGPL na MIT licencu kako bi komercijalni graditelji mogli da prilagođavaju kod, dalje ga licenciraju i prodaju proizvode zasnovane na njemu. Pročitajte [zašto je Okjobs sada pod MIT licencom](/sr/blog/lobbystack-mit-license-ai-receptionist-resellers/) da biste videli poslovne razloge i dozvole koje nova licenca donosi.
 
-Možete da [pregledate platformu na GitHubu](https://github.com/lobbystack/lobbystack), pratite [pregled samostalnog hostovanja](https://docs.lobbystack.com/self-hosting/overview) ili koristite [Docker Compose vodič](https://docs.lobbystack.com/self-hosting/docker-compose) da je sami pokrenete.
+Možete da [pregledate platformu na GitHubu](/about/), pratite [pregled samostalnog hostovanja](/about/) ili koristite [Docker Compose vodič](/about/) da je sami pokrenete.
 
 Ako želite recepcionera bez održavanja infrastrukture, [napravite Okjobs Cloud nalog](/signup) i testirajte ga sa svojom firmom.

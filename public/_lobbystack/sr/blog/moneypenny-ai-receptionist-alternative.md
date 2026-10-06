@@ -1,6 +1,6 @@
 ---
 title: Alternativa za Moneypenny AI Receptionist
-canonical: "https://lobbystack.com/sr/blog/moneypenny-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:00:00.000Z"
 author: Okjobs tim
 description: "Uporedite Moneypenny AI Receptionist i Okjobs: upravljano podešavanje, prebacivanje na čoveka, cena po pozivu, izvorni kod i samostalno hostovanje."
@@ -97,7 +97,7 @@ Izaberite Okjobs ako Vaš tim može da prima prebačene pozive i želite besplat
 - [Moneypenny AI Receptionist](https://moneypenny.com/us/ai-receptionist/)
 - [Moneypenny AI paketi](https://moneypenny.com/us/plans-pricing-ai/)
 - [Okjobs cene](/sr/pricing/)
-- [Okjobs samostalno hostovanje](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs samostalno hostovanje](/about/)
 
 ## Zaključak
 

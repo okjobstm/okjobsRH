@@ -1,13 +1,13 @@
 ---
 title: "Programme d'affiliation Okjobs | 20 % de commission"
-canonical: "https://lobbystack.com/fr/affiliate-program/"
+canonical: "/about/"
 description: "Parrainez des entreprises vers les forfaits hébergés Okjobs et touchez 20 % de leurs paiements pendant 12 mois. Rabais de 5 % à l'inscription. Paiements PayPal mensuels après 30 jours de retenue."
 ---
 
 ---
 title: Programme d'affiliation Okjobs | 20 % de commission
 description: Résumé public du programme d'affiliation Okjobs.
-url: https://lobbystack.com/fr/affiliate-program/
+url: /about/
 ---
 
 # Programme d'affiliation Okjobs

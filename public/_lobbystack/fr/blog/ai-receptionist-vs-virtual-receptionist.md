@@ -1,6 +1,6 @@
 ---
 title: "Réceptionniste IA ou virtuel : guide pratique"
-canonical: "https://lobbystack.com/fr/blog/ai-receptionist-vs-virtual-receptionist/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:50:00.000Z"
 author: Équipe Okjobs
 description: "Comparez réceptionnistes IA et humains : coût, volume, empathie, réservation, transferts et supervision pour choisir votre couverture téléphonique."
@@ -93,7 +93,7 @@ Suivez le risque et la valeur. Automatisez le travail répétitif et confiez aux
 
 [Okjobs](/fr/features/) traite les questions courantes, l'admission, les rendez-vous, les résumés et les transferts configurés. Votre équipe garde les appels qui demandent son expertise.
 
-Le code est [public sur GitHub](https://github.com/lobbystack/lobbystack). Vous pouvez utiliser le cloud ou [auto-héberger la pile](https://docs.lobbystack.com/self-hosting/overview).
+Le code est [public sur GitHub](/about/). Vous pouvez utiliser le cloud ou [auto-héberger la pile](/about/).
 
 ## Verdict
 

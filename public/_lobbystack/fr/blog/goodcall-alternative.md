@@ -1,6 +1,6 @@
 ---
 title: "Alternative à Goodcall : comparez les unités"
-canonical: "https://lobbystack.com/fr/blog/goodcall-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:20:00.000Z"
 author: Équipe Okjobs
 description: "Comparez Okjobs et Goodcall : prix par appelant ou par minute, routage, intégrations, historique des appels, code source et auto-hébergement."

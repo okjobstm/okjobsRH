@@ -1,6 +1,6 @@
 ---
 title: "Alternativa a Rosie AI: planes y concesiones"
-canonical: "https://lobbystack.com/es/blog/rosie-ai-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:10:00.000Z"
 author: Equipo de Okjobs
 description: "Compare Okjobs y Rosie en minutos incluidos, reservas, transferencias, SMS, idiomas, acceso al código, servicio en la nube y autoalojamiento."

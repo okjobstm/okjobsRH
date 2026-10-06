@@ -1,6 +1,6 @@
 ---
 title: Alternative à Quo Sona pour répondre aux appels
-canonical: "https://lobbystack.com/fr/blog/quo-sona-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:20:00.000Z"
 author: Équipe Okjobs
 description: "Comparez Quo Sona et Okjobs : crédits d'appels, système téléphonique requis, messages, réservation, transfert, code source et auto-hébergement."

@@ -1,6 +1,6 @@
 ---
 title: Recepcionista con IA frente a buzón de voz
-canonical: "https://lobbystack.com/es/blog/ai-receptionist-vs-voicemail/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:40:00.000Z"
 author: Equipo de Okjobs
 description: "Compare una recepcionista con IA y el buzón de voz en experiencia del cliente, captación, reservas, costo, cobertura fuera de horario y cuándo el buzón basta."
@@ -115,7 +115,7 @@ El buzón de voz también recibe spam. El personal sigue perdiendo tiempo borran
 
 [Okjobs](/es/features/) puede responder todas las llamadas entrantes, las de fuera de horario o solo las que su equipo no atiende. Puede trabajar con el conocimiento del negocio, recoger datos, reservar citas, transferir llamadas urgentes y enviar resúmenes.
 
-Los negocios pueden usar la nube gestionada o [autoalojar el stack de código abierto](https://github.com/lobbystack/lobbystack). La vía autoalojada da control sobre la infraestructura y añade responsabilidad operativa.
+Los negocios pueden usar la nube gestionada o [autoalojar el stack de código abierto](/about/). La vía autoalojada da control sobre la infraestructura y añade responsabilidad operativa.
 
 ## Veredicto
 

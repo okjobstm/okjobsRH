@@ -1,6 +1,6 @@
 ---
 title: Open-source sistem za AI recepcionera
-canonical: "https://lobbystack.com/sr/blog/open-source-ai-receptionist-stack/"
+canonical: "/about/"
 pubDate: "2026-06-18T14:00:00.000Z"
 author: Okjobs tim
 description: "Okjobs je open-source sistem za AI recepcionera: pozivi, zakazivanje, transkripti, kontrolne table, naplata, samostalno hostovanje i postavljanje za klijente."
@@ -11,7 +11,7 @@ Open-source sistemu za AI recepcionera treba više od glasovnog agenta. Potrebni
 
 To je deo koji mnogi timovi na kraju prave iznova.
 
-[Okjobs](https://lobbystack.com/) je **open-source sistem za AI recepcionera** za timove koji žele da taj sloj proizvoda već postoji. Koristite hostovanu verziju u oblaku kada želite da ga neko drugi održava ili ga samostalno hostujte uz Docker kada želite infrastrukturu pod svojom kontrolom.
+[Okjobs](/about/) je **open-source sistem za AI recepcionera** za timove koji žele da taj sloj proizvoda već postoji. Koristite hostovanu verziju u oblaku kada želite da ga neko drugi održava ili ga samostalno hostujte uz Docker kada želite infrastrukturu pod svojom kontrolom.
 
 ## Sistem koji ljudi stalno prave iznova
 
@@ -125,8 +125,8 @@ Ako prvo upoređujete open-source opcije za odgovaranje na pozive, pogledajte vo
 
 ## Isprobajte ga ili ga hostujte sami
 
-Počnite sa [Okjobs Cloud](https://lobbystack.com/) ako želite da isprobate proizvod bez upravljanja infrastrukturom.
+Počnite sa [Okjobs Cloud](/about/) ako želite da isprobate proizvod bez upravljanja infrastrukturom.
 
-Koristite [pregled samostalnog hostovanja](https://docs.lobbystack.com/self-hosting/overview) i [Docker Compose vodič](https://docs.lobbystack.com/self-hosting/docker-compose) ako želite da sistem pokrećete sami.
+Koristite [pregled samostalnog hostovanja](/about/) i [Docker Compose vodič](/about/) ako želite da sistem pokrećete sami.
 
-Kod je javno dostupan na [GitHubu](https://github.com/lobbystack/lobbystack). Ako bi open-source sistem za AI recepcionera pomogao Vašoj firmi ili radu sa klijentima, zvezdica pomaže da ga pronađe više ljudi.
+Kod je javno dostupan na [GitHubu](/about/). Ako bi open-source sistem za AI recepcionera pomogao Vašoj firmi ili radu sa klijentima, zvezdica pomaže da ga pronađe više ljudi.

@@ -1,6 +1,6 @@
 ---
 title: Réceptionniste IA ou messagerie vocale
-canonical: "https://lobbystack.com/fr/blog/ai-receptionist-vs-voicemail/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:40:00.000Z"
 author: Équipe Okjobs
 description: "Comparez réceptionniste IA et messagerie vocale : expérience, prospects, réservation, coût, couverture hors horaires et cas où la messagerie suffit."
@@ -101,7 +101,7 @@ Testez la cadence, les interruptions et l'accès direct à une personne avec de 
 
 [Okjobs](/fr/features/) peut répondre à tous les appels, aux appels hors horaires ou seulement aux appels manqués. Il utilise les connaissances, collecte les données, réserve, transfère et envoie des résumés.
 
-Les entreprises utilisent le cloud géré ou [auto-hébergent la pile ouverte](https://github.com/lobbystack/lobbystack).
+Les entreprises utilisent le cloud géré ou [auto-hébergent la pile ouverte](/about/).
 
 ## Verdict
 

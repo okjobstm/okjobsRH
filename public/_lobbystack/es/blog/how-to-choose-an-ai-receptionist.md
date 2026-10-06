@@ -1,6 +1,6 @@
 ---
 title: Cómo elegir una recepcionista con IA
-canonical: "https://lobbystack.com/es/blog/how-to-choose-an-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-03T17:00:00.000Z"
 author: Equipo de Okjobs
 description: "Aprenda a elegir una recepcionista con IA con una lista práctica para comparar funciones, precios, calidad de llamada, integraciones, cumplimiento y pruebas."

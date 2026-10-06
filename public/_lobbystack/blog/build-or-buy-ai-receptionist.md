@@ -1,6 +1,6 @@
 ---
 title: Should you build or buy an AI receptionist?
-canonical: "https://lobbystack.com/blog/build-or-buy-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-12T13:00:00.000Z"
 author: Okjobs Team
 description: "Compare building an AI receptionist from scratch, buying a hosted tool, or self-hosting open-source Okjobs before you spend serious time or budget."

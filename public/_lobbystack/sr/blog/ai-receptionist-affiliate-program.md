@@ -1,6 +1,6 @@
 ---
 title: "Zaradite 20% uz Okjobs partnerski program"
-canonical: "https://lobbystack.com/sr/blog/ai-receptionist-affiliate-program/"
+canonical: "/about/"
 pubDate: "2026-07-07T13:00:00.000Z"
 author: Okjobs tim
 description: "Uporedite partnerske programe za AI recepcionere i saznajte zašto agencije, konsultanti, kreatori i stručnjaci za lokalne firme mogu da ostvare ponavljajući prihod uz Okjobs."

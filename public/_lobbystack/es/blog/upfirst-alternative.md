@@ -1,6 +1,6 @@
 ---
 title: "Alternativa a Upfirst: Okjobs frente a Upfirst"
-canonical: "https://lobbystack.com/es/blog/upfirst-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:50:00.000Z"
 author: Equipo de Okjobs
 description: "Compare Okjobs y Upfirst en precio, reservas, transferencias, idiomas, código abierto y autoalojamiento para elegir la recepcionista con IA adecuada."
@@ -68,7 +68,7 @@ Tome un mes de historial de llamadas y calcule ambas unidades. Veinte llamadas l
 
 Las páginas oficiales de Upfirst revisadas describen un servicio alojado. No anuncian código fuente público ni un despliegue autoalojado.
 
-[Okjobs es de código abierto](https://github.com/lobbystack/lobbystack). Puede usar la nube gestionada, inspeccionar el código o ejecutar el stack en una infraestructura que usted controla. Un equipo que lo autoaloja puede gestionar sus propias cuentas de proveedores, secretos, políticas de retención, calendario de actualizaciones e integraciones.
+[Okjobs es de código abierto](/about/). Puede usar la nube gestionada, inspeccionar el código o ejecutar el stack en una infraestructura que usted controla. Un equipo que lo autoaloja puede gestionar sus propias cuentas de proveedores, secretos, políticas de retención, calendario de actualizaciones e integraciones.
 
 Ese control implica trabajo. Alguien debe operar el despliegue, supervisar las llamadas, gestionar las copias de seguridad y probar las actualizaciones. Upfirst le quita esa carga. Okjobs le da la opción.
 
@@ -102,10 +102,10 @@ Elija Okjobs para probar la voz gratis en el navegador, tener código público, 
 - [Recepcionista con IA de Upfirst](https://upfirst.ai/solutions/ai-receptionist)
 - [Agenda de Upfirst](https://upfirst.ai/features/scheduling)
 - [Precios de Okjobs](/es/pricing/)
-- [Introducción al autoalojamiento de Okjobs](https://docs.lobbystack.com/self-hosting/overview)
+- [Introducción al autoalojamiento de Okjobs](/about/)
 
 ## Veredicto
 
 Okjobs ofrece el mejor punto de partida por defecto: pruebas gratis en el navegador, precios por minuto y una vía de propiedad que Upfirst no anuncia. Upfirst puede seguir encajando en negocios con llamadas largas que valoran su cobertura de idiomas y su facturación por llamada.
 
-[Empiece con Okjobs gratis](/es/pricing/) y calcule el precio con su combinación real de llamadas. Si el control importa después de la prueba, [inspeccione el código en GitHub](https://github.com/lobbystack/lobbystack).
+[Empiece con Okjobs gratis](/es/pricing/) y calcule el precio con su combinación real de llamadas. Si el control importa después de la prueba, [inspeccione el código en GitHub](/about/).

@@ -5,19 +5,19 @@
     return
   }
 
-  const siteUrl = "https://lobbystack.com"
+  const siteUrl = "/about/"
   const urls = {
     home: `${siteUrl}/`,
     features: `${siteUrl}/features/`,
     pricing: `${siteUrl}/pricing/`,
     featuresMarkdown: `${siteUrl}/features.md`,
     pricingMarkdown: `${siteUrl}/pricing.md`,
-    docs: "https://docs.lobbystack.com/introduction",
+    docs: "/about/",
     apiCatalog: `${siteUrl}/.well-known/api-catalog`,
     openApi: `${siteUrl}/openapi.json`,
     skills: `${siteUrl}/.well-known/agent-skills/index.json`,
     llms: `${siteUrl}/llms.txt`,
-    github: "https://github.com/lobbystack/lobbystack",
+    github: "/about/",
   }
 
   const tools = [

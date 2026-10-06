@@ -1,6 +1,6 @@
 ---
 title: Okjobs is live
-canonical: "https://lobbystack.com/blog/lobbystack-is-live/"
+canonical: "/about/"
 pubDate: "2026-05-13T16:00:00.000Z"
 author: Okjobs Team
 description: "Okjobs is now live: an open-source AI receptionist that answers calls, books appointments, and keeps teams in control."
@@ -9,7 +9,7 @@ categories: [Product updates]
 
 Most small businesses do not lose customers because they do bad work. They lose them because the phone rang while everyone was already doing the work.
 
-Today, [Okjobs](https://lobbystack.com/) is live.
+Today, [Okjobs](/about/) is live.
 
 Okjobs is an **open-source AI receptionist** for businesses that depend on phone calls and bookings. It answers when your team is busy, closed, driving between jobs, or already helping another customer.
 
@@ -19,7 +19,7 @@ Voicemail is not a workflow. Okjobs is our answer to that.
 
 ## What it does
 
-[Okjobs](https://lobbystack.com/features/) sits between your business phone and your team. You decide when it should answer: every call, after hours, during busy periods, or only when nobody picks up.
+[Okjobs](/about/) sits between your business phone and your team. You decide when it should answer: every call, after hours, during busy periods, or only when nobody picks up.
 
 When a caller reaches Okjobs, it can:
 
@@ -65,7 +65,7 @@ There is another difference: Okjobs does not make you pay for junk. Spam calls a
 
 ## Open source by design
 
-Okjobs is [open source](https://github.com/lobbystack/lobbystack) because phone calls contain real customer data, and businesses should not have to treat their front desk like a black box.
+Okjobs is [open source](/about/) because phone calls contain real customer data, and businesses should not have to treat their front desk like a black box.
 
 For many teams, the hosted version is the fastest way to get started. Create an account, connect the pieces, add your business knowledge, and go live.
 
@@ -88,7 +88,7 @@ These are not edge cases. They are the ordinary calls that fill calendars, start
 
 ## Start small, then grow into it
 
-You can start with the [Free plan](https://lobbystack.com/pricing/), test calls in your browser, and see whether Okjobs fits your business before putting it in front of more customers. The Pro plan is designed for production call coverage with transparent usage-based billing, and Enterprise is available for higher volume or self-hosted implementation support.
+You can start with the [Free plan](/about/), test calls in your browser, and see whether Okjobs fits your business before putting it in front of more customers. The Pro plan is designed for production call coverage with transparent usage-based billing, and Enterprise is available for higher volume or self-hosted implementation support.
 
 Three things matter most in this first release:
 

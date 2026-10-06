@@ -1,6 +1,6 @@
 ---
 title: Servicios de código abierto de atención con IA
-canonical: "https://lobbystack.com/es/blog/best-open-source-ai-phone-answering-services/"
+canonical: "/about/"
 pubDate: "2026-07-08T14:00:00.000Z"
 author: Equipo de Okjobs
 description: "Compare servicios de código abierto para contestar llamadas con IA en autoalojamiento: agentes para Asterisk, stacks de voz con LiveKit y plataformas de recepción completas."
@@ -33,13 +33,13 @@ Haga una prueba de llamada real con cada finalista: solicitud de reserva, pregun
 
 ### Okjobs: la mejor plataforma de recepción completa (en la nube o autoalojada)
 
-**GitHub:** [lobbystack/lobbystack](https://github.com/lobbystack/lobbystack)
+**GitHub:** [lobbystack/lobbystack](/about/)
 
 **Licencia:** MIT
 
 **Ideal para:** Negocios de servicios y agencias que quieren llamadas, reservas, transcripciones, paneles, facturación y autoalojamiento sin ensamblar diez repositorios
 
-[Okjobs](https://lobbystack.com/) es la opción de esta lista más cercana a un producto completo de **recepcionista con IA**. Cubre llamadas entrantes, reserva y cambio de citas, transcripciones y resúmenes, contexto del negocio y preguntas frecuentes, SMS de reserva, alertas por correo y SMS, traspaso a una persona, paneles para el equipo, seguimiento del uso y despliegues para clientes. Puede usar la nube alojada, usarlo como [recepcionista con IA de código abierto](/solutions/open-source-ai-receptionist/) o [autoalojarlo con Docker](/solutions/self-hosted-ai-receptionist/).
+[Okjobs](/about/) es la opción de esta lista más cercana a un producto completo de **recepcionista con IA**. Cubre llamadas entrantes, reserva y cambio de citas, transcripciones y resúmenes, contexto del negocio y preguntas frecuentes, SMS de reserva, alertas por correo y SMS, traspaso a una persona, paneles para el equipo, seguimiento del uso y despliegues para clientes. Puede usar la nube alojada, usarlo como [recepcionista con IA de código abierto](/solutions/open-source-ai-receptionist/) o [autoalojarlo con Docker](/solutions/self-hosted-ai-receptionist/).
 
 La contrapartida es el alcance. Obtiene una capa operativa real alrededor de la llamada, pero sigue aportando sus propias cuentas de proveedores (Twilio, OpenAI, calendario, correo y servicios relacionados) y se encarga del despliegue si lo autoaloja. Ese es el costo honesto de evitar la dependencia de un SaaS sin renunciar a un producto completo.
 
@@ -139,4 +139,4 @@ El mejor **servicio de código abierto para contestar llamadas con IA** para ust
 - Necesita un agente de voz Realtime ligero sobre LiveKit → **AIReceptionist**
 - Necesita una recepción para servicios del hogar → **Hearthline**
 
-Si quiere inspeccionar un stack completo antes de desviar su línea principal, empiece por el [repositorio de Okjobs en GitHub](https://github.com/lobbystack/lobbystack) o por la [visión general del stack de recepcionista con IA de código abierto](/es/blog/open-source-ai-receptionist-stack/).
+Si quiere inspeccionar un stack completo antes de desviar su línea principal, empiece por el [repositorio de Okjobs en GitHub](/about/) o por la [visión general del stack de recepcionista con IA de código abierto](/es/blog/open-source-ai-receptionist-stack/).

@@ -1,13 +1,13 @@
 ---
 title: "Funciones de recepcionista con IA: llamadas, citas y alertas"
-canonical: "https://lobbystack.com/es/features/"
+canonical: "/about/"
 description: "Conozca las funciones de Okjobs para atender llamadas, reservar citas, transferir llamadas, avisar al dueño y resumir cada conversación."
 ---
 
 ---
 title: Funciones de recepcionista con IA: llamadas, citas y alertas
 description: Conozca las funciones de Okjobs para atender llamadas, reservar citas, transferir llamadas, avisar al dueño y resumir cada conversación.
-url: https://lobbystack.com/es/features/
+url: /about/
 ---
 
 # Funciones de Okjobs

@@ -1,6 +1,6 @@
 ---
 title: AI receptionist vs voicemail
-canonical: "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:40:00.000Z"
 author: Okjobs Team
 description: "Compare an AI receptionist and voicemail on caller experience, lead capture, booking, cost, after-hours coverage, and the cases where voicemail still works."
@@ -115,7 +115,7 @@ Voicemail has spam too. Staff still spend time deleting robocalls and empty mess
 
 [Okjobs](/features/) can answer every inbound call, after-hours calls, or only the calls your team misses. It can work from business knowledge, collect intake, book appointments, transfer urgent calls, and send summaries.
 
-Businesses can use the managed cloud or [self-host the open-source stack](https://github.com/lobbystack/lobbystack). The self-hosted route gives infrastructure control and adds operational responsibility.
+Businesses can use the managed cloud or [self-host the open-source stack](/about/). The self-hosted route gives infrastructure control and adds operational responsibility.
 
 ## Verdict
 

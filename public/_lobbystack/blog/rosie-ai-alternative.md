@@ -1,6 +1,6 @@
 ---
 title: "Rosie AI alternative: Plans and tradeoffs"
-canonical: "https://lobbystack.com/blog/rosie-ai-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:10:00.000Z"
 author: Okjobs Team
 description: "Compare Okjobs and Rosie on included minutes, booking, transfers, texting, languages, open-source access, cloud service, and self-hosting."

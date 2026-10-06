@@ -1,6 +1,6 @@
 ---
 title: "Alternativa za Dialzara: paketi, dodaci i kontrola"
-canonical: "https://lobbystack.com/sr/blog/dialzara-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:50:00.000Z"
 author: Okjobs tim
 description: "Uporedite Okjobs i Dialzara po ceni minuta, zakazivanju, preusmeravanju, SMS-u, opcijama za agencije, API pristupu, otvorenom kodu i samostalnom hostovanju."
@@ -98,7 +98,7 @@ Izaberite Okjobs za 150 minuta po ceni od $30 ili 500 po ceni od $100, uz namens
 - [Dialzara cene](https://dialzara.com/pricing)
 - [Okjobs cene](/sr/pricing/)
 - [Okjobs partnerski program](/sr/blog/ai-receptionist-affiliate-program/)
-- [Okjobs GitHub repozitorijum](https://github.com/lobbystack/lobbystack)
+- [Okjobs GitHub repozitorijum](/about/)
 
 ## Zaključak
 

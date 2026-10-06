@@ -1,6 +1,6 @@
 ---
 title: Best open-source AI phone answering services
-canonical: "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/"
+canonical: "/about/"
 pubDate: "2026-07-08T14:00:00.000Z"
 author: Okjobs Team
 description: "Compare open-source AI phone answering services for self-hosting: Asterisk agents, LiveKit voice stacks, and full receptionist platforms."
@@ -33,13 +33,13 @@ Run a real call test for each finalist: booking request, pricing question, angry
 
 ### Okjobs: best full receptionist platform (cloud or self-hosted)
 
-**GitHub:** [lobbystack/lobbystack](https://github.com/lobbystack/lobbystack)
+**GitHub:** [lobbystack/lobbystack](/about/)
 
 **License:** MIT
 
 **Best for:** Service businesses and agencies that want calls, booking, transcripts, dashboards, billing, and self-hosting without assembling ten repos
 
-[Okjobs](https://lobbystack.com/) is the option on this list closest to a complete **AI receptionist** product. It covers inbound calls, appointment booking and changes, transcripts and summaries, business context and FAQs, booking texts, email and SMS alerts, human handoff, staff dashboards, usage tracking, and client-style deployments. You can run the hosted cloud, use it as an [open-source AI receptionist](/solutions/open-source-ai-receptionist/), or [self-host with Docker](/solutions/self-hosted-ai-receptionist/).
+[Okjobs](/about/) is the option on this list closest to a complete **AI receptionist** product. It covers inbound calls, appointment booking and changes, transcripts and summaries, business context and FAQs, booking texts, email and SMS alerts, human handoff, staff dashboards, usage tracking, and client-style deployments. You can run the hosted cloud, use it as an [open-source AI receptionist](/solutions/open-source-ai-receptionist/), or [self-host with Docker](/solutions/self-hosted-ai-receptionist/).
 
 The tradeoff is scope. You get a real operating layer around the call, but you still bring provider accounts (Twilio, OpenAI, calendar, email, and related services) and own the deployment if you self-host. That is the honest cost of skipping SaaS lock-in while keeping product depth.
 
@@ -139,4 +139,4 @@ The best **open source AI phone answering service** for you is the one that matc
 - Need a slim Realtime voice agent on LiveKit → **AIReceptionist**
 - Need a home-service front desk → **Hearthline**
 
-If you want to inspect a full stack before you forward your main line, start with the [Okjobs GitHub repo](https://github.com/lobbystack/lobbystack) or the [open-source AI receptionist stack overview](/blog/open-source-ai-receptionist-stack/).
+If you want to inspect a full stack before you forward your main line, start with the [Okjobs GitHub repo](/about/) or the [open-source AI receptionist stack overview](/blog/open-source-ai-receptionist-stack/).

@@ -1,6 +1,6 @@
 ---
 title: "Calculadora de ingresos perdidos por llamadas | Okjobs"
-canonical: "https://lobbystack.com/es/missed-call-revenue-calculator/"
+canonical: "/about/"
 description: "Calcule los ingresos semanales, mensuales y anuales en riesgo por llamadas perdidas, y cuánto podría recuperar con una recepcionista 24/7."
 ---
 

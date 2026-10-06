@@ -1,6 +1,6 @@
 ---
 title: How to choose an AI receptionist
-canonical: "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-03T17:00:00.000Z"
 author: Okjobs Team
 description: "Learn how to choose an AI receptionist with a practical buyer checklist for features, pricing, call quality, integrations, compliance, and testing."

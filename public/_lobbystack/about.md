@@ -1,13 +1,13 @@
 ---
 title: About Okjobs - Open-Source AI Receptionist
-canonical: "https://lobbystack.com/about/"
+canonical: "/about/"
 description: "Learn about Okjobs, the open-source AI receptionist for small businesses that need call answering, appointment booking, and call transfers."
 ---
 
 ---
 title: About Okjobs - Open-Source AI Receptionist
 description: Learn about Okjobs, the open-source AI receptionist for small businesses that need call answering, appointment booking, and call transfers.
-url: https://lobbystack.com/about/
+url: /about/
 ---
 
 # About Okjobs
@@ -50,10 +50,10 @@ Okjobs Cloud handles hosting, monitoring, and product updates. Self-hosted custo
 
 - Configure allowed answers, booking rules, and transfer paths in plain language
 - Review call summaries, transcripts, and outcomes in one operator dashboard
-- Use public documentation or contact support@lobbystack.com when you need implementation help
+- Use public documentation or contact le contact Okjobs when you need implementation help
 
 ## Related Resources
 
-- [Features](https://lobbystack.com/features/)
-- [Public documentation](https://lobbystack.com/docs/api/)
-- [GitHub](https://github.com/lobbystack/lobbystack)
+- [Features](/about/)
+- [Public documentation](/about/)
+- [GitHub](/about/)

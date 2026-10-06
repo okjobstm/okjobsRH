@@ -1,6 +1,6 @@
 ---
 title: Zoom AI Receptionist alternative
-canonical: "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:00:00.000Z"
 author: Okjobs Team
 description: "Compare Zoom Virtual Agent Receptionist and Okjobs on pricing, phone-system fit, booking, languages, source access, cloud service, and self-hosting."
@@ -92,7 +92,7 @@ Choose Okjobs when you want 30 free test minutes, 50% more included usage near $
 - [Zoom AI receptionist](https://www.zoom.com/en/products/voip-phone/features/ai-receptionist/)
 - [Zoom receptionist FAQ](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0085189)
 - [Okjobs pricing](/pricing/)
-- [Okjobs self-hosting](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs self-hosting](/about/)
 
 ## Verdict
 

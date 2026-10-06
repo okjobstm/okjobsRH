@@ -7,6 +7,8 @@ import { applyPersonaCopy, rewritePersonaRuntime } from "./okjobs-persona-copy.m
 import { rewriteGuide, rewriteGuideLinks } from "./okjobs-guides.mjs";
 import { applyDirectorHomeCopy } from "./okjobs-home-director-copy.mjs";
 import { applyOkjobsImages } from "./okjobs-public-images.mjs";
+import { removeLobbystackLinks } from "./remove-lobbystack-links.mjs";
+import { applyProductServicesCopy, rewriteProductServicesRuntime } from "./okjobs-product-services-copy.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const defaultRoot = path.join(projectRoot, "public", "_lobbystack");
@@ -1120,6 +1122,7 @@ function rewrite(html, route, outputRoute = route) {
   rewriteGuideLinks(document);
   applyPersonaCopy(document);
   if (route === "/") applyDirectorHomeCopy(document);
+  applyProductServicesCopy(document, route);
   // Keep search/social previews aligned with the visible promise, not the old title.
   const findHeading = (node) => node.tagName === "h1" ? textContent(node).trim()
     : (node.childNodes ?? []).map(findHeading).find(Boolean);
@@ -1185,7 +1188,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
     if (!name.endsWith(".js")) continue;
     const file = path.join(assets, name);
     const source = await readFile(file, "utf8");
-    const rewritten = rewritePersonaRuntime(source);
+    const rewritten = rewriteProductServicesRuntime(rewritePersonaRuntime(source));
     if (rewritten !== source) await writeFile(file, rewritten, "utf8");
   }
   // Astro hashes stay unchanged when only compiled copy is patched. Invalidate
@@ -1202,6 +1205,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
       if (rewritten !== original) await writeFile(file, rewritten, "utf8");
     }
   }
+  await removeLobbystackLinks(root);
   return changed;
 }
 

@@ -1,6 +1,6 @@
 ---
 title: "Alternativa a Goodcall: compare los modelos de cobro"
-canonical: "https://lobbystack.com/es/blog/goodcall-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:20:00.000Z"
 author: Equipo de Okjobs
 description: "Compare Okjobs y Goodcall: precio por persona única o por minuto, enrutamiento, integraciones, historial, acceso al código y autoalojamiento."

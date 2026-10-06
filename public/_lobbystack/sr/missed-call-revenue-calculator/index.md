@@ -1,6 +1,6 @@
 ---
 title: Kalkulator prihoda izgubljenog zbog propuštenih poziva
-canonical: "https://lobbystack.com/sr/missed-call-revenue-calculator/"
+canonical: "/about/"
 description: "Procenite nedeljni, mesečni i godišnji prihod koji gubite zbog propuštenih poziva i koliko biste mogli da vratite uz recepcionera 24/7."
 ---
 

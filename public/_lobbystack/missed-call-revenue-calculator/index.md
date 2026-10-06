@@ -1,13 +1,13 @@
 ---
 title: Missed Call Revenue Calculator for Contractors
-canonical: "https://lobbystack.com/missed-call-revenue-calculator/"
+canonical: "/about/"
 description: "Estimate weekly, monthly, and annual revenue at risk from missed contractor calls and see how much a 24/7 AI receptionist could recover."
 ---
 
 ---
 title: Missed Call Revenue Calculator for Contractors - Okjobs
 description: Estimate weekly, monthly, and annual revenue at risk from missed contractor calls. Calculate how much you could recover with a 24/7 receptionist.
-url: https://lobbystack.com/missed-call-revenue-calculator/
+url: /about/
 ---
 
 # Missed Call Revenue Calculator for Contractors

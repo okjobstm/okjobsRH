@@ -1,6 +1,6 @@
 ---
 title: Nextiva XBert alternative
-canonical: "https://lobbystack.com/blog/nextiva-xbert-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:30:00.000Z"
 author: Okjobs Team
 description: "Compare Nextiva XBert and Okjobs on interaction pricing, voice and chat coverage, booking, integrations, source access, and self-hosting."
@@ -91,7 +91,7 @@ Choose Okjobs when inbound calls are the priority and you want a free test, a $3
 - [Nextiva XBert](https://www.nextiva.com/products/xbert)
 - [Nextiva AI receptionist](https://www.nextiva.com/products/ai-receptionist)
 - [Okjobs pricing](/pricing/)
-- [Okjobs self-hosting](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs self-hosting](/about/)
 
 ## Verdict
 

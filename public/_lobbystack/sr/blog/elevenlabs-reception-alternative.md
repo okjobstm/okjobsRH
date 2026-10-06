@@ -1,6 +1,6 @@
 ---
 title: "Alternativa za ElevenLabs Reception: minuti i vlasništvo"
-canonical: "https://lobbystack.com/sr/blog/elevenlabs-reception-alternative/"
+canonical: "/about/"
 pubDate: "2026-09-19T14:00:00.000Z"
 author: Okjobs tim
 description: "Uporedite ElevenLabs Reception (Reception.ai) i Okjobs: $29 za 75 minuta ili $30 za 150, prekoračenja, veb čet, HIPAA, jezici i samostalno hostovanje."
@@ -89,7 +89,7 @@ Izaberite Okjobs za 150 minuta po ceni od $30 i prekoračenje od $0.20. Na Free 
 - [Funkcije recepcionera u Reception](https://elevenlabs.io/docs/reception-ai/receptionist/overview)
 - [Okjobs cene](/sr/pricing/)
 - [Open-source AI recepcioner](/sr/solutions/open-source-ai-receptionist/)
-- [Okjobs GitHub repozitorijum](https://github.com/lobbystack/lobbystack)
+- [Okjobs GitHub repozitorijum](/about/)
 
 Za još poređenja, pročitajte vodiče [alternativa za Rosie](/sr/blog/rosie-ai-alternative/) i [alternativa za Dialzara](/sr/blog/dialzara-alternative/).
 

@@ -1,6 +1,6 @@
 ---
 title: "Notre agent vocal IA fonctionne maintenant avec GPT-Live, le modèle de ChatGPT Voice"
-canonical: "https://lobbystack.com/fr/blog/ai-voice-agent-gpt-live/"
+canonical: "/about/"
 pubDate: "2026-09-27T01:00:00.000Z"
 author: Équipe Okjobs
 description: "L'agent vocal IA de Okjobs fonctionne avec GPT-Live d'OpenAI, le modèle de ChatGPT Voice. Il continue de parler pendant qu'il réserve et prend des messages."

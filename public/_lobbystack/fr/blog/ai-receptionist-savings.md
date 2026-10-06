@@ -1,6 +1,6 @@
 ---
 title: Économies avec un réceptionniste IA
-canonical: "https://lobbystack.com/fr/blog/ai-receptionist-savings/"
+canonical: "/about/"
 pubDate: "2026-06-03T16:00:00.000Z"
 author: Équipe Okjobs
 description: "Estimez les économies possibles avec un réceptionniste IA : coûts d'accueil réduits et moins d'appels manqués."

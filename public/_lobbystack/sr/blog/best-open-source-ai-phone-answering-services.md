@@ -1,6 +1,6 @@
 ---
 title: Najbolji open-source AI servisi za pozive
-canonical: "https://lobbystack.com/sr/blog/best-open-source-ai-phone-answering-services/"
+canonical: "/about/"
 pubDate: "2026-07-08T14:00:00.000Z"
 author: Okjobs tim
 description: "Uporedite open-source AI servise za odgovaranje na telefonske pozive koje možete samostalno hostovati: Asterisk agenti, LiveKit glasovni sistemi i kompletne platforme za recepciju."
@@ -33,13 +33,13 @@ Za svakog finalistu napravite pravi test poziva: zahtev za zakazivanje, pitanje 
 
 ### Okjobs: najbolja kompletna platforma za recepciju (u oblaku ili samostalno hostovana)
 
-**GitHub:** [lobbystack/lobbystack](https://github.com/lobbystack/lobbystack)
+**GitHub:** [lobbystack/lobbystack](/about/)
 
 **Licenca:** MIT
 
 **Najbolje za:** Uslužne firme i agencije koje žele pozive, zakazivanje, transkripte, kontrolne table, naplatu i samostalno hostovanje bez sklapanja deset repozitorijuma
 
-[Okjobs](https://lobbystack.com/) je opcija na ovoj listi koja je najbliža kompletnom proizvodu za **AI recepcionera**. Pokriva dolazne pozive, zakazivanje i izmene termina, transkripte i rezimee, poslovni kontekst i česta pitanja, SMS poruke o zakazivanju, upozorenja e-poštom i SMS-om, prebacivanje na čoveka, kontrolne table za osoblje, praćenje potrošnje i postavke za klijente. Možete koristiti hostovanu verziju u oblaku, koristiti ga kao [open-source AI recepcionera](/solutions/open-source-ai-receptionist/) ili ga [samostalno hostovati uz Docker](/solutions/self-hosted-ai-receptionist/).
+[Okjobs](/about/) je opcija na ovoj listi koja je najbliža kompletnom proizvodu za **AI recepcionera**. Pokriva dolazne pozive, zakazivanje i izmene termina, transkripte i rezimee, poslovni kontekst i česta pitanja, SMS poruke o zakazivanju, upozorenja e-poštom i SMS-om, prebacivanje na čoveka, kontrolne table za osoblje, praćenje potrošnje i postavke za klijente. Možete koristiti hostovanu verziju u oblaku, koristiti ga kao [open-source AI recepcionera](/solutions/open-source-ai-receptionist/) ili ga [samostalno hostovati uz Docker](/solutions/self-hosted-ai-receptionist/).
 
 Kompromis je obim. Dobijate pravi operativni sloj oko poziva, ali i dalje sami obezbeđujete naloge kod dobavljača (Twilio, OpenAI, kalendar, e-pošta i povezane usluge) i odgovorni ste za postavljanje ako hostujete sami. To je iskrena cena izbegavanja SaaS zaključavanja uz zadržavanje dubine proizvoda.
 
@@ -139,4 +139,4 @@ Najbolji **open-source AI servis za odgovaranje na telefonske pozive** za Vas je
 - Treba Vam vitak Realtime glasovni agent na LiveKitu → **AIReceptionist**
 - Treba Vam recepcija za kućne usluge → **Hearthline**
 
-Ako želite da pregledate kompletan sistem pre nego što preusmerite svoju glavnu liniju, počnite od [Okjobs GitHub repozitorijuma](https://github.com/lobbystack/lobbystack) ili [pregleda open-source sistema za AI recepcionera](/sr/blog/open-source-ai-receptionist-stack/).
+Ako želite da pregledate kompletan sistem pre nego što preusmerite svoju glavnu liniju, počnite od [Okjobs GitHub repozitorijuma](/about/) ili [pregleda open-source sistema za AI recepcionera](/sr/blog/open-source-ai-receptionist-stack/).

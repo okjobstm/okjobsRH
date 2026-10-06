@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://lobbystack.com"
+      "url": "/about/"
     }
   ],
   "paths": {

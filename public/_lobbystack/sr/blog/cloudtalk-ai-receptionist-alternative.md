@@ -1,6 +1,6 @@
 ---
 title: Alternativa za CloudTalk AI Receptionist
-canonical: "https://lobbystack.com/sr/blog/cloudtalk-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:10:00.000Z"
 author: Okjobs tim
 description: "Uporedite CloudTalk AI Receptionist i Okjobs: troškovi platforme, uključeni minuti, usmeravanje, CRM integracije, otvoreni kod i samostalno hostovanje."
@@ -95,7 +95,7 @@ Izaberite Okjobs ako je recepcioner glavna kupovina. Dobijate 30 besplatnih minu
 - [CloudTalk šablon recepcionera](https://help.cloudtalk.io/en/articles/14057883-voiceagent-templates-ai-receptionist)
 - [CloudTalk cene platforme](https://www.cloudtalk.io/pricing/)
 - [Okjobs cene](/sr/pricing/)
-- [Okjobs GitHub repozitorijum](https://github.com/lobbystack/lobbystack)
+- [Okjobs GitHub repozitorijum](/about/)
 
 ## Zaključak
 

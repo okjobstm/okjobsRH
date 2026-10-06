@@ -1,13 +1,13 @@
 ---
 title: AI Receptionist Pricing for Small Businesses
-canonical: "https://lobbystack.com/pricing/"
+canonical: "/about/"
 description: "Compare Okjobs AI receptionist pricing for Free, Starter, Pro, and Enterprise plans, including voice minutes, annual billing, SMS alerts, and overage rates."
 ---
 
 ---
 title: AI Receptionist Pricing for Small Businesses
 description: Public pricing summary for Okjobs's Free, Starter, Pro, and Enterprise plans.
-url: https://lobbystack.com/pricing/
+url: /about/
 ---
 
 # Okjobs Pricing

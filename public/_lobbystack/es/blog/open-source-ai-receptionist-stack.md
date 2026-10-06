@@ -1,6 +1,6 @@
 ---
 title: Stack de código abierto para recepcionista con IA
-canonical: "https://lobbystack.com/es/blog/open-source-ai-receptionist-stack/"
+canonical: "/about/"
 pubDate: "2026-06-18T14:00:00.000Z"
 author: Equipo de Okjobs
 description: "Okjobs es un stack de código abierto para recepcionista con IA: llamadas, reservas, transcripciones, paneles, facturación, autoalojamiento y despliegues para clientes."
@@ -11,7 +11,7 @@ Un stack de código abierto para recepcionista con IA necesita más que un agent
 
 Esa es la parte que muchos equipos acaban reconstruyendo.
 
-[Okjobs](https://lobbystack.com/) es un **stack de código abierto para recepcionista con IA** pensado para equipos que quieren esa capa de producto ya hecha. Use la nube alojada cuando quiera que otro lo gestione, o autoalójelo con Docker cuando quiera tener la infraestructura bajo su control.
+[Okjobs](/about/) es un **stack de código abierto para recepcionista con IA** pensado para equipos que quieren esa capa de producto ya hecha. Use la nube alojada cuando quiera que otro lo gestione, o autoalójelo con Docker cuando quiera tener la infraestructura bajo su control.
 
 ## El stack que todos vuelven a construir
 
@@ -125,8 +125,8 @@ Si primero quiere comparar opciones de código abierto para contestar llamadas, 
 
 ## Pruébelo o autoalójelo
 
-Empiece con [Okjobs Cloud](https://lobbystack.com/) si quiere probar el producto sin gestionar infraestructura.
+Empiece con [Okjobs Cloud](/about/) si quiere probar el producto sin gestionar infraestructura.
 
-Use la [visión general del autoalojamiento](https://docs.lobbystack.com/self-hosting/overview) y la [guía de Docker Compose](https://docs.lobbystack.com/self-hosting/docker-compose) si quiere ejecutar el stack usted mismo.
+Use la [visión general del autoalojamiento](/about/) y la [guía de Docker Compose](/about/) si quiere ejecutar el stack usted mismo.
 
-El código es público en [GitHub](https://github.com/lobbystack/lobbystack). Si un stack de código abierto para recepcionista con IA puede ayudar a su negocio o a su trabajo con clientes, una estrella ayuda a que más personas lo encuentren.
+El código es público en [GitHub](/about/). Si un stack de código abierto para recepcionista con IA puede ayudar a su negocio o a su trabajo con clientes, una estrella ayuda a que más personas lo encuentren.

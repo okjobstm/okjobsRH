@@ -1,6 +1,6 @@
 ---
 title: Flujos de recepcionista con IA sin diagramas
-canonical: "https://lobbystack.com/es/blog/ai-receptionist-workflows/"
+canonical: "/about/"
 pubDate: "2026-06-18T13:00:00.000Z"
 author: Equipo de Okjobs
 description: "Los flujos de una recepcionista con IA fallan cuando el comportamiento se reparte entre prompts, webhooks y ramas. Use reglas en lenguaje claro y herramientas fiables."
@@ -164,6 +164,6 @@ Los equipos siguen teniendo que probar llamadas, revisar transcripciones y ajust
 
 La diferencia está en dónde vive la complejidad. Su tiempo debería ir a mejorar la política de recepción, no a perseguir la misma regla por prompts, ramas de webhooks, restricciones del calendario y plantillas de alertas.
 
-Empiece con [Okjobs Cloud](https://lobbystack.com/) si quiere probar el producto. Use la [documentación de autoalojamiento](https://docs.lobbystack.com/self-hosting/overview) si quiere ejecutarlo usted mismo. El código es público en [GitHub](https://github.com/lobbystack/lobbystack).
+Empiece con [Okjobs Cloud](/about/) si quiere probar el producto. Use la [documentación de autoalojamiento](/about/) si quiere ejecutarlo usted mismo. El código es público en [GitHub](/about/).
 
 Si está decidiendo entre crear, comprar o conectar herramientas de flujos de trabajo a sus llamadas, lea [crear o comprar una recepcionista con IA](/es/blog/build-or-buy-ai-receptionist/) y [cómo elegir una recepcionista con IA](/es/blog/how-to-choose-an-ai-receptionist/).

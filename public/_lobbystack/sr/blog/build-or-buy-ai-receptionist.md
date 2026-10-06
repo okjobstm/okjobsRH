@@ -1,6 +1,6 @@
 ---
 title: Da li da napravite ili kupite AI recepcionera?
-canonical: "https://lobbystack.com/sr/blog/build-or-buy-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-12T13:00:00.000Z"
 author: Okjobs tim
 description: "Uporedite izradu AI recepcionera od nule, kupovinu hostovanog alata i samostalno hostovanje open-source rešenja Okjobs pre nego što uložite ozbiljno vreme ili budžet."

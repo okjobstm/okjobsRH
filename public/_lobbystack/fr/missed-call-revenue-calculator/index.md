@@ -1,6 +1,6 @@
 ---
 title: "Calculateur de revenu perdu par appels manqués | Okjobs"
-canonical: "https://lobbystack.com/fr/missed-call-revenue-calculator/"
+canonical: "/about/"
 description: "Estimez le revenu hebdomadaire, mensuel et annuel à risque lorsque votre entreprise manque des appels prêts à réserver."
 ---
 

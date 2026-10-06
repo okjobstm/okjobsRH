@@ -1,6 +1,6 @@
 ---
 title: Okjobs est lancé
-canonical: "https://lobbystack.com/fr/blog/lobbystack-is-live/"
+canonical: "/about/"
 pubDate: "2026-05-13T16:00:00.000Z"
 author: Équipe Okjobs
 description: "Okjobs est lancé : réceptionniste IA open source pour répondre aux appels, prendre des rendez‑vous et garder le contrôle."
@@ -9,7 +9,7 @@ categories: [Mises à jour produit]
 
 La plupart des petites entreprises ne perdent pas de clients parce qu'elles travaillent mal. Elles les perdent parce que le téléphone sonne pendant que tout le monde fait déjà le travail.
 
-Aujourd'hui, [Okjobs](https://lobbystack.com/fr/) est lancé.
+Aujourd'hui, [Okjobs](/about/) est lancé.
 
 Okjobs est un **réceptionniste IA open source** pour les entreprises qui dépendent des appels téléphoniques et des rendez‑vous. Il répond quand votre équipe est occupée, fermée, en déplacement ou déjà avec un autre client.
 
@@ -59,7 +59,7 @@ Okjobs ne vous fait pas payer pour le bruit. Les appels spam et les appels de mo
 
 ## Open source par conception
 
-Okjobs est [open source](https://github.com/lobbystack/lobbystack) parce que les appels contiennent de vraies données clients. Les entreprises ne devraient pas traiter leur accueil téléphonique comme une boîte noire.
+Okjobs est [open source](/about/) parce que les appels contiennent de vraies données clients. Les entreprises ne devraient pas traiter leur accueil téléphonique comme une boîte noire.
 
 La version hébergée est la manière la plus rapide de commencer. Créez un compte, connectez les éléments, ajoutez vos connaissances d'entreprise et passez en production.
 

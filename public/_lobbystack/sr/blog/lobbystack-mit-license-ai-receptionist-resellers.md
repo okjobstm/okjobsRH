@@ -1,6 +1,6 @@
 ---
 title: "Okjobs je sada pod MIT licencom: napravite i prodajte svoj proizvod"
-canonical: "https://lobbystack.com/sr/blog/lobbystack-mit-license-ai-receptionist-resellers/"
+canonical: "/about/"
 pubDate: "2026-09-04T14:00:00.000Z"
 author: Okjobs tim
 description: "Okjobs sada koristi MIT licencu, pa agencije mogu da menjaju, hostuju, podlicenciraju i prodaju proizvode za AI recepciju izgrađene na našem otvorenom kodu."
@@ -23,7 +23,7 @@ Usvojenost proizvoda i broj saradnika ostali su ispod našeg cilja. Odlučili sm
 
 ## Šta MIT licenca dozvoljava
 
-[Okjobs licenca](https://github.com/lobbystack/lobbystack/blob/main/LICENSE) svakome ko dobije softver daje dozvolu da ga koristi, kopira, menja, spaja, objavljuje, distribuira, podlicencira i prodaje.
+[Okjobs licenca](/about/) svakome ko dobije softver daje dozvolu da ga koristi, kopira, menja, spaja, objavljuje, distribuira, podlicencira i prodaje.
 
 Licenca ima jedan uslov: kopije ili značajni delovi softvera moraju da sadrže obaveštenje o autorskim pravima i dozvoli. Sadrži i standardno MIT odricanje od garancije i odgovornosti.
 
@@ -63,7 +63,7 @@ Ovakvo razdvajanje pomaže klijentima da razumeju ko vodi uslugu. Vaša firma je
 
 Otvoreni kod daje kontrolu agencijama i tehničkim timovima. Mnoge firme žele da neko drugi vodi infrastrukturu, prati provajdere, objavljuje nadogradnje i pruža podršku za proizvod.
 
-[Okjobs Cloud](https://lobbystack.com/sr/pricing/) ostaje upravljana opcija za te korisnike. Oni mogu da podese recepcionera, znanje o firmi, pravila, brojeve telefona i Google Calendar bez vođenja PostgreSQL, Redis ili glasovnog gateway servisa.
+[Okjobs Cloud](/about/) ostaje upravljana opcija za te korisnike. Oni mogu da podese recepcionera, znanje o firmi, pravila, brojeve telefona i Google Calendar bez vođenja PostgreSQL, Redis ili glasovnog gateway servisa.
 
 Agencije mogu da izaberu model koji odgovara svakom angažmanu. Koristite MIT kod kada klijentu treba proizvod pod njegovim brendom, prilagođena infrastruktura ili obimne integracije. Koristite Okjobs Cloud kada klijent želi upravljani proizvod, a Vaša vrednost dolazi od podešavanja, osmišljavanja tokova rada i stalne usluge.
 
@@ -71,6 +71,6 @@ Agencije mogu da izaberu model koji odgovara svakom angažmanu. Koristite MIT ko
 
 AGPL smo izabrali zbog recipročnog modela dok smo gradili prvu verziju. MIT smo izabrali da olakšamo komercijalno usvajanje i pomognemo većem broju graditelja da Okjobs odnesu na tržišta do kojih sami ne možemo da stignemo.
 
-[Klonirajte Okjobs sa GitHuba](https://github.com/lobbystack/lobbystack), pročitajte [pregled samostalnog hostovanja](https://docs.lobbystack.com/self-hosting/overview) i koristite [vodič za Docker Compose](https://docs.lobbystack.com/self-hosting/docker-compose) za prvu primenu. Prateći tekst objašnjava [zašto Okjobs napušta Convex](/sr/blog/why-lobbystack-is-moving-away-from-convex/).
+[Klonirajte Okjobs sa GitHuba](/about/), pročitajte [pregled samostalnog hostovanja](/about/) i koristite [vodič za Docker Compose](/about/) za prvu primenu. Prateći tekst objašnjava [zašto Okjobs napušta Convex](/sr/blog/why-lobbystack-is-moving-away-from-convex/).
 
 Ako radije želite da počnete sa upravljanim proizvodom, [napravite Okjobs Cloud nalog](/signup) i testirajte poziv u pregledaču pre nego što ga ponudite klijentu.

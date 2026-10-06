@@ -1,6 +1,6 @@
 ---
 title: Alternative au réceptionniste IA de Zoom
-canonical: "https://lobbystack.com/fr/blog/zoom-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:00:00.000Z"
 author: Équipe Okjobs
 description: "Comparez Zoom Virtual Agent Receptionist et Okjobs : prix, téléphonie existante, réservation, langues, service cloud, code source et auto-hébergement."

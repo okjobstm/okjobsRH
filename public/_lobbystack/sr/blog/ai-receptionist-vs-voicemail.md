@@ -1,6 +1,6 @@
 ---
 title: AI recepcioner ili govorna pošta
-canonical: "https://lobbystack.com/sr/blog/ai-receptionist-vs-voicemail/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:40:00.000Z"
 author: Okjobs tim
 description: "Uporedite AI recepcionera i govornu poštu: iskustvo pozivaoca, potencijalni klijenti, zakazivanje, cena, rad van radnog vremena i kada govorna pošta i dalje radi."
@@ -115,7 +115,7 @@ I govorna pošta ima spam. Osoblje i dalje troši vreme na brisanje automatskih 
 
 [Okjobs](/sr/features/) može da odgovara na svaki dolazni poziv, na pozive van radnog vremena ili samo na pozive koje Vaš tim propusti. Može da radi na osnovu znanja o firmi, prikuplja podatke, zakazuje termine, preusmerava hitne pozive i šalje rezimee.
 
-Firme mogu da koriste upravljani cloud ili da [samostalno hostuju sistem otvorenog koda](https://github.com/lobbystack/lobbystack). Samostalno hostovanje daje kontrolu nad infrastrukturom i donosi operativnu odgovornost.
+Firme mogu da koriste upravljani cloud ili da [samostalno hostuju sistem otvorenog koda](/about/). Samostalno hostovanje daje kontrolu nad infrastrukturom i donosi operativnu odgovornost.
 
 ## Zaključak
 

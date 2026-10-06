@@ -1,6 +1,6 @@
 ---
 title: "Naš AI glasovni agent sada radi na GPT-Live, modelu koji pokreće ChatGPT Voice"
-canonical: "https://lobbystack.com/sr/blog/ai-voice-agent-gpt-live/"
+canonical: "/about/"
 pubDate: "2026-09-27T01:00:00.000Z"
 author: Okjobs tim
 description: "Okjobs AI glasovni agent sada radi na OpenAI modelu GPT-Live, koji pokreće ChatGPT Voice. Nastavlja razgovor dok zakazuje, proverava radno vreme i prima poruke."

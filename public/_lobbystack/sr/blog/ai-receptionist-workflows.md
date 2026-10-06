@@ -1,6 +1,6 @@
 ---
 title: Tokovi rada AI recepcionera bez dijagrama toka
-canonical: "https://lobbystack.com/sr/blog/ai-receptionist-workflows/"
+canonical: "/about/"
 pubDate: "2026-06-18T13:00:00.000Z"
 author: Okjobs tim
 description: "Tokovi rada AI recepcionera se kvare kada je ponašanje rasuto po promptovima, webhookovima i granama. Koristite pravila na običnom jeziku i pouzdane alate."
@@ -160,6 +160,6 @@ Timovi i dalje treba da testiraju pozive, pregledaju transkripte i doteruju posl
 
 Razlika je u tome gde živi složenost. Vreme treba da trošite na poboljšanje pravila recepcije, a ne na jurenje istog pravila kroz promptove, grane webhookova, ograničenja kalendara i šablone obaveštenja.
 
-Počnite sa [Okjobs Cloud](https://lobbystack.com/) ako želite da isprobate proizvod. Koristite [dokumentaciju za samostalno hostovanje](https://docs.lobbystack.com/self-hosting/overview) ako želite da ga pokrećete sami. Kod je javno dostupan na [GitHubu](https://github.com/lobbystack/lobbystack).
+Počnite sa [Okjobs Cloud](/about/) ako želite da isprobate proizvod. Koristite [dokumentaciju za samostalno hostovanje](/about/) ako želite da ga pokrećete sami. Kod je javno dostupan na [GitHubu](/about/).
 
 Ako birate između pravljenja, kupovine i povezivanja alata za tokove rada sa pozivima, pročitajte [da li napraviti ili kupiti AI recepcionera](/sr/blog/build-or-buy-ai-receptionist/) i [kako izabrati AI recepcionera](/sr/blog/how-to-choose-an-ai-receptionist/).

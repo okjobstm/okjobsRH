@@ -1,6 +1,6 @@
 ---
 title: Alternativa a Quo Sona para responder llamadas con IA
-canonical: "https://lobbystack.com/es/blog/quo-sona-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:20:00.000Z"
 author: Equipo de Okjobs
 description: "Compare Quo Sona y Okjobs en precios por crédito de llamada, requisitos de telefonía, toma de mensajes, reservas, acceso al código y autoalojamiento."

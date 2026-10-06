@@ -1,6 +1,6 @@
 ---
 title: "Upfirst alternative: Okjobs vs Upfirst"
-canonical: "https://lobbystack.com/blog/upfirst-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:50:00.000Z"
 author: Okjobs Team
 description: "Compare Okjobs and Upfirst on pricing, booking, transfers, languages, open-source access, and self-hosting to choose the right AI receptionist."
@@ -68,7 +68,7 @@ Take one month of call history and calculate both units. Twenty long intake call
 
 Upfirst's reviewed official pages describe a hosted service. They do not advertise public source code or a self-hosted deployment.
 
-[Okjobs is open source](https://github.com/lobbystack/lobbystack). You can use the managed cloud, inspect the code, or run the stack in infrastructure you control. A self-hosted team can manage its own provider accounts, secrets, retention policies, upgrade timing, and integrations.
+[Okjobs is open source](/about/). You can use the managed cloud, inspect the code, or run the stack in infrastructure you control. A self-hosted team can manage its own provider accounts, secrets, retention policies, upgrade timing, and integrations.
 
 That control carries work. Someone must operate the deployment, monitor calls, manage backups, and test upgrades. Upfirst removes that burden. Okjobs gives you the choice.
 
@@ -102,10 +102,10 @@ Choose Okjobs for free browser voice testing, public code, self-hosting, or prov
 - [Upfirst AI receptionist](https://upfirst.ai/solutions/ai-receptionist)
 - [Upfirst scheduling](https://upfirst.ai/features/scheduling)
 - [Okjobs pricing](/pricing/)
-- [Okjobs self-hosting overview](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs self-hosting overview](/about/)
 
 ## Verdict
 
 Okjobs offers the stronger default starting point: free browser testing, minute-based pricing, and an ownership path Upfirst does not advertise. Upfirst can still fit long-call businesses that value its language coverage and per-call billing.
 
-[Start Okjobs free](/pricing/) and price your actual call mix. If control matters after the trial, [inspect the code on GitHub](https://github.com/lobbystack/lobbystack).
+[Start Okjobs free](/pricing/) and price your actual call mix. If control matters after the trial, [inspect the code on GitHub](/about/).

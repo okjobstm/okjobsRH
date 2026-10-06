@@ -1,6 +1,6 @@
 ---
 title: Koliko možete uštedeti uz AI recepcionera?
-canonical: "https://lobbystack.com/sr/blog/ai-receptionist-savings/"
+canonical: "/about/"
 pubDate: "2026-06-03T16:00:00.000Z"
 author: Okjobs tim
 description: "Procenite uštede od AI recepcionera: niži troškovi odgovaranja na pozive i manje propuštenih poziva. Izračunajte brojke pomoću kalkulatora propuštenih poziva."

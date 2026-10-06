@@ -1,6 +1,6 @@
 ---
 title: "Alternative à Smith.ai : IA et humains"
-canonical: "https://lobbystack.com/fr/blog/smith-ai-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:30:00.000Z"
 author: Équipe Okjobs
 description: "Comparez Okjobs et Smith.ai : appels IA, réseau de relais humain, prix, réservation, personnalisation, code source et déploiement auto-hébergé."
@@ -79,7 +79,7 @@ Choisissez Okjobs si votre équipe reprend les appels et si vous voulez 30 minut
 - [Smith.ai AI Receptionist](https://smith.ai/ai-receptionist)
 - [Tarifs Smith.ai](https://smith.ai/pricing/ai-receptionist)
 - [Tarifs Okjobs](/fr/pricing/)
-- [Auto-hébergement Okjobs](https://docs.lobbystack.com/self-hosting/overview)
+- [Auto-hébergement Okjobs](/about/)
 
 ## Verdict
 

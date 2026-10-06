@@ -1,6 +1,6 @@
 ---
 title: "Our AI Voice Agent Now Runs on GPT-Live, the Model Behind ChatGPT Voice"
-canonical: "https://lobbystack.com/blog/ai-voice-agent-gpt-live/"
+canonical: "/about/"
 pubDate: "2026-09-27T01:00:00.000Z"
 author: Okjobs Team
 description: "Okjobs's AI voice agent now runs on OpenAI's GPT-Live, the model behind ChatGPT Voice. It keeps talking while it books, checks hours, and takes messages."

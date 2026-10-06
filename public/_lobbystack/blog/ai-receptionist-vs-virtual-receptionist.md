@@ -1,6 +1,6 @@
 ---
 title: "AI vs virtual receptionist: A practical guide"
-canonical: "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:50:00.000Z"
 author: Okjobs Team
 description: "Compare AI and human virtual receptionists on cost, call volume, empathy, booking, transfers, and oversight to choose the right phone coverage."
@@ -121,7 +121,7 @@ The split should follow risk and value. Automate repeatable work. Give people th
 
 [Okjobs](/features/) handles routine questions, intake, booking, appointment changes, summaries, and configured transfers. Your team keeps the calls that need expertise or empathy.
 
-The code is [public on GitHub](https://github.com/lobbystack/lobbystack), and teams can use the managed cloud or [self-host the stack](https://docs.lobbystack.com/self-hosting/overview). Self-hosting gives more control but requires technical ownership.
+The code is [public on GitHub](/about/), and teams can use the managed cloud or [self-host the stack](/about/). Self-hosting gives more control but requires technical ownership.
 
 ## Verdict
 

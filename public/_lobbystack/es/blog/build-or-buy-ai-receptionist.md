@@ -1,6 +1,6 @@
 ---
 title: ¿Desarrollar o comprar una recepcionista con IA?
-canonical: "https://lobbystack.com/es/blog/build-or-buy-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-12T13:00:00.000Z"
 author: Equipo de Okjobs
 description: "Compare desarrollar una recepcionista con IA desde cero, comprar una herramienta alojada o autoalojar Okjobs, de código abierto, antes de invertir tiempo o presupuesto."

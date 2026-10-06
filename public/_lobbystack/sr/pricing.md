@@ -1,13 +1,13 @@
 ---
 title: Cene AI recepcionera za mala preduzeća
-canonical: "https://lobbystack.com/sr/pricing/"
+canonical: "/about/"
 description: "Uporedite Okjobs pakete Free, Starter, Pro i Enterprise: minuti razgovora, godišnja naplata, SMS obaveštenja i cene dodatne potrošnje."
 ---
 
 ---
 title: Cene AI recepcionera za mala preduzeća
 description: Uporedite Okjobs pakete Free, Starter, Pro i Enterprise: minuti razgovora, godišnja naplata, SMS obaveštenja i cene dodatne potrošnje.
-url: https://lobbystack.com/sr/pricing/
+url: /about/
 ---
 
 # Okjobs cene

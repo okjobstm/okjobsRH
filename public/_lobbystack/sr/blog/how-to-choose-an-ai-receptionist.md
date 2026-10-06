@@ -1,6 +1,6 @@
 ---
 title: Kako izabrati AI recepcionera
-canonical: "https://lobbystack.com/sr/blog/how-to-choose-an-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-03T17:00:00.000Z"
 author: Okjobs tim
 description: "Naučite kako da izaberete AI recepcionera uz praktičnu kontrolnu listu za funkcije, cene, kvalitet poziva, integracije, usklađenost i testiranje."

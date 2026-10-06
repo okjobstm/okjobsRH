@@ -1,6 +1,6 @@
 ---
 title: Alternative à Moneypenny AI Receptionist
-canonical: "https://lobbystack.com/fr/blog/moneypenny-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:00:00.000Z"
 author: Équipe Okjobs
 description: "Comparez Moneypenny AI Receptionist et Okjobs : configuration gérée, relais humain, prix par appel, réservation, code source et auto-hébergement."
@@ -86,7 +86,7 @@ Choisissez Okjobs si votre équipe prend les transferts et si vous voulez un ess
 - [Moneypenny AI Receptionist](https://moneypenny.com/us/ai-receptionist/)
 - [Forfaits Moneypenny](https://moneypenny.com/us/plans-pricing-ai/)
 - [Tarifs Okjobs](/fr/pricing/)
-- [Auto-hébergement Okjobs](https://docs.lobbystack.com/self-hosting/overview)
+- [Auto-hébergement Okjobs](/about/)
 
 ## Verdict
 

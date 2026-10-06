@@ -1,6 +1,6 @@
 ---
 title: Moneypenny AI Receptionist alternative
-canonical: "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:00:00.000Z"
 author: Okjobs Team
 description: "Compare Moneypenny AI Receptionist and Okjobs on managed setup, human escalation, per-call pricing, source access, and self-hosted control."
@@ -97,7 +97,7 @@ Choose Okjobs when your team can receive handoffs and you want a free test, lowe
 - [Moneypenny AI Receptionist](https://moneypenny.com/us/ai-receptionist/)
 - [Moneypenny AI plans](https://moneypenny.com/us/plans-pricing-ai/)
 - [Okjobs pricing](/pricing/)
-- [Okjobs self-hosting](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs self-hosting](/about/)
 
 ## Verdict
 

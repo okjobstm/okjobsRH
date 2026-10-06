@@ -1,6 +1,6 @@
 ---
 title: Pile open source pour réceptionniste IA
-canonical: "https://lobbystack.com/fr/blog/open-source-ai-receptionist-stack/"
+canonical: "/about/"
 pubDate: "2026-06-18T14:00:00.000Z"
 author: Équipe Okjobs
 description: "Une pile open source pour réceptionniste IA : appels, réservation, transcriptions, tableaux de bord, facturation et auto-hébergement."
@@ -11,7 +11,7 @@ Une pile open source pour réceptionniste IA ne se limite pas à un agent vocal.
 
 C'est la partie que beaucoup d'équipes finissent par reconstruire.
 
-[Okjobs](https://lobbystack.com/) est une **pile open source pour réceptionniste IA** destinée aux équipes qui veulent déjà disposer de cette couche produit. Vous pouvez utiliser le cloud hébergé quand vous voulez que l'infrastructure soit gérée pour vous, ou l'auto-héberger avec Docker quand vous voulez garder le contrôle.
+[Okjobs](/about/) est une **pile open source pour réceptionniste IA** destinée aux équipes qui veulent déjà disposer de cette couche produit. Vous pouvez utiliser le cloud hébergé quand vous voulez que l'infrastructure soit gérée pour vous, ou l'auto-héberger avec Docker quand vous voulez garder le contrôle.
 
 ## La pile que beaucoup reconstruisent
 
@@ -113,8 +113,8 @@ Si vous comparez d'abord les options open source du marché, consultez le guide 
 
 ## Tester ou auto-héberger
 
-Commencez avec [Okjobs Cloud](https://lobbystack.com/) si vous voulez tester le produit rapidement.
+Commencez avec [Okjobs Cloud](/about/) si vous voulez tester le produit rapidement.
 
-Utilisez l'[aperçu de l'auto-hébergement](https://docs.lobbystack.com/self-hosting/overview) et le [guide Docker Compose](https://docs.lobbystack.com/self-hosting/docker-compose) si vous voulez faire tourner la pile vous-même.
+Utilisez l'[aperçu de l'auto-hébergement](/about/) et le [guide Docker Compose](/about/) si vous voulez faire tourner la pile vous-même.
 
-Le code est public sur [GitHub](https://github.com/lobbystack/lobbystack). Si une pile open source pour réceptionniste IA peut aider votre entreprise ou vos déploiements clients, une étoile aide d'autres personnes à la trouver.
+Le code est public sur [GitHub](/about/). Si une pile open source pour réceptionniste IA peut aider votre entreprise ou vos déploiements clients, une étoile aide d'autres personnes à la trouver.

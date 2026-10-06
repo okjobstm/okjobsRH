@@ -1,6 +1,6 @@
 ---
 title: Quo Sona alternative for AI call answering
-canonical: "https://lobbystack.com/blog/quo-sona-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:20:00.000Z"
 author: Okjobs Team
 description: "Compare Quo Sona and Okjobs on call-credit pricing, phone-system requirements, message capture, booking, source access, and self-hosting."

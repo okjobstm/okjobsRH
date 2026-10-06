@@ -1,6 +1,6 @@
 ---
 title: "Okjobs Is Now MIT: Build and Sell Your Own"
-canonical: "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/"
+canonical: "/about/"
 pubDate: "2026-09-04T14:00:00.000Z"
 author: Okjobs Team
 description: "Okjobs now uses the MIT License, giving agencies room to modify, host, sublicense, and sell AI receptionist products built from our open-source code."
@@ -23,7 +23,7 @@ Our product and contributor adoption stayed below our goal. We chose to reduce b
 
 ## What the MIT License permits
 
-The [Okjobs license](https://github.com/lobbystack/lobbystack/blob/main/LICENSE) gives anyone who receives the software permission to use, copy, modify, merge, publish, distribute, sublicense, and sell it.
+The [Okjobs license](/about/) gives anyone who receives the software permission to use, copy, modify, merge, publish, distribute, sublicense, and sell it.
 
 The license has one condition: copies or substantial portions of the software must include its copyright and permission notice. It also includes the standard MIT warranty and liability disclaimer.
 
@@ -63,7 +63,7 @@ This separation helps customers understand who operates the service. Your compan
 
 Open source gives agencies and technical teams control. Many businesses want someone else to run the infrastructure, monitor providers, ship updates, and support the product.
 
-[Okjobs Cloud](https://lobbystack.com/pricing/) remains the managed option for those customers. They can configure the receptionist, business knowledge, rules, phone numbers, and Google Calendar without operating PostgreSQL, Redis, or the voice gateway.
+[Okjobs Cloud](/about/) remains the managed option for those customers. They can configure the receptionist, business knowledge, rules, phone numbers, and Google Calendar without operating PostgreSQL, Redis, or the voice gateway.
 
 Agencies can choose the model that fits each engagement. Use the MIT code when the client needs a branded product, custom infrastructure, or deep integration work. Use Okjobs Cloud when the client wants the product managed and your value comes from setup, workflow design, and ongoing service.
 
@@ -71,6 +71,6 @@ Agencies can choose the model that fits each engagement. Use the MIT code when t
 
 We chose the AGPL for a reciprocal model while we built the first version. We have chosen MIT to make commercial adoption easier and help more builders take Okjobs into markets we cannot reach alone.
 
-[Clone Okjobs on GitHub](https://github.com/lobbystack/lobbystack), read the [self-hosting overview](https://docs.lobbystack.com/self-hosting/overview), and use the [Docker Compose guide](https://docs.lobbystack.com/self-hosting/docker-compose) for your first deployment. The companion article explains [why Okjobs is moving away from Convex](/blog/why-lobbystack-is-moving-away-from-convex/).
+[Clone Okjobs on GitHub](/about/), read the [self-hosting overview](/about/), and use the [Docker Compose guide](/about/) for your first deployment. The companion article explains [why Okjobs is moving away from Convex](/blog/why-lobbystack-is-moving-away-from-convex/).
 
 If you would rather start with the managed product, [create a Okjobs Cloud account](/signup) and test a call in your browser before you bring it to a client.

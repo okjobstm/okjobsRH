@@ -1,13 +1,13 @@
 ---
 title: Tarifs de réceptionniste IA pour petites entreprises
-canonical: "https://lobbystack.com/fr/pricing/"
+canonical: "/about/"
 description: "Comparez les forfaits Free, Starter, Pro et Enterprise de Okjobs, avec minutes vocales, facturation annuelle, SMS et dépassements transparents."
 ---
 
 ---
 title: Tarifs de réceptionniste IA pour petites entreprises
 description: Comparez les forfaits Free, Starter, Pro et Enterprise de Okjobs, avec minutes vocales, facturation annuelle, SMS et dépassements transparents.
-url: https://lobbystack.com/fr/pricing/
+url: /about/
 ---
 
 # Tarifs Okjobs

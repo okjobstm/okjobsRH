@@ -1,13 +1,13 @@
 ---
 title: "Okjobs partnerski program | 20% provizije"
-canonical: "https://lobbystack.com/sr/affiliate-program/"
+canonical: "/about/"
 description: "Preporučite hostovane Okjobs pakete i zaradite 20% njihovih uplata tokom 12 meseci. Preporučeni klijenti štede 5% pri registraciji. Mesečne isplate preko PayPal-a."
 ---
 
 ---
 title: Okjobs partnerski program | Provizija od 20%
 description: Javni pregled Okjobs partnerskog programa.
-url: https://lobbystack.com/sr/affiliate-program/
+url: /about/
 ---
 
 # Okjobs partnerski program

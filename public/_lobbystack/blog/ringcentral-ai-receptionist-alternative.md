@@ -1,6 +1,6 @@
 ---
 title: RingCentral AI Receptionist alternative
-canonical: "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:40:00.000Z"
 author: Okjobs Team
 description: "Compare RingCentral AI Receptionist and Okjobs on pricing, phone-system fit, channels, booking, integrations, open-source access, and self-hosting."
@@ -92,7 +92,7 @@ Choose Okjobs when you want 30 free minutes, 150 minutes for $30, booking and ha
 - [RingCentral AIR features and pricing](https://www.ringcentral.com/us/en/blog/ai-receptionist-texts-call-queues-integrations/)
 - [RingCentral service definition](https://www.ringcentral.com/legal/add-on-services.html)
 - [Okjobs pricing](/pricing/)
-- [Okjobs GitHub repository](https://github.com/lobbystack/lobbystack)
+- [Okjobs GitHub repository](/about/)
 
 ## Verdict
 

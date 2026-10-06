@@ -1,13 +1,13 @@
 ---
 title: "Programa de afiliados de Okjobs | 20% de comisión"
-canonical: "https://lobbystack.com/es/affiliate-program/"
+canonical: "/about/"
 description: "Recomiende los planes alojados de Okjobs y gane el 20% de sus pagos durante 12 meses. Sus referidos ahorran un 5% al registrarse. Pagos mensuales por PayPal."
 ---
 
 ---
 title: Programa de afiliados de Okjobs | 20% de comisión
 description: Resumen público del programa de afiliados de Okjobs.
-url: https://lobbystack.com/es/affiliate-program/
+url: /about/
 ---
 
 # Programa de afiliados de Okjobs

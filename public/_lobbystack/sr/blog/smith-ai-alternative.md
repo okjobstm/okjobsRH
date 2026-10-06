@@ -1,6 +1,6 @@
 ---
 title: "Alternativa za Smith.ai: AI i ljudska podrška"
-canonical: "https://lobbystack.com/sr/blog/smith-ai-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:30:00.000Z"
 author: Okjobs tim
 description: "Uporedite Okjobs i Smith.ai: AI obrada poziva, rezervna podrška živih agenata, cene, zakazivanje, prilagođavanje, izvorni kod i samostalno hostovanje."
@@ -88,7 +88,7 @@ Izaberite Okjobs ako Vaše osoblje može da preuzme eskalacije i želite 30 besp
 - [Smith.ai AI Receptionist](https://smith.ai/ai-receptionist)
 - [Smith.ai AI cene](https://smith.ai/pricing/ai-receptionist)
 - [Okjobs cene](/sr/pricing/)
-- [Okjobs samostalno hostovanje](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs samostalno hostovanje](/about/)
 
 ## Zaključak
 

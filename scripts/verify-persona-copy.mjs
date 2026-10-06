@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
-import { parse } from "parse5";
+import { parse, serialize } from "parse5";
+import { removeLegacyLinks } from "./remove-lobbystack-links.mjs";
 import { applyPersonaCopy, rewritePersonaRuntime } from "./okjobs-persona-copy.mjs";
 import { guides } from "./okjobs-guides.mjs";
 import { applyDirectorHomeCopy } from "./okjobs-home-director-copy.mjs";
+import { applyProductServicesCopy } from "./okjobs-product-services-copy.mjs";
 import { applyOkjobsImages } from "./okjobs-public-images.mjs";
 
 const routes = ["", "features/", "solutions/", "pricing/", "about/", "blog/",
@@ -17,12 +19,15 @@ const routes = ["", "features/", "solutions/", "pricing/", "about/", "blog/",
   "solutions/self-hosted-ai-receptionist/", "solutions/open-source-ai-receptionist/"];
 
 function structure(document) {
+  document = parse(removeLegacyLinks(serialize(document), true));
   // Normalize only the explicit approved asset mapping. Classes, dimensions,
   // links, scripts and all other behavior attributes remain strictly compared.
   applyOkjobsImages(document);
   const elements = [];
   function visit(node) {
     if (node.tagName) {
+      // Canonical metadata is removed when its original publisher is LobbyStack.
+      if (node.tagName === 'link' && node.attrs?.some(attr => attr.name === 'rel' && attr.value === 'canonical')) return;
       // Titles/descriptions are editorial. Everything defining layout/behavior is retained.
       const attributes = (node.attrs ?? []).filter((attr) => !(node.tagName === "meta" && attr.name === "content"))
         .map((attr) => ({ ...attr, value: attr.value.replace(/(\/_astro\/(?:PricingSection|LobbyStackWebVoiceWidget)\.[^?]+\.js)\?copy=[a-f0-9]+$/, "$1") }));
@@ -43,6 +48,7 @@ for (const route of routes) {
   const before = JSON.stringify(document, (key, value) => key === "parentNode" ? undefined : value);
   applyPersonaCopy(document);
   if (route === "") applyDirectorHomeCopy(document);
+  applyProductServicesCopy(document, route === '' ? '/' : `/${route}`);
   const after = JSON.stringify(document, (key, value) => key === "parentNode" ? undefined : value);
   assert.equal(after, before, `${route || "/"}: editorial pass is not idempotent`);
 }

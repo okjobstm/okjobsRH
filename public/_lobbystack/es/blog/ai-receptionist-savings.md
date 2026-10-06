@@ -1,6 +1,6 @@
 ---
 title: ¿Cuánto puede ahorrarle una recepcionista con IA?
-canonical: "https://lobbystack.com/es/blog/ai-receptionist-savings/"
+canonical: "/about/"
 pubDate: "2026-06-03T16:00:00.000Z"
 author: Equipo de Okjobs
 description: Calcule cuánto puede ahorrar con una recepcionista con IA gracias a menores costos de atención y menos llamadas perdidas. Use la calculadora de llamadas perdidas.

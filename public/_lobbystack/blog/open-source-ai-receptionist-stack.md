@@ -1,6 +1,6 @@
 ---
 title: Open-source AI receptionist stack
-canonical: "https://lobbystack.com/blog/open-source-ai-receptionist-stack/"
+canonical: "/about/"
 pubDate: "2026-06-18T14:00:00.000Z"
 author: Okjobs Team
 description: "Okjobs is an open-source AI receptionist stack for calls, booking, transcripts, dashboards, billing, self-hosting, and client deployments."
@@ -11,7 +11,7 @@ An open-source AI receptionist stack needs more than a voice agent. It needs pho
 
 That is the part many teams end up rebuilding.
 
-[Okjobs](https://lobbystack.com/) is an **open-source AI receptionist stack** for teams that want that product layer already in place. Use the hosted cloud when you want someone else to run it, or self-host it with Docker when you want the infrastructure under your control.
+[Okjobs](/about/) is an **open-source AI receptionist stack** for teams that want that product layer already in place. Use the hosted cloud when you want someone else to run it, or self-host it with Docker when you want the infrastructure under your control.
 
 ## The stack people keep rebuilding
 
@@ -125,8 +125,8 @@ If you are comparing open-source phone answering options first, see the guide to
 
 ## Try it or self-host it
 
-Start with [Okjobs Cloud](https://lobbystack.com/) if you want to test the product without managing infrastructure.
+Start with [Okjobs Cloud](/about/) if you want to test the product without managing infrastructure.
 
-Use the [self-hosting overview](https://docs.lobbystack.com/self-hosting/overview) and [Docker Compose guide](https://docs.lobbystack.com/self-hosting/docker-compose) if you want to run the stack yourself.
+Use the [self-hosting overview](/about/) and [Docker Compose guide](/about/) if you want to run the stack yourself.
 
-The code is public on [GitHub](https://github.com/lobbystack/lobbystack). If an open-source AI receptionist stack would help your business or client work, a star helps more people find it.
+The code is public on [GitHub](/about/). If an open-source AI receptionist stack would help your business or client work, a star helps more people find it.

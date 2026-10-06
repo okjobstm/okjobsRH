@@ -1,6 +1,6 @@
 ---
 title: Alternativa za Quo Sona za AI javljanje na pozive
-canonical: "https://lobbystack.com/sr/blog/quo-sona-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:20:00.000Z"
 author: Okjobs tim
 description: "Uporedite Quo Sona i Okjobs: cene po kreditu za poziv, zahtevi za telefonski sistem, beleženje poruka, zakazivanje, izvorni kod i samostalno hostovanje."

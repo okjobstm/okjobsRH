@@ -1,6 +1,6 @@
 ---
 title: Alternativa za Nextiva XBert
-canonical: "https://lobbystack.com/sr/blog/nextiva-xbert-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:30:00.000Z"
 author: Okjobs tim
 description: "Uporedite Nextiva XBert i Okjobs po ceni po interakciji, podršci za glas i čet, zakazivanju, integracijama, pristupu kodu i samostalnom hostovanju."
@@ -91,7 +91,7 @@ Izaberite Okjobs ako su dolazni pozivi prioritet i želite besplatan test, plać
 - [Nextiva XBert](https://www.nextiva.com/products/xbert)
 - [Nextiva AI recepcioner](https://www.nextiva.com/products/ai-receptionist)
 - [Okjobs cene](/sr/pricing/)
-- [Okjobs samostalno hostovanje](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs samostalno hostovanje](/about/)
 
 ## Zaključak
 

@@ -1,6 +1,6 @@
 ---
 title: Comment choisir un réceptionniste IA
-canonical: "https://lobbystack.com/fr/blog/how-to-choose-an-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-03T17:00:00.000Z"
 author: Équipe Okjobs
 description: "Apprenez à choisir un réceptionniste IA avec une liste de vérification pratique pour les fonctionnalités, les tarifs, la qualité d'appel et les intégrations."

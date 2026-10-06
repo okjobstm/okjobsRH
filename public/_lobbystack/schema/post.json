@@ -3,7 +3,7 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://lobbystack.com/#organization",
+      "@id": "/about/",
       "name": "Okjobs",
       "legalName": "Okjobs Inc.",
       "alternateName": [
@@ -12,18 +12,18 @@
         "Okjobs AI receptionist",
         "Okjobs open-source AI receptionist"
       ],
-      "url": "https://lobbystack.com/",
+      "url": "/about/",
       "logo": {
         "@type": "ImageObject",
-        "@id": "https://lobbystack.com/#logo",
+        "@id": "/about/",
         "url": "/brand/okjobs-logo.png",
         "width": 1030,
         "height": 286
       },
       "description": "Okjobs is an open-source AI receptionist platform for small businesses that answers calls, books appointments, captures caller details, and routes urgent requests.",
       "sameAs": [
-        "https://github.com/lobbystack",
-        "https://github.com/lobbystack/lobbystack",
+        "/about/",
+        "/about/",
         "https://www.capterra.com/p/10046185/LobbyStack/",
         "https://sourceforge.net/software/product/LobbyStack/",
         "https://www.g2.com/products/lobbystack/reviews",
@@ -40,13 +40,13 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
-        "email": "support@lobbystack.com",
-        "url": "https://docs.lobbystack.com"
+        "email": "le contact Okjobs",
+        "url": "/about/"
       }
     },
     {
       "@type": "WebSite",
-      "@id": "https://lobbystack.com/#website",
+      "@id": "/about/",
       "name": "Okjobs",
       "alternateName": [
         "lobbystack",
@@ -54,65 +54,65 @@
         "Okjobs AI receptionist",
         "Okjobs open-source AI receptionist"
       ],
-      "url": "https://lobbystack.com/",
+      "url": "/about/",
       "description": "Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan.",
       "inLanguage": "en",
       "about": {
-        "@id": "https://lobbystack.com/#software"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://lobbystack.com/search/?q={search_term_string}",
+        "target": "/about/}",
         "query-input": "required name=search_term_string"
       }
     },
     {
       "@type": "Blog",
-      "@id": "https://lobbystack.com/blog/#blog",
+      "@id": "/about/",
       "name": "AI Receptionist Blog and Product Updates",
-      "url": "https://lobbystack.com/blog/",
+      "url": "/about/",
       "description": "Product updates and practical guides about AI receptionists, phone answering, appointment booking, and small-business call automation.",
       "inLanguage": "en",
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       }
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/ai-voice-agent-gpt-live-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/ai-voice-agent-gpt-live-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "A glowing voice waveform above a receptionist disc, linked to a calendar with a booked day, a message note, and a phone handset",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/#webpage",
+      "@id": "/about/",
       "name": "AI Voice Agent on GPT-Live, the ChatGPT Voice Model",
-      "url": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/",
+      "url": "/about/",
       "description": "Okjobs's AI voice agent now runs on OpenAI's GPT-Live, the model behind ChatGPT Voice. It keeps talking while it books, checks hours, and takes messages.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/ai-voice-agent-gpt-live-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/#article",
+      "@id": "/about/",
       "headline": "Our AI Voice Agent Now Runs on GPT-Live, the Model Behind ChatGPT Voice",
       "description": "Okjobs's AI voice agent now runs on OpenAI's GPT-Live, the model behind ChatGPT Voice. It keeps talking while it books, checks hours, and takes messages.",
-      "url": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/ai-voice-agent-gpt-live-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-09-27T01:00:00.000Z",
       "dateModified": "2026-09-27T01:00:00.000Z",
@@ -122,72 +122,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Our AI Voice Agent Now Runs on GPT-Live, the Model Behind ChatGPT Voice",
-          "item": "https://lobbystack.com/blog/ai-voice-agent-gpt-live/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/elevenlabs-reception-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/elevenlabs-reception-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Okjobs and ElevenLabs Reception logo cards facing each other on either side of a VS badge",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/elevenlabs-reception-alternative/#webpage",
+      "@id": "/about/",
       "name": "ElevenLabs Reception alternative: Okjobs vs Reception",
-      "url": "https://lobbystack.com/blog/elevenlabs-reception-alternative/",
+      "url": "/about/",
       "description": "Compare ElevenLabs Reception (Reception.ai) and Okjobs: $29 for 75 minutes vs $30 for 150, overage rates, web chat, HIPAA, languages, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/elevenlabs-reception-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/elevenlabs-reception-alternative/#article",
+      "@id": "/about/",
       "headline": "ElevenLabs Reception alternative: minutes and ownership",
       "description": "Compare ElevenLabs Reception (Reception.ai) and Okjobs: $29 for 75 minutes vs $30 for 150, overage rates, web chat, HIPAA, languages, and self-hosting.",
-      "url": "https://lobbystack.com/blog/elevenlabs-reception-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/elevenlabs-reception-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-09-19T14:00:00.000Z",
       "dateModified": "2026-09-19T14:00:00.000Z",
@@ -197,72 +197,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/elevenlabs-reception-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/elevenlabs-reception-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "ElevenLabs Reception alternative: minutes and ownership",
-          "item": "https://lobbystack.com/blog/elevenlabs-reception-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/lobbystack-mit-license-ai-receptionist-resellers-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/lobbystack-mit-license-ai-receptionist-resellers-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "A shared AI phone receptionist connected to four independently operated small business storefronts",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/#webpage",
+      "@id": "/about/",
       "name": "Okjobs Is Now MIT: Build and Sell Your Own",
-      "url": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/",
+      "url": "/about/",
       "description": "Okjobs now uses the MIT License, giving agencies room to modify, host, sublicense, and sell AI receptionist products built from our open-source code.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/lobbystack-mit-license-ai-receptionist-resellers-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/#article",
+      "@id": "/about/",
       "headline": "Okjobs Is Now MIT: Build and Sell Your Own",
       "description": "Okjobs now uses the MIT License, giving agencies room to modify, host, sublicense, and sell AI receptionist products built from our open-source code.",
-      "url": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/lobbystack-mit-license-ai-receptionist-resellers-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-09-04T14:00:00.000Z",
       "dateModified": "2026-09-04T14:00:00.000Z",
@@ -272,72 +272,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Okjobs Is Now MIT: Build and Sell Your Own",
-          "item": "https://lobbystack.com/blog/lobbystack-mit-license-ai-receptionist-resellers/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/why-lobbystack-is-moving-away-from-convex-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/why-lobbystack-is-moving-away-from-convex-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Modular application services connected to a central PostgreSQL database and a realtime voice channel",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/#webpage",
+      "@id": "/about/",
       "name": "Why Okjobs Is Moving Away From Convex",
-      "url": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/",
+      "url": "/about/",
       "description": "Okjobs is moving away from Convex to improve self-hosting and contribution with a familiar Next.js, PostgreSQL, Drizzle, and Redis stack for more teams.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/why-lobbystack-is-moving-away-from-convex-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/#article",
+      "@id": "/about/",
       "headline": "Why Okjobs Is Moving Away From Convex",
       "description": "Okjobs is moving away from Convex to improve self-hosting and contribution with a familiar Next.js, PostgreSQL, Drizzle, and Redis stack for more teams.",
-      "url": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/why-lobbystack-is-moving-away-from-convex-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-09-04T14:00:00.000Z",
       "dateModified": "2026-09-04T14:00:00.000Z",
@@ -347,72 +347,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Why Okjobs Is Moving Away From Convex",
-          "item": "https://lobbystack.com/blog/why-lobbystack-is-moving-away-from-convex/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/upfirst-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/upfirst-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Desk phone branching toward a managed cloud service and an open server deployment",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/upfirst-alternative/#webpage",
+      "@id": "/about/",
       "name": "Upfirst alternative: Okjobs vs Upfirst",
-      "url": "https://lobbystack.com/blog/upfirst-alternative/",
+      "url": "/about/",
       "description": "Compare Okjobs and Upfirst on pricing, booking, transfers, languages, open-source access, and self-hosting to choose the right AI receptionist.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/upfirst-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/upfirst-alternative/#article",
+      "@id": "/about/",
       "headline": "Upfirst alternative: Okjobs vs Upfirst",
       "description": "Compare Okjobs and Upfirst on pricing, booking, transfers, languages, open-source access, and self-hosting to choose the right AI receptionist.",
-      "url": "https://lobbystack.com/blog/upfirst-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/upfirst-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T15:50:00.000Z",
       "dateModified": "2026-07-30T15:50:00.000Z",
@@ -422,72 +422,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/upfirst-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/upfirst-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Upfirst alternative: Okjobs vs Upfirst",
-          "item": "https://lobbystack.com/blog/upfirst-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/my-ai-front-desk-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/my-ai-front-desk-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Omnichannel messages surrounding a focused AI receptionist phone and calendar",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/my-ai-front-desk-alternative/#webpage",
+      "@id": "/about/",
       "name": "My AI Front Desk alternative: Frontdesk vs Okjobs",
-      "url": "https://lobbystack.com/blog/my-ai-front-desk-alternative/",
+      "url": "/about/",
       "description": "Compare Frontdesk, formerly My AI Front Desk, with Okjobs on voice, CRM tools, booking, pricing, open-source access, and self-hosted control.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/my-ai-front-desk-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/my-ai-front-desk-alternative/#article",
+      "@id": "/about/",
       "headline": "My AI Front Desk alternative",
       "description": "Compare Frontdesk, formerly My AI Front Desk, with Okjobs on voice, CRM tools, booking, pricing, open-source access, and self-hosted control.",
-      "url": "https://lobbystack.com/blog/my-ai-front-desk-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/my-ai-front-desk-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T15:40:00.000Z",
       "dateModified": "2026-07-30T15:40:00.000Z",
@@ -497,72 +497,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/my-ai-front-desk-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/my-ai-front-desk-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "My AI Front Desk alternative",
-          "item": "https://lobbystack.com/blog/my-ai-front-desk-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/smith-ai-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/smith-ai-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "AI phone call branching to a live receptionist headset and an in-house team",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/smith-ai-alternative/#webpage",
+      "@id": "/about/",
       "name": "Smith.ai alternative: Okjobs vs Smith.ai",
-      "url": "https://lobbystack.com/blog/smith-ai-alternative/",
+      "url": "/about/",
       "description": "Compare Okjobs and Smith.ai on AI call handling, live-agent backup, pricing, booking, customization, source access, and self-hosted deployment.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/smith-ai-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/smith-ai-alternative/#article",
+      "@id": "/about/",
       "headline": "Smith.ai alternative: AI and human coverage",
       "description": "Compare Okjobs and Smith.ai on AI call handling, live-agent backup, pricing, booking, customization, source access, and self-hosted deployment.",
-      "url": "https://lobbystack.com/blog/smith-ai-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/smith-ai-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T15:30:00.000Z",
       "dateModified": "2026-07-30T15:30:00.000Z",
@@ -572,72 +572,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/smith-ai-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/smith-ai-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Smith.ai alternative: AI and human coverage",
-          "item": "https://lobbystack.com/blog/smith-ai-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/goodcall-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/goodcall-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Phone calls measured with caller tokens on one side and clock minutes on the other",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/goodcall-alternative/#webpage",
+      "@id": "/about/",
       "name": "Goodcall alternative: Okjobs vs Goodcall",
-      "url": "https://lobbystack.com/blog/goodcall-alternative/",
+      "url": "/about/",
       "description": "Compare Okjobs and Goodcall on unique-caller versus minute pricing, routing, integrations, history, open-source access, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/goodcall-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/goodcall-alternative/#article",
+      "@id": "/about/",
       "headline": "Goodcall alternative: Compare the billing models",
       "description": "Compare Okjobs and Goodcall on unique-caller versus minute pricing, routing, integrations, history, open-source access, and self-hosting.",
-      "url": "https://lobbystack.com/blog/goodcall-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/goodcall-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T15:20:00.000Z",
       "dateModified": "2026-07-30T15:20:00.000Z",
@@ -647,72 +647,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/goodcall-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/goodcall-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Goodcall alternative: Compare the billing models",
-          "item": "https://lobbystack.com/blog/goodcall-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/rosie-ai-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/rosie-ai-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "AI phone beside minute tokens, a booking calendar, transfer arrows, and text messages",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/rosie-ai-alternative/#webpage",
+      "@id": "/about/",
       "name": "Rosie AI alternative: Okjobs vs Rosie",
-      "url": "https://lobbystack.com/blog/rosie-ai-alternative/",
+      "url": "/about/",
       "description": "Compare Okjobs and Rosie on included minutes, booking, transfers, texting, languages, open-source access, cloud service, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/rosie-ai-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/rosie-ai-alternative/#article",
+      "@id": "/about/",
       "headline": "Rosie AI alternative: Plans and tradeoffs",
       "description": "Compare Okjobs and Rosie on included minutes, booking, transfers, texting, languages, open-source access, cloud service, and self-hosting.",
-      "url": "https://lobbystack.com/blog/rosie-ai-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/rosie-ai-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T15:10:00.000Z",
       "dateModified": "2026-07-30T15:10:00.000Z",
@@ -722,72 +722,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/rosie-ai-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/rosie-ai-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Rosie AI alternative: Plans and tradeoffs",
-          "item": "https://lobbystack.com/blog/rosie-ai-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/zoom-ai-receptionist-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/zoom-ai-receptionist-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Business phone connecting to a managed communications cloud and an open server stack",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/#webpage",
+      "@id": "/about/",
       "name": "Zoom AI Receptionist alternative: Okjobs",
-      "url": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/",
+      "url": "/about/",
       "description": "Compare Zoom Virtual Agent Receptionist and Okjobs on pricing, phone-system fit, booking, languages, source access, cloud service, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/zoom-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/#article",
+      "@id": "/about/",
       "headline": "Zoom AI Receptionist alternative",
       "description": "Compare Zoom Virtual Agent Receptionist and Okjobs on pricing, phone-system fit, booking, languages, source access, cloud service, and self-hosting.",
-      "url": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/zoom-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T15:00:00.000Z",
       "dateModified": "2026-07-30T15:00:00.000Z",
@@ -797,72 +797,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Zoom AI Receptionist alternative",
-          "item": "https://lobbystack.com/blog/zoom-ai-receptionist-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/dialzara-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/dialzara-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Modular phone, SMS, API, and agency blocks compared with an integrated open toolkit",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/dialzara-alternative/#webpage",
+      "@id": "/about/",
       "name": "Dialzara alternative: Okjobs vs Dialzara",
-      "url": "https://lobbystack.com/blog/dialzara-alternative/",
+      "url": "/about/",
       "description": "Compare Okjobs and Dialzara on minute pricing, booking, transfers, SMS, agency options, API access, open-source code, and self-hosted control.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/dialzara-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/dialzara-alternative/#article",
+      "@id": "/about/",
       "headline": "Dialzara alternative: Plans, add-ons, and control",
       "description": "Compare Okjobs and Dialzara on minute pricing, booking, transfers, SMS, agency options, API access, open-source code, and self-hosted control.",
-      "url": "https://lobbystack.com/blog/dialzara-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/dialzara-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T14:50:00.000Z",
       "dateModified": "2026-07-30T14:50:00.000Z",
@@ -872,72 +872,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/dialzara-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/dialzara-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Dialzara alternative: Plans, add-ons, and control",
-          "item": "https://lobbystack.com/blog/dialzara-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/ringcentral-ai-receptionist-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/ringcentral-ai-receptionist-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Large office communications suite compared with a portable AI receptionist module",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/#webpage",
+      "@id": "/about/",
       "name": "RingCentral AI Receptionist alternative: Okjobs",
-      "url": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/",
+      "url": "/about/",
       "description": "Compare RingCentral AI Receptionist and Okjobs on pricing, phone-system fit, channels, booking, integrations, open-source access, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/ringcentral-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/#article",
+      "@id": "/about/",
       "headline": "RingCentral AI Receptionist alternative",
       "description": "Compare RingCentral AI Receptionist and Okjobs on pricing, phone-system fit, channels, booking, integrations, open-source access, and self-hosting.",
-      "url": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/ringcentral-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T14:40:00.000Z",
       "dateModified": "2026-07-30T14:40:00.000Z",
@@ -947,72 +947,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "RingCentral AI Receptionist alternative",
-          "item": "https://lobbystack.com/blog/ringcentral-ai-receptionist-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/nextiva-xbert-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/nextiva-xbert-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Voice, text, and web chat channels compared with a focused receptionist phone line",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/nextiva-xbert-alternative/#webpage",
+      "@id": "/about/",
       "name": "Nextiva XBert alternative: Okjobs vs XBert",
-      "url": "https://lobbystack.com/blog/nextiva-xbert-alternative/",
+      "url": "/about/",
       "description": "Compare Nextiva XBert and Okjobs on interaction pricing, voice and chat coverage, booking, integrations, source access, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/nextiva-xbert-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/nextiva-xbert-alternative/#article",
+      "@id": "/about/",
       "headline": "Nextiva XBert alternative",
       "description": "Compare Nextiva XBert and Okjobs on interaction pricing, voice and chat coverage, booking, integrations, source access, and self-hosting.",
-      "url": "https://lobbystack.com/blog/nextiva-xbert-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/nextiva-xbert-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T14:30:00.000Z",
       "dateModified": "2026-07-30T14:30:00.000Z",
@@ -1022,72 +1022,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/nextiva-xbert-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/nextiva-xbert-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Nextiva XBert alternative",
-          "item": "https://lobbystack.com/blog/nextiva-xbert-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/quo-sona-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/quo-sona-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Shared business phone inbox compared with an independent booking receptionist",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/quo-sona-alternative/#webpage",
+      "@id": "/about/",
       "name": "Quo Sona alternative: Okjobs vs Sona",
-      "url": "https://lobbystack.com/blog/quo-sona-alternative/",
+      "url": "/about/",
       "description": "Compare Quo Sona and Okjobs on call-credit pricing, phone-system requirements, message capture, booking, source access, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/quo-sona-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/quo-sona-alternative/#article",
+      "@id": "/about/",
       "headline": "Quo Sona alternative for AI call answering",
       "description": "Compare Quo Sona and Okjobs on call-credit pricing, phone-system requirements, message capture, booking, source access, and self-hosting.",
-      "url": "https://lobbystack.com/blog/quo-sona-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/quo-sona-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T14:20:00.000Z",
       "dateModified": "2026-07-30T14:20:00.000Z",
@@ -1097,72 +1097,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/quo-sona-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/quo-sona-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Quo Sona alternative for AI call answering",
-          "item": "https://lobbystack.com/blog/quo-sona-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/cloudtalk-ai-receptionist-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/cloudtalk-ai-receptionist-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Contact center desks and CRM connections compared with a compact receptionist stack",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/#webpage",
+      "@id": "/about/",
       "name": "CloudTalk AI Receptionist alternative: Okjobs",
-      "url": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/",
+      "url": "/about/",
       "description": "Compare CloudTalk AI Receptionist and Okjobs on platform costs, included minutes, routing, CRM integrations, open-source access, and self-hosting.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/cloudtalk-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/#article",
+      "@id": "/about/",
       "headline": "CloudTalk AI Receptionist alternative",
       "description": "Compare CloudTalk AI Receptionist and Okjobs on platform costs, included minutes, routing, CRM integrations, open-source access, and self-hosting.",
-      "url": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/cloudtalk-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T14:10:00.000Z",
       "dateModified": "2026-07-30T14:10:00.000Z",
@@ -1172,72 +1172,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "CloudTalk AI Receptionist alternative",
-          "item": "https://lobbystack.com/blog/cloudtalk-ai-receptionist-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/moneypenny-ai-receptionist-alternative-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/moneypenny-ai-receptionist-alternative-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "AI phone handing a call to a managed human service and to an in-house team",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/#webpage",
+      "@id": "/about/",
       "name": "Moneypenny AI Receptionist alternative: Okjobs",
-      "url": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/",
+      "url": "/about/",
       "description": "Compare Moneypenny AI Receptionist and Okjobs on managed setup, human escalation, per-call pricing, source access, and self-hosted control.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/moneypenny-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/#article",
+      "@id": "/about/",
       "headline": "Moneypenny AI Receptionist alternative",
       "description": "Compare Moneypenny AI Receptionist and Okjobs on managed setup, human escalation, per-call pricing, source access, and self-hosted control.",
-      "url": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/moneypenny-ai-receptionist-alternative-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T14:00:00.000Z",
       "dateModified": "2026-07-30T14:00:00.000Z",
@@ -1247,72 +1247,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Moneypenny AI Receptionist alternative",
-          "item": "https://lobbystack.com/blog/moneypenny-ai-receptionist-alternative/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/ai-receptionist-vs-virtual-receptionist-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/ai-receptionist-vs-virtual-receptionist-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "AI telephone system and human headset sharing an incoming business call",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/#webpage",
+      "@id": "/about/",
       "name": "AI vs virtual receptionist: Cost and coverage",
-      "url": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/",
+      "url": "/about/",
       "description": "Compare AI and human virtual receptionists on cost, call volume, empathy, booking, transfers, and oversight to choose the right phone coverage.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-vs-virtual-receptionist-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/#article",
+      "@id": "/about/",
       "headline": "AI vs virtual receptionist: A practical guide",
       "description": "Compare AI and human virtual receptionists on cost, call volume, empathy, booking, transfers, and oversight to choose the right phone coverage.",
-      "url": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-vs-virtual-receptionist-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T13:50:00.000Z",
       "dateModified": "2026-07-30T13:50:00.000Z",
@@ -1322,72 +1322,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "AI vs virtual receptionist: A practical guide",
-          "item": "https://lobbystack.com/blog/ai-receptionist-vs-virtual-receptionist/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/ai-receptionist-vs-voicemail-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/ai-receptionist-vs-voicemail-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Conversational phone booking a calendar appointment beside a passive voicemail recorder",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/#webpage",
+      "@id": "/about/",
       "name": "AI receptionist vs voicemail: A practical guide",
-      "url": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/",
+      "url": "/about/",
       "description": "Compare an AI receptionist and voicemail on caller experience, lead capture, booking, cost, after-hours coverage, and the cases where voicemail still works.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-vs-voicemail-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/#article",
+      "@id": "/about/",
       "headline": "AI receptionist vs voicemail",
       "description": "Compare an AI receptionist and voicemail on caller experience, lead capture, booking, cost, after-hours coverage, and the cases where voicemail still works.",
-      "url": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-vs-voicemail-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-30T13:40:00.000Z",
       "dateModified": "2026-07-30T13:40:00.000Z",
@@ -1397,72 +1397,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "AI receptionist vs voicemail",
-          "item": "https://lobbystack.com/blog/ai-receptionist-vs-voicemail/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/best-open-source-ai-phone-answering-services-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/best-open-source-ai-phone-answering-services-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Best open-source AI phone answering services",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/#webpage",
+      "@id": "/about/",
       "name": "Best open-source AI phone answering services - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/",
+      "url": "/about/",
       "description": "Compare open-source AI phone answering services for self-hosting: Asterisk agents, LiveKit voice stacks, and full receptionist platforms.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/best-open-source-ai-phone-answering-services-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/#article",
+      "@id": "/about/",
       "headline": "Best open-source AI phone answering services",
       "description": "Compare open-source AI phone answering services for self-hosting: Asterisk agents, LiveKit voice stacks, and full receptionist platforms.",
-      "url": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/best-open-source-ai-phone-answering-services-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-08T14:00:00.000Z",
       "dateModified": "2026-07-08T14:00:00.000Z",
@@ -1472,72 +1472,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Best open-source AI phone answering services",
-          "item": "https://lobbystack.com/blog/best-open-source-ai-phone-answering-services/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/open-source-ai-receptionist-affiliate-program-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/open-source-ai-receptionist-affiliate-program-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Earn 20% with the Okjobs affiliate program",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/#webpage",
+      "@id": "/about/",
       "name": "Earn 20% with the Okjobs affiliate program - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/",
+      "url": "/about/",
       "description": "Compare AI receptionist affiliate programs and see why agencies, consultants, creators, and local business experts can earn recurring revenue with Okjobs.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/open-source-ai-receptionist-affiliate-program-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/#article",
+      "@id": "/about/",
       "headline": "Earn 20% with the Okjobs affiliate program",
       "description": "Compare AI receptionist affiliate programs and see why agencies, consultants, creators, and local business experts can earn recurring revenue with Okjobs.",
-      "url": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/open-source-ai-receptionist-affiliate-program-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-07-07T13:00:00.000Z",
       "dateModified": "2026-07-07T13:00:00.000Z",
@@ -1547,72 +1547,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Earn 20% with the Okjobs affiliate program",
-          "item": "https://lobbystack.com/blog/ai-receptionist-affiliate-program/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/open-source-ai-receptionist-stack-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/open-source-ai-receptionist-stack-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Open-source AI receptionist stack",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/#webpage",
+      "@id": "/about/",
       "name": "Open-source AI receptionist stack - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/",
+      "url": "/about/",
       "description": "Okjobs is an open-source AI receptionist stack for calls, booking, transcripts, dashboards, billing, self-hosting, and client deployments.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/open-source-ai-receptionist-stack-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/#article",
+      "@id": "/about/",
       "headline": "Open-source AI receptionist stack",
       "description": "Okjobs is an open-source AI receptionist stack for calls, booking, transcripts, dashboards, billing, self-hosting, and client deployments.",
-      "url": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/open-source-ai-receptionist-stack-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-06-18T14:00:00.000Z",
       "dateModified": "2026-06-18T14:00:00.000Z",
@@ -1622,72 +1622,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Open-source AI receptionist stack",
-          "item": "https://lobbystack.com/blog/open-source-ai-receptionist-stack/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/ai-receptionist-workflows-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/ai-receptionist-workflows-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "AI receptionist workflows without flowcharts",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-workflows/#webpage",
+      "@id": "/about/",
       "name": "AI receptionist workflows without flowcharts - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/ai-receptionist-workflows/",
+      "url": "/about/",
       "description": "AI receptionist workflows break when call behavior lives across prompts, webhooks, and branches. Use plain-language policy plus trusted tools instead.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-workflows-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-workflows/#article",
+      "@id": "/about/",
       "headline": "AI receptionist workflows without flowcharts",
       "description": "AI receptionist workflows break when call behavior lives across prompts, webhooks, and branches. Use plain-language policy plus trusted tools instead.",
-      "url": "https://lobbystack.com/blog/ai-receptionist-workflows/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-workflows-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-06-18T13:00:00.000Z",
       "dateModified": "2026-06-18T13:00:00.000Z",
@@ -1697,72 +1697,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ai-receptionist-workflows/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-workflows/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "AI receptionist workflows without flowcharts",
-          "item": "https://lobbystack.com/blog/ai-receptionist-workflows/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/build-or-buy-ai-receptionist-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/build-or-buy-ai-receptionist-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Should you build or buy an AI receptionist?",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/#webpage",
+      "@id": "/about/",
       "name": "Should you build or buy an AI receptionist? - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/",
+      "url": "/about/",
       "description": "Compare building an AI receptionist from scratch, buying a hosted tool, or self-hosting open-source Okjobs before you spend serious time or budget.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/build-or-buy-ai-receptionist-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/#article",
+      "@id": "/about/",
       "headline": "Should you build or buy an AI receptionist?",
       "description": "Compare building an AI receptionist from scratch, buying a hosted tool, or self-hosting open-source Okjobs before you spend serious time or budget.",
-      "url": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/build-or-buy-ai-receptionist-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-06-12T13:00:00.000Z",
       "dateModified": "2026-06-12T13:00:00.000Z",
@@ -1772,72 +1772,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Should you build or buy an AI receptionist?",
-          "item": "https://lobbystack.com/blog/build-or-buy-ai-receptionist/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/how-to-choose-an-ai-receptionist-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/how-to-choose-an-ai-receptionist-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "How to choose an AI receptionist",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/#webpage",
+      "@id": "/about/",
       "name": "How to choose an AI receptionist - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/",
+      "url": "/about/",
       "description": "Learn how to choose an AI receptionist with a practical buyer checklist for features, pricing, call quality, integrations, compliance, and testing.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/how-to-choose-an-ai-receptionist-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/#article",
+      "@id": "/about/",
       "headline": "How to choose an AI receptionist",
       "description": "Learn how to choose an AI receptionist with a practical buyer checklist for features, pricing, call quality, integrations, compliance, and testing.",
-      "url": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/how-to-choose-an-ai-receptionist-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-06-03T17:00:00.000Z",
       "dateModified": "2026-06-03T17:00:00.000Z",
@@ -1847,72 +1847,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "How to choose an AI receptionist",
-          "item": "https://lobbystack.com/blog/how-to-choose-an-ai-receptionist/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/ai-receptionist-savings-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/ai-receptionist-savings-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "How much can an AI receptionist save you?",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-savings/#webpage",
+      "@id": "/about/",
       "name": "How much can an AI receptionist save you? - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/ai-receptionist-savings/",
+      "url": "/about/",
       "description": "Estimate AI receptionist savings from lower answering costs and fewer missed calls. Use the missed call calculator to run the numbers.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-savings-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-savings/#article",
+      "@id": "/about/",
       "headline": "How much can an AI receptionist save you?",
       "description": "Estimate AI receptionist savings from lower answering costs and fewer missed calls. Use the missed call calculator to run the numbers.",
-      "url": "https://lobbystack.com/blog/ai-receptionist-savings/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/ai-receptionist-savings-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-06-03T16:00:00.000Z",
       "dateModified": "2026-06-03T16:00:00.000Z",
@@ -1922,72 +1922,72 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/ai-receptionist-savings/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/ai-receptionist-savings/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "How much can an AI receptionist save you?",
-          "item": "https://lobbystack.com/blog/ai-receptionist-savings/"
+          "item": "/about/"
         }
       ]
     },
     {
       "@type": "ImageObject",
-      "@id": "https://lobbystack.com/illustrations/lobbystack-is-live-hero.webp#image",
-      "url": "https://lobbystack.com/illustrations/lobbystack-is-live-hero.webp",
+      "@id": "/about/",
+      "url": "/about/",
       "caption": "Okjobs is live",
       "width": 1672,
       "height": 941
     },
     {
       "@type": "WebPage",
-      "@id": "https://lobbystack.com/blog/lobbystack-is-live/#webpage",
+      "@id": "/about/",
       "name": "Okjobs is live - AI Receptionist Blog",
-      "url": "https://lobbystack.com/blog/lobbystack-is-live/",
+      "url": "/about/",
       "description": "Okjobs is now live: an open-source AI receptionist that answers calls, books appointments, and keeps teams in control.",
       "inLanguage": "en",
       "isPartOf": {
-        "@id": "https://lobbystack.com/#website"
+        "@id": "/about/"
       },
       "primaryImageOfPage": {
-        "@id": "https://lobbystack.com/illustrations/lobbystack-is-live-hero.webp#image"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BlogPosting",
-      "@id": "https://lobbystack.com/blog/lobbystack-is-live/#article",
+      "@id": "/about/",
       "headline": "Okjobs is live",
       "description": "Okjobs is now live: an open-source AI receptionist that answers calls, books appointments, and keeps teams in control.",
-      "url": "https://lobbystack.com/blog/lobbystack-is-live/",
+      "url": "/about/",
       "image": {
-        "@id": "https://lobbystack.com/illustrations/lobbystack-is-live-hero.webp#image"
+        "@id": "/about/"
       },
       "datePublished": "2026-05-13T16:00:00.000Z",
       "dateModified": "2026-05-13T16:00:00.000Z",
@@ -1997,39 +1997,39 @@
       "author": {
         "@type": "Organization",
         "name": "Okjobs Team",
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "publisher": {
-        "@id": "https://lobbystack.com/#organization"
+        "@id": "/about/"
       },
       "isPartOf": {
-        "@id": "https://lobbystack.com/blog/#blog"
+        "@id": "/about/"
       },
       "mainEntityOfPage": {
-        "@id": "https://lobbystack.com/blog/lobbystack-is-live/#webpage"
+        "@id": "/about/"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://lobbystack.com/blog/lobbystack-is-live/#breadcrumb",
+      "@id": "/about/",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://lobbystack.com/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://lobbystack.com/blog/"
+          "item": "/about/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Okjobs is live",
-          "item": "https://lobbystack.com/blog/lobbystack-is-live/"
+          "item": "/about/"
         }
       ]
     }

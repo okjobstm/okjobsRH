@@ -1,6 +1,6 @@
 ---
 title: Des workflows IA sans flowcharts
-canonical: "https://lobbystack.com/fr/blog/ai-receptionist-workflows/"
+canonical: "/about/"
 pubDate: "2026-06-18T13:00:00.000Z"
 author: Équipe Okjobs
 description: Les workflows de réceptionniste IA cassent quand le comportement vit dans des prompts et des branches. Préférez une politique claire et des outils fiables.
@@ -161,6 +161,6 @@ Les équipes doivent encore tester les appels, relire les transcriptions et ajus
 
 La différence tient dans l'endroit où vous mettez la complexité. Vous devriez passer votre temps à améliorer la politique de réception, pas à suivre la même règle dans des prompts, branches webhook, contraintes calendrier et modèles d'alerte.
 
-Commencez avec [Okjobs Cloud](https://lobbystack.com/) si vous voulez tester le produit. Utilisez la [documentation d'auto-hébergement](https://docs.lobbystack.com/self-hosting/overview) si vous voulez le faire tourner vous-même. Le code est public sur [GitHub](https://github.com/lobbystack/lobbystack).
+Commencez avec [Okjobs Cloud](/about/) si vous voulez tester le produit. Utilisez la [documentation d'auto-hébergement](/about/) si vous voulez le faire tourner vous-même. Le code est public sur [GitHub](/about/).
 
 Si vous hésitez entre construire, acheter et brancher des outils de workflow sur les appels, lisez [créer ou acheter son réceptionniste IA](/fr/blog/build-or-buy-ai-receptionist/) et [comment choisir un réceptionniste IA](/fr/blog/how-to-choose-an-ai-receptionist/).

@@ -1,6 +1,6 @@
 ---
 title: "Earn 20% with the Okjobs affiliate program"
-canonical: "https://lobbystack.com/blog/ai-receptionist-affiliate-program/"
+canonical: "/about/"
 pubDate: "2026-07-07T13:00:00.000Z"
 author: Okjobs Team
 description: "Compare AI receptionist affiliate programs and see why agencies, consultants, creators, and local business experts can earn recurring revenue with Okjobs."

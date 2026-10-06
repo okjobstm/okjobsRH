@@ -1,13 +1,13 @@
 ---
 title: "AI receptionist features for calls, booking, and alerts"
-canonical: "https://lobbystack.com/features/"
+canonical: "/about/"
 description: "Explore Okjobs features for phone answering, appointment booking, call transfers, owner alerts, and call summaries."
 ---
 
 ---
 title: AI Receptionist Features for Calls and Booking
 description: Public feature summary for Okjobs's AI receptionist.
-url: https://lobbystack.com/features/
+url: /about/
 ---
 
 # Okjobs Features

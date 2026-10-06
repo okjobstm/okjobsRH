@@ -1,13 +1,13 @@
 ---
 title: Precios de recepcionista con IA para pequeñas empresas
-canonical: "https://lobbystack.com/es/pricing/"
+canonical: "/about/"
 description: "Compare los planes Free, Starter, Pro y Enterprise de Okjobs: minutos de voz, facturación anual, alertas por SMS y tarifas por uso adicional."
 ---
 
 ---
 title: Precios de recepcionista con IA para pequeñas empresas
 description: Compare los planes Free, Starter, Pro y Enterprise de Okjobs: minutos de voz, facturación anual, alertas por SMS y tarifas por uso adicional.
-url: https://lobbystack.com/es/pricing/
+url: /about/
 ---
 
 # Precios de Okjobs

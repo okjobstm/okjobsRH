@@ -1,6 +1,6 @@
 ---
 title: Por qué Okjobs deja Convex
-canonical: "https://lobbystack.com/es/blog/why-lobbystack-is-moving-away-from-convex/"
+canonical: "/about/"
 pubDate: "2026-09-04T14:00:00.000Z"
 author: Equipo de Okjobs
 description: "Okjobs deja Convex para facilitar el autoalojamiento y las contribuciones con una plataforma conocida por más equipos: Next.js, PostgreSQL, Drizzle y Redis."
@@ -75,6 +75,6 @@ Okjobs sigue siendo el mismo producto: una recepcionista con IA para llamadas, m
 
 La licencia también apoya ese objetivo. Cambiamos Okjobs de AGPL a MIT para que quienes crean productos comerciales puedan adaptar, sublicenciar y vender productos basados en el código. Lea [por qué Okjobs ahora usa la licencia MIT](/es/blog/lobbystack-mit-license-ai-receptionist-resellers/) para conocer las razones comerciales y los permisos que trae la nueva licencia.
 
-Puede [revisar la plataforma en GitHub](https://github.com/lobbystack/lobbystack), seguir la [introducción al autoalojamiento](https://docs.lobbystack.com/self-hosting/overview) o usar la [guía de Docker Compose](https://docs.lobbystack.com/self-hosting/docker-compose) para ejecutarla usted mismo.
+Puede [revisar la plataforma en GitHub](/about/), seguir la [introducción al autoalojamiento](/about/) o usar la [guía de Docker Compose](/about/) para ejecutarla usted mismo.
 
 Si quiere la recepcionista sin operar la infraestructura, [cree una cuenta de Okjobs Cloud](/signup) y pruébela con su negocio.

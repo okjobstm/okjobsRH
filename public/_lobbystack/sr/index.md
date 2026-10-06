@@ -1,13 +1,13 @@
 ---
 title: "AI recepcioner za mala preduzeća | Okjobs"
-canonical: "https://lobbystack.com/sr/"
+canonical: "/about/"
 description: "Okjobs se javlja na pozive Vaše firme 24/7, zakazuje termine u Vaš kalendar i preusmerava hitne pozive Vašem timu. Otvoren kod, uz besplatan paket."
 ---
 
 ---
 title: AI recepcioner za mala preduzeća | Okjobs
 description: Okjobs se javlja na pozive Vaše firme 24/7, zakazuje termine u Vaš kalendar i preusmerava hitne pozive Vašem timu. Otvoren kod, uz besplatan paket.
-url: https://lobbystack.com/sr/
+url: /about/
 ---
 
 # Okjobs
@@ -23,9 +23,9 @@ Okjobs je AI recepcioner otvorenog koda za male firme koje zavise od poziva, ter
 
 ## Javni resursi
 
-- Funkcije: https://lobbystack.com/sr/features/
-- Cene: https://lobbystack.com/sr/pricing/
-- Partnerski program: https://lobbystack.com/sr/affiliate-program/
-- Kalkulator: https://lobbystack.com/sr/missed-call-revenue-calculator/
-- Blog: https://lobbystack.com/sr/blog/
-- GitHub: https://github.com/lobbystack/lobbystack
+- Funkcije: /about/
+- Cene: /about/
+- Partnerski program: /about/
+- Kalkulator: /about/
+- Blog: /about/
+- GitHub: /about/

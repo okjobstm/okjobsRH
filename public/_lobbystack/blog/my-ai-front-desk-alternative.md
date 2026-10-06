@@ -1,6 +1,6 @@
 ---
 title: My AI Front Desk alternative
-canonical: "https://lobbystack.com/blog/my-ai-front-desk-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:40:00.000Z"
 author: Okjobs Team
 description: "Compare Frontdesk, formerly My AI Front Desk, with Okjobs on voice, CRM tools, booking, pricing, open-source access, and self-hosted control."

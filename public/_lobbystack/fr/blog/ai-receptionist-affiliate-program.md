@@ -1,6 +1,6 @@
 ---
 title: "Programme d'affiliation réceptionniste IA"
-canonical: "https://lobbystack.com/fr/blog/ai-receptionist-affiliate-program/"
+canonical: "/about/"
 pubDate: "2026-07-07T17:00:00.000Z"
 author: Équipe Okjobs
 description: "Gagnez 20 % pendant un an en recommandant Okjobs. Un client Pro peut générer jusqu'à 240 $ de commission la première année."
@@ -189,4 +189,4 @@ Pour comprendre le produit avant de le recommander, consultez la [vue d'ensemble
 - [Programme d'affiliation My AI Front Desk](https://www.myaifrontdesk.com/affiliate)
 - [Programme d'affiliation Retell AI](https://affiliate.retellai.com/)
 - [Programme de référence Smith.ai](https://smith.ai/partners/referral-affiliate-program)
-- [Dépôt GitHub Okjobs](https://github.com/lobbystack/lobbystack)
+- [Dépôt GitHub Okjobs](/about/)

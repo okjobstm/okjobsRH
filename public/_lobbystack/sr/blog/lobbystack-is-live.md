@@ -1,6 +1,6 @@
 ---
 title: Okjobs je pokrenut
-canonical: "https://lobbystack.com/sr/blog/lobbystack-is-live/"
+canonical: "/about/"
 pubDate: "2026-05-13T16:00:00.000Z"
 author: Okjobs tim
 description: "Okjobs je pokrenut: AI recepcioner otvorenog koda koji odgovara na pozive, zakazuje termine i ostavlja timu punu kontrolu."
@@ -9,7 +9,7 @@ categories: [Novosti o proizvodu]
 
 Većina malih firmi ne gubi klijente zato što loše radi. Gubi ih zato što je telefon zazvonio dok su svi već bili zauzeti poslom.
 
-Od danas je [Okjobs](https://lobbystack.com/sr/) pokrenut.
+Od danas je [Okjobs](/about/) pokrenut.
 
 Okjobs je **AI recepcioner otvorenog koda** za firme koje zavise od telefonskih poziva i zakazivanja. Odgovara kada je Vaš tim zauzet, kada ne radite, kada ste u vožnji između dva posla ili kada već pomažete drugom klijentu.
 
@@ -65,7 +65,7 @@ Postoji još jedna razlika: Okjobs Vam ne naplaćuje smeće. Spam pozivi i poziv
 
 ## Otvoren kod od samog početka
 
-Okjobs je [otvorenog koda](https://github.com/lobbystack/lobbystack) jer telefonski pozivi sadrže stvarne podatke o klijentima, a firme ne bi trebalo da prema svojoj recepciji postupaju kao prema crnoj kutiji.
+Okjobs je [otvorenog koda](/about/) jer telefonski pozivi sadrže stvarne podatke o klijentima, a firme ne bi trebalo da prema svojoj recepciji postupaju kao prema crnoj kutiji.
 
 Za mnoge timove hostovana verzija je najbrži način da počnu. Napravite nalog, povežite delove, dodajte znanje o firmi i krenite uživo.
 

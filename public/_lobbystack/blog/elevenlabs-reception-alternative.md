@@ -1,6 +1,6 @@
 ---
 title: "ElevenLabs Reception alternative: minutes and ownership"
-canonical: "https://lobbystack.com/blog/elevenlabs-reception-alternative/"
+canonical: "/about/"
 pubDate: "2026-09-19T14:00:00.000Z"
 author: Okjobs Team
 description: "Compare ElevenLabs Reception (Reception.ai) and Okjobs: $29 for 75 minutes vs $30 for 150, overage rates, web chat, HIPAA, languages, and self-hosting."
@@ -89,7 +89,7 @@ Choose Okjobs for 150 minutes at $30 and a $0.20 overage rate. You can test 30 b
 - [Reception receptionist features](https://elevenlabs.io/docs/reception-ai/receptionist/overview)
 - [Okjobs pricing](/pricing/)
 - [Open-source AI receptionist](/solutions/open-source-ai-receptionist/)
-- [Okjobs GitHub repository](https://github.com/lobbystack/lobbystack)
+- [Okjobs GitHub repository](/about/)
 
 For more comparisons, read the [Rosie alternative](/blog/rosie-ai-alternative/) and [Dialzara alternative](/blog/dialzara-alternative/) guides.
 

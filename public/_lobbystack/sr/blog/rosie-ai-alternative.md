@@ -1,6 +1,6 @@
 ---
 title: "Alternativa za Rosie AI: paketi i kompromisi"
-canonical: "https://lobbystack.com/sr/blog/rosie-ai-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:10:00.000Z"
 author: Okjobs tim
 description: "Uporedite Okjobs i Rosie po uključenim minutima, zakazivanju, preusmeravanju, SMS porukama, jezicima, otvorenom kodu, cloud usluzi i samostalnom hostovanju."

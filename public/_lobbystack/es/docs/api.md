@@ -1,6 +1,6 @@
 ---
 title: Documentación de la API pública de Okjobs
-canonical: "https://lobbystack.com/es/docs/api/"
+canonical: "/about/"
 description: "Consulte los endpoints públicos de Okjobs, metadatos OpenAPI, estado del servicio, grafos JSON-LD, RSS, recursos Markdown y documentación de integración."
 ---
 
@@ -10,14 +10,14 @@ Okjobs ofrece recursos públicos de descubrimiento para agentes e integradores. 
 
 ## Endpoints de descubrimiento
 
-- Catálogo de API: https://lobbystack.com/.well-known/api-catalog
-- Descripción OpenAPI: https://lobbystack.com/openapi.json
-- Estado: https://lobbystack.com/api/status
-- Contexto para LLM: https://lobbystack.com/llms.txt
-- Mapa de esquemas: https://lobbystack.com/schemamap.xml
-- Grafo de esquema de páginas: https://lobbystack.com/schema/page.json
-- Grafo de esquema del blog: https://lobbystack.com/schema/post.json
-- Índice de agent skills: https://lobbystack.com/.well-known/agent-skills/index.json
-- Tarjeta del servidor MCP: https://lobbystack.com/.well-known/mcp/server-card.json
+- Catálogo de API: /about/
+- Descripción OpenAPI: /about/
+- Estado: /about/
+- Contexto para LLM: /about/
+- Mapa de esquemas: /about/
+- Grafo de esquema de páginas: /about/
+- Grafo de esquema del blog: /about/
+- Índice de agent skills: /about/
+- Tarjeta del servidor MCP: /about/
 
 Los endpoints para máquinas siguen siendo canónicos en inglés en la v1. Esta página traduce la documentación para personas.

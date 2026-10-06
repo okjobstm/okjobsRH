@@ -1,6 +1,6 @@
 ---
 title: "Goodcall alternative: Compare the billing models"
-canonical: "https://lobbystack.com/blog/goodcall-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:20:00.000Z"
 author: Okjobs Team
 description: "Compare Okjobs and Goodcall on unique-caller versus minute pricing, routing, integrations, history, open-source access, and self-hosting."

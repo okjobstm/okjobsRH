@@ -1,6 +1,6 @@
 ---
 title: "Recepcionista con IA o virtual: guía práctica"
-canonical: "https://lobbystack.com/es/blog/ai-receptionist-vs-virtual-receptionist/"
+canonical: "/about/"
 pubDate: "2026-07-30T13:50:00.000Z"
 author: Equipo de Okjobs
 description: "Compare recepcionistas con IA y recepcionistas virtuales humanas en costo, volumen, empatía, reservas, transferencias y supervisión para elegir su cobertura."
@@ -121,7 +121,7 @@ El reparto debería seguir el riesgo y el valor. Automatice el trabajo repetible
 
 [Okjobs](/es/features/) se encarga de las preguntas rutinarias, la recepción de solicitudes, las reservas, los cambios de cita, los resúmenes y las transferencias configuradas. Su equipo se queda con las llamadas que requieren experiencia o empatía.
 
-El código es [público en GitHub](https://github.com/lobbystack/lobbystack), y los equipos pueden usar la nube gestionada o [autoalojar la plataforma](https://docs.lobbystack.com/self-hosting/overview). El autoalojamiento da más control, pero exige responsabilidad técnica.
+El código es [público en GitHub](/about/), y los equipos pueden usar la nube gestionada o [autoalojar la plataforma](/about/). El autoalojamiento da más control, pero exige responsabilidad técnica.
 
 ## Veredicto
 

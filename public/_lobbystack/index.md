@@ -1,13 +1,13 @@
 ---
 title: "AI Receptionist Software for Small Businesses | Okjobs"
-canonical: "https://lobbystack.com/"
+canonical: "/about/"
 description: "Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan."
 ---
 
 ---
 title: AI Receptionist Software for Small Businesses | Okjobs
 description: Okjobs answers your business calls 24/7, books appointments into your calendar, and transfers urgent calls to your team. Open source, with a free plan.
-url: https://lobbystack.com/
+url: /about/
 ---
 
 # Okjobs
@@ -23,19 +23,19 @@ Okjobs answers your business calls 24/7, books appointments into your calendar, 
 
 ## Public Resources
 
-- Features: https://lobbystack.com/features/
-- Pricing: https://lobbystack.com/pricing/
-- Affiliate program: https://lobbystack.com/affiliate-program/
-- Calculator: https://lobbystack.com/missed-call-revenue-calculator/
-- Features markdown: https://lobbystack.com/features.md
-- Pricing markdown: https://lobbystack.com/pricing.md
-- Affiliate program markdown: https://lobbystack.com/affiliate-program.md
-- Calculator markdown: https://lobbystack.com/missed-call-revenue-calculator/index.md
-- Documentation: https://docs.lobbystack.com/introduction
-- API catalog: https://lobbystack.com/.well-known/api-catalog
-- OpenAPI: https://lobbystack.com/openapi.json
-- Agent skills: https://lobbystack.com/.well-known/agent-skills/index.json
-- GitHub: https://github.com/lobbystack/lobbystack
+- Features: /about/
+- Pricing: /about/
+- Affiliate program: /about/
+- Calculator: /about/
+- Features markdown: /about/
+- Pricing markdown: /about/
+- Affiliate program markdown: /about/
+- Calculator markdown: /about/
+- Documentation: /about/
+- API catalog: /about/
+- OpenAPI: /about/
+- Agent skills: /about/
+- GitHub: /about/
 
 ## Pricing Snapshot
 

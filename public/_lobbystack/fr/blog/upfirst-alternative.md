@@ -1,6 +1,6 @@
 ---
 title: "Alternative à Upfirst : Okjobs ou Upfirst"
-canonical: "https://lobbystack.com/fr/blog/upfirst-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:50:00.000Z"
 author: Équipe Okjobs
 description: "Comparez Okjobs et Upfirst : prix, réservation, transferts, langues, code source et auto-hébergement pour choisir votre réceptionniste IA."
@@ -61,7 +61,7 @@ Prenez un mois d'historique et calculez les deux unités. Vingt longues admissio
 
 Les pages officielles d'Upfirst décrivent un service hébergé. Elles n'annoncent ni code source public ni déploiement auto-hébergé.
 
-[Okjobs est open source](https://github.com/lobbystack/lobbystack). Vous pouvez utiliser le cloud géré, examiner le code ou déployer la pile dans votre infrastructure. Une équipe auto-hébergée choisit ses fournisseurs, ses règles de conservation, son calendrier de mises à jour et ses intégrations.
+[Okjobs est open source](/about/). Vous pouvez utiliser le cloud géré, examiner le code ou déployer la pile dans votre infrastructure. Une équipe auto-hébergée choisit ses fournisseurs, ses règles de conservation, son calendrier de mises à jour et ses intégrations.
 
 Ce contrôle demande du travail. Quelqu'un doit surveiller le système, gérer les sauvegardes et tester les appels. Upfirst retire cette charge. Okjobs vous laisse choisir.
 
@@ -93,10 +93,10 @@ Choisissez Okjobs pour tester la voix dans le navigateur gratuitement, accéder 
 - [Réceptionniste IA Upfirst](https://upfirst.ai/solutions/ai-receptionist)
 - [Réservation Upfirst](https://upfirst.ai/features/scheduling)
 - [Tarifs Okjobs](/fr/pricing/)
-- [Auto-hébergement Okjobs](https://docs.lobbystack.com/self-hosting/overview)
+- [Auto-hébergement Okjobs](/about/)
 
 ## Verdict
 
 Okjobs offre le meilleur point de départ : un test gratuit dans le navigateur, une facturation à la minute et une propriété qu'Upfirst n'annonce pas. Upfirst peut convenir aux longues conversations qui profitent de la facturation par appel.
 
-[Commencez avec Okjobs gratuitement](/fr/pricing/) et chiffrez vos vrais appels. Si le contrôle compte, [consultez le code](https://github.com/lobbystack/lobbystack).
+[Commencez avec Okjobs gratuitement](/fr/pricing/) et chiffrez vos vrais appels. Si le contrôle compte, [consultez le code](/about/).

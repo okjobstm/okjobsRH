@@ -1,6 +1,6 @@
 ---
 title: Alternativa za Zoom AI recepcionera
-canonical: "https://lobbystack.com/sr/blog/zoom-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:00:00.000Z"
 author: Okjobs tim
 description: "Uporedite Zoom Virtual Agent Receptionist i Okjobs po ceni, uklapanju u telefonski sistem, zakazivanju, jezicima, izvornom kodu, cloud usluzi i hostovanju."
@@ -92,7 +92,7 @@ Izaberite Okjobs ako želite 30 besplatnih minuta za test, 50% više uključene 
 - [Zoom AI recepcioner](https://www.zoom.com/en/products/voip-phone/features/ai-receptionist/)
 - [Zoom česta pitanja o recepcioneru](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0085189)
 - [Okjobs cene](/sr/pricing/)
-- [Okjobs samostalno hostovanje](https://docs.lobbystack.com/self-hosting/overview)
+- [Okjobs samostalno hostovanje](/about/)
 
 ## Zaključak
 

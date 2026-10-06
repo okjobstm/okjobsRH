@@ -1,6 +1,6 @@
 ---
 title: "Okjobs ahora usa MIT: cree y venda su propia oferta"
-canonical: "https://lobbystack.com/es/blog/lobbystack-mit-license-ai-receptionist-resellers/"
+canonical: "/about/"
 pubDate: "2026-09-04T14:00:00.000Z"
 author: Equipo de Okjobs
 description: "Okjobs ahora usa la licencia MIT, que permite a las agencias modificar, alojar, sublicenciar y vender recepcionistas con IA creadas con nuestro código abierto."
@@ -23,7 +23,7 @@ La adopción del producto y de los colaboradores se quedó por debajo de nuestro
 
 ## Lo que permite la licencia MIT
 
-La [licencia de Okjobs](https://github.com/lobbystack/lobbystack/blob/main/LICENSE) concede a cualquier persona que reciba el software permiso para usarlo, copiarlo, modificarlo, fusionarlo, publicarlo, distribuirlo, sublicenciarlo y venderlo.
+La [licencia de Okjobs](/about/) concede a cualquier persona que reciba el software permiso para usarlo, copiarlo, modificarlo, fusionarlo, publicarlo, distribuirlo, sublicenciarlo y venderlo.
 
 La licencia tiene una condición: las copias o partes sustanciales del software deben incluir su aviso de copyright y de permiso. También incluye la exención estándar de garantía y responsabilidad de MIT.
 
@@ -63,7 +63,7 @@ Esta separación ayuda a los clientes a entender quién opera el servicio. Su em
 
 El código abierto da control a las agencias y a los equipos técnicos. Muchos negocios quieren que otra persona gestione la infraestructura, supervise a los proveedores, publique actualizaciones y dé soporte al producto.
 
-[Okjobs Cloud](https://lobbystack.com/es/pricing/) sigue siendo la opción gestionada para esos clientes. Pueden configurar la recepcionista, el conocimiento del negocio, las reglas, los números de teléfono y Google Calendar sin operar PostgreSQL, Redis ni la pasarela de voz.
+[Okjobs Cloud](/about/) sigue siendo la opción gestionada para esos clientes. Pueden configurar la recepcionista, el conocimiento del negocio, las reglas, los números de teléfono y Google Calendar sin operar PostgreSQL, Redis ni la pasarela de voz.
 
 Las agencias pueden elegir el modelo que encaja con cada proyecto. Use el código MIT cuando el cliente necesite un producto con su marca, una infraestructura a medida o un trabajo de integración profundo. Use Okjobs Cloud cuando el cliente quiera el producto gestionado y su valor esté en la puesta en marcha, el diseño de flujos de trabajo y el servicio continuo.
 
@@ -71,6 +71,6 @@ Las agencias pueden elegir el modelo que encaja con cada proyecto. Use el códig
 
 Elegimos la AGPL por su modelo recíproco mientras construíamos la primera versión. Hemos elegido MIT para facilitar la adopción comercial y ayudar a más creadores a llevar Okjobs a mercados a los que no podemos llegar solos.
 
-[Clone Okjobs en GitHub](https://github.com/lobbystack/lobbystack), lea la [introducción al autoalojamiento](https://docs.lobbystack.com/self-hosting/overview) y use la [guía de Docker Compose](https://docs.lobbystack.com/self-hosting/docker-compose) para su primer despliegue. El artículo complementario explica [por qué Okjobs deja Convex](/es/blog/why-lobbystack-is-moving-away-from-convex/).
+[Clone Okjobs en GitHub](/about/), lea la [introducción al autoalojamiento](/about/) y use la [guía de Docker Compose](/about/) para su primer despliegue. El artículo complementario explica [por qué Okjobs deja Convex](/es/blog/why-lobbystack-is-moving-away-from-convex/).
 
 Si prefiere empezar con el producto gestionado, [cree una cuenta de Okjobs Cloud](/signup) y pruebe una llamada en su navegador antes de presentárselo a un cliente.

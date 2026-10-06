@@ -1,6 +1,6 @@
 ---
 title: "Alternativa za Goodcall: uporedite modele naplate"
-canonical: "https://lobbystack.com/sr/blog/goodcall-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:20:00.000Z"
 author: Okjobs tim
 description: "Uporedite Okjobs i Goodcall: naplata po jedinstvenom pozivaocu ili po minutu, preusmeravanje, integracije, istorija, otvoreni kod i samostalno hostovanje."

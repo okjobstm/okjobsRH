@@ -1,6 +1,6 @@
 ---
 title: How much can an AI receptionist save you?
-canonical: "https://lobbystack.com/blog/ai-receptionist-savings/"
+canonical: "/about/"
 pubDate: "2026-06-03T16:00:00.000Z"
 author: Okjobs Team
 description: Estimate AI receptionist savings from lower answering costs and fewer missed calls. Use the missed call calculator to run the numbers.

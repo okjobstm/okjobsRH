@@ -1,6 +1,6 @@
 ---
 title: Alternativa za RingCentral AI Receptionist
-canonical: "https://lobbystack.com/sr/blog/ringcentral-ai-receptionist-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:40:00.000Z"
 author: Okjobs tim
 description: "Uporedite RingCentral AI Receptionist i Okjobs: cene, telefonski sistem, kanali, zakazivanje, integracije, otvoreni kod i samostalno hostovanje."
@@ -92,7 +92,7 @@ Izaberite Okjobs ako želite 30 besplatnih minuta, 150 minuta za $30, zakazivanj
 - [RingCentral AIR funkcije i cene](https://www.ringcentral.com/us/en/blog/ai-receptionist-texts-call-queues-integrations/)
 - [Definicija RingCentral usluge](https://www.ringcentral.com/legal/add-on-services.html)
 - [Okjobs cene](/sr/pricing/)
-- [Okjobs GitHub repozitorijum](https://github.com/lobbystack/lobbystack)
+- [Okjobs GitHub repozitorijum](/about/)
 
 ## Zaključak
 

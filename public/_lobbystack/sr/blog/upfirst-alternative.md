@@ -1,6 +1,6 @@
 ---
 title: "Alternativa za Upfirst: Okjobs ili Upfirst"
-canonical: "https://lobbystack.com/sr/blog/upfirst-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T15:50:00.000Z"
 author: Okjobs tim
 description: "Uporedite Okjobs i Upfirst po cenama, zakazivanju, preusmeravanju, jezicima, otvorenom kodu i samostalnom hostovanju i izaberite pravog AI recepcionera."
@@ -68,7 +68,7 @@ Uzmite istoriju poziva za jedan mesec i izračunajte obe jedinice. Dvadeset dugi
 
 Pregledane zvanične Upfirst stranice opisuju hostovanu uslugu. Ne navode javni izvorni kod niti samostalno hostovanu primenu.
 
-[Okjobs je otvorenog koda](https://github.com/lobbystack/lobbystack). Možete da koristite upravljani cloud, pregledate kod ili pokrenete sistem na infrastrukturi koju kontrolišete. Tim koji sam hostuje može da upravlja svojim nalozima kod provajdera, tajnim ključevima, pravilima čuvanja podataka, vremenom nadogradnji i integracijama.
+[Okjobs je otvorenog koda](/about/). Možete da koristite upravljani cloud, pregledate kod ili pokrenete sistem na infrastrukturi koju kontrolišete. Tim koji sam hostuje može da upravlja svojim nalozima kod provajdera, tajnim ključevima, pravilima čuvanja podataka, vremenom nadogradnji i integracijama.
 
 Ta kontrola donosi posao. Neko mora da vodi primenu, prati pozive, upravlja rezervnim kopijama i testira nadogradnje. Upfirst uklanja taj teret. Okjobs Vam daje izbor.
 
@@ -102,10 +102,10 @@ Izaberite Okjobs za besplatno testiranje glasa u pregledaču, javni kod, samosta
 - [Upfirst AI recepcioner](https://upfirst.ai/solutions/ai-receptionist)
 - [Upfirst zakazivanje](https://upfirst.ai/features/scheduling)
 - [Okjobs cene](/sr/pricing/)
-- [Pregled samostalnog hostovanja Okjobs](https://docs.lobbystack.com/self-hosting/overview)
+- [Pregled samostalnog hostovanja Okjobs](/about/)
 
 ## Zaključak
 
 Okjobs nudi bolju polaznu tačku: besplatno testiranje u pregledaču, cene po minutu i put ka vlasništvu koji Upfirst ne navodi. Upfirst i dalje može da odgovara firmama sa dugim pozivima koje cene njegovu jezičku pokrivenost i naplatu po pozivu.
 
-[Počnite sa Okjobs besplatno](/sr/pricing/) i izračunajte cenu za svoje stvarne pozive. Ako Vam je kontrola važna posle probe, [pregledajte kod na GitHubu](https://github.com/lobbystack/lobbystack).
+[Počnite sa Okjobs besplatno](/sr/pricing/) i izračunajte cenu za svoje stvarne pozive. Ako Vam je kontrola važna posle probe, [pregledajte kod na GitHubu](/about/).

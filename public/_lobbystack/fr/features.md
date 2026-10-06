@@ -1,13 +1,13 @@
 ---
 title: Fonctionnalités de réceptionniste IA
-canonical: "https://lobbystack.com/fr/features/"
+canonical: "/about/"
 description: "Découvrez les fonctionnalités Okjobs pour répondre au téléphone, qualifier les demandes, prendre des rendez‑vous, envoyer des alertes SMS, transférer les urgences et produire des résumés."
 ---
 
 ---
 title: Fonctionnalités de réceptionniste IA
 description: Découvrez les fonctionnalités Okjobs pour répondre au téléphone, qualifier les demandes, prendre des rendez‑vous, envoyer des alertes SMS, transférer les urgences et produire des résumés.
-url: https://lobbystack.com/fr/features/
+url: /about/
 ---
 
 # Fonctionnalités Okjobs

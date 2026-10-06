@@ -1,6 +1,6 @@
 ---
 title: Créer ou acheter son réceptionniste IA ?
-canonical: "https://lobbystack.com/fr/blog/build-or-buy-ai-receptionist/"
+canonical: "/about/"
 pubDate: "2026-06-12T13:00:00.000Z"
 author: Équipe Okjobs
 description: "Comparez la création d'un réceptionniste IA, l'achat d'un outil hébergé et l'auto-hébergement de Okjobs avant d'investir temps et budget."

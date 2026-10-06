@@ -1,6 +1,6 @@
 ---
 title: "Alternativa a Dialzara: planes, complementos y control"
-canonical: "https://lobbystack.com/es/blog/dialzara-alternative/"
+canonical: "/about/"
 pubDate: "2026-07-30T14:50:00.000Z"
 author: Equipo de Okjobs
 description: "Compare Okjobs y Dialzara en precio por minuto, reservas, transferencias, SMS, opciones para agencias, API, código abierto y control autoalojado."
@@ -98,7 +98,7 @@ Elija Okjobs para tener 150 minutos por $30 o 500 por $100, con un número dedic
 - [Precios de Dialzara](https://dialzara.com/pricing)
 - [Precios de Okjobs](/es/pricing/)
 - [Programa de afiliados de Okjobs](/es/blog/ai-receptionist-affiliate-program/)
-- [Repositorio de Okjobs en GitHub](https://github.com/lobbystack/lobbystack)
+- [Repositorio de Okjobs en GitHub](/about/)
 
 ## Veredicto
 

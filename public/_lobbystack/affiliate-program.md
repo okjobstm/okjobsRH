@@ -1,13 +1,13 @@
 ---
 title: "Okjobs Affiliate Program | Earn 20% Commission"
-canonical: "https://lobbystack.com/affiliate-program/"
+canonical: "/about/"
 description: "Refer businesses to hosted Okjobs plans and earn 20% of their payments for 12 months. Referrals save 5% at signup. PayPal payouts monthly."
 ---
 
 ---
 title: Okjobs Affiliate Program | Earn 20% Commission
 description: Public summary of the Okjobs Affiliate Program.
-url: https://lobbystack.com/affiliate-program/
+url: /about/
 ---
 
 # Okjobs Affiliate Program
