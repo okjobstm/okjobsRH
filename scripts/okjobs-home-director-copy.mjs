@@ -1,4 +1,87 @@
 import { applyPersonaCopy } from "./okjobs-persona-copy.mjs";
+import { parseFragment } from "parse5";
+
+const heroRecruitmentVisual = `
+<div class="mx-auto flex w-full min-w-0 flex-col items-center" role="img" aria-label="Aperçu Okjobs d'une shortlist comparant trois candidatures selon les critères du poste">
+  <div class="w-full max-w-md overflow-hidden rounded-2xl border border-border/70 bg-background p-5 shadow-lg md:p-6">
+    <div class="flex items-start justify-between gap-4 border-b border-border/70 pb-4">
+      <div class="min-w-0 text-left">
+        <p class="text-xs font-medium text-muted-foreground">POSTE À POURVOIR</p>
+        <p class="mt-1 text-base font-semibold text-foreground">Responsable des opérations</p>
+      </div>
+      <span class="shrink-0 rounded-full border border-border/70 bg-muted px-3 py-1 text-xs font-medium text-foreground">3 profils</span>
+    </div>
+
+    <div class="mt-5 space-y-3">
+      <div class="rounded-xl border border-border/70 bg-muted/50 p-4 text-left">
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex min-w-0 items-center gap-3">
+            <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">NM</span>
+            <div class="min-w-0">
+              <p class="text-sm font-semibold text-foreground">Nadia M.</p>
+              <p class="text-xs text-muted-foreground">Expérience documentée</p>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="rounded-full border border-border/70 bg-background px-2.5 py-1 text-xs text-foreground">Organisation</span>
+          <span class="rounded-full border border-border/70 bg-background px-2.5 py-1 text-xs text-foreground">Management</span>
+          <span class="rounded-full border border-border/70 bg-background px-2.5 py-1 text-xs text-muted-foreground">1 point à vérifier</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-xl border border-border/70 bg-background p-3 text-left shadow-sm">
+          <div class="flex items-center gap-2">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold text-foreground">SK</span>
+            <div class="min-w-0">
+              <p class="text-sm font-medium text-foreground">Serge K.</p>
+              <p class="text-xs text-muted-foreground">À approfondir</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-border/70 bg-background p-3 text-left shadow-sm">
+          <div class="flex items-center gap-2">
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold text-foreground">AA</span>
+            <div class="min-w-0">
+              <p class="text-sm font-medium text-foreground">Aïcha A.</p>
+              <p class="text-xs text-muted-foreground">Profil complété</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 flex items-center gap-3 rounded-xl border border-border/70 bg-foreground p-4 text-left text-background">
+      <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-background text-foreground">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </span>
+      <div>
+        <p class="text-sm font-semibold">Shortlist expliquée</p>
+        <p class="mt-0.5 text-xs opacity-80">Correspondances, écarts et questions d'entretien.</p>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+export function applyDirectorHeroVisual(document) {
+  function replace(node) {
+    for (let index = 0; index < (node.childNodes ?? []).length; index += 1) {
+      const child = node.childNodes[index];
+      const componentUrl = child.attrs?.find((attr) => attr.name === "component-url")?.value ?? "";
+      if (child.tagName === "astro-island" && componentUrl.includes("LobbyStackWebVoiceWidget")) {
+        const replacement = parseFragment(heroRecruitmentVisual).childNodes;
+        for (const replacementNode of replacement) replacementNode.parentNode = node;
+        node.childNodes.splice(index, 1, ...replacement);
+        return true;
+      }
+      if (replace(child)) return true;
+    }
+    return false;
+  }
+  replace(document);
+}
 
 // Homepage-specific copy. Other audiences keep their dedicated pages.
 const directorCopy = new Map(Object.entries({

@@ -1,14 +1,20 @@
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rename, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { setTimeout as delay } from "node:timers/promises";
 import { parse, serialize } from "parse5";
 import { applyPersonaCopy, rewritePersonaRuntime } from "./okjobs-persona-copy.mjs";
 import { rewriteGuide, rewriteGuideLinks } from "./okjobs-guides.mjs";
-import { applyDirectorHomeCopy } from "./okjobs-home-director-copy.mjs";
+import { applyDirectorHeroVisual, applyDirectorHomeCopy } from "./okjobs-home-director-copy.mjs";
 import { applyOkjobsImages } from "./okjobs-public-images.mjs";
 import { removeLobbystackLinks } from "./remove-lobbystack-links.mjs";
 import { applyProductServicesCopy, rewriteProductServicesRuntime } from "./okjobs-product-services-copy.mjs";
+import { applyAccompanimentPage } from "./okjobs-accompaniment-page.mjs";
+import { applyIndividualAssessmentPage } from "./okjobs-individual-assessment-page.mjs";
+import { applyTrainingPage } from "./okjobs-training-page.mjs";
+import { applyAssessmentPage } from "./okjobs-assessment-page.mjs";
+import { applyRecruitmentUseCasesPage } from "./okjobs-recruitment-use-cases-pages.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const defaultRoot = path.join(projectRoot, "public", "_lobbystack");
@@ -33,10 +39,12 @@ const common = new Map(Object.entries({
   "All rights reserved.": "Tous droits réservés.",
   "Skip to main content": "Aller au contenu principal",
   "Top Uses": "Services",
+  "Recruitment": "Recrutement",
+  "Sur mesure": "Mission personnalisée",
   "AI phone answering": "Assessment",
-  "AI appointment scheduler": "Recruitment",
-  "After-hours answering": "Évaluation en groupe",
-  "Self-hosted AI receptionist": "Accompagnement sur mesure",
+  "AI appointment scheduler": "Recrutement",
+  "After-hours answering": "Formation",
+  "Self-hosted AI receptionist": "Mission personnalisée",
   "By Trade": "Types d’organisation",
   "Plumbers": "PME",
   "HVAC": "ONG",
@@ -661,14 +669,14 @@ Object.assign(sectorPages, {
     criteria: ["Compétences du poste", "Raisonnement", "Méthode de travail", "Points à confirmer"],
   },
   "/solutions/ai-appointment-scheduler/": {
-    title: "Évaluation individuelle : levez vos doutes sur un profil",
-    audience: "candidats que vous souhaitez approfondir", context: "compétences attendues, éléments observés et préparation de l’entretien",
-    criteria: ["Acquis utiles", "Réponse aux situations", "Éléments documentés", "Besoins d’accompagnement"],
+    title: "Recrutement : avancez du besoin à une shortlist expliquée",
+    audience: "candidats à votre recrutement", context: "besoin clarifié, présélection, évaluations et préparation de la shortlist",
+    criteria: ["Attentes du poste", "Acquis des candidats", "Écarts à approfondir", "Arguments de sélection"],
   },
   "/solutions/after-hours-answering-service/": {
-    title: "Évaluation en groupe : comparez sans perdre vos repères",
-    audience: "candidats de votre campagne de recrutement", context: "critères communs, comparaison des résultats et justification de la présélection",
-    criteria: ["Critères du poste", "Éléments comparables", "Écarts à approfondir", "Points de vérification"],
+    title: "Formation RH : donnez à votre équipe des repères communs",
+    audience: "dirigeants et équipes RH", context: "cadrage du besoin, lecture des évaluations, entretiens structurés et décision documentée",
+    criteria: ["Critères du poste", "Lecture des résultats", "Conduite d’entretien", "Décision documentée"],
   },
   "/solutions/self-hosted-ai-receptionist/": {
     title: "Un besoin particulier ? Construisons votre accompagnement",
@@ -1121,8 +1129,17 @@ function rewrite(html, route, outputRoute = route) {
   rewriteGuide(document, route);
   rewriteGuideLinks(document);
   applyPersonaCopy(document);
-  if (route === "/") applyDirectorHomeCopy(document);
+  if (route === "/") {
+    applyDirectorHomeCopy(document);
+    applyDirectorHeroVisual(document);
+  }
   applyProductServicesCopy(document, route);
+  const renderedRoute = outputRoute.replace(/^\/(?:fr|es|sr)(?=\/)/, "") || "/";
+  applyRecruitmentUseCasesPage(document, renderedRoute);
+  if (route === "/solutions/ai-phone-answering/") applyAssessmentPage(document);
+  if (route === "/solutions/after-hours-answering-service/") applyTrainingPage(document);
+  if (route === "/solutions/ai-appointment-scheduler/") applyIndividualAssessmentPage(document);
+  if (route === "/solutions/self-hosted-ai-receptionist/") applyAccompanimentPage(document);
   // Keep search/social previews aligned with the visible promise, not the old title.
   const findHeading = (node) => node.tagName === "h1" ? textContent(node).trim()
     : (node.childNodes ?? []).map(findHeading).find(Boolean);
@@ -1153,6 +1170,35 @@ async function walkFiles(directory) {
   return files;
 }
 
+async function writeFileWithRetry(file, contents) {
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    try {
+      await writeFile(file, contents, "utf8");
+      return;
+    } catch (error) {
+      if (error?.code !== "UNKNOWN") throw error;
+      if (attempt === 3) break;
+      await delay(75 * (attempt + 1));
+    }
+  }
+
+  // Some imported files keep restrictive Windows ACLs. Replace them through
+  // the writable parent directory while retaining a rollback copy.
+  const suffix = `.okjobs-${process.pid}-${Date.now()}`;
+  const temporary = `${file}${suffix}.tmp`;
+  const backup = `${file}${suffix}.bak`;
+  await writeFile(temporary, contents, "utf8");
+  await rename(file, backup);
+  try {
+    await rename(temporary, file);
+    await unlink(backup);
+  } catch (error) {
+    await rename(backup, file).catch(() => {});
+    await unlink(temporary).catch(() => {});
+    throw error;
+  }
+}
+
 export async function applyOkjobsPublicText(root = defaultRoot) {
   const files = await walkFiles(root);
   let changed = 0;
@@ -1161,7 +1207,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
     const original = await readFile(file, "utf8");
     const rewritten = rewrite(original, route);
     if (rewritten !== original) {
-      await writeFile(file, rewritten, "utf8");
+      await writeFileWithRetry(file, rewritten);
       changed += 1;
     }
     const alias = sectorRouteAliases[route];
@@ -1171,7 +1217,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
       const localizedAlias = locale ? `/${locale}${alias}` : alias;
       const aliasFile = path.join(root, localizedAlias.slice(1), "index.html");
       await mkdir(path.dirname(aliasFile), { recursive: true });
-      await writeFile(aliasFile, rewrite(original, route, localizedAlias), "utf8");
+      await writeFileWithRetry(aliasFile, rewrite(original, route, localizedAlias));
     }
   }
   const homepage = await readFile(path.join(root, "index.html"), "utf8");
@@ -1180,7 +1226,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
     for (const file of await walkFiles(root)) {
       const original = await readFile(file, "utf8");
       const rewritten = original.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i, sharedHeader);
-      if (rewritten !== original) await writeFile(file, rewritten, "utf8");
+      if (rewritten !== original) await writeFileWithRetry(file, rewritten);
     }
   }
   const assets = path.join(root, "_astro");
@@ -1189,7 +1235,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
     const file = path.join(assets, name);
     const source = await readFile(file, "utf8");
     const rewritten = rewriteProductServicesRuntime(rewritePersonaRuntime(source));
-    if (rewritten !== source) await writeFile(file, rewritten, "utf8");
+    if (rewritten !== source) await writeFileWithRetry(file, rewritten);
   }
   // Astro hashes stay unchanged when only compiled copy is patched. Invalidate
   // immutable browser caches so hydration cannot restore the previous wording.
@@ -1202,7 +1248,7 @@ export async function applyOkjobsPublicText(root = defaultRoot) {
     for (const file of await walkFiles(root)) {
       const original = await readFile(file, "utf8");
       const rewritten = original.replace(pattern, `$1?copy=${version}`);
-      if (rewritten !== original) await writeFile(file, rewritten, "utf8");
+      if (rewritten !== original) await writeFileWithRetry(file, rewritten);
     }
   }
   await removeLobbystackLinks(root);

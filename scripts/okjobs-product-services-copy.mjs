@@ -1,13 +1,17 @@
 import { applyPersonaCopy } from './okjobs-persona-copy.mjs';
 
-// Approved positioning: software first, optional assistance or delegation.
+// Approved positioning: the four named Okjobs services remain the primary taxonomy.
 // No subscription price, service fee, testimonial or new feature is invented.
 export const productServicesCopy = new Map(Object.entries({
   'Most Popular': 'Accompagnement renforcé',
-  'Deux niveaux d’accompagnement': 'En autonomie, avec assistance ou en délégation',
-  'Assessment : vous gardez le pilotage': 'En autonomie : vous pilotez dans le logiciel',
-  'Recruitment : nous accompagnons le processus': 'Avec assistance ou délégation : notre équipe intervient',
-  'Assessment ou Recruitment : choisissez votre accompagnement': 'Choisissez ce que vous gérez et ce que vous confiez',
+  'Avec assistance': 'Assessment',
+  'En délégation': 'Recrutement',
+  'Accompagnement sur mesure': 'Mission personnalisée',
+  'Comparez vos candidats sur les mêmes bases': 'Formation',
+  'Deux niveaux d’accompagnement': 'Quatre services selon votre besoin',
+  'Assessment : vous gardez le pilotage': 'Assessment : évaluez avec des repères communs',
+  'Recruitment : nous accompagnons le processus': 'Recrutement : avancez vers une shortlist expliquée',
+  'Assessment ou Recruitment : choisissez votre accompagnement': 'Assessment, Recrutement, Mission personnalisée ou Formation',
   'Choisissez le niveau d’accompagnement adapté à votre besoin : évaluer des candidatures selon vos critères ou confier une partie du recrutement à Okjobs.': 'Utilisez Okjobs en autonomie : créez un poste, configurez les tests et envoyez les invitations. Si vous avez besoin d’aide, faites-vous assister ou déléguez les étapes convenues à notre équipe.',
   'Le service entreprise est cadré selon le nombre de candidats, les évaluations nécessaires et le niveau d’accompagnement.': 'Okjobs réunit un logiciel que votre équipe peut utiliser seule et des services optionnels pour être assistée ou déléguer certaines étapes du recrutement.',
   'Les offres entreprises sont définies sur devis selon le volume, les évaluations et le niveau d’accompagnement.': 'L’accès au logiciel et les services d’accompagnement sont distincts. Utilisez votre espace entreprise en autonomie, demandez une assistance ou convenez des étapes à déléguer.',
@@ -31,9 +35,8 @@ const homeCopy = new Map(Object.entries({
   'Votre besoin': 'En autonomie',
   'À préciser': 'Tarif à confirmer',
   'Le poste, vos attentes et les décisions à préparer.': 'Vous créez le poste, configurez les tests et envoyez les invitations.',
-  'Assessment': 'Avec assistance',
-  'Recruitment': 'En délégation',
-  'Accompagnement': 'Périmètre sur mesure',
+  'Recruitment': 'Recrutement',
+  'Accompagnement': 'Mission personnalisée',
   'Comparez vos candidats et sachez quoi approfondir avant de choisir.': 'Notre équipe vous aide à préparer votre poste, vos tests ou à comprendre les résultats.',
   'Avancez vers une shortlist expliquée, avec un accompagnement à chaque étape convenue.': 'Notre équipe réalise les tâches convenues avec vous. Vous gardez le choix final.',
   'Un périmètre défini avec votre équipe selon le contexte et le volume du recrutement.': 'Précisez ce que vous gérez, ce que nous réalisons et les livrables attendus.',
@@ -52,31 +55,12 @@ export function applyProductServicesCopy(document, route) {
   applyPersonaCopy(document, productServicesCopy);
   if (route === '/') applyPersonaCopy(document, homeCopy);
   if (route === '/pricing/') {
-    const content = node => node.nodeName === '#text' ? node.value : (node.childNodes || []).map(content).join('');
-    function visit(node) {
-      if (node.tagName === 'h2' && ['Assessment', 'Logiciel en autonomie'].includes(content(node).trim())) {
-        applyPersonaCopy(node.parentNode, new Map([
-          ['Sur devis', 'Tarif à confirmer'],
-          ['Demander un devis', 'Créer mon espace entreprise'],
-        ]));
-      }
-      for (const child of node.childNodes || []) visit(child);
-    }
-    visit(document);
     applyPersonaCopy(document, new Map([
-      ['Assessment', 'Logiciel en autonomie'],
-      ['Recruitment', 'Avec assistance'],
-      ['Sur mesure', 'En délégation'],
-      ['Comparaison des services Candidat, Assessment, Recruitment et Sur mesure.', 'Comparez l’accès candidat, le logiciel en autonomie et les services d’assistance ou de délégation.'],
+      ['Recruitment', 'Recrutement'],
+      ['Sur mesure', 'Mission personnalisée'],
+      ['Comparaison des services Candidat, Assessment, Recruitment et Sur mesure.', 'Comparez l’accès candidat et les services Assessment, Recrutement et Mission personnalisée. La Formation est proposée selon le besoin des dirigeants et équipes RH.'],
       ['/mo', ' '], ['/yr', ' '],
     ]));
-    function fixPrice(node) {
-      if (node.tagName === 'span' && node.attrs?.some(a => a.name === 'class' && a.value.includes('text-4xl')) && content(node).trim() === 'En délégation') {
-        applyPersonaCopy(node, new Map([['En délégation', 'Sur devis']]));
-      }
-      for (const child of node.childNodes || []) fixPrice(child);
-    }
-    fixPrice(document);
   }
 }
 
@@ -87,20 +71,10 @@ export function rewriteProductServicesRuntime(source) {
       .replaceAll('`' + before + '`', '`' + after + '`');
   }
   if (source.includes('as PricingSection}')) {
-    output = output.replaceAll('name:`Assessment`,price:{monthly:`Sur devis`,annual:`Sur devis`}',
-      'name:`Logiciel en autonomie`,price:{monthly:`Tarif à confirmer`,annual:`Tarif à confirmer`}')
-      .replaceAll('name:`Recruitment`', 'name:`Avec assistance`')
-      .replaceAll('name:`Sur mesure`', 'name:`En délégation`');
-    for (const [before, after] of [['Assessment', 'Logiciel en autonomie'], ['Recruitment', 'Avec assistance']]) {
+    output = output.replaceAll('name:`Recruitment`', 'name:`Recrutement`')
+      .replaceAll('name:`Sur mesure`', 'name:`Mission personnalisée`');
+    for (const [before, after] of [['Recruitment', 'Recrutement'], ['Sur mesure', 'Mission personnalisée']]) {
       output = output.replaceAll('`' + before + '`', '`' + after + '`');
-    }
-    const start = output.indexOf('name:`Logiciel en autonomie`');
-    if (start >= 0) {
-      const next = output.indexOf('name:', start + 7);
-      const end = next < 0 ? output.length : next;
-      const plan = output.slice(start, end).replace('cta:{monthly:`Demander un devis`,annual:`Demander un devis`}',
-        'cta:{monthly:`Créer mon espace entreprise`,annual:`Créer mon espace entreprise`}');
-      output = output.slice(0, start) + plan + output.slice(end);
     }
   }
   return output;
